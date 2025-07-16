@@ -56,6 +56,7 @@ const ExerciseEngine: React.FC<ExerciseEngineProps> = ({
     return {
       id: `${character}-${Date.now()}`,
       character,
+      romaji, // Add romaji to the question object
       correctAnswer: questionType === 'hiragana-to-romaji' ? romaji : character,
       options,
       type: questionType
@@ -108,7 +109,7 @@ const ExerciseEngine: React.FC<ExerciseEngineProps> = ({
         type: 'ADD_EXERCISE_RESULT',
         payload: {
           character: currentQuestion.character,
-          romaji: currentQuestion.correctAnswer,
+          romaji: currentQuestion.romaji,
           userAnswer: answer,
           correct: isCorrect,
           timeSpent: Date.now() - startTime
@@ -159,7 +160,7 @@ const ExerciseEngine: React.FC<ExerciseEngineProps> = ({
         <div className="text-center">
           <p className="text-lg text-gray-600 mb-4">Select the correct hiragana for:</p>
           <div className="text-4xl font-mono font-bold text-gray-800 mb-6">
-            {currentQuestion.correctAnswer}
+            {currentQuestion.romaji}
           </div>
         </div>
       );

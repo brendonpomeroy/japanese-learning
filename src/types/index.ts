@@ -39,6 +39,7 @@ export type PhraseCategory = 'learning_japanese' | 'asking_directions' | 'meetin
 export interface QuizQuestion {
   id: string;
   character: string;
+  romaji: string;
   correctAnswer: string;
   options: string[];
   type: 'hiragana-to-romaji' | 'romaji-to-hiragana';
