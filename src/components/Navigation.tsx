@@ -24,12 +24,20 @@ function Navigation() {
               Home
             </Link>
             <Link 
-              to="/lessons" 
+              to="/phrases" 
               className={`hover:text-blue-200 transition-colors ${
-                isActive('/lessons') ? 'text-blue-200 font-semibold' : ''
+                isActive('/phrases') ? 'text-blue-200 font-semibold' : ''
               }`}
             >
-              Lessons
+              Phrases
+            </Link>
+            <Link 
+              to="/hiragana" 
+              className={`hover:text-blue-200 transition-colors ${
+                isActive('/hiragana') ? 'text-blue-200 font-semibold' : ''
+              }`}
+            >
+              Hiragana
             </Link>
             <Link 
               to="/practice" 
