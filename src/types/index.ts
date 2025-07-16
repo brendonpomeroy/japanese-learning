@@ -32,7 +32,7 @@ export interface ProgressData {
   lastPracticeDate: string;
 }
 
-export type ExerciseType = 'recognition' | 'production' | 'audio' | 'speed' | 'mixed';
+export type ExerciseType = 'recognition' | 'production' | 'audio' | 'speed' | 'mixed' | 'typing';
 export type HiraganaCategory = 'basic' | 'dakuten' | 'handakuten' | 'combinations';
 export type PhraseCategory = 'learning_japanese' | 'asking_directions' | 'meeting_new_people';
 
@@ -42,7 +42,7 @@ export interface QuizQuestion {
   romaji: string;
   correctAnswer: string;
   options: string[];
-  type: 'hiragana-to-romaji' | 'romaji-to-hiragana';
+  type: 'hiragana-to-romaji' | 'romaji-to-hiragana' | 'typing';
 }
 
 export interface AudioPlayerState {

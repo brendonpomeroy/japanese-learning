@@ -21,6 +21,7 @@ const ExerciseEngine: React.FC<ExerciseEngineProps> = ({
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+  const [typedAnswer, setTypedAnswer] = useState('');
   const [showResult, setShowResult] = useState(false);
   const [questions, setQuestions] = useState<QuizQuestion[]>([]);
   const [startTime, setStartTime] = useState<number>(Date.now());
@@ -42,22 +43,33 @@ const ExerciseEngine: React.FC<ExerciseEngineProps> = ({
 
   const generateQuestion = useCallback((): QuizQuestion => {
     const { character, romaji } = getRandomHiragana(category);
-    const questionType = exerciseType === 'mixed' 
-      ? Math.random() > 0.5 ? 'hiragana-to-romaji' : 'romaji-to-hiragana'
-      : exerciseType === 'recognition' 
-        ? 'hiragana-to-romaji' 
-        : 'romaji-to-hiragana';
+    
+    let questionType: 'hiragana-to-romaji' | 'romaji-to-hiragana' | 'typing';
+    
+    if (exerciseType === 'mixed') {
+      const rand = Math.random();
+      questionType = rand < 0.33 ? 'hiragana-to-romaji' : rand < 0.66 ? 'romaji-to-hiragana' : 'typing';
+    } else if (exerciseType === 'recognition') {
+      questionType = 'hiragana-to-romaji';
+    } else if (exerciseType === 'typing') {
+      questionType = 'typing';
+    } else {
+      questionType = 'romaji-to-hiragana';
+    }
 
-    const options = generateRandomOptions(
-      questionType === 'hiragana-to-romaji' ? romaji : character,
-      questionType === 'hiragana-to-romaji'
-    );
+    const options = questionType === 'typing' 
+      ? [] // No options needed for typing
+      : generateRandomOptions(
+          questionType === 'hiragana-to-romaji' ? romaji : character,
+          questionType === 'hiragana-to-romaji'
+        );
 
     return {
       id: `${character}-${Date.now()}`,
       character,
-      romaji, // Add romaji to the question object
-      correctAnswer: questionType === 'hiragana-to-romaji' ? romaji : character,
+      romaji,
+      correctAnswer: questionType === 'hiragana-to-romaji' ? romaji : 
+                     questionType === 'typing' ? romaji : character,
       options,
       type: questionType
     };
@@ -123,6 +135,43 @@ const ExerciseEngine: React.FC<ExerciseEngineProps> = ({
     }, 2000);
   };
 
+  const handleTypingSubmit = (answer: string) => {
+    if (showResult) return;
+    
+    setTypedAnswer(answer);
+    setShowResult(true);
+    
+    const isCorrect = answer.toLowerCase().trim() === currentQuestion?.correctAnswer.toLowerCase();
+    if (isCorrect) {
+      setScore(score + 1);
+    }
+
+    // Record the exercise result
+    if (currentQuestion) {
+      dispatch({
+        type: 'ADD_EXERCISE_RESULT',
+        payload: {
+          character: currentQuestion.character,
+          romaji: currentQuestion.romaji,
+          userAnswer: answer,
+          correct: isCorrect,
+          timeSpent: Date.now() - startTime
+        }
+      });
+    }
+
+    // Auto-advance after 2 seconds
+    setTimeout(() => {
+      handleNextQuestion();
+    }, 2000);
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && !showResult) {
+      handleTypingSubmit(typedAnswer);
+    }
+  };
+
   const handleNextQuestion = () => {
     if (currentQuestionIndex + 1 >= questions.length) {
       handleComplete();
@@ -133,6 +182,7 @@ const ExerciseEngine: React.FC<ExerciseEngineProps> = ({
     setCurrentQuestionIndex(nextIndex);
     setCurrentQuestion(questions[nextIndex]);
     setSelectedAnswer(null);
+    setTypedAnswer('');
     setShowResult(false);
     setStartTime(Date.now());
   };
@@ -150,6 +200,15 @@ const ExerciseEngine: React.FC<ExerciseEngineProps> = ({
       return (
         <div className="text-center">
           <p className="text-lg text-gray-600 mb-4">Select the correct romaji for:</p>
+          <div className="text-6xl font-japanese font-bold text-gray-800 mb-6">
+            {currentQuestion.character}
+          </div>
+        </div>
+      );
+    } else if (currentQuestion.type === 'typing') {
+      return (
+        <div className="text-center">
+          <p className="text-lg text-gray-600 mb-4">Type the romaji for:</p>
           <div className="text-6xl font-japanese font-bold text-gray-800 mb-6">
             {currentQuestion.character}
           </div>
@@ -187,37 +246,71 @@ const ExerciseEngine: React.FC<ExerciseEngineProps> = ({
         {getQuestionDisplay()}
       </div>
 
-      <div className="grid grid-cols-2 gap-4 mb-6">
-        {currentQuestion.options.map((option) => (
-          <button
-            key={option}
-            onClick={() => handleAnswerSelect(option)}
-            disabled={showResult}
-            className={`
-              p-4 rounded-lg border-2 transition-all duration-200 font-medium
-              ${showResult && option === currentQuestion.correctAnswer
-                ? 'border-green-500 bg-green-100 text-green-800'
-                : showResult && option === selectedAnswer && option !== currentQuestion.correctAnswer
-                  ? 'border-red-500 bg-red-100 text-red-800'
-                  : showResult
-                    ? 'border-gray-300 bg-gray-100 text-gray-500'
-                    : 'border-gray-300 bg-gray-50 hover:border-blue-500 hover:bg-blue-50'
-              }
-            `}
-          >
-            <span className={currentQuestion.type === 'romaji-to-hiragana' ? 'text-2xl font-japanese' : 'text-xl font-mono'}>
-              {option}
-            </span>
-          </button>
-        ))}
-      </div>
+      {currentQuestion.type === 'typing' ? (
+        <div className="mb-6">
+          <div className="flex gap-4 max-w-md mx-auto">
+            <input
+              type="text"
+              value={typedAnswer}
+              onChange={(e) => setTypedAnswer(e.target.value)}
+              onKeyPress={handleKeyPress}
+              placeholder="Type the romaji here..."
+              disabled={showResult}
+              className="flex-1 px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono text-lg"
+              autoFocus
+            />
+            <button
+              onClick={() => handleTypingSubmit(typedAnswer)}
+              disabled={showResult || !typedAnswer.trim()}
+              className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed font-medium"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div className="grid grid-cols-2 gap-4 mb-6">
+          {currentQuestion.options.map((option) => (
+            <button
+              key={option}
+              onClick={() => handleAnswerSelect(option)}
+              disabled={showResult}
+              className={`
+                p-4 rounded-lg border-2 transition-all duration-200 font-medium
+                ${showResult && option === currentQuestion.correctAnswer
+                  ? 'border-green-500 bg-green-100 text-green-800'
+                  : showResult && option === selectedAnswer && option !== currentQuestion.correctAnswer
+                    ? 'border-red-500 bg-red-100 text-red-800'
+                    : showResult
+                      ? 'border-gray-300 bg-gray-100 text-gray-500'
+                      : 'border-gray-300 bg-gray-50 hover:border-blue-500 hover:bg-blue-50'
+                }
+              `}
+            >
+              <span className={currentQuestion.type === 'romaji-to-hiragana' ? 'text-2xl font-japanese' : 'text-xl font-mono'}>
+                {option}
+              </span>
+            </button>
+          ))}
+        </div>
+      )}
 
       {showResult && (
         <div className="text-center">
-          <p className={`text-lg font-medium ${selectedAnswer === currentQuestion.correctAnswer ? 'text-green-600' : 'text-red-600'}`}>
-            {selectedAnswer === currentQuestion.correctAnswer ? '✓ Correct!' : '✗ Incorrect'}
+          <p className={`text-lg font-medium ${
+            (currentQuestion.type === 'typing' ? 
+              typedAnswer.toLowerCase().trim() === currentQuestion.correctAnswer.toLowerCase() : 
+              selectedAnswer === currentQuestion.correctAnswer) 
+            ? 'text-green-600' : 'text-red-600'
+          }`}>
+            {(currentQuestion.type === 'typing' ? 
+              typedAnswer.toLowerCase().trim() === currentQuestion.correctAnswer.toLowerCase() : 
+              selectedAnswer === currentQuestion.correctAnswer) 
+            ? '✓ Correct!' : '✗ Incorrect'}
           </p>
-          {selectedAnswer !== currentQuestion.correctAnswer && (
+          {(currentQuestion.type === 'typing' ? 
+            typedAnswer.toLowerCase().trim() !== currentQuestion.correctAnswer.toLowerCase() : 
+            selectedAnswer !== currentQuestion.correctAnswer) && (
             <p className="text-sm text-gray-600 mt-2">
               The correct answer is: <span className="font-bold">{currentQuestion.correctAnswer}</span>
             </p>

@@ -24,6 +24,12 @@ function Practice() {
       icon: '✍️'
     },
     {
+      type: 'typing',
+      title: 'Typing Quiz',
+      description: 'See hiragana → type romaji',
+      icon: '⌨️'
+    },
+    {
       type: 'speed',
       title: 'Speed Challenge',
       description: 'Fast-paced recognition test',
