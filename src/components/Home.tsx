@@ -17,24 +17,24 @@ function Home() {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="text-center mb-12">
-        <h1 className="text-5xl font-bold text-gray-800 mb-4">Japanese Lessons</h1>
-        <p className="text-xl text-gray-600 mb-8">Master Japanese phrases and hiragana through interactive learning</p>
+        <h1 className="text-5xl font-bold text-gray-800 dark:text-gray-100 mb-4">Japanese Lessons</h1>
+        <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">Master Japanese phrases and hiragana through interactive learning</p>
         
         {progress.exerciseHistory.length > 0 && (
-          <div className="bg-blue-50 rounded-lg p-6 mb-8 max-w-md mx-auto">
-            <h3 className="text-lg font-semibold text-blue-800 mb-2">Your Progress</h3>
+          <div className="bg-blue-50 dark:bg-blue-900 rounded-lg p-6 mb-8 max-w-md mx-auto">
+            <h3 className="text-lg font-semibold text-blue-800 dark:text-blue-200 mb-2">Your Progress</h3>
             <div className="flex items-center gap-3 justify-center">
-              <div className="text-2xl font-bold text-blue-600">
+              <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
                 {overallProgress.toFixed(1)}%
               </div>
-              <div className="flex-1 bg-blue-200 rounded-full h-3">
+              <div className="flex-1 bg-blue-200 dark:bg-blue-800 rounded-full h-3">
                 <div 
-                  className="h-3 rounded-full bg-blue-600 transition-all duration-300"
+                  className="h-3 rounded-full bg-blue-600 dark:bg-blue-400 transition-all duration-300"
                   style={{ width: `${overallProgress}%` }}
                 />
               </div>
             </div>
-            <p className="text-sm text-blue-700 mt-2">
+            <p className="text-sm text-blue-700 dark:text-blue-300 mt-2">
               {masteredCharacters} of {totalCharacters} characters mastered
             </p>
           </div>
@@ -88,43 +88,43 @@ function Home() {
         </Link>
       </div>
 
-      <div className="bg-white rounded-lg shadow-md p-8">
-        <h2 className="text-3xl font-bold text-gray-800 mb-6">Learning Features</h2>
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8">
+        <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-6">Learning Features</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="flex items-start gap-4">
-            <div className="bg-blue-100 rounded-full p-3 flex-shrink-0">
-              <span className="text-blue-600 text-xl">📚</span>
+            <div className="bg-blue-100 dark:bg-blue-900 rounded-full p-3 flex-shrink-0">
+              <span className="text-blue-600 dark:text-blue-400 text-xl">📚</span>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">Comprehensive Phrases</h3>
-              <p className="text-gray-600">Learn categorized phrases with English, Japanese, hiragana, and romaji</p>
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">Comprehensive Phrases</h3>
+              <p className="text-gray-600 dark:text-gray-300">Learn categorized phrases with English, Japanese, hiragana, and romaji</p>
             </div>
           </div>
           <div className="flex items-start gap-4">
-            <div className="bg-purple-100 rounded-full p-3 flex-shrink-0">
-              <span className="text-purple-600 text-xl">✍️</span>
+            <div className="bg-purple-100 dark:bg-purple-900 rounded-full p-3 flex-shrink-0">
+              <span className="text-purple-600 dark:text-purple-400 text-xl">✍️</span>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">Complete Hiragana</h3>
-              <p className="text-gray-600">All 46 basic characters plus dakuten, handakuten, and combinations</p>
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">Complete Hiragana</h3>
+              <p className="text-gray-600 dark:text-gray-300">All 46 basic characters plus dakuten, handakuten, and combinations</p>
             </div>
           </div>
           <div className="flex items-start gap-4">
-            <div className="bg-green-100 rounded-full p-3 flex-shrink-0">
-              <span className="text-green-600 text-xl">🎮</span>
+            <div className="bg-green-100 dark:bg-green-900 rounded-full p-3 flex-shrink-0">
+              <span className="text-green-600 dark:text-green-400 text-xl">🎮</span>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">Interactive Exercises</h3>
-              <p className="text-gray-600">Multiple quiz types including recognition, production, and speed challenges</p>
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">Interactive Exercises</h3>
+              <p className="text-gray-600 dark:text-gray-300">Multiple quiz types including recognition, production, and speed challenges</p>
             </div>
           </div>
           <div className="flex items-start gap-4">
-            <div className="bg-yellow-100 rounded-full p-3 flex-shrink-0">
-              <span className="text-yellow-600 text-xl">📊</span>
+            <div className="bg-yellow-100 dark:bg-yellow-900 rounded-full p-3 flex-shrink-0">
+              <span className="text-yellow-600 dark:text-yellow-400 text-xl">📊</span>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">Progress Tracking</h3>
-              <p className="text-gray-600">Track your mastery level and success rates for each character</p>
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">Progress Tracking</h3>
+              <p className="text-gray-600 dark:text-gray-300">Track your mastery level and success rates for each character</p>
             </div>
           </div>
         </div>
