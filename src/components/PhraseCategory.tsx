@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PhraseCard from './PhraseCard';
+import { phrasesData } from '../data/phrasesData';
 import type { PhraseData, PhraseCategory as PhraseCategoryType } from '../types';
 
 interface PhraseCategoryProps {
@@ -15,28 +16,12 @@ const categoryTitles = {
 
 const PhraseCategory: React.FC<PhraseCategoryProps> = ({ category, onPlayAudio }) => {
   const [phrases, setPhrases] = useState<PhraseData[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    const fetchPhrases = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch('/japanese_phrases_json.json');
-        if (!response.ok) {
-          throw new Error('Failed to load phrases');
-        }
-        const data = await response.json();
-        setPhrases(data.japanese_phrases[category] || []);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'An error occurred');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPhrases();
+    // Load phrases from imported data instead of fetching
+    const categoryPhrases = phrasesData.japanese_phrases[category] || [];
+    setPhrases(categoryPhrases);
   }, [category]);
 
   const filteredPhrases = phrases.filter(phrase =>
@@ -46,26 +31,10 @@ const PhraseCategory: React.FC<PhraseCategoryProps> = ({ category, onPlayAudio }
     phrase.romaji.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
-        <p className="text-red-800">Error loading phrases: {error}</p>
-      </div>
-    );
-  }
-
   return (
     <div className="space-y-6">
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+        <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-4">
           {categoryTitles[category]}
         </h1>
         
@@ -75,11 +44,11 @@ const PhraseCategory: React.FC<PhraseCategoryProps> = ({ category, onPlayAudio }
             placeholder="Search phrases..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
         </div>
 
-        <div className="text-sm text-gray-600 mb-4">
+        <div className="text-sm text-gray-600 dark:text-gray-300 mb-4">
           {filteredPhrases.length} phrase{filteredPhrases.length !== 1 ? 's' : ''} found
         </div>
       </div>
@@ -95,8 +64,8 @@ const PhraseCategory: React.FC<PhraseCategoryProps> = ({ category, onPlayAudio }
       </div>
 
       {filteredPhrases.length === 0 && searchTerm && (
-        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 text-center">
-          <p className="text-gray-600">No phrases found matching "{searchTerm}"</p>
+        <div className="bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg p-6 text-center">
+          <p className="text-gray-600 dark:text-gray-300">No phrases found matching "{searchTerm}"</p>
         </div>
       )}
     </div>

@@ -86,11 +86,12 @@ src/
 ├── hooks/               # Custom React hooks
 │   └── useApp.ts        # Context hook
 ├── data/               # Static data and utilities
-│   └── hiraganaData.ts  # Hiragana character data
+│   ├── hiraganaData.ts  # Hiragana character data
+│   └── phrasesData.ts   # Japanese phrases data
 ├── types/              # TypeScript type definitions
 │   └── index.ts         # Application types
-└── public/
-    └── japanese_phrases_json.json # Phrase data
+└── public/             # Public static assets
+    └── vite.svg         # Vite logo
 ```
 
 ## Getting Started
