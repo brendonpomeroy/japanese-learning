@@ -16,7 +16,7 @@ const PhraseCard: React.FC<PhraseCardProps> = ({ phrase, onPlayAudio }) => {
         <div className="space-y-2">
           <div className="flex items-center gap-2">
             <span className="text-sm text-gray-600 dark:text-gray-300 font-medium">Japanese:</span>
-            <span className="text-lg font-japanese">{phrase.japanese}</span>
+            <span className="text-lg font-japanese dark:text-gray-100">{phrase.japanese}</span>
             {onPlayAudio && (
               <button
                 onClick={() => onPlayAudio(phrase.japanese)}
@@ -29,11 +29,11 @@ const PhraseCard: React.FC<PhraseCardProps> = ({ phrase, onPlayAudio }) => {
           </div>
           <div className="flex items-center gap-2">
             <span className="text-sm text-gray-600 dark:text-gray-300 font-medium">Hiragana:</span>
-            <span className="text-lg font-japanese">{phrase.hiragana}</span>
+            <span className="text-lg font-japanese dark:text-gray-100">{phrase.hiragana}</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-sm text-gray-600 dark:text-gray-300 font-medium">Romaji:</span>
-            <span className="text-lg font-mono">{phrase.romaji}</span>
+            <span className="text-lg font-mono dark:text-gray-100">{phrase.romaji}</span>
           </div>
         </div>
       </div>
