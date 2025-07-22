@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PhraseCard from './PhraseCard';
 import { phrasesData } from '../data/phrasesData';
-import type { PhraseData, PhraseCategory as PhraseCategoryType } from '../types';
+import type { PhraseData, PhraseCategoryType } from '../types';
 
 interface PhraseCategoryProps {
   category: PhraseCategoryType;
@@ -21,6 +21,8 @@ const PhraseCategory: React.FC<PhraseCategoryProps> = ({ category, onPlayAudio }
   useEffect(() => {
     // Load phrases from imported data instead of fetching
     const categoryPhrases = phrasesData.japanese_phrases[category] || [];
+    console.log(`Loading phrases for category: ${category}`, categoryPhrases);
+    console.log(phrasesData.japanese_phrases);
     setPhrases(categoryPhrases);
   }, [category]);
 
@@ -35,7 +37,10 @@ const PhraseCategory: React.FC<PhraseCategoryProps> = ({ category, onPlayAudio }
     <div className="space-y-6">
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
         <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-4">
-          {categoryTitles[category]}
+          {(category in categoryTitles
+            ? categoryTitles[category as keyof typeof categoryTitles]
+            : category.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase())
+          )}
         </h1>
         
         <div className="mb-6">

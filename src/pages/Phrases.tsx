@@ -18,7 +18,17 @@ const categories: { key: PhraseCategoryType; title: string; description: string 
     key: 'meeting_new_people',
     title: 'Meeting New People',
     description: 'Social introductions and getting to know others'
-  }
+  },
+  {
+    key: 'shopping',
+    title: 'Shopping',
+    description: 'Useful phrases for shopping and transactions'
+  },
+  {
+    key: 'dining',
+    title: 'Dining',
+    description: 'Ordering and discussing food and beverages'
+  },
 ];
 
 function Phrases() {

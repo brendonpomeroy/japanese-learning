@@ -278,6 +278,146 @@
           "か": "ka - question particle"
         }
       }
-    ]
+    ],
+    "shopping": [
+    {
+      "english": "How much is this?",
+      "japanese": "これはいくらですか",
+      "hiragana": "これはいくらですか",
+      "romaji": "kore wa ikura desu ka",
+      "explanation": "Common question when asking for the price of an item",
+      "word_breakdown": {
+        "これ": "kore - this",
+        "は": "wa - topic particle",
+        "いくら": "ikura - how much",
+        "です": "desu - polite copula",
+        "か": "ka - question particle"
+      }
+    },
+    {
+      "english": "Do you have this in a different size?",
+      "japanese": "違うサイズはありますか",
+      "hiragana": "ちがうさいずはありますか",
+      "romaji": "chigau saizu wa arimasu ka",
+      "explanation": "Phrase to ask if different sizes are available",
+      "word_breakdown": {
+        "違う": "chigau - different",
+        "サイズ": "saizu - size",
+        "は": "wa - topic particle",
+        "あります": "arimasu - to have/exist",
+        "か": "ka - question particle"
+      }
+    },
+    {
+      "english": "Can I try this on?",
+      "japanese": "これを試着してもいいですか",
+      "hiragana": "これをしちゃくしてもいいですか",
+      "romaji": "kore o shichaku shite mo ii desu ka",
+      "explanation": "Phrase to ask if you're allowed to try something on",
+      "word_breakdown": {
+        "これ": "kore - this",
+        "を": "o - object particle",
+        "試着": "shichaku - trying on clothes",
+        "して": "shite - to do (te-form)",
+        "も": "mo - also/even",
+        "いい": "ii - good/okay",
+        "ですか": "desu ka - polite question"
+      }
+    },
+    {
+      "english": "Do you accept credit cards?",
+      "japanese": "クレジットカードは使えますか",
+      "hiragana": "くれじっとかーどはつかえますか",
+      "romaji": "kurejitto kaado wa tsukaemasu ka",
+      "explanation": "Asking if a store accepts credit card payments",
+      "word_breakdown": {
+        "クレジットカード": "kurejitto kaado - credit card",
+        "は": "wa - topic particle",
+        "使えます": "tsukaemasu - can use",
+        "か": "ka - question particle"
+      }
+    },
+    {
+      "english": "Can I get a receipt, please?",
+      "japanese": "レシートをください",
+      "hiragana": "れしーとをください",
+      "romaji": "reshiito o kudasai",
+      "explanation": "Polite way to ask for a receipt",
+      "word_breakdown": {
+        "レシート": "reshiito - receipt",
+        "を": "o - object particle",
+        "ください": "kudasai - please (polite request)"
+      }
+    }
+  ],
+    "dining": [
+    {
+      "english": "A table for two, please",
+      "japanese": "二人用の席をお願いします",
+      "hiragana": "ふたりようのせきをおねがいします",
+      "romaji": "futari you no seki o onegaishimasu",
+      "explanation": "Requesting a table for two people at a restaurant",
+      "word_breakdown": {
+        "二人用": "futari you - for two people",
+        "の": "no - possessive/modifying particle",
+        "席": "seki - seat/table",
+        "を": "o - object particle",
+        "お願いします": "onegaishimasu - please (polite request)"
+      }
+    },
+    {
+      "english": "Can I see the menu?",
+      "japanese": "メニューを見せてもらえますか",
+      "hiragana": "めにゅーをみせてもらえますか",
+      "romaji": "menyuu o misete moraemasu ka",
+      "explanation": "Polite way to ask to see the menu",
+      "word_breakdown": {
+        "メニュー": "menyuu - menu",
+        "を": "o - object particle",
+        "見せて": "misete - to show (te-form)",
+        "もらえます": "moraemasu - can receive (potential form)",
+        "か": "ka - question particle"
+      }
+    },
+    {
+      "english": "What do you recommend?",
+      "japanese": "おすすめは何ですか",
+      "hiragana": "おすすめはなんですか",
+      "romaji": "osusume wa nan desu ka",
+      "explanation": "Polite way to ask for a recommendation from the staff",
+      "word_breakdown": {
+        "おすすめ": "osusume - recommendation",
+        "は": "wa - topic particle",
+        "何": "nan - what",
+        "です": "desu - polite copula",
+        "か": "ka - question particle"
+      }
+    },
+    {
+      "english": "I have a food allergy",
+      "japanese": "食べ物アレルギーがあります",
+      "hiragana": "たべものあれるぎーがあります",
+      "romaji": "tabemono arerugii ga arimasu",
+      "explanation": "Used to inform staff of food allergies",
+      "word_breakdown": {
+        "食べ物": "tabemono - food",
+        "アレルギー": "arerugii - allergy",
+        "が": "ga - subject particle",
+        "あります": "arimasu - to have/exist"
+      }
+    },
+    {
+      "english": "The check, please",
+      "japanese": "お会計をお願いします",
+      "hiragana": "おかいけいをおねがいします",
+      "romaji": "okaikei o onegaishimasu",
+      "explanation": "Polite way to ask for the bill at a restaurant",
+      "word_breakdown": {
+        "お会計": "okaikei - bill/check (polite)",
+        "を": "o - object particle",
+        "お願いします": "onegaishimasu - please (polite request)"
+      }
+    }
+  ]
   }
 }

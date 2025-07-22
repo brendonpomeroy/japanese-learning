@@ -12,6 +12,8 @@ export interface PhrasesResponse {
     learning_japanese: PhraseData[];
     asking_directions: PhraseData[];
     meeting_new_people: PhraseData[];
+    shopping: PhraseData[];
+    dining: PhraseData[];
   };
 }
 
@@ -34,7 +36,7 @@ export interface ProgressData {
 
 export type ExerciseType = 'recognition' | 'production' | 'audio' | 'speed' | 'mixed' | 'typing';
 export type HiraganaCategory = 'basic' | 'dakuten' | 'handakuten' | 'combinations';
-export type PhraseCategory = 'learning_japanese' | 'asking_directions' | 'meeting_new_people';
+export type PhraseCategoryType = 'learning_japanese' | 'asking_directions' | 'meeting_new_people' | 'shopping' | 'dining';
 
 export interface QuizQuestion {
   id: string;

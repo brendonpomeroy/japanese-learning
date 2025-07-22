@@ -77,11 +77,15 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
         ...state,
         currentExercise: action.payload
       };
-    case 'UPDATE_SETTINGS':
+    case 'UPDATE_SETTINGS': {
+      console.log('UPDATE_SETTINGS action received:', action.payload);
+      const newSettings = { ...state.settings, ...action.payload };
+      console.log('New settings state:', newSettings);
       return {
         ...state,
-        settings: { ...state.settings, ...action.payload }
+        settings: newSettings
       };
+    }
     case 'RESET_PROGRESS':
       return {
         ...state,
@@ -97,21 +101,40 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
 
   // Load state from localStorage on mount
   useEffect(() => {
-    const savedState = localStorage.getItem('japanese-learning-progress');
-    if (savedState) {
+    const savedProgress = localStorage.getItem('japanese-learning-progress');
+    const savedSettings = localStorage.getItem('japanese-learning-settings');
+    
+    console.log('Loading saved settings:', savedSettings);
+    
+    if (savedProgress) {
       try {
-        const parsed = JSON.parse(savedState);
+        const parsed = JSON.parse(savedProgress);
         dispatch({ type: 'UPDATE_PROGRESS', payload: parsed });
       } catch (error) {
         console.error('Error loading saved progress:', error);
       }
     }
+    
+    if (savedSettings) {
+      try {
+        const parsed = JSON.parse(savedSettings);
+        console.log('Parsed settings:', parsed);
+        dispatch({ type: 'UPDATE_SETTINGS', payload: parsed });
+      } catch (error) {
+        console.error('Error loading saved settings:', error);
+      }
+    }
   }, []);
 
-  // Save state to localStorage whenever progress changes
+  // Save progress to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem('japanese-learning-progress', JSON.stringify(state.progress));
   }, [state.progress]);
+
+  // Save settings to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem('japanese-learning-settings', JSON.stringify(state.settings));
+  }, [state.settings]);
 
   return (
     <AppContext.Provider value={{ state, dispatch }}>

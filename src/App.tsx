@@ -14,6 +14,7 @@ function AppContent() {
   const { isDarkMode } = useTheme();
   
   useEffect(() => {
+    console.log('Theme state changed, isDarkMode:', isDarkMode);
     if (isDarkMode) {
       document.documentElement.classList.add('dark');
     } else {
