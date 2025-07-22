@@ -82,7 +82,7 @@ const HiraganaGrid: React.FC<HiraganaGridProps> = ({
                     }
                   `}
                 >
-                  <span className="text-2xl font-japanese font-bold mb-1">
+                  <span className="text-2xl font-japanese font-bold mb-1 dark:text-gray-100">
                     {character}
                   </span>
                   <span className="text-xs text-gray-600 dark:text-gray-300 font-mono">
