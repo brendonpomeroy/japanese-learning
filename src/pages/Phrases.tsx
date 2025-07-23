@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PhraseCategory from '../components/PhraseCategory';
-import type { PhraseCategory as PhraseCategoryType } from '../types';
+import type { PhraseCategoryType } from '../types';
 
 const categories: { key: PhraseCategoryType; title: string; description: string }[] = [
   {
