@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import type { QuizQuestion, ExerciseType, HiraganaCategory } from '../types';
 import { getRandomHiragana, getAllHiragana } from '../data/hiraganaData';
 import { useApp } from '../hooks/useApp';
@@ -20,6 +20,7 @@ const ExerciseEngine: React.FC<ExerciseEngineProps> = ({
   const [currentQuestion, setCurrentQuestion] = useState<QuizQuestion | null>(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
+  const scoreRef = useRef(0); // Keep track of actual score
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [typedAnswer, setTypedAnswer] = useState('');
   const [showResult, setShowResult] = useState(false);
@@ -84,6 +85,7 @@ const ExerciseEngine: React.FC<ExerciseEngineProps> = ({
   useEffect(() => {
     generateQuestions();
     setStartTime(Date.now());
+    scoreRef.current = 0; // Reset score ref
     
     if (exerciseType === 'speed') {
       setTimeLeft(30); // 30 seconds for speed challenge
@@ -91,8 +93,8 @@ const ExerciseEngine: React.FC<ExerciseEngineProps> = ({
   }, [generateQuestions, exerciseType]);
 
   const handleComplete = useCallback(() => {
-    onComplete?.(score, questions.length);
-  }, [onComplete, score, questions.length]);
+    onComplete?.(scoreRef.current, questions.length);
+  }, [onComplete, questions.length]);
 
   useEffect(() => {
     let timer: number;
@@ -112,7 +114,8 @@ const ExerciseEngine: React.FC<ExerciseEngineProps> = ({
     
     const isCorrect = answer === currentQuestion?.correctAnswer;
     if (isCorrect) {
-      setScore(score + 1);
+      scoreRef.current += 1;
+      setScore(prevScore => prevScore + 1);
     }
 
     // Record the exercise result
@@ -143,7 +146,8 @@ const ExerciseEngine: React.FC<ExerciseEngineProps> = ({
     
     const isCorrect = answer.toLowerCase().trim() === currentQuestion?.correctAnswer.toLowerCase();
     if (isCorrect) {
-      setScore(score + 1);
+      scoreRef.current += 1;
+      setScore(prevScore => prevScore + 1);
     }
 
     // Record the exercise result
