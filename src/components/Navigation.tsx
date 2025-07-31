@@ -53,6 +53,14 @@ function Navigation() {
               Hiragana
             </Link>
             <Link 
+              to="/emoji" 
+              className={`hover:text-blue-200 dark:hover:text-blue-300 transition-colors ${
+                isActive('/emoji') ? 'text-blue-200 dark:text-blue-300 font-semibold' : ''
+              }`}
+            >
+              Emoji Quiz
+            </Link>
+            <Link 
               to="/practice" 
               className={`hover:text-blue-200 dark:hover:text-blue-300 transition-colors ${
                 isActive('/practice') ? 'text-blue-200 dark:text-blue-300 font-semibold' : ''
@@ -114,6 +122,15 @@ function Navigation() {
               onClick={closeMobileMenu}
             >
               Hiragana
+            </Link>
+            <Link 
+              to="/emoji" 
+              className={`block py-2 px-4 hover:bg-blue-700 dark:hover:bg-blue-700 rounded transition-colors ${
+                isActive('/emoji') ? 'bg-blue-700 dark:bg-blue-700 font-semibold' : ''
+              }`}
+              onClick={closeMobileMenu}
+            >
+              Emoji Quiz
             </Link>
             <Link 
               to="/practice" 

@@ -41,7 +41,7 @@ function Home() {
         )}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
         <Link 
           to="/phrases" 
           className="group bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg shadow-lg p-6 text-white hover:from-blue-600 hover:to-blue-700 transition-all duration-200 transform hover:scale-105"
@@ -68,6 +68,21 @@ function Home() {
           <p className="text-purple-100 mb-4">Master all hiragana characters with interactive exercises</p>
           <div className="flex items-center text-purple-200 group-hover:text-white">
             <span className="mr-2">Practice now</span>
+            <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+          </div>
+        </Link>
+
+        <Link 
+          to="/emoji" 
+          className="group bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg shadow-lg p-6 text-white hover:from-orange-600 hover:to-orange-700 transition-all duration-200 transform hover:scale-105"
+        >
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-2xl font-bold">Emoji Quiz</h3>
+            <span className="text-3xl">😊</span>
+          </div>
+          <p className="text-orange-100 mb-4">Learn Japanese words through fun emoji recognition</p>
+          <div className="flex items-center text-orange-200 group-hover:text-white">
+            <span className="mr-2">Take quiz</span>
             <span className="transform group-hover:translate-x-1 transition-transform">→</span>
           </div>
         </Link>
