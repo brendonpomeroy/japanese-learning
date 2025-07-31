@@ -1,0 +1,401 @@
+[
+  {
+    "emoji": "✈️",
+    "english": "airplane",
+    "japanese": "飛行機",
+    "hiragana": "ひこうき",
+    "romaji": "hikouki"
+  },
+  {
+    "emoji": "🚄",
+    "english": "bullet train",
+    "japanese": "新幹線",
+    "hiragana": "しんかんせん",
+    "romaji": "shinkansen"
+  },
+  {
+    "emoji": "🧳",
+    "english": "luggage",
+    "japanese": "荷物",
+    "hiragana": "にもつ",
+    "romaji": "nimotsu"
+  },
+  {
+    "emoji": "🛂",
+    "english": "passport control",
+    "japanese": "入国審査",
+    "hiragana": "にゅうこくしんさ",
+    "romaji": "nyūkoku shinsa"
+  },
+  {
+    "emoji": "🏨",
+    "english": "hotel",
+    "japanese": "ホテル",
+    "hiragana": "ほてる",
+    "romaji": "hoteru"
+  },
+  {
+    "emoji": "🗺️",
+    "english": "map",
+    "japanese": "地図",
+    "hiragana": "ちず",
+    "romaji": "chizu"
+  },
+  {
+    "emoji": "🚕",
+    "english": "taxi",
+    "japanese": "タクシー",
+    "hiragana": "たくしー",
+    "romaji": "takushī"
+  },
+  {
+    "emoji": "🛫",
+    "english": "departure",
+    "japanese": "出発",
+    "hiragana": "しゅっぱつ",
+    "romaji": "shuppatsu"
+  },
+  {
+    "emoji": "🛬",
+    "english": "arrival",
+    "japanese": "到着",
+    "hiragana": "とうちゃく",
+    "romaji": "touchaku"
+  },
+  {
+    "emoji": "🧭",
+    "english": "compass",
+    "japanese": "コンパス",
+    "hiragana": "こんぱす",
+    "romaji": "konpasu"
+  },
+  {
+    "emoji": "📱",
+    "english": "smartphone",
+    "japanese": "スマートフォン",
+    "hiragana": "すまーとふぉん",
+    "romaji": "sumātofon"
+  },
+  {
+    "emoji": "💻",
+    "english": "laptop",
+    "japanese": "ノートパソコン",
+    "hiragana": "のーとぱそこん",
+    "romaji": "nōtopasokon"
+  },
+  {
+    "emoji": "🪥",
+    "english": "toothbrush",
+    "japanese": "歯ブラシ",
+    "hiragana": "はぶらし",
+    "romaji": "haburashi"
+  },
+  {
+    "emoji": "🧺",
+    "english": "laundry basket",
+    "japanese": "洗濯かご",
+    "hiragana": "せんたくかご",
+    "romaji": "sentaku kago"
+  },
+  {
+    "emoji": "🛏️",
+    "english": "bed",
+    "japanese": "ベッド",
+    "hiragana": "べっど",
+    "romaji": "beddo"
+  },
+  {
+    "emoji": "🪒",
+    "english": "razor",
+    "japanese": "かみそり",
+    "hiragana": "かみそり",
+    "romaji": "kamisori"
+  },
+  {
+    "emoji": "🧊",
+    "english": "ice",
+    "japanese": "氷",
+    "hiragana": "こおり",
+    "romaji": "kōri"
+  },
+  {
+    "emoji": "🧃",
+    "english": "juice box",
+    "japanese": "ジュースパック",
+    "hiragana": "じゅーすぱっく",
+    "romaji": "jūsupakku"
+  },
+  {
+    "emoji": "📎",
+    "english": "paperclip",
+    "japanese": "クリップ",
+    "hiragana": "くりっぷ",
+    "romaji": "kurippu"
+  },
+  {
+    "emoji": "🧯",
+    "english": "fire extinguisher",
+    "japanese": "消火器",
+    "hiragana": "しょうかき",
+    "romaji": "shōkaki"
+  },
+  {
+    "emoji": "🐶",
+    "english": "dog",
+    "japanese": "犬",
+    "hiragana": "いぬ",
+    "romaji": "inu"
+  },
+  {
+    "emoji": "🐱",
+    "english": "cat",
+    "japanese": "猫",
+    "hiragana": "ねこ",
+    "romaji": "neko"
+  },
+  {
+    "emoji": "🐰",
+    "english": "rabbit",
+    "japanese": "うさぎ",
+    "hiragana": "うさぎ",
+    "romaji": "usagi"
+  },
+  {
+    "emoji": "🐭",
+    "english": "mouse",
+    "japanese": "ネズミ",
+    "hiragana": "ねずみ",
+    "romaji": "nezumi"
+  },
+  {
+    "emoji": "🐹",
+    "english": "hamster",
+    "japanese": "ハムスター",
+    "hiragana": "はむすたー",
+    "romaji": "hamusutā"
+  },
+  {
+    "emoji": "🐦",
+    "english": "bird",
+    "japanese": "鳥",
+    "hiragana": "とり",
+    "romaji": "tori"
+  },
+  {
+    "emoji": "🐢",
+    "english": "turtle",
+    "japanese": "亀",
+    "hiragana": "かめ",
+    "romaji": "kame"
+  },
+  {
+    "emoji": "🐴",
+    "english": "horse",
+    "japanese": "馬",
+    "hiragana": "うま",
+    "romaji": "uma"
+  },
+  {
+    "emoji": "🐮",
+    "english": "cow",
+    "japanese": "牛",
+    "hiragana": "うし",
+    "romaji": "ushi"
+  },
+  {
+    "emoji": "🐷",
+    "english": "pig",
+    "japanese": "豚",
+    "hiragana": "ぶた",
+    "romaji": "buta"
+  },
+  {
+    "emoji": "🖊️",
+    "english": "pen",
+    "japanese": "ペン",
+    "hiragana": "ぺん",
+    "romaji": "pen"
+  },
+  {
+    "emoji": "📖",
+    "english": "book",
+    "japanese": "本",
+    "hiragana": "ほん",
+    "romaji": "hon"
+  },
+  {
+    "emoji": "👟",
+    "english": "sneaker",
+    "japanese": "運動靴",
+    "hiragana": "うんどうぐつ",
+    "romaji": "undōgutsu"
+  },
+  {
+    "emoji": "🧼",
+    "english": "soap",
+    "japanese": "石鹸",
+    "hiragana": "せっけん",
+    "romaji": "sekken"
+  },
+  {
+    "emoji": "🚪",
+    "english": "door",
+    "japanese": "ドア",
+    "hiragana": "どあ",
+    "romaji": "doa"
+  },
+  {
+    "emoji": "🧴",
+    "english": "lotion bottle",
+    "japanese": "ボトル",
+    "hiragana": "ぼとる",
+    "romaji": "botoru"
+  },
+  {
+    "emoji": "🪑",
+    "english": "chair",
+    "japanese": "椅子",
+    "hiragana": "いす",
+    "romaji": "isu"
+  },
+  {
+    "emoji": "🕶️",
+    "english": "sunglasses",
+    "japanese": "サングラス",
+    "hiragana": "さんぐらす",
+    "romaji": "sangurasu"
+  },
+  {
+    "emoji": "⌚",
+    "english": "watch",
+    "japanese": "腕時計",
+    "hiragana": "うでどけい",
+    "romaji": "udedokei"
+  },
+  {
+    "emoji": "💡",
+    "english": "lightbulb",
+    "japanese": "電球",
+    "hiragana": "でんきゅう",
+    "romaji": "denkyū"
+  },
+  {
+    "emoji": "👮‍♂️",
+    "english": "policeman",
+    "japanese": "警察官",
+    "hiragana": "けいさつかん",
+    "romaji": "keisatsukan"
+  },
+  {
+    "emoji": "👨‍⚕️",
+    "english": "doctor (male)",
+    "japanese": "医者",
+    "hiragana": "いしゃ",
+    "romaji": "isha"
+  },
+  {
+    "emoji": "👩‍🍳",
+    "english": "chef (female)",
+    "japanese": "料理人",
+    "hiragana": "りょうりにん",
+    "romaji": "ryōrinin"
+  },
+  {
+    "emoji": "🧑‍🏫",
+    "english": "teacher",
+    "japanese": "先生",
+    "hiragana": "せんせい",
+    "romaji": "sensei"
+  },
+  {
+    "emoji": "🎒",
+    "english": "backpack",
+    "japanese": "リュックサック",
+    "hiragana": "りゅっくさっく",
+    "romaji": "ryukkusakku"
+  },
+  {
+    "emoji": "",
+    "english": "camera",
+    "japanese": "カメラ",
+    "hiragana": "かめら",
+    "romaji": "kamera"
+  },
+  {
+    "emoji": "🚗",
+    "english": "car",
+    "japanese": "車",
+    "hiragana": "くるま",
+    "romaji": "kuruma"
+  },
+  {
+    "emoji": "",
+    "english": "smile",
+    "japanese": "笑顔",
+    "hiragana": "えがお",
+    "romaji": "egao"
+  },
+  {
+    "emoji": "😂",
+    "english": "laughing",
+    "japanese": "笑っている",
+    "hiragana": "わらっている",
+    "romaji": "waratte iru"
+  },
+  {
+    "emoji": "😭",
+    "english": "crying",
+    "japanese": "泣いている",
+    "hiragana": "ないている",
+    "romaji": "naite iru"
+  },
+  {
+    "emoji": "😡",
+    "english": "angry",
+    "japanese": "怒っている",
+    "hiragana": "おこっている",
+    "romaji": "okotte iru"
+  },
+  {
+    "emoji": "😴",
+    "english": "sleeping",
+    "japanese": "眠っている",
+    "hiragana": "ねむっている",
+    "romaji": "nemutte iru"
+  },
+  {
+    "emoji": "😎",
+    "english": "cool",
+    "japanese": "かっこいい",
+    "hiragana": "かっこいい",
+    "romaji": "kakkoii"
+  },
+  {
+    "emoji": "❤️",
+    "english": "love",
+    "japanese": "愛",
+    "hiragana": "あい",
+    "romaji": "ai"
+  },
+  {
+    "emoji": "👍",
+    "english": "thumbs up",
+    "japanese": "いいね",
+    "hiragana": "いいね",
+    "romaji": "ii ne"
+  },
+  {
+    "emoji": "🙏",
+    "english": "thank you / please",
+    "japanese": "お願いします",
+    "hiragana": "おねがいします",
+    "romaji": "onegai shimasu"
+  },
+  {
+    "emoji": "🤔",
+    "english": "thinking",
+    "japanese": "考えている",
+    "hiragana": "かんがえている",
+    "romaji": "kangaete iru"
+  }
+]
