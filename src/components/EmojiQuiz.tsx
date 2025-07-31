@@ -11,9 +11,11 @@ interface EmojiQuestion {
   emoji: string;
   correctAnswer: string;
   options: string[];
-  type: 'emoji-to-english' | 'emoji-to-japanese' | 'emoji-to-romaji';
+  type: 'emoji-to-japanese';
   showCorrectAnswer?: boolean;
 }
+
+type JapaneseDisplayMode = 'japanese' | 'hiragana' | 'romaji';
 
 const EmojiQuiz: React.FC<EmojiQuizProps> = ({
   onComplete,
@@ -27,20 +29,23 @@ const EmojiQuiz: React.FC<EmojiQuizProps> = ({
   const [showResult, setShowResult] = useState(false);
   const [questions, setQuestions] = useState<EmojiQuestion[]>([]);
   const [answeredIncorrectly, setAnsweredIncorrectly] = useState(false);
+  const [japaneseMode, setJapaneseMode] = useState<JapaneseDisplayMode>('japanese');
 
-  const generateRandomOptions = useCallback((correctAnswer: string, type: 'emoji-to-english' | 'emoji-to-japanese' | 'emoji-to-romaji') => {
+  const generateRandomOptions = useCallback((correctAnswer: string) => {
     const allEmojis = getAllEmojis();
     let allOptions: string[] = [];
     
-    switch (type) {
-      case 'emoji-to-english':
-        allOptions = allEmojis.map(emoji => emoji.english);
+    // Use the selected Japanese display mode
+    switch (japaneseMode) {
+      case 'hiragana':
+        allOptions = allEmojis.map(emoji => emoji.hiragana);
         break;
-      case 'emoji-to-japanese':
-        allOptions = allEmojis.map(emoji => emoji.japanese);
-        break;
-      case 'emoji-to-romaji':
+      case 'romaji':
         allOptions = allEmojis.map(emoji => emoji.romaji);
+        break;
+      case 'japanese':
+      default:
+        allOptions = allEmojis.map(emoji => emoji.japanese);
         break;
     }
     
@@ -50,37 +55,36 @@ const EmojiQuiz: React.FC<EmojiQuizProps> = ({
       .slice(0, 3);
     
     return [correctAnswer, ...wrongOptions].sort(() => Math.random() - 0.5);
-  }, []);
+  }, [japaneseMode]);
 
   const generateQuestion = useCallback((): EmojiQuestion => {
     const emoji = getRandomEmoji();
-    const questionTypes: ('emoji-to-english' | 'emoji-to-japanese' | 'emoji-to-romaji')[] = 
-      ['emoji-to-english', 'emoji-to-japanese', 'emoji-to-romaji'];
-    const type = questionTypes[Math.floor(Math.random() * questionTypes.length)];
     
     let correctAnswer: string;
-    switch (type) {
-      case 'emoji-to-english':
-        correctAnswer = emoji.english;
+    // Use the selected Japanese display mode
+    switch (japaneseMode) {
+      case 'hiragana':
+        correctAnswer = emoji.hiragana;
         break;
-      case 'emoji-to-japanese':
-        correctAnswer = emoji.japanese;
-        break;
-      case 'emoji-to-romaji':
+      case 'romaji':
         correctAnswer = emoji.romaji;
+        break;
+      case 'japanese':
+      default:
+        correctAnswer = emoji.japanese;
         break;
     }
 
-    const options = generateRandomOptions(correctAnswer, type);
+    const options = generateRandomOptions(correctAnswer);
 
     return {
       id: `${emoji.emoji}-${Date.now()}`,
       emoji: emoji.emoji,
       correctAnswer,
       options,
-      type
+      type: 'emoji-to-japanese'
     };
-  }, [generateRandomOptions]);
+  }, [generateRandomOptions, japaneseMode]);
 
   const generateQuestions = useCallback(() => {
     const newQuestions = Array.from({ length: questionCount }, generateQuestion);
@@ -92,6 +96,19 @@ const EmojiQuiz: React.FC<EmojiQuizProps> = ({
     generateQuestions();
     scoreRef.current = 0;
   }, [generateQuestions]);
+
+  // Regenerate questions when Japanese mode changes
+  useEffect(() => {
+    if (questions.length > 0) {
+      generateQuestions();
+      setCurrentQuestionIndex(0);
+      setScore(0);
+      scoreRef.current = 0;
+      setSelectedAnswer(null);
+      setShowResult(false);
+      setAnsweredIncorrectly(false);
+    }
+  }, [japaneseMode, generateQuestions, questions.length]);
 
   const handleAnswerSelect = (answer: string) => {
     if (selectedAnswer || showResult) return;
@@ -126,17 +143,14 @@ const EmojiQuiz: React.FC<EmojiQuizProps> = ({
   };
 
   const getQuestionText = () => {
-    if (!currentQuestion) return '';
-    
-    switch (currentQuestion.type) {
-      case 'emoji-to-english':
-        return 'What is this in English?';
-      case 'emoji-to-japanese':
-        return 'What is this in Japanese?';
-      case 'emoji-to-romaji':
+    switch (japaneseMode) {
+      case 'hiragana':
+        return 'What is this in Hiragana?';
+      case 'romaji':
         return 'What is this in Romaji?';
+      case 'japanese':
       default:
-        return '';
+        return 'What is this in Japanese?';
     }
   };
 
@@ -170,6 +184,47 @@ const EmojiQuiz: React.FC<EmojiQuizProps> = ({
             style={{ width: `${((currentQuestionIndex + 1) / questions.length) * 100}%` }}
           ></div>
         </div>
+      </div>
+
+      {/* Japanese Display Mode Toggle */}
+      <div className="mb-6">
+        <div className="flex items-center justify-center">
+          <div className="bg-gray-100 dark:bg-gray-700 rounded-lg p-1 flex">
+            <button
+              onClick={() => setJapaneseMode('japanese')}
+              className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+                japaneseMode === 'japanese'
+                  ? 'bg-blue-600 text-white shadow-sm'
+                  : 'text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100'
+              }`}
+            >
+              漢字/カナ
+            </button>
+            <button
+              onClick={() => setJapaneseMode('hiragana')}
+              className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+                japaneseMode === 'hiragana'
+                  ? 'bg-blue-600 text-white shadow-sm'
+                  : 'text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100'
+              }`}
+            >
+              ひらがな
+            </button>
+            <button
+              onClick={() => setJapaneseMode('romaji')}
+              className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+                japaneseMode === 'romaji'
+                  ? 'bg-blue-600 text-white shadow-sm'
+                  : 'text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100'
+              }`}
+            >
+              Romaji
+            </button>
+          </div>
+        </div>
+        <p className="text-center text-xs text-gray-500 dark:text-gray-400 mt-2">
+          Choose how Japanese answers are displayed
+        </p>
       </div>
 
       <div className="text-center mb-8">

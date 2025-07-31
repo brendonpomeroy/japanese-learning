@@ -46,7 +46,7 @@ function EmojiPage() {
         </Link>
         <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-4">Emoji Quiz</h1>
         <p className="text-lg text-gray-600 dark:text-gray-300">
-          Test your knowledge of Japanese words through emoji recognition!
+          Test your Japanese vocabulary through emoji recognition!
         </p>
       </div>
 
@@ -74,11 +74,11 @@ function EmojiPage() {
               You'll see an emoji and need to choose the correct Japanese word.
             </p>
             <div className="space-y-2">
-              <h3 className="font-semibold text-gray-800 dark:text-gray-200">Quiz Types:</h3>
+              <h3 className="font-semibold text-gray-800 dark:text-gray-200">Display Options:</h3>
               <ul className="list-disc list-inside space-y-1 ml-4">
-                <li><strong>English:</strong> Choose the English meaning</li>
-                <li><strong>Japanese:</strong> Choose the Japanese kanji/katakana</li>
-                <li><strong>Romaji:</strong> Choose the romanized pronunciation</li>
+                <li><strong>漢字/カナ:</strong> Kanji and katakana characters</li>
+                <li><strong>ひらがな:</strong> Hiragana phonetic characters</li>
+                <li><strong>Romaji:</strong> Romanized pronunciation</li>
               </ul>
             </div>
             <p>
