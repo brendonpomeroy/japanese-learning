@@ -60,7 +60,7 @@ const ProgressTracker: React.FC = () => {
             <div className={`text-2xl font-bold text-green-600 dark:text-green-300`}>
               {recentSuccessRate.toFixed(1)}%
             </div>
-            <div className="flex-1 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+            <div className="flex-1 bg-gray-200 dark:bg-green-700 rounded-full h-2">
               <div 
                 className={`h-2 rounded-full transition-all duration-300 bg-green-600 dark:bg-green-300`}
                 style={{ width: `${recentSuccessRate}%` }}
