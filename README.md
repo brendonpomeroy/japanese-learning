@@ -1,6 +1,8 @@
 # Japanese Learning Site
 
-A modern, interactive web application for learning Japanese hiragana characters and essential phrases. Built with React, Vite, and Tailwind CSS with comprehensive progress tracking and gamification features.
+A modern, interactive web application for learning Japanese hiragana characters, essential phrases, and vocabulary through emoji recognition. Built with React, Vite, and Tailwind CSS with comprehensive progress tracking and gamification features.
+
+> **⚡ Vibe Coded Disclaimer**: This app was built with an experimental "vibe coding" approach, prioritizing rapid development and creative solutions. While fully functional, you may encounter some quirky implementations and unconventional patterns. Consider it a delightful blend of pragmatic engineering and creative chaos! 🎨
 
 ## Features
 
@@ -38,7 +40,17 @@ A modern, interactive web application for learning Japanese hiragana characters 
   - **Mixed Practice**: Random combination of all exercise types
 - **Category Selection**: Practice specific character groups
 
-### 📊 Progress Tracking & Gamification
+### � Emoji Vocabulary Quiz
+- **Visual Learning**: Learn Japanese vocabulary through emoji recognition
+- **Japanese-Focused**: Practice identifying Japanese words from visual cues
+- **Multiple Writing Systems**: Toggle between three display modes:
+  - **漢字/カナ**: Traditional Japanese characters (kanji/katakana)
+  - **ひらがな**: Phonetic hiragana characters
+  - **Romaji**: Romanized pronunciation
+- **Immediate Feedback**: See complete translations when incorrect
+- **Comprehensive Vocabulary**: Cover everyday objects, animals, emotions, and activities
+
+### �📊 Progress Tracking & Gamification
 - **Character Mastery**: Individual progress tracking (0-100%) for each character
 - **Success Rates**: Track accuracy over time for each character
 - **Exercise History**: Complete log of all practice sessions
@@ -71,23 +83,31 @@ A modern, interactive web application for learning Japanese hiragana characters 
 ```
 src/
 ├── components/           # Reusable UI components
-│   ├── Home.tsx         # Landing page
-│   ├── Navigation.tsx   # Navigation bar
+│   ├── Home.tsx         # Landing page with feature cards
+│   ├── Navigation.tsx   # Navigation bar with theme toggle
 │   ├── PhraseCard.tsx   # Individual phrase display
 │   ├── HiraganaGrid.tsx # Character grid display
-│   ├── ExerciseEngine.tsx # Quiz logic and UI
+│   ├── ExerciseEngine.tsx # Hiragana quiz logic and UI
+│   ├── EmojiQuiz.tsx    # Emoji vocabulary quiz component
 │   ├── ProgressTracker.tsx # Progress visualization
+│   ├── ThemeToggle.tsx  # Dark/light mode toggle
 │   └── PhraseCategory.tsx # Category-based phrase view
 ├── pages/               # Page components
 │   ├── Phrases.tsx      # Phrase learning page
-│   └── Hiragana.tsx     # Hiragana study page
+│   ├── Hiragana.tsx     # Hiragana study page
+│   └── EmojiPage.tsx    # Emoji quiz page
 ├── context/             # Global state management
 │   └── AppContext.tsx   # Application context provider
 ├── hooks/               # Custom React hooks
-│   └── useApp.ts        # Context hook
+│   ├── useApp.ts        # Context hook
+│   └── useTheme.ts      # Theme management hook
 ├── data/               # Static data and utilities
 │   ├── hiraganaData.ts  # Hiragana character data
-│   └── phrasesData.ts   # Japanese phrases data
+│   ├── phrasesData.ts   # Japanese phrases data
+│   └── emojiData.ts     # Emoji vocabulary data
+├── assets/             # Static assets
+│   ├── emojis.json      # Emoji vocabulary dataset
+│   └── japanese_phrases_json.json # Phrases dataset
 ├── types/              # TypeScript type definitions
 │   └── index.ts         # Application types
 └── public/             # Public static assets
@@ -137,10 +157,11 @@ yarn dev
 
 ## Application Routes
 
-- `/` - Home page with progress overview
-- `/phrases` - Phrase learning with categories
-- `/hiragana` - Hiragana character study
-- `/practice` - Exercise selection and quiz interface
+- `/` - Home page with progress overview and feature cards
+- `/phrases` - Phrase learning with categories and search
+- `/hiragana` - Hiragana character study and interactive grid
+- `/emoji` - Emoji vocabulary quiz with Japanese word recognition
+- `/practice` - Exercise selection and hiragana quiz interface
 
 ## Data Structure
 
@@ -217,24 +238,34 @@ interface ProgressData {
 
 ## Exercise Types
 
-1. **Recognition Quiz** (`/practice` → Recognition)
+### Hiragana Practice (`/practice`)
+
+1. **Recognition Quiz** - Recognition
    - Shows hiragana character
    - Select correct romaji from 4 options
    - Focuses on character recognition skills
 
-2. **Production Quiz** (`/practice` → Production)
+2. **Production Quiz** - Production
    - Shows romaji pronunciation
    - Select correct hiragana from 4 options
    - Focuses on character production skills
 
-3. **Speed Challenge** (`/practice` → Speed)
+3. **Speed Challenge** - Speed
    - 30-second timed quiz
    - Mixed question types
    - Rapid-fire character recognition
 
-4. **Mixed Practice** (`/practice` → Mixed)
+4. **Mixed Practice** - Mixed
    - Random combination of recognition and production
    - Comprehensive skill testing
+
+### Emoji Vocabulary Quiz (`/emoji`)
+
+5. **Japanese Word Recognition**
+   - Shows emoji visual cue
+   - Select correct Japanese word from 4 options
+   - Toggle between kanji/katakana, hiragana, or romaji display
+   - Comprehensive vocabulary learning with immediate feedback
 
 ## Progress Tracking Features
 
@@ -254,9 +285,12 @@ interface ProgressData {
 ## Currently Implemented
 
 ✅ **Complete hiragana character set** (104+ characters)  
-✅ **Phrase learning system** with 3 categories  
-✅ **Interactive exercise engine** with 4 quiz types  
+✅ **Phrase learning system** with 5 categories  
+✅ **Emoji vocabulary quiz** with Japanese word recognition  
+✅ **Interactive exercise engine** with 5 quiz types  
+✅ **Multiple writing system support** (kanji/katakana, hiragana, romaji)  
 ✅ **Progress tracking and persistence**  
+✅ **Dark/light theme support**  
 ✅ **Responsive web design**  
 ✅ **Audio pronunciation support**  
 ✅ **Search and filtering**  
