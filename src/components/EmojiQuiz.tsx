@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { getAllEmojis, getRandomEmoji } from '../data/emojiData';
+import { useApp } from '../hooks/useApp';
 
 interface EmojiQuizProps {
   onComplete?: (score: number, totalQuestions: number) => void;
@@ -21,6 +22,7 @@ const EmojiQuiz: React.FC<EmojiQuizProps> = ({
   onComplete,
   questionCount = 10
 }) => {
+  const { dispatch } = useApp();
   const [currentQuestion, setCurrentQuestion] = useState<EmojiQuestion | null>(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -30,6 +32,7 @@ const EmojiQuiz: React.FC<EmojiQuizProps> = ({
   const [questions, setQuestions] = useState<EmojiQuestion[]>([]);
   const [answeredIncorrectly, setAnsweredIncorrectly] = useState(false);
   const [japaneseMode, setJapaneseMode] = useState<JapaneseDisplayMode>('japanese');
+  const [startTime, setStartTime] = useState<number>(Date.now());
 
   const generateRandomOptions = useCallback((correctAnswer: string) => {
     const allEmojis = getAllEmojis();
@@ -95,6 +98,7 @@ const EmojiQuiz: React.FC<EmojiQuizProps> = ({
   useEffect(() => {
     generateQuestions();
     scoreRef.current = 0;
+    setStartTime(Date.now());
   }, [generateQuestions]);
 
   // Regenerate questions when Japanese mode changes
@@ -123,6 +127,25 @@ const EmojiQuiz: React.FC<EmojiQuizProps> = ({
     } else {
       setAnsweredIncorrectly(true);
     }
+
+    // Record the exercise result for progress tracking
+    if (currentQuestion) {
+      const emoji = getAllEmojis().find(e => e.emoji === currentQuestion.emoji);
+      if (emoji) {
+        dispatch({
+          type: 'ADD_EMOJI_EXERCISE_RESULT',
+          payload: {
+            emoji: currentQuestion.emoji,
+            english: emoji.english,
+            userAnswer: answer,
+            correctAnswer: currentQuestion.correctAnswer,
+            correct: isCorrect,
+            timeSpent: Date.now() - startTime,
+            displayMode: japaneseMode
+          }
+        });
+      }
+    }
     
     setShowResult(true);
   };
@@ -140,6 +163,7 @@ const EmojiQuiz: React.FC<EmojiQuizProps> = ({
     setSelectedAnswer(null);
     setShowResult(false);
     setAnsweredIncorrectly(false);
+    setStartTime(Date.now()); // Reset timer for next question
   };
 
   const getQuestionText = () => {

@@ -23,13 +23,27 @@ export interface ExerciseResult {
   userAnswer: string;
   correct: boolean;
   timeSpent: number;
+  exerciseType?: 'hiragana' | 'emoji';
+}
+
+export interface EmojiExerciseResult {
+  emoji: string;
+  english: string;
+  userAnswer: string;
+  correctAnswer: string;
+  correct: boolean;
+  timeSpent: number;
+  displayMode: 'japanese' | 'hiragana' | 'romaji';
 }
 
 export interface ProgressData {
   characterMastery: Record<string, number>; // character -> mastery level (0-100)
   exerciseHistory: ExerciseResult[];
+  emojiMastery: Record<string, number>; // emoji -> mastery level (0-100)
+  emojiExerciseHistory: EmojiExerciseResult[];
   timeSpent: Record<string, number>; // exercise type -> time in seconds
   successRates: Record<string, number>; // character -> success rate (0-1)
+  emojiSuccessRates: Record<string, number>; // emoji -> success rate (0-1)
   streak: number;
   lastPracticeDate: string;
 }

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import EmojiQuiz from '../components/EmojiQuiz';
+import EmojiProgressTracker from '../components/EmojiProgressTracker';
 
 function EmojiPage() {
   const [showQuiz, setShowQuiz] = useState(false);
@@ -65,43 +66,49 @@ function EmojiPage() {
         </div>
       )}
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-          <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4">About Emoji Quiz</h2>
-          <div className="space-y-4 text-gray-600 dark:text-gray-300">
-            <p>
-              The emoji quiz helps you learn Japanese vocabulary through visual recognition. 
-              You'll see an emoji and need to choose the correct Japanese word.
-            </p>
-            <div className="space-y-2">
-              <h3 className="font-semibold text-gray-800 dark:text-gray-200">Display Options:</h3>
-              <ul className="list-disc list-inside space-y-1 ml-4">
-                <li><strong>漢字/カナ:</strong> Kanji and katakana characters</li>
-                <li><strong>ひらがな:</strong> Hiragana phonetic characters</li>
-                <li><strong>Romaji:</strong> Romanized pronunciation</li>
-              </ul>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="lg:col-span-2 space-y-8">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+            <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4">About Emoji Quiz</h2>
+            <div className="space-y-4 text-gray-600 dark:text-gray-300">
+              <p>
+                The emoji quiz helps you learn Japanese vocabulary through visual recognition. 
+                You'll see an emoji and need to choose the correct Japanese word.
+              </p>
+              <div className="space-y-2">
+                <h3 className="font-semibold text-gray-800 dark:text-gray-200">Display Options:</h3>
+                <ul className="list-disc list-inside space-y-1 ml-4">
+                  <li><strong>漢字/カナ:</strong> Kanji and katakana characters</li>
+                  <li><strong>ひらがな:</strong> Hiragana phonetic characters</li>
+                  <li><strong>Romaji:</strong> Romanized pronunciation</li>
+                </ul>
+              </div>
+              <p>
+                When you answer incorrectly, you'll see the complete translation including 
+                hiragana, kanji, and romaji to help you learn.
+              </p>
             </div>
-            <p>
-              When you answer incorrectly, you'll see the complete translation including 
-              hiragana, kanji, and romaji to help you learn.
-            </p>
+          </div>
+
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+            <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6">Start Quiz</h2>
+            <div className="text-center">
+              <div className="text-6xl mb-6">🎯📝🎌</div>
+              <button
+                onClick={handleStartQuiz}
+                className="bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg"
+              >
+                Start Emoji Quiz
+              </button>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">
+                10 random questions • Multiple choice format
+              </p>
+            </div>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-          <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6">Start Quiz</h2>
-          <div className="text-center">
-            <div className="text-6xl mb-6">🎯📝🎌</div>
-            <button
-              onClick={handleStartQuiz}
-              className="bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg"
-            >
-              Start Emoji Quiz
-            </button>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">
-              10 random questions • Multiple choice format
-            </p>
-          </div>
+        <div className="lg:col-span-1">
+          <EmojiProgressTracker />
         </div>
       </div>
 
