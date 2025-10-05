@@ -1,4 +1,3 @@
-
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
 import { AppProvider } from './context/AppContext';
@@ -13,7 +12,7 @@ import { useTheme } from './hooks/useTheme';
 
 function AppContent() {
   const { isDarkMode } = useTheme();
-  
+
   useEffect(() => {
     console.log('Theme state changed, isDarkMode:', isDarkMode);
     if (isDarkMode) {
@@ -22,7 +21,7 @@ function AppContent() {
       document.documentElement.classList.remove('dark');
     }
   }, [isDarkMode]);
-  
+
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
       <Navigation />
@@ -48,4 +47,4 @@ function App() {
   );
 }
 
-export default App
+export default App;

@@ -1,6 +1,10 @@
 import React, { createContext, useReducer, useEffect } from 'react';
 import type { ReactNode } from 'react';
-import type { ProgressData, ExerciseResult, EmojiExerciseResult } from '../types';
+import type {
+  ProgressData,
+  ExerciseResult,
+  EmojiExerciseResult,
+} from '../types';
 
 interface AppState {
   progress: ProgressData;
@@ -30,14 +34,14 @@ const initialState: AppState = {
     successRates: {},
     emojiSuccessRates: {},
     streak: 0,
-    lastPracticeDate: ''
+    lastPracticeDate: '',
   },
   currentExercise: null,
   settings: {
     audioEnabled: true,
     darkMode: false,
-    fontSize: 'medium'
-  }
+    fontSize: 'medium',
+  },
 };
 
 const AppContext = createContext<{
@@ -52,14 +56,18 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
     case 'UPDATE_PROGRESS':
       return {
         ...state,
-        progress: { ...state.progress, ...action.payload }
+        progress: { ...state.progress, ...action.payload },
       };
     case 'ADD_EXERCISE_RESULT': {
       const newHistory = [...state.progress.exerciseHistory, action.payload];
       const character = action.payload.character;
-      const characterResults = newHistory.filter(r => r.character === character);
-      const successRate = characterResults.filter(r => r.correct).length / characterResults.length;
-      
+      const characterResults = newHistory.filter(
+        r => r.character === character
+      );
+      const successRate =
+        characterResults.filter(r => r.correct).length /
+        characterResults.length;
+
       return {
         ...state,
         progress: {
@@ -67,21 +75,29 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
           exerciseHistory: newHistory,
           successRates: {
             ...state.progress.successRates,
-            [character]: successRate
+            [character]: successRate,
           },
           characterMastery: {
             ...state.progress.characterMastery,
-            [character]: Math.min(100, (state.progress.characterMastery[character] || 0) + (action.payload.correct ? 10 : -5))
-          }
-        }
+            [character]: Math.min(
+              100,
+              (state.progress.characterMastery[character] || 0) +
+                (action.payload.correct ? 10 : -5)
+            ),
+          },
+        },
       };
     }
     case 'ADD_EMOJI_EXERCISE_RESULT': {
-      const newEmojiHistory = [...state.progress.emojiExerciseHistory, action.payload];
+      const newEmojiHistory = [
+        ...state.progress.emojiExerciseHistory,
+        action.payload,
+      ];
       const emoji = action.payload.emoji;
       const emojiResults = newEmojiHistory.filter(r => r.emoji === emoji);
-      const emojiSuccessRate = emojiResults.filter(r => r.correct).length / emojiResults.length;
-      
+      const emojiSuccessRate =
+        emojiResults.filter(r => r.correct).length / emojiResults.length;
+
       return {
         ...state,
         progress: {
@@ -89,19 +105,26 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
           emojiExerciseHistory: newEmojiHistory,
           emojiSuccessRates: {
             ...state.progress.emojiSuccessRates,
-            [emoji]: emojiSuccessRate
+            [emoji]: emojiSuccessRate,
           },
           emojiMastery: {
             ...state.progress.emojiMastery,
-            [emoji]: Math.min(100, Math.max(0, (state.progress.emojiMastery[emoji] || 0) + (action.payload.correct ? 10 : -5)))
-          }
-        }
+            [emoji]: Math.min(
+              100,
+              Math.max(
+                0,
+                (state.progress.emojiMastery[emoji] || 0) +
+                  (action.payload.correct ? 10 : -5)
+              )
+            ),
+          },
+        },
       };
     }
     case 'SET_CURRENT_EXERCISE':
       return {
         ...state,
-        currentExercise: action.payload
+        currentExercise: action.payload,
       };
     case 'UPDATE_SETTINGS': {
       console.log('UPDATE_SETTINGS action received:', action.payload);
@@ -109,29 +132,31 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
       console.log('New settings state:', newSettings);
       return {
         ...state,
-        settings: newSettings
+        settings: newSettings,
       };
     }
     case 'RESET_PROGRESS':
       return {
         ...state,
-        progress: initialState.progress
+        progress: initialState.progress,
       };
     default:
       return state;
   }
 };
 
-export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const AppProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
   const [state, dispatch] = useReducer(appReducer, initialState);
 
   // Load state from localStorage on mount
   useEffect(() => {
     const savedProgress = localStorage.getItem('japanese-learning-progress');
     const savedSettings = localStorage.getItem('japanese-learning-settings');
-    
+
     console.log('Loading saved settings:', savedSettings);
-    
+
     if (savedProgress) {
       try {
         const parsed = JSON.parse(savedProgress);
@@ -140,7 +165,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
         console.error('Error loading saved progress:', error);
       }
     }
-    
+
     if (savedSettings) {
       try {
         const parsed = JSON.parse(savedSettings);
@@ -154,12 +179,18 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
 
   // Save progress to localStorage whenever it changes
   useEffect(() => {
-    localStorage.setItem('japanese-learning-progress', JSON.stringify(state.progress));
+    localStorage.setItem(
+      'japanese-learning-progress',
+      JSON.stringify(state.progress)
+    );
   }, [state.progress]);
 
   // Save settings to localStorage whenever they change
   useEffect(() => {
-    localStorage.setItem('japanese-learning-settings', JSON.stringify(state.settings));
+    localStorage.setItem(
+      'japanese-learning-settings',
+      JSON.stringify(state.settings)
+    );
   }, [state.settings]);
 
   return (

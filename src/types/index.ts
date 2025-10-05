@@ -48,9 +48,25 @@ export interface ProgressData {
   lastPracticeDate: string;
 }
 
-export type ExerciseType = 'recognition' | 'production' | 'audio' | 'speed' | 'mixed' | 'typing' | 'emoji-recognition';
-export type HiraganaCategory = 'basic' | 'dakuten' | 'handakuten' | 'combinations';
-export type PhraseCategoryType = 'learning_japanese' | 'asking_directions' | 'meeting_new_people' | 'shopping' | 'dining';
+export type ExerciseType =
+  | 'recognition'
+  | 'production'
+  | 'audio'
+  | 'speed'
+  | 'mixed'
+  | 'typing'
+  | 'emoji-recognition';
+export type HiraganaCategory =
+  | 'basic'
+  | 'dakuten'
+  | 'handakuten'
+  | 'combinations';
+export type PhraseCategoryType =
+  | 'learning_japanese'
+  | 'asking_directions'
+  | 'meeting_new_people'
+  | 'shopping'
+  | 'dining';
 
 export interface EmojiItem {
   emoji: string;
@@ -66,7 +82,13 @@ export interface QuizQuestion {
   romaji: string;
   correctAnswer: string;
   options: string[];
-  type: 'hiragana-to-romaji' | 'romaji-to-hiragana' | 'typing' | 'emoji-to-english' | 'emoji-to-japanese' | 'emoji-to-romaji';
+  type:
+    | 'hiragana-to-romaji'
+    | 'romaji-to-hiragana'
+    | 'typing'
+    | 'emoji-to-english'
+    | 'emoji-to-japanese'
+    | 'emoji-to-romaji';
 }
 
 export interface AudioPlayerState {

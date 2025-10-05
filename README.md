@@ -7,6 +7,7 @@ A modern, interactive web application for learning Japanese hiragana characters,
 ## Features
 
 ### 🎯 Phrase Learning Module
+
 - **Categorized Phrases**: Learn essential Japanese phrases organized by context
   - Learning Japanese (classroom/conversation helpers)
   - Asking Directions (navigation and location)
@@ -18,18 +19,19 @@ A modern, interactive web application for learning Japanese hiragana characters,
   - Romaji pronunciation
   - Contextual explanation
   - Word-by-word breakdown with meanings
-- **Interactive Features**: 
+- **Interactive Features**:
   - Collapsible word breakdowns
   - Text-to-speech pronunciation (browser TTS)
   - Search functionality across all phrase elements
 
 ### 🔤 Hiragana Memory Exercises
+
 - **Complete Character Set**: All 104+ hiragana characters including:
   - 46 basic characters (あ, い, う, え, お...)
   - 20 dakuten modifiers (が, ぎ, ぐ, げ, ご...)
   - 5 handakuten modifiers (ぱ, ぴ, ぷ, ぺ, ぽ...)
   - 33 combination characters (きゃ, きゅ, きょ...)
-- **Interactive Character Grid**: 
+- **Interactive Character Grid**:
   - Click-to-pronounce functionality
   - Category filtering (basic, dakuten, handakuten, combinations)
   - Visual progress indicators
@@ -41,6 +43,7 @@ A modern, interactive web application for learning Japanese hiragana characters,
 - **Category Selection**: Practice specific character groups
 
 ### � Emoji Vocabulary Quiz
+
 - **Visual Learning**: Learn Japanese vocabulary through emoji recognition
 - **Japanese-Focused**: Practice identifying Japanese words from visual cues
 - **Multiple Writing Systems**: Toggle between three display modes:
@@ -51,6 +54,7 @@ A modern, interactive web application for learning Japanese hiragana characters,
 - **Comprehensive Vocabulary**: Cover everyday objects, animals, emotions, and activities
 
 ### �📊 Progress Tracking & Gamification
+
 - **Character Mastery**: Individual progress tracking (0-100%) for each character
 - **Success Rates**: Track accuracy over time for each character
 - **Exercise History**: Complete log of all practice sessions
@@ -60,6 +64,7 @@ A modern, interactive web application for learning Japanese hiragana characters,
 - **Spaced Repetition**: Automatic focus on characters needing more practice
 
 ### 🎮 User Experience
+
 - **Responsive Design**: Mobile-first approach with Tailwind CSS
 - **Japanese Font Support**: Proper CJK font rendering with fallbacks
 - **Interactive Elements**: Smooth animations, hover effects, and transitions
@@ -218,6 +223,7 @@ interface ProgressData {
 ## Key Features Implemented
 
 ### Exercise Engine
+
 - **Multiple Question Types**: Dynamic quiz generation with multiple choice answers
 - **Scoring System**: Real-time scoring with immediate feedback
 - **Timer Support**: 30-second speed challenges
@@ -225,12 +231,14 @@ interface ProgressData {
 - **Result Tracking**: Comprehensive exercise result logging
 
 ### Progress System
+
 - **Character Mastery Algorithm**: Automatic mastery level adjustment (+10 correct, -5 incorrect)
 - **Success Rate Calculation**: Running accuracy percentage per character
 - **Local Storage Persistence**: Progress saved across browser sessions
 - **Visual Progress Indicators**: Color-coded progress bars and percentages
 
 ### User Interface
+
 - **Responsive Grid Layout**: Adaptive character grid for different screen sizes
 - **Interactive Elements**: Hover effects, click feedback, smooth transitions
 - **Japanese Typography**: Custom font stack with proper CJK character support
@@ -294,7 +302,7 @@ interface ProgressData {
 ✅ **Responsive web design**  
 ✅ **Audio pronunciation support**  
 ✅ **Search and filtering**  
-✅ **Real-time mastery calculation**  
+✅ **Real-time mastery calculation**
 
 ## Future Enhancements
 

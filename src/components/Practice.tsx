@@ -5,49 +5,60 @@ import ProgressTracker from './ProgressTracker';
 import type { ExerciseType, HiraganaCategory } from '../types';
 
 function Practice() {
-  const [currentExercise, setCurrentExercise] = useState<ExerciseType | null>(null);
-  const [selectedCategory, setSelectedCategory] = useState<HiraganaCategory>('basic');
+  const [currentExercise, setCurrentExercise] = useState<ExerciseType | null>(
+    null
+  );
+  const [selectedCategory, setSelectedCategory] =
+    useState<HiraganaCategory>('basic');
   const [showResults, setShowResults] = useState(false);
-  const [lastScore, setLastScore] = useState<{ score: number; total: number } | null>(null);
+  const [lastScore, setLastScore] = useState<{
+    score: number;
+    total: number;
+  } | null>(null);
 
-  const exercises: { type: ExerciseType; title: string; description: string; icon: string }[] = [
+  const exercises: {
+    type: ExerciseType;
+    title: string;
+    description: string;
+    icon: string;
+  }[] = [
     {
       type: 'recognition',
       title: 'Recognition Quiz',
       description: 'See hiragana → select romaji',
-      icon: '👁️'
+      icon: '👁️',
     },
     {
       type: 'production',
       title: 'Production Quiz',
       description: 'See romaji → select hiragana',
-      icon: '✍️'
+      icon: '✍️',
     },
     {
       type: 'typing',
       title: 'Typing Quiz',
       description: 'See hiragana → type romaji',
-      icon: '⌨️'
+      icon: '⌨️',
     },
     {
       type: 'speed',
       title: 'Speed Challenge',
       description: 'Fast-paced recognition test',
-      icon: '⚡'
+      icon: '⚡',
     },
     {
       type: 'mixed',
       title: 'Mixed Practice',
       description: 'Random mix of all exercise types',
-      icon: '🎯'
-    }
+      icon: '🎯',
+    },
   ];
 
   const categories: { key: HiraganaCategory; title: string }[] = [
     { key: 'basic', title: 'Basic' },
     { key: 'dakuten', title: 'Dakuten' },
     { key: 'handakuten', title: 'Handakuten' },
-    { key: 'combinations', title: 'Combinations' }
+    { key: 'combinations', title: 'Combinations' },
   ];
 
   const handleExerciseComplete = (score: number, total: number) => {
@@ -72,7 +83,7 @@ function Practice() {
             ← Back to Practice Menu
           </button>
         </div>
-        
+
         <ExerciseEngine
           exerciseType={currentExercise}
           category={selectedCategory}
@@ -85,13 +96,15 @@ function Practice() {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
-        <Link 
-          to="/" 
+        <Link
+          to="/"
           className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 mb-4 inline-flex items-center"
         >
           ← Back to Home
         </Link>
-        <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-4">Practice Exercises</h1>
+        <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-4">
+          Practice Exercises
+        </h1>
         <p className="text-lg text-gray-600 dark:text-gray-300">
           Test your hiragana knowledge with different types of exercises
         </p>
@@ -99,9 +112,12 @@ function Practice() {
 
       {showResults && lastScore && (
         <div className="bg-green-50 dark:bg-green-900 border border-green-200 dark:border-green-700 rounded-lg p-6 mb-8">
-          <h2 className="text-xl font-bold text-green-800 dark:text-green-200 mb-2">Exercise Complete!</h2>
+          <h2 className="text-xl font-bold text-green-800 dark:text-green-200 mb-2">
+            Exercise Complete!
+          </h2>
           <p className="text-green-700 dark:text-green-300">
-            You scored {lastScore.score} out of {lastScore.total} ({((lastScore.score / lastScore.total) * 100).toFixed(1)}%)
+            You scored {lastScore.score} out of {lastScore.total} (
+            {((lastScore.score / lastScore.total) * 100).toFixed(1)}%)
           </p>
           <button
             onClick={() => setShowResults(false)}
@@ -115,9 +131,11 @@ function Practice() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-8">
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-            <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4">Select Category</h2>
+            <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4">
+              Select Category
+            </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {categories.map((category) => (
+              {categories.map(category => (
                 <button
                   key={category.key}
                   onClick={() => setSelectedCategory(category.key)}
@@ -134,9 +152,11 @@ function Practice() {
           </div>
 
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-            <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6">Choose Exercise Type</h2>
+            <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6">
+              Choose Exercise Type
+            </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {exercises.map((exercise) => (
+              {exercises.map(exercise => (
                 <button
                   key={exercise.type}
                   onClick={() => handleStartExercise(exercise.type)}
@@ -144,12 +164,18 @@ function Practice() {
                 >
                   <div className="flex items-center gap-4 mb-3">
                     <span className="text-3xl">{exercise.icon}</span>
-                    <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">{exercise.title}</h3>
+                    <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">
+                      {exercise.title}
+                    </h3>
                   </div>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">{exercise.description}</p>
+                  <p className="text-gray-600 dark:text-gray-300 mb-4">
+                    {exercise.description}
+                  </p>
                   <div className="flex items-center text-blue-600 dark:text-blue-400 group-hover:text-blue-700 dark:group-hover:text-blue-300">
                     <span className="mr-2">Start exercise</span>
-                    <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+                    <span className="transform group-hover:translate-x-1 transition-transform">
+                      →
+                    </span>
                   </div>
                 </button>
               ))}

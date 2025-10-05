@@ -1,10 +1,12 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* Japanese font styling */
 .font-japanese {
-  font-family: 'Noto Sans CJK JP', 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', 'Arial Unicode MS', sans-serif;
+  font-family:
+    'Noto Sans CJK JP', 'Noto Sans JP', 'Hiragino Kaku Gothic ProN',
+    'Hiragino Sans', 'Yu Gothic', 'Meiryo', 'Arial Unicode MS', sans-serif;
 }
 
 /* Mobile menu animations */
@@ -41,7 +43,9 @@
 /* Hamburger menu animation */
 .hamburger-line {
   transform-origin: center;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
 }
 
 /* Custom scrollbar */
@@ -64,7 +68,10 @@
 
 /* Smooth transitions */
 * {
-  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 /* Focus styles */
@@ -151,8 +158,12 @@ input:focus {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Accessibility improvements */
@@ -169,11 +180,11 @@ input:focus {
   .bg-gray-50 {
     background-color: #ffffff;
   }
-  
+
   .text-gray-600 {
     color: #000000;
   }
-  
+
   .border-gray-300 {
     border-color: #000000;
   }
@@ -186,18 +197,18 @@ input:focus {
     min-height: 44px;
     min-width: 44px;
   }
-  
+
   /* Better spacing for mobile */
   .container {
     padding-left: 1rem;
     padding-right: 1rem;
   }
-  
+
   /* Optimize text sizes for mobile */
   .text-4xl {
     font-size: 2.25rem;
   }
-  
+
   .text-5xl {
     font-size: 3rem;
   }
@@ -208,7 +219,7 @@ input:focus {
   .no-print {
     display: none !important;
   }
-  
+
   .print-break {
     page-break-after: always;
   }

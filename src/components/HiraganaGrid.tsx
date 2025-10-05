@@ -8,33 +8,38 @@ interface HiraganaGridProps {
   showCategory?: HiraganaCategory;
 }
 
-const HiraganaGrid: React.FC<HiraganaGridProps> = ({ 
-  onCharacterClick, 
-  highlightedCharacters = [], 
-  showCategory 
+const HiraganaGrid: React.FC<HiraganaGridProps> = ({
+  onCharacterClick,
+  highlightedCharacters = [],
+  showCategory,
 }) => {
-  const [selectedCategory, setSelectedCategory] = useState<HiraganaCategory | 'all'>('all');
-  
+  const [selectedCategory, setSelectedCategory] = useState<
+    HiraganaCategory | 'all'
+  >('all');
+
   const categoryToShow = showCategory || selectedCategory;
-  
+
   const getCharactersToShow = () => {
     if (categoryToShow === 'all') {
       return {
-        'Basic': hiraganaData.basic,
-        'Dakuten': hiraganaData.dakuten,
-        'Handakuten': hiraganaData.handakuten,
-        'Combinations': hiraganaData.combinations
+        Basic: hiraganaData.basic,
+        Dakuten: hiraganaData.dakuten,
+        Handakuten: hiraganaData.handakuten,
+        Combinations: hiraganaData.combinations,
       };
     } else {
       return {
-        [categoryToShow]: hiraganaData[categoryToShow]
+        [categoryToShow]: hiraganaData[categoryToShow],
       };
     }
   };
 
   const charactersToShow = getCharactersToShow();
 
-  const CategoryButton: React.FC<{ category: HiraganaCategory | 'all'; label: string }> = ({ category, label }) => (
+  const CategoryButton: React.FC<{
+    category: HiraganaCategory | 'all';
+    label: string;
+  }> = ({ category, label }) => (
     <button
       onClick={() => setSelectedCategory(category)}
       className={`px-4 py-2 rounded-lg font-medium transition-colors ${
@@ -50,7 +55,9 @@ const HiraganaGrid: React.FC<HiraganaGridProps> = ({
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
       <div className="mb-6">
-        <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4">Hiragana Characters</h2>
+        <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4">
+          Hiragana Characters
+        </h2>
         {!showCategory && (
           <div className="flex flex-wrap gap-2 mb-4">
             <CategoryButton category="all" label="All" />
@@ -76,9 +83,10 @@ const HiraganaGrid: React.FC<HiraganaGridProps> = ({
                   className={`
                     aspect-square rounded-lg border-2 transition-all duration-200 
                     flex flex-col items-center justify-center p-2 hover:scale-105
-                    ${highlightedCharacters.includes(character)
-                      ? 'border-green-500 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200'
-                      : 'border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 hover:border-blue-500 dark:hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900'
+                    ${
+                      highlightedCharacters.includes(character)
+                        ? 'border-green-500 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200'
+                        : 'border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 hover:border-blue-500 dark:hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900'
                     }
                   `}
                 >

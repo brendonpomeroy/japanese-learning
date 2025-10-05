@@ -20,10 +20,12 @@ type JapaneseDisplayMode = 'japanese' | 'hiragana' | 'romaji';
 
 const EmojiQuiz: React.FC<EmojiQuizProps> = ({
   onComplete,
-  questionCount = 10
+  questionCount = 10,
 }) => {
   const { dispatch } = useApp();
-  const [currentQuestion, setCurrentQuestion] = useState<EmojiQuestion | null>(null);
+  const [currentQuestion, setCurrentQuestion] = useState<EmojiQuestion | null>(
+    null
+  );
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const scoreRef = useRef(0);
@@ -31,38 +33,42 @@ const EmojiQuiz: React.FC<EmojiQuizProps> = ({
   const [showResult, setShowResult] = useState(false);
   const [questions, setQuestions] = useState<EmojiQuestion[]>([]);
   const [answeredIncorrectly, setAnsweredIncorrectly] = useState(false);
-  const [japaneseMode, setJapaneseMode] = useState<JapaneseDisplayMode>('japanese');
+  const [japaneseMode, setJapaneseMode] =
+    useState<JapaneseDisplayMode>('japanese');
   const [startTime, setStartTime] = useState<number>(Date.now());
 
-  const generateRandomOptions = useCallback((correctAnswer: string) => {
-    const allEmojis = getAllEmojis();
-    let allOptions: string[] = [];
-    
-    // Use the selected Japanese display mode
-    switch (japaneseMode) {
-      case 'hiragana':
-        allOptions = allEmojis.map(emoji => emoji.hiragana);
-        break;
-      case 'romaji':
-        allOptions = allEmojis.map(emoji => emoji.romaji);
-        break;
-      case 'japanese':
-      default:
-        allOptions = allEmojis.map(emoji => emoji.japanese);
-        break;
-    }
-    
-    const wrongOptions = allOptions
-      .filter(option => option !== correctAnswer)
-      .sort(() => Math.random() - 0.5)
-      .slice(0, 3);
-    
-    return [correctAnswer, ...wrongOptions].sort(() => Math.random() - 0.5);
-  }, [japaneseMode]);
+  const generateRandomOptions = useCallback(
+    (correctAnswer: string) => {
+      const allEmojis = getAllEmojis();
+      let allOptions: string[] = [];
+
+      // Use the selected Japanese display mode
+      switch (japaneseMode) {
+        case 'hiragana':
+          allOptions = allEmojis.map(emoji => emoji.hiragana);
+          break;
+        case 'romaji':
+          allOptions = allEmojis.map(emoji => emoji.romaji);
+          break;
+        case 'japanese':
+        default:
+          allOptions = allEmojis.map(emoji => emoji.japanese);
+          break;
+      }
+
+      const wrongOptions = allOptions
+        .filter(option => option !== correctAnswer)
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 3);
+
+      return [correctAnswer, ...wrongOptions].sort(() => Math.random() - 0.5);
+    },
+    [japaneseMode]
+  );
 
   const generateQuestion = useCallback((): EmojiQuestion => {
     const emoji = getRandomEmoji();
-    
+
     let correctAnswer: string;
     // Use the selected Japanese display mode
     switch (japaneseMode) {
@@ -85,12 +91,15 @@ const EmojiQuiz: React.FC<EmojiQuizProps> = ({
       emoji: emoji.emoji,
       correctAnswer,
       options,
-      type: 'emoji-to-japanese'
+      type: 'emoji-to-japanese',
     };
   }, [generateRandomOptions, japaneseMode]);
 
   const generateQuestions = useCallback(() => {
-    const newQuestions = Array.from({ length: questionCount }, generateQuestion);
+    const newQuestions = Array.from(
+      { length: questionCount },
+      generateQuestion
+    );
     setQuestions(newQuestions);
     setCurrentQuestion(newQuestions[0]);
   }, [questionCount, generateQuestion]);
@@ -111,6 +120,7 @@ const EmojiQuiz: React.FC<EmojiQuizProps> = ({
       setSelectedAnswer(null);
       setShowResult(false);
       setAnsweredIncorrectly(false);
+      setStartTime(Date.now());
     }
   }, [japaneseMode, generateQuestions, questions.length]);
 
@@ -119,7 +129,7 @@ const EmojiQuiz: React.FC<EmojiQuizProps> = ({
 
     setSelectedAnswer(answer);
     const isCorrect = answer === currentQuestion?.correctAnswer;
-    
+
     if (isCorrect) {
       setScore(prev => prev + 1);
       scoreRef.current += 1;
@@ -141,23 +151,23 @@ const EmojiQuiz: React.FC<EmojiQuizProps> = ({
             correctAnswer: currentQuestion.correctAnswer,
             correct: isCorrect,
             timeSpent: Date.now() - startTime,
-            displayMode: japaneseMode
-          }
+            displayMode: japaneseMode,
+          },
         });
       }
     }
-    
+
     setShowResult(true);
   };
 
   const handleNext = () => {
     const nextIndex = currentQuestionIndex + 1;
-    
+
     if (nextIndex >= questions.length) {
       onComplete?.(scoreRef.current, questions.length);
       return;
     }
-    
+
     setCurrentQuestionIndex(nextIndex);
     setCurrentQuestion(questions[nextIndex]);
     setSelectedAnswer(null);
@@ -180,10 +190,10 @@ const EmojiQuiz: React.FC<EmojiQuizProps> = ({
 
   const getCorrectAnswerEmoji = () => {
     if (!currentQuestion || !answeredIncorrectly) return null;
-    
+
     const emoji = getAllEmojis().find(e => e.emoji === currentQuestion.emoji);
     if (!emoji) return null;
-    
+
     return emoji;
   };
 
@@ -203,9 +213,11 @@ const EmojiQuiz: React.FC<EmojiQuizProps> = ({
           </span>
         </div>
         <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-          <div 
+          <div
             className="bg-blue-600 h-2 rounded-full transition-all duration-300"
-            style={{ width: `${((currentQuestionIndex + 1) / questions.length) * 100}%` }}
+            style={{
+              width: `${((currentQuestionIndex + 1) / questions.length) * 100}%`,
+            }}
           ></div>
         </div>
       </div>
@@ -261,17 +273,29 @@ const EmojiQuiz: React.FC<EmojiQuizProps> = ({
       {answeredIncorrectly && (
         <div className="bg-red-50 dark:bg-red-900 border border-red-200 dark:border-red-700 rounded-lg p-4 mb-6">
           <div className="text-red-800 dark:text-red-200">
-            <p className="font-medium mb-2">Incorrect! The correct answer is:</p>
-            <div className="text-lg font-bold">{currentQuestion.correctAnswer}</div>
+            <p className="font-medium mb-2">
+              Incorrect! The correct answer is:
+            </p>
+            <div className="text-lg font-bold">
+              {currentQuestion.correctAnswer}
+            </div>
             {(() => {
               const emoji = getCorrectAnswerEmoji();
               if (emoji) {
                 return (
                   <div className="mt-2 text-sm">
-                    <p><strong>English:</strong> {emoji.english}</p>
-                    <p><strong>Japanese:</strong> {emoji.japanese}</p>
-                    <p><strong>Hiragana:</strong> {emoji.hiragana}</p>
-                    <p><strong>Romaji:</strong> {emoji.romaji}</p>
+                    <p>
+                      <strong>English:</strong> {emoji.english}
+                    </p>
+                    <p>
+                      <strong>Japanese:</strong> {emoji.japanese}
+                    </p>
+                    <p>
+                      <strong>Hiragana:</strong> {emoji.hiragana}
+                    </p>
+                    <p>
+                      <strong>Romaji:</strong> {emoji.romaji}
+                    </p>
                   </div>
                 );
               }
@@ -283,18 +307,26 @@ const EmojiQuiz: React.FC<EmojiQuizProps> = ({
 
       <div className="grid grid-cols-1 gap-3 mb-8">
         {currentQuestion.options.map((option, index) => {
-          let buttonClass = "w-full p-4 text-left rounded-lg border-2 transition-all duration-200 ";
-          
+          let buttonClass =
+            'w-full p-4 text-left rounded-lg border-2 transition-all duration-200 ';
+
           if (showResult) {
             if (option === currentQuestion.correctAnswer) {
-              buttonClass += "bg-green-100 dark:bg-green-900 border-green-500 text-green-800 dark:text-green-200";
-            } else if (option === selectedAnswer && option !== currentQuestion.correctAnswer) {
-              buttonClass += "bg-red-100 dark:bg-red-900 border-red-500 text-red-800 dark:text-red-200";
+              buttonClass +=
+                'bg-green-100 dark:bg-green-900 border-green-500 text-green-800 dark:text-green-200';
+            } else if (
+              option === selectedAnswer &&
+              option !== currentQuestion.correctAnswer
+            ) {
+              buttonClass +=
+                'bg-red-100 dark:bg-red-900 border-red-500 text-red-800 dark:text-red-200';
             } else {
-              buttonClass += "bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-400";
+              buttonClass +=
+                'bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-400';
             }
           } else {
-            buttonClass += "bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 hover:bg-blue-50 dark:hover:bg-blue-900 hover:border-blue-400 text-gray-800 dark:text-gray-200";
+            buttonClass +=
+              'bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 hover:bg-blue-50 dark:hover:bg-blue-900 hover:border-blue-400 text-gray-800 dark:text-gray-200';
           }
 
           return (
@@ -316,7 +348,9 @@ const EmojiQuiz: React.FC<EmojiQuizProps> = ({
             onClick={handleNext}
             className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-lg transition-colors"
           >
-            {currentQuestionIndex + 1 >= questions.length ? 'Finish Quiz' : 'Next Question'}
+            {currentQuestionIndex + 1 >= questions.length
+              ? 'Finish Quiz'
+              : 'Next Question'}
           </button>
         </div>
       )}

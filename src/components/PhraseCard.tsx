@@ -12,11 +12,17 @@ const PhraseCard: React.FC<PhraseCardProps> = ({ phrase, onPlayAudio }) => {
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-4 border-l-4 border-blue-500 dark:border-blue-400">
       <div className="mb-4">
-        <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-2">{phrase.english}</h3>
+        <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-2">
+          {phrase.english}
+        </h3>
         <div className="space-y-2">
           <div className="flex items-center gap-2">
-            <span className="text-sm text-gray-600 dark:text-gray-300 font-medium">Japanese:</span>
-            <span className="text-lg font-japanese dark:text-gray-100">{phrase.japanese}</span>
+            <span className="text-sm text-gray-600 dark:text-gray-300 font-medium">
+              Japanese:
+            </span>
+            <span className="text-lg font-japanese dark:text-gray-100">
+              {phrase.japanese}
+            </span>
             {onPlayAudio && (
               <button
                 onClick={() => onPlayAudio(phrase.japanese)}
@@ -28,18 +34,28 @@ const PhraseCard: React.FC<PhraseCardProps> = ({ phrase, onPlayAudio }) => {
             )}
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-sm text-gray-600 dark:text-gray-300 font-medium">Hiragana:</span>
-            <span className="text-lg font-japanese dark:text-gray-100">{phrase.hiragana}</span>
+            <span className="text-sm text-gray-600 dark:text-gray-300 font-medium">
+              Hiragana:
+            </span>
+            <span className="text-lg font-japanese dark:text-gray-100">
+              {phrase.hiragana}
+            </span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-sm text-gray-600 dark:text-gray-300 font-medium">Romaji:</span>
-            <span className="text-lg font-mono dark:text-gray-100">{phrase.romaji}</span>
+            <span className="text-sm text-gray-600 dark:text-gray-300 font-medium">
+              Romaji:
+            </span>
+            <span className="text-lg font-mono dark:text-gray-100">
+              {phrase.romaji}
+            </span>
           </div>
         </div>
       </div>
 
       <div className="mb-4">
-        <p className="text-gray-700 dark:text-gray-300 italic">{phrase.explanation}</p>
+        <p className="text-gray-700 dark:text-gray-300 italic">
+          {phrase.explanation}
+        </p>
       </div>
 
       <div className="border-t dark:border-gray-600 pt-4">
@@ -50,7 +66,7 @@ const PhraseCard: React.FC<PhraseCardProps> = ({ phrase, onPlayAudio }) => {
           <span>{showBreakdown ? '▼' : '▶'}</span>
           Word Breakdown
         </button>
-        
+
         {showBreakdown && (
           <div className="mt-3 space-y-2">
             {Object.entries(phrase.word_breakdown).map(([word, meaning]) => (
@@ -58,7 +74,9 @@ const PhraseCard: React.FC<PhraseCardProps> = ({ phrase, onPlayAudio }) => {
                 <span className="font-japanese font-medium text-gray-800 dark:text-gray-100 min-w-0 flex-shrink-0">
                   {word}
                 </span>
-                <span className="text-gray-600 dark:text-gray-300">{meaning}</span>
+                <span className="text-gray-600 dark:text-gray-300">
+                  {meaning}
+                </span>
               </div>
             ))}
           </div>
