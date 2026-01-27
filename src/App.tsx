@@ -8,6 +8,7 @@ import Practice from './components/Practice';
 import Phrases from './pages/Phrases';
 import Hiragana from './pages/Hiragana';
 import EmojiPage from './pages/EmojiPage';
+import { FlashcardsPage } from './pages/FlashcardsPage';
 import { useTheme } from './hooks/useTheme';
 
 function AppContent() {
@@ -32,6 +33,7 @@ function AppContent() {
         <Route path="/phrases" element={<Phrases />} />
         <Route path="/hiragana" element={<Hiragana />} />
         <Route path="/emoji" element={<EmojiPage />} />
+        <Route path="/flashcards" element={<FlashcardsPage />} />
       </Routes>
     </div>
   );

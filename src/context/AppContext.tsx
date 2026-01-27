@@ -4,6 +4,7 @@ import type {
   ProgressData,
   ExerciseResult,
   EmojiExerciseResult,
+  WordExerciseResult,
 } from '../types';
 
 interface AppState {
@@ -20,6 +21,7 @@ type AppAction =
   | { type: 'UPDATE_PROGRESS'; payload: Partial<ProgressData> }
   | { type: 'ADD_EXERCISE_RESULT'; payload: ExerciseResult }
   | { type: 'ADD_EMOJI_EXERCISE_RESULT'; payload: EmojiExerciseResult }
+  | { type: 'ADD_WORD_EXERCISE_RESULT'; payload: WordExerciseResult }
   | { type: 'SET_CURRENT_EXERCISE'; payload: string | null }
   | { type: 'UPDATE_SETTINGS'; payload: Partial<AppState['settings']> }
   | { type: 'RESET_PROGRESS' };
@@ -30,6 +32,9 @@ const initialState: AppState = {
     exerciseHistory: [],
     emojiMastery: {},
     emojiExerciseHistory: [],
+    vocabularyMastery: {},
+    vocabularyExerciseHistory: [],
+    vocabularySuccessRates: {},
     timeSpent: {},
     successRates: {},
     emojiSuccessRates: {},
@@ -114,6 +119,39 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
               Math.max(
                 0,
                 (state.progress.emojiMastery[emoji] || 0) +
+                  (action.payload.correct ? 10 : -5)
+              )
+            ),
+          },
+        },
+      };
+    }
+    case 'ADD_WORD_EXERCISE_RESULT': {
+      const newVocabularyHistory = [
+        ...state.progress.vocabularyExerciseHistory,
+        action.payload,
+      ];
+      const word = action.payload.word;
+      const wordResults = newVocabularyHistory.filter(r => r.word === word);
+      const wordSuccessRate =
+        wordResults.filter(r => r.correct).length / wordResults.length;
+
+      return {
+        ...state,
+        progress: {
+          ...state.progress,
+          vocabularyExerciseHistory: newVocabularyHistory,
+          vocabularySuccessRates: {
+            ...state.progress.vocabularySuccessRates,
+            [word]: wordSuccessRate,
+          },
+          vocabularyMastery: {
+            ...state.progress.vocabularyMastery,
+            [word]: Math.min(
+              100,
+              Math.max(
+                0,
+                (state.progress.vocabularyMastery[word] || 0) +
                   (action.payload.correct ? 10 : -5)
               )
             ),

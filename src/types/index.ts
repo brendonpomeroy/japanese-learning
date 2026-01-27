@@ -41,6 +41,9 @@ export interface ProgressData {
   exerciseHistory: ExerciseResult[];
   emojiMastery: Record<string, number>; // emoji -> mastery level (0-100)
   emojiExerciseHistory: EmojiExerciseResult[];
+  vocabularyMastery: Record<string, number>; // word -> mastery level (0-100)
+  vocabularyExerciseHistory: WordExerciseResult[];
+  vocabularySuccessRates: Record<string, number>; // word -> success rate (0-1)
   timeSpent: Record<string, number>; // exercise type -> time in seconds
   successRates: Record<string, number>; // character -> success rate (0-1)
   emojiSuccessRates: Record<string, number>; // emoji -> success rate (0-1)
@@ -95,4 +98,23 @@ export interface AudioPlayerState {
   isPlaying: boolean;
   currentCharacter: string | null;
   error: string | null;
+}
+
+export interface Word {
+  word: string;
+  kana_kanji: string;
+  hiragana: string;
+  romaji: string;
+  example_sentence: string;
+  definition: string;
+  difficulty: 'beginner' | 'intermediate' | 'advanced';
+  topic: string;
+}
+
+export interface WordExerciseResult {
+  word: string;
+  correct: boolean;
+  timeSpent: number;
+  difficulty: string;
+  topic: string;
 }

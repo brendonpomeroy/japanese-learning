@@ -69,6 +69,16 @@ function Navigation() {
               Emoji Quiz
             </Link>
             <Link
+              to="/flashcards"
+              className={`hover:text-blue-200 dark:hover:text-blue-300 transition-colors ${
+                isActive('/flashcards')
+                  ? 'text-blue-200 dark:text-blue-300 font-semibold'
+                  : ''
+              }`}
+            >
+              Flashcards
+            </Link>
+            <Link
               to="/practice"
               className={`hover:text-blue-200 dark:hover:text-blue-300 transition-colors ${
                 isActive('/practice')
@@ -157,6 +167,17 @@ function Navigation() {
               onClick={closeMobileMenu}
             >
               Emoji Quiz
+            </Link>
+            <Link
+              to="/flashcards"
+              className={`block py-2 px-4 hover:bg-blue-700 dark:hover:bg-blue-700 rounded transition-colors ${
+                isActive('/flashcards')
+                  ? 'bg-blue-700 dark:bg-blue-700 font-semibold'
+                  : ''
+              }`}
+              onClick={closeMobileMenu}
+            >
+              Flashcards
             </Link>
             <Link
               to="/practice"

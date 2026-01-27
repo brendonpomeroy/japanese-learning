@@ -1,0 +1,1004 @@
+{
+  "words": [
+    {
+      "word": "こんにちは",
+      "kana_kanji": "こんにちは",
+      "hiragana": "こんにちは",
+      "romaji": "konnichiwa",
+      "example_sentence": "こんにちは、元気ですか。",
+      "definition": "Hello, good afternoon",
+      "difficulty": "beginner",
+      "topic": "greetings"
+    },
+    {
+      "word": "ありがとう",
+      "kana_kanji": "ありがとう",
+      "hiragana": "ありがとう",
+      "romaji": "arigatou",
+      "example_sentence": "手伝ってくれてありがとう。",
+      "definition": "Thank you",
+      "difficulty": "beginner",
+      "topic": "greetings"
+    },
+    {
+      "word": "すみません",
+      "kana_kanji": "すみません",
+      "hiragana": "すみません",
+      "romaji": "sumimasen",
+      "example_sentence": "すみません、駅はどこですか。",
+      "definition": "Excuse me, I'm sorry",
+      "difficulty": "beginner",
+      "topic": "greetings"
+    },
+    {
+      "word": "学生",
+      "kana_kanji": "学生",
+      "hiragana": "がくせい",
+      "romaji": "gakusei",
+      "example_sentence": "私は大学の学生です。",
+      "definition": "Student",
+      "difficulty": "beginner",
+      "topic": "education"
+    },
+    {
+      "word": "先生",
+      "kana_kanji": "先生",
+      "hiragana": "せんせい",
+      "romaji": "sensei",
+      "example_sentence": "田中先生は英語を教えています。",
+      "definition": "Teacher, doctor (polite title)",
+      "difficulty": "beginner",
+      "topic": "education"
+    },
+    {
+      "word": "食べる",
+      "kana_kanji": "食べる",
+      "hiragana": "たべる",
+      "romaji": "taberu",
+      "example_sentence": "朝ご飯を食べます。",
+      "definition": "To eat",
+      "difficulty": "beginner",
+      "topic": "food"
+    },
+    {
+      "word": "飲む",
+      "kana_kanji": "飲む",
+      "hiragana": "のむ",
+      "romaji": "nomu",
+      "example_sentence": "水を飲みたいです。",
+      "definition": "To drink",
+      "difficulty": "beginner",
+      "topic": "food"
+    },
+    {
+      "word": "美味しい",
+      "kana_kanji": "美味しい",
+      "hiragana": "おいしい",
+      "romaji": "oishii",
+      "example_sentence": "このケーキはとても美味しいです。",
+      "definition": "Delicious, tasty",
+      "difficulty": "beginner",
+      "topic": "food"
+    },
+    {
+      "word": "家",
+      "kana_kanji": "家",
+      "hiragana": "いえ",
+      "romaji": "ie",
+      "example_sentence": "私の家は駅の近くにあります。",
+      "definition": "House, home",
+      "difficulty": "beginner",
+      "topic": "places"
+    },
+    {
+      "word": "学校",
+      "kana_kanji": "学校",
+      "hiragana": "がっこう",
+      "romaji": "gakkou",
+      "example_sentence": "毎日学校に行きます。",
+      "definition": "School",
+      "difficulty": "beginner",
+      "topic": "places"
+    },
+    {
+      "word": "図書館",
+      "kana_kanji": "図書館",
+      "hiragana": "としょかん",
+      "romaji": "toshokan",
+      "example_sentence": "図書館で本を借りました。",
+      "definition": "Library",
+      "difficulty": "beginner",
+      "topic": "places"
+    },
+    {
+      "word": "友達",
+      "kana_kanji": "友達",
+      "hiragana": "ともだち",
+      "romaji": "tomodachi",
+      "example_sentence": "友達と映画を見に行きます。",
+      "definition": "Friend",
+      "difficulty": "beginner",
+      "topic": "people"
+    },
+    {
+      "word": "家族",
+      "kana_kanji": "家族",
+      "hiragana": "かぞく",
+      "romaji": "kazoku",
+      "example_sentence": "私の家族は四人です。",
+      "definition": "Family",
+      "difficulty": "beginner",
+      "topic": "people"
+    },
+    {
+      "word": "母",
+      "kana_kanji": "母",
+      "hiragana": "はは",
+      "romaji": "haha",
+      "example_sentence": "母は料理が上手です。",
+      "definition": "Mother (one's own)",
+      "difficulty": "beginner",
+      "topic": "people"
+    },
+    {
+      "word": "父",
+      "kana_kanji": "父",
+      "hiragana": "ちち",
+      "romaji": "chichi",
+      "example_sentence": "父は会社員です。",
+      "definition": "Father (one's own)",
+      "difficulty": "beginner",
+      "topic": "people"
+    },
+    {
+      "word": "時間",
+      "kana_kanji": "時間",
+      "hiragana": "じかん",
+      "romaji": "jikan",
+      "example_sentence": "時間がありません。",
+      "definition": "Time, hour",
+      "difficulty": "beginner",
+      "topic": "time"
+    },
+    {
+      "word": "今日",
+      "kana_kanji": "今日",
+      "hiragana": "きょう",
+      "romaji": "kyou",
+      "example_sentence": "今日はいい天気ですね。",
+      "definition": "Today",
+      "difficulty": "beginner",
+      "topic": "time"
+    },
+    {
+      "word": "明日",
+      "kana_kanji": "明日",
+      "hiragana": "あした",
+      "romaji": "ashita",
+      "example_sentence": "明日は休みです。",
+      "definition": "Tomorrow",
+      "difficulty": "beginner",
+      "topic": "time"
+    },
+    {
+      "word": "昨日",
+      "kana_kanji": "昨日",
+      "hiragana": "きのう",
+      "romaji": "kinou",
+      "example_sentence": "昨日は雨が降りました。",
+      "definition": "Yesterday",
+      "difficulty": "beginner",
+      "topic": "time"
+    },
+    {
+      "word": "天気",
+      "kana_kanji": "天気",
+      "hiragana": "てんき",
+      "romaji": "tenki",
+      "example_sentence": "今日の天気はどうですか。",
+      "definition": "Weather",
+      "difficulty": "beginner",
+      "topic": "nature"
+    },
+    {
+      "word": "大切",
+      "kana_kanji": "大切",
+      "hiragana": "たいせつ",
+      "romaji": "taisetsu",
+      "example_sentence": "健康は大切です。",
+      "definition": "Important, precious",
+      "difficulty": "intermediate",
+      "topic": "adjectives"
+    },
+    {
+      "word": "便利",
+      "kana_kanji": "便利",
+      "hiragana": "べんり",
+      "romaji": "benri",
+      "example_sentence": "このアプリはとても便利です。",
+      "definition": "Convenient, useful",
+      "difficulty": "intermediate",
+      "topic": "adjectives"
+    },
+    {
+      "word": "勉強",
+      "kana_kanji": "勉強",
+      "hiragana": "べんきょう",
+      "romaji": "benkyou",
+      "example_sentence": "毎日日本語を勉強しています。",
+      "definition": "Study, learning",
+      "difficulty": "intermediate",
+      "topic": "education"
+    },
+    {
+      "word": "試験",
+      "kana_kanji": "試験",
+      "hiragana": "しけん",
+      "romaji": "shiken",
+      "example_sentence": "来週試験があります。",
+      "definition": "Exam, test",
+      "difficulty": "intermediate",
+      "topic": "education"
+    },
+    {
+      "word": "宿題",
+      "kana_kanji": "宿題",
+      "hiragana": "しゅくだい",
+      "romaji": "shukudai",
+      "example_sentence": "宿題を忘れました。",
+      "definition": "Homework",
+      "difficulty": "intermediate",
+      "topic": "education"
+    },
+    {
+      "word": "会社",
+      "kana_kanji": "会社",
+      "hiragana": "かいしゃ",
+      "romaji": "kaisha",
+      "example_sentence": "会社で働いています。",
+      "definition": "Company, office",
+      "difficulty": "intermediate",
+      "topic": "work"
+    },
+    {
+      "word": "仕事",
+      "kana_kanji": "仕事",
+      "hiragana": "しごと",
+      "romaji": "shigoto",
+      "example_sentence": "仕事が忙しいです。",
+      "definition": "Work, job",
+      "difficulty": "intermediate",
+      "topic": "work"
+    },
+    {
+      "word": "電話",
+      "kana_kanji": "電話",
+      "hiragana": "でんわ",
+      "romaji": "denwa",
+      "example_sentence": "電話番号を教えてください。",
+      "definition": "Telephone, phone call",
+      "difficulty": "intermediate",
+      "topic": "technology"
+    },
+    {
+      "word": "買い物",
+      "kana_kanji": "買い物",
+      "hiragana": "かいもの",
+      "romaji": "kaimono",
+      "example_sentence": "週末に買い物に行きます。",
+      "definition": "Shopping",
+      "difficulty": "intermediate",
+      "topic": "activities"
+    },
+    {
+      "word": "旅行",
+      "kana_kanji": "旅行",
+      "hiragana": "りょこう",
+      "romaji": "ryokou",
+      "example_sentence": "夏休みに旅行する予定です。",
+      "definition": "Travel, trip",
+      "difficulty": "intermediate",
+      "topic": "activities"
+    },
+    {
+      "word": "料理",
+      "kana_kanji": "料理",
+      "hiragana": "りょうり",
+      "romaji": "ryouri",
+      "example_sentence": "日本料理が好きです。",
+      "definition": "Cooking, cuisine",
+      "difficulty": "intermediate",
+      "topic": "food"
+    },
+    {
+      "word": "病院",
+      "kana_kanji": "病院",
+      "hiragana": "びょういん",
+      "romaji": "byouin",
+      "example_sentence": "病院で診察を受けました。",
+      "definition": "Hospital",
+      "difficulty": "intermediate",
+      "topic": "places"
+    },
+    {
+      "word": "駅",
+      "kana_kanji": "駅",
+      "hiragana": "えき",
+      "romaji": "eki",
+      "example_sentence": "駅まで歩いて行きます。",
+      "definition": "Station",
+      "difficulty": "intermediate",
+      "topic": "places"
+    },
+    {
+      "word": "空港",
+      "kana_kanji": "空港",
+      "hiragana": "くうこう",
+      "romaji": "kuukou",
+      "example_sentence": "空港に着きました。",
+      "definition": "Airport",
+      "difficulty": "intermediate",
+      "topic": "places"
+    },
+    {
+      "word": "経験",
+      "kana_kanji": "経験",
+      "hiragana": "けいけん",
+      "romaji": "keiken",
+      "example_sentence": "いい経験になりました。",
+      "definition": "Experience",
+      "difficulty": "intermediate",
+      "topic": "abstract"
+    },
+    {
+      "word": "意味",
+      "kana_kanji": "意味",
+      "hiragana": "いみ",
+      "romaji": "imi",
+      "example_sentence": "この言葉の意味が分かりません。",
+      "definition": "Meaning",
+      "difficulty": "intermediate",
+      "topic": "abstract"
+    },
+    {
+      "word": "理由",
+      "kana_kanji": "理由",
+      "hiragana": "りゆう",
+      "romaji": "riyuu",
+      "example_sentence": "遅れた理由を説明してください。",
+      "definition": "Reason, cause",
+      "difficulty": "intermediate",
+      "topic": "abstract"
+    },
+    {
+      "word": "問題",
+      "kana_kanji": "問題",
+      "hiragana": "もんだい",
+      "romaji": "mondai",
+      "example_sentence": "この問題は難しいです。",
+      "definition": "Problem, question",
+      "difficulty": "intermediate",
+      "topic": "abstract"
+    },
+    {
+      "word": "機会",
+      "kana_kanji": "機会",
+      "hiragana": "きかい",
+      "romaji": "kikai",
+      "example_sentence": "いい機会があれば、ぜひ参加したいです。",
+      "definition": "Opportunity, chance",
+      "difficulty": "advanced",
+      "topic": "abstract"
+    },
+    {
+      "word": "雰囲気",
+      "kana_kanji": "雰囲気",
+      "hiragana": "ふんいき",
+      "romaji": "fun'iki",
+      "example_sentence": "このレストランは雰囲気がいいですね。",
+      "definition": "Atmosphere, mood",
+      "difficulty": "advanced",
+      "topic": "abstract"
+    },
+    {
+      "word": "環境",
+      "kana_kanji": "環境",
+      "hiragana": "かんきょう",
+      "romaji": "kankyou",
+      "example_sentence": "環境問題について考えるべきです。",
+      "definition": "Environment",
+      "difficulty": "advanced",
+      "topic": "nature"
+    },
+    {
+      "word": "社会",
+      "kana_kanji": "社会",
+      "hiragana": "しゃかい",
+      "romaji": "shakai",
+      "example_sentence": "現代社会は複雑です。",
+      "definition": "Society",
+      "difficulty": "advanced",
+      "topic": "abstract"
+    },
+    {
+      "word": "文化",
+      "kana_kanji": "文化",
+      "hiragana": "ぶんか",
+      "romaji": "bunka",
+      "example_sentence": "日本の文化に興味があります。",
+      "definition": "Culture",
+      "difficulty": "advanced",
+      "topic": "abstract"
+    },
+    {
+      "word": "影響",
+      "kana_kanji": "影響",
+      "hiragana": "えいきょう",
+      "romaji": "eikyou",
+      "example_sentence": "天候は農業に大きな影響を与えます。",
+      "definition": "Influence, effect",
+      "difficulty": "advanced",
+      "topic": "abstract"
+    },
+    {
+      "word": "努力",
+      "kana_kanji": "努力",
+      "hiragana": "どりょく",
+      "romaji": "doryoku",
+      "example_sentence": "成功するには努力が必要です。",
+      "definition": "Effort, endeavor",
+      "difficulty": "advanced",
+      "topic": "abstract"
+    },
+    {
+      "word": "将来",
+      "kana_kanji": "将来",
+      "hiragana": "しょうらい",
+      "romaji": "shourai",
+      "example_sentence": "将来は医者になりたいです。",
+      "definition": "Future",
+      "difficulty": "advanced",
+      "topic": "time"
+    },
+    {
+      "word": "過去",
+      "kana_kanji": "過去",
+      "hiragana": "かこ",
+      "romaji": "kako",
+      "example_sentence": "過去の経験から学びました。",
+      "definition": "Past",
+      "difficulty": "advanced",
+      "topic": "time"
+    },
+    {
+      "word": "現在",
+      "kana_kanji": "現在",
+      "hiragana": "げんざい",
+      "romaji": "genzai",
+      "example_sentence": "現在、東京に住んでいます。",
+      "definition": "Present, current",
+      "difficulty": "advanced",
+      "topic": "time"
+    },
+    {
+      "word": "発展",
+      "kana_kanji": "発展",
+      "hiragana": "はってん",
+      "romaji": "hatten",
+      "example_sentence": "技術の発展は目覚ましいです。",
+      "definition": "Development, progress",
+      "difficulty": "advanced",
+      "topic": "abstract"
+    },
+    {
+      "word": "改善",
+      "kana_kanji": "改善",
+      "hiragana": "かいぜん",
+      "romaji": "kaizen",
+      "example_sentence": "サービスの改善に取り組んでいます。",
+      "definition": "Improvement, reform",
+      "difficulty": "advanced",
+      "topic": "abstract"
+    },
+    {
+      "word": "責任",
+      "kana_kanji": "責任",
+      "hiragana": "せきにん",
+      "romaji": "sekinin",
+      "example_sentence": "リーダーには大きな責任があります。",
+      "definition": "Responsibility",
+      "difficulty": "advanced",
+      "topic": "abstract"
+    },
+    {
+      "word": "携帯",
+      "kana_kanji": "携帯",
+      "hiragana": "けいたい",
+      "romaji": "keitai",
+      "example_sentence": "携帯を忘れました。",
+      "definition": "Mobile phone, cell phone",
+      "difficulty": "beginner",
+      "topic": "objects"
+    },
+    {
+      "word": "時計",
+      "kana_kanji": "時計",
+      "hiragana": "とけい",
+      "romaji": "tokei",
+      "example_sentence": "新しい時計を買いました。",
+      "definition": "Clock, watch",
+      "difficulty": "beginner",
+      "topic": "objects"
+    },
+    {
+      "word": "靴",
+      "kana_kanji": "靴",
+      "hiragana": "くつ",
+      "romaji": "kutsu",
+      "example_sentence": "靴を脱いでください。",
+      "definition": "Shoes",
+      "difficulty": "beginner",
+      "topic": "objects"
+    },
+    {
+      "word": "鞄",
+      "kana_kanji": "鞄",
+      "hiragana": "かばん",
+      "romaji": "kaban",
+      "example_sentence": "鞄が重いです。",
+      "definition": "Bag, briefcase",
+      "difficulty": "beginner",
+      "topic": "objects"
+    },
+    {
+      "word": "本",
+      "kana_kanji": "本",
+      "hiragana": "ほん",
+      "romaji": "hon",
+      "example_sentence": "面白い本を読んでいます。",
+      "definition": "Book",
+      "difficulty": "beginner",
+      "topic": "objects"
+    },
+    {
+      "word": "ペン",
+      "kana_kanji": "ペン",
+      "hiragana": "ぺん",
+      "romaji": "pen",
+      "example_sentence": "ペンを貸してください。",
+      "definition": "Pen",
+      "difficulty": "beginner",
+      "topic": "objects"
+    },
+    {
+      "word": "机",
+      "kana_kanji": "机",
+      "hiragana": "つくえ",
+      "romaji": "tsukue",
+      "example_sentence": "机の上に本があります。",
+      "definition": "Desk",
+      "difficulty": "beginner",
+      "topic": "objects"
+    },
+    {
+      "word": "椅子",
+      "kana_kanji": "椅子",
+      "hiragana": "いす",
+      "romaji": "isu",
+      "example_sentence": "椅子に座ってください。",
+      "definition": "Chair",
+      "difficulty": "beginner",
+      "topic": "objects"
+    },
+    {
+      "word": "傘",
+      "kana_kanji": "傘",
+      "hiragana": "かさ",
+      "romaji": "kasa",
+      "example_sentence": "傘を持っていますか。",
+      "definition": "Umbrella",
+      "difficulty": "beginner",
+      "topic": "objects"
+    },
+    {
+      "word": "財布",
+      "kana_kanji": "財布",
+      "hiragana": "さいふ",
+      "romaji": "saifu",
+      "example_sentence": "財布をなくしました。",
+      "definition": "Wallet, purse",
+      "difficulty": "beginner",
+      "topic": "objects"
+    },
+    {
+      "word": "眼鏡",
+      "kana_kanji": "眼鏡",
+      "hiragana": "めがね",
+      "romaji": "megane",
+      "example_sentence": "眼鏡をかけています。",
+      "definition": "Glasses, eyeglasses",
+      "difficulty": "beginner",
+      "topic": "objects"
+    },
+    {
+      "word": "鍵",
+      "kana_kanji": "鍵",
+      "hiragana": "かぎ",
+      "romaji": "kagi",
+      "example_sentence": "鍵を忘れないでください。",
+      "definition": "Key",
+      "difficulty": "beginner",
+      "topic": "objects"
+    },
+    {
+      "word": "パソコン",
+      "kana_kanji": "パソコン",
+      "hiragana": "ぱそこん",
+      "romaji": "pasokon",
+      "example_sentence": "パソコンで仕事をします。",
+      "definition": "Computer, PC",
+      "difficulty": "beginner",
+      "topic": "objects"
+    },
+    {
+      "word": "テレビ",
+      "kana_kanji": "テレビ",
+      "hiragana": "てれび",
+      "romaji": "terebi",
+      "example_sentence": "テレビを見ています。",
+      "definition": "Television, TV",
+      "difficulty": "beginner",
+      "topic": "objects"
+    },
+    {
+      "word": "カメラ",
+      "kana_kanji": "カメラ",
+      "hiragana": "かめら",
+      "romaji": "kamera",
+      "example_sentence": "カメラで写真を撮ります。",
+      "definition": "Camera",
+      "difficulty": "beginner",
+      "topic": "objects"
+    },
+    {
+      "word": "米",
+      "kana_kanji": "米",
+      "hiragana": "こめ",
+      "romaji": "kome",
+      "example_sentence": "米を炊きます。",
+      "definition": "Rice (uncooked)",
+      "difficulty": "beginner",
+      "topic": "food"
+    },
+    {
+      "word": "ご飯",
+      "kana_kanji": "ご飯",
+      "hiragana": "ごはん",
+      "romaji": "gohan",
+      "example_sentence": "ご飯を食べましょう。",
+      "definition": "Rice (cooked), meal",
+      "difficulty": "beginner",
+      "topic": "food"
+    },
+    {
+      "word": "パン",
+      "kana_kanji": "パン",
+      "hiragana": "ぱん",
+      "romaji": "pan",
+      "example_sentence": "朝はパンを食べます。",
+      "definition": "Bread",
+      "difficulty": "beginner",
+      "topic": "food"
+    },
+    {
+      "word": "肉",
+      "kana_kanji": "肉",
+      "hiragana": "にく",
+      "romaji": "niku",
+      "example_sentence": "肉が好きです。",
+      "definition": "Meat",
+      "difficulty": "beginner",
+      "topic": "food"
+    },
+    {
+      "word": "魚",
+      "kana_kanji": "魚",
+      "hiragana": "さかな",
+      "romaji": "sakana",
+      "example_sentence": "魚を焼きます。",
+      "definition": "Fish",
+      "difficulty": "beginner",
+      "topic": "food"
+    },
+    {
+      "word": "野菜",
+      "kana_kanji": "野菜",
+      "hiragana": "やさい",
+      "romaji": "yasai",
+      "example_sentence": "野菜をたくさん食べます。",
+      "definition": "Vegetables",
+      "difficulty": "beginner",
+      "topic": "food"
+    },
+    {
+      "word": "果物",
+      "kana_kanji": "果物",
+      "hiragana": "くだもの",
+      "romaji": "kudamono",
+      "example_sentence": "果物が大好きです。",
+      "definition": "Fruit",
+      "difficulty": "beginner",
+      "topic": "food"
+    },
+    {
+      "word": "リンゴ",
+      "kana_kanji": "リンゴ",
+      "hiragana": "りんご",
+      "romaji": "ringo",
+      "example_sentence": "リンゴを一つください。",
+      "definition": "Apple",
+      "difficulty": "beginner",
+      "topic": "food"
+    },
+    {
+      "word": "バナナ",
+      "kana_kanji": "バナナ",
+      "hiragana": "ばなな",
+      "romaji": "banana",
+      "example_sentence": "バナナは栄養があります。",
+      "definition": "Banana",
+      "difficulty": "beginner",
+      "topic": "food"
+    },
+    {
+      "word": "卵",
+      "kana_kanji": "卵",
+      "hiragana": "たまご",
+      "romaji": "tamago",
+      "example_sentence": "卵を二つ使います。",
+      "definition": "Egg",
+      "difficulty": "beginner",
+      "topic": "food"
+    },
+    {
+      "word": "牛乳",
+      "kana_kanji": "牛乳",
+      "hiragana": "ぎゅうにゅう",
+      "romaji": "gyuunyuu",
+      "example_sentence": "牛乳を飲みます。",
+      "definition": "Milk",
+      "difficulty": "beginner",
+      "topic": "food"
+    },
+    {
+      "word": "水",
+      "kana_kanji": "水",
+      "hiragana": "みず",
+      "romaji": "mizu",
+      "example_sentence": "冷たい水をください。",
+      "definition": "Water",
+      "difficulty": "beginner",
+      "topic": "food"
+    },
+    {
+      "word": "お茶",
+      "kana_kanji": "お茶",
+      "hiragana": "おちゃ",
+      "romaji": "ocha",
+      "example_sentence": "お茶を入れましょう。",
+      "definition": "Tea",
+      "difficulty": "beginner",
+      "topic": "food"
+    },
+    {
+      "word": "コーヒー",
+      "kana_kanji": "コーヒー",
+      "hiragana": "こーひー",
+      "romaji": "koohii",
+      "example_sentence": "コーヒーを一杯ください。",
+      "definition": "Coffee",
+      "difficulty": "beginner",
+      "topic": "food"
+    },
+    {
+      "word": "ジュース",
+      "kana_kanji": "ジュース",
+      "hiragana": "じゅーす",
+      "romaji": "juusu",
+      "example_sentence": "オレンジジュースが飲みたいです。",
+      "definition": "Juice",
+      "difficulty": "beginner",
+      "topic": "food"
+    },
+    {
+      "word": "塩",
+      "kana_kanji": "塩",
+      "hiragana": "しお",
+      "romaji": "shio",
+      "example_sentence": "塩を少し入れてください。",
+      "definition": "Salt",
+      "difficulty": "beginner",
+      "topic": "food"
+    },
+    {
+      "word": "砂糖",
+      "kana_kanji": "砂糖",
+      "hiragana": "さとう",
+      "romaji": "satou",
+      "example_sentence": "砂糖は要りません。",
+      "definition": "Sugar",
+      "difficulty": "beginner",
+      "topic": "food"
+    },
+    {
+      "word": "醤油",
+      "kana_kanji": "醤油",
+      "hiragana": "しょうゆ",
+      "romaji": "shouyu",
+      "example_sentence": "醤油をかけて食べます。",
+      "definition": "Soy sauce",
+      "difficulty": "beginner",
+      "topic": "food"
+    },
+    {
+      "word": "ラーメン",
+      "kana_kanji": "ラーメン",
+      "hiragana": "らーめん",
+      "romaji": "raamen",
+      "example_sentence": "ラーメンが食べたいです。",
+      "definition": "Ramen",
+      "difficulty": "beginner",
+      "topic": "food"
+    },
+    {
+      "word": "寿司",
+      "kana_kanji": "寿司",
+      "hiragana": "すし",
+      "romaji": "sushi",
+      "example_sentence": "寿司は日本の伝統料理です。",
+      "definition": "Sushi",
+      "difficulty": "beginner",
+      "topic": "food"
+    },
+    {
+      "word": "天ぷら",
+      "kana_kanji": "天ぷら",
+      "hiragana": "てんぷら",
+      "romaji": "tenpura",
+      "example_sentence": "海老の天ぷらが好きです。",
+      "definition": "Tempura",
+      "difficulty": "beginner",
+      "topic": "food"
+    },
+    {
+      "word": "カレー",
+      "kana_kanji": "カレー",
+      "hiragana": "かれー",
+      "romaji": "karee",
+      "example_sentence": "カレーライスを作ります。",
+      "definition": "Curry",
+      "difficulty": "beginner",
+      "topic": "food"
+    },
+    {
+      "word": "服",
+      "kana_kanji": "服",
+      "hiragana": "ふく",
+      "romaji": "fuku",
+      "example_sentence": "新しい服を買いました。",
+      "definition": "Clothes, clothing",
+      "difficulty": "beginner",
+      "topic": "objects"
+    },
+    {
+      "word": "帽子",
+      "kana_kanji": "帽子",
+      "hiragana": "ぼうし",
+      "romaji": "boushi",
+      "example_sentence": "帽子をかぶっています。",
+      "definition": "Hat, cap",
+      "difficulty": "beginner",
+      "topic": "objects"
+    },
+    {
+      "word": "手袋",
+      "kana_kanji": "手袋",
+      "hiragana": "てぶくろ",
+      "romaji": "tebukuro",
+      "example_sentence": "冬は手袋が必要です。",
+      "definition": "Gloves",
+      "difficulty": "beginner",
+      "topic": "objects"
+    },
+    {
+      "word": "自転車",
+      "kana_kanji": "自転車",
+      "hiragana": "じてんしゃ",
+      "romaji": "jitensha",
+      "example_sentence": "自転車で学校に行きます。",
+      "definition": "Bicycle, bike",
+      "difficulty": "beginner",
+      "topic": "objects"
+    },
+    {
+      "word": "車",
+      "kana_kanji": "車",
+      "hiragana": "くるま",
+      "romaji": "kuruma",
+      "example_sentence": "車を運転します。",
+      "definition": "Car, vehicle",
+      "difficulty": "beginner",
+      "topic": "objects"
+    },
+    {
+      "word": "電車",
+      "kana_kanji": "電車",
+      "hiragana": "でんしゃ",
+      "romaji": "densha",
+      "example_sentence": "電車で通勤します。",
+      "definition": "Train",
+      "difficulty": "beginner",
+      "topic": "objects"
+    },
+    {
+      "word": "皿",
+      "kana_kanji": "皿",
+      "hiragana": "さら",
+      "romaji": "sara",
+      "example_sentence": "皿を洗います。",
+      "definition": "Plate, dish",
+      "difficulty": "beginner",
+      "topic": "objects"
+    },
+    {
+      "word": "箸",
+      "kana_kanji": "箸",
+      "hiragana": "はし",
+      "romaji": "hashi",
+      "example_sentence": "箸を使って食べます。",
+      "definition": "Chopsticks",
+      "difficulty": "beginner",
+      "topic": "objects"
+    },
+    {
+      "word": "フォーク",
+      "kana_kanji": "フォーク",
+      "hiragana": "ふぉーく",
+      "romaji": "fooku",
+      "example_sentence": "フォークとナイフを使います。",
+      "definition": "Fork",
+      "difficulty": "beginner",
+      "topic": "objects"
+    },
+    {
+      "word": "スプーン",
+      "kana_kanji": "スプーン",
+      "hiragana": "すぷーん",
+      "romaji": "supuun",
+      "example_sentence": "スプーンでスープを飲みます。",
+      "definition": "Spoon",
+      "difficulty": "beginner",
+      "topic": "objects"
+    },
+    {
+      "word": "コップ",
+      "kana_kanji": "コップ",
+      "hiragana": "こっぷ",
+      "romaji": "koppu",
+      "example_sentence": "コップに水を入れてください。",
+      "definition": "Cup, glass",
+      "difficulty": "beginner",
+      "topic": "objects"
+    },
+    {
+      "word": "窓",
+      "kana_kanji": "窓",
+      "hiragana": "まど",
+      "romaji": "mado",
+      "example_sentence": "窓を開けてください。",
+      "definition": "Window",
+      "difficulty": "beginner",
+      "topic": "objects"
+    }
+  ]
+}
