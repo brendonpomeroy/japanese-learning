@@ -1,11 +1,15 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import type { QuizQuestion, ExerciseType, HiraganaCategory } from '../types';
 import { getRandomHiragana, getAllHiragana } from '../data/hiraganaData';
+import { getRandomKatakana, getAllKatakana } from '../data/katakanaData';
 import { useApp } from '../hooks/useApp';
+
+export type KanaType = 'hiragana' | 'katakana';
 
 interface ExerciseEngineProps {
   exerciseType: ExerciseType;
   category?: HiraganaCategory;
+  kanaType?: KanaType;
   questionCount?: number;
   onComplete?: (score: number, totalQuestions: number) => void;
 }
@@ -13,6 +17,7 @@ interface ExerciseEngineProps {
 const ExerciseEngine: React.FC<ExerciseEngineProps> = ({
   exerciseType,
   category,
+  kanaType = 'hiragana',
   questionCount = 10,
   onComplete,
 }) => {
@@ -32,7 +37,7 @@ const ExerciseEngine: React.FC<ExerciseEngineProps> = ({
 
   const generateRandomOptions = useCallback(
     (correctAnswer: string, isRomaji: boolean) => {
-      const allChars = getAllHiragana();
+      const allChars = kanaType === 'katakana' ? getAllKatakana() : getAllHiragana();
       const allOptions = isRomaji
         ? Object.values(allChars)
         : Object.keys(allChars);
@@ -48,7 +53,8 @@ const ExerciseEngine: React.FC<ExerciseEngineProps> = ({
   );
 
   const generateQuestion = useCallback((): QuizQuestion => {
-    const { character, romaji } = getRandomHiragana(category);
+    const getRandomChar = kanaType === 'katakana' ? getRandomKatakana : getRandomHiragana;
+    const { character, romaji } = getRandomChar(category);
 
     let questionType: 'hiragana-to-romaji' | 'romaji-to-hiragana' | 'typing';
 
@@ -89,7 +95,7 @@ const ExerciseEngine: React.FC<ExerciseEngineProps> = ({
       options,
       type: questionType,
     };
-  }, [category, exerciseType, generateRandomOptions]);
+  }, [category, exerciseType, kanaType, generateRandomOptions]);
 
   const generateQuestions = useCallback(() => {
     const newQuestions = Array.from(
@@ -246,7 +252,7 @@ const ExerciseEngine: React.FC<ExerciseEngineProps> = ({
       return (
         <div className="text-center">
           <p className="text-lg text-secondary mb-4">
-            Select the correct hiragana for:
+            Select the correct {kanaType} for:
           </p>
           <div className="text-4xl font-mono font-bold text-primary mb-6">
             {currentQuestion.romaji}

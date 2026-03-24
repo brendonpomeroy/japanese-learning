@@ -129,3 +129,13 @@ export const getKatakanaByCategory = (
 ) => {
   return katakanaData[category];
 };
+
+export const getRandomKatakana = (category?: keyof typeof katakanaData) => {
+  const chars = category ? katakanaData[category] : getAllKatakana();
+  const keys = Object.keys(chars);
+  const randomKey = keys[Math.floor(Math.random() * keys.length)];
+  return {
+    character: randomKey,
+    romaji: chars[randomKey as keyof typeof chars],
+  };
+};

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ExerciseEngine from './ExerciseEngine';
+import type { KanaType } from './ExerciseEngine';
 import ProgressTracker from './ProgressTracker';
 import type { ExerciseType, HiraganaCategory } from '../types';
 
@@ -10,6 +11,7 @@ function Practice() {
   );
   const [selectedCategory, setSelectedCategory] =
     useState<HiraganaCategory>('basic');
+  const [kanaType, setKanaType] = useState<KanaType>('hiragana');
   const [showResults, setShowResults] = useState(false);
   const [lastScore, setLastScore] = useState<{
     score: number;
@@ -25,19 +27,19 @@ function Practice() {
     {
       type: 'recognition',
       title: 'Recognition Quiz',
-      description: 'See hiragana → select romaji',
+      description: 'See kana → select romaji',
       icon: '👁️',
     },
     {
       type: 'production',
       title: 'Production Quiz',
-      description: 'See romaji → select hiragana',
+      description: 'See romaji → select kana',
       icon: '✍️',
     },
     {
       type: 'typing',
       title: 'Typing Quiz',
-      description: 'See hiragana → type romaji',
+      description: 'See kana → type romaji',
       icon: '⌨️',
     },
     {
@@ -87,6 +89,7 @@ function Practice() {
         <ExerciseEngine
           exerciseType={currentExercise}
           category={selectedCategory}
+          kanaType={kanaType}
           onComplete={handleExerciseComplete}
         />
       </div>
@@ -106,7 +109,7 @@ function Practice() {
           Practice Exercises
         </h1>
         <p className="text-lg text-secondary">
-          Test your hiragana knowledge with different types of exercises
+          Test your kana knowledge with different types of exercises
         </p>
       </div>
 
@@ -130,6 +133,34 @@ function Practice() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-8">
+          <div className="bg-surface rounded-lg shadow-soft-md p-6">
+            <h2 className="text-2xl font-bold text-primary mb-4">
+              Select Script
+            </h2>
+            <div className="grid grid-cols-2 gap-3">
+              <button
+                onClick={() => setKanaType('hiragana')}
+                className={`p-3 rounded-lg font-medium transition-colors ${
+                  kanaType === 'hiragana'
+                    ? 'bg-accent-blue text-white'
+                    : 'bg-surface-alt text-secondary hover:bg-border'
+                }`}
+              >
+                Hiragana
+              </button>
+              <button
+                onClick={() => setKanaType('katakana')}
+                className={`p-3 rounded-lg font-medium transition-colors ${
+                  kanaType === 'katakana'
+                    ? 'bg-accent-blue text-white'
+                    : 'bg-surface-alt text-secondary hover:bg-border'
+                }`}
+              >
+                Katakana
+              </button>
+            </div>
+          </div>
+
           <div className="bg-surface rounded-lg shadow-soft-md p-6">
             <h2 className="text-2xl font-bold text-primary mb-4">
               Select Category
