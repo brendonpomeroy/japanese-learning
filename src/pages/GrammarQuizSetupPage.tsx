@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getPacksWithMode, getItemsForPacks } from '../features/grammar/grammarData';
-import type { GrammarMode } from '../features/grammar/types';
+
 import { capitalize } from '../utils/helpers';
 
 const quizModes: Array<'fill' | 'correct'> = ['fill', 'correct'];
