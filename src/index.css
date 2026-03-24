@@ -3,6 +3,45 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ───────────────────────────────────────────
+   PWA / iOS standalone fixes
+   ─────────────────────────────────────────── */
+
+/* Prevent rubber-band bounce in standalone mode */
+html,
+body {
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Safe-area insets for notch / Dynamic Island / home indicator */
+body {
+  padding-top: env(safe-area-inset-top);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Prevent text-size adjustments and double-tap zoom */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Disable pull-to-refresh in standalone PWA */
+@media all and (display-mode: standalone) {
+  body {
+    overscroll-behavior-y: contain;
+  }
+}
+
+/* Prevent callout / selection on long press for interactive elements */
+.pwa-no-callout {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* ───────────────────────────────────────────
    Theme token registration (Tailwind v4)
    Generates utility classes: bg-page, text-primary, etc.
    Default values = current app appearance (gray/blue)
