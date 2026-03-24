@@ -385,6 +385,211 @@
           }
         }
       ]
+    },
+    {
+      "id": "topic-marker-wa",
+      "title": "は",
+      "subtitle": "Topic Marker",
+      "description": "Use は to mark the topic of a sentence.",
+      "tags": ["particle", "grammar", "jlpt-n5"],
+      "supportedModes": ["build", "correct", "fill"],
+      "items": [
+        {
+          "id": "i-am-student",
+          "english": "I am a student",
+          "japanese": "わたしはがくせいです。",
+          "tokens": ["わたし", "は", "がくせいです"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "は", "role": "topic-marker" },
+          "build": { "distractors": ["を", "が", "せんせいです"] },
+          "correct": {
+            "incorrectJapanese": "わたしをがくせいです。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "わたし＿がくせいです。",
+            "answer": "は",
+            "options": ["は", "が", "を", "に"]
+          }
+        },
+        {
+          "id": "i-am-teacher",
+          "english": "I am a teacher",
+          "japanese": "わたしはせんせいです。",
+          "tokens": ["わたし", "は", "せんせいです"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "は", "role": "topic-marker" },
+          "build": { "distractors": ["を", "が", "がくせいです"] },
+          "correct": {
+            "incorrectJapanese": "わたしがせんせいです。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "わたし＿せんせいです。",
+            "answer": "は",
+            "options": ["は", "が", "を", "に"]
+          }
+        },
+        {
+          "id": "this-is-book",
+          "english": "This is a book",
+          "japanese": "これはほんです。",
+          "tokens": ["これ", "は", "ほんです"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "は", "role": "topic-marker" },
+          "build": { "distractors": ["を", "が", "ざっしです"] },
+          "correct": {
+            "incorrectJapanese": "これをほんです。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "これ＿ほんです。",
+            "answer": "は",
+            "options": ["は", "が", "を", "に"]
+          }
+        }
+      ]
+    },
+
+    {
+      "id": "desu-polarity",
+      "title": "です",
+      "subtitle": "Polarity (Positive & Negative)",
+      "description": "Use です for positive statements and じゃないです for negatives.",
+      "tags": ["copula", "grammar", "jlpt-n5"],
+      "supportedModes": ["build", "correct", "fill"],
+      "items": [
+        {
+          "id": "student-positive",
+          "english": "I am a student",
+          "japanese": "わたしはがくせいです。",
+          "tokens": ["わたし", "は", "がくせいです"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "です", "role": "positive" },
+          "build": { "distractors": ["がくせいじゃないです", "せんせいです"] },
+          "correct": {
+            "incorrectJapanese": "わたしはがくせいじゃないです。",
+            "errorType": "wrong-meaning"
+          },
+          "fill": {
+            "promptJapanese": "わたしはがくせい＿。",
+            "answer": "です",
+            "options": ["です", "じゃないです"]
+          }
+        },
+        {
+          "id": "student-negative",
+          "english": "I am not a student",
+          "japanese": "わたしはがくせいじゃないです。",
+          "tokens": ["わたし", "は", "がくせいじゃないです"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "じゃないです", "role": "negative" },
+          "build": { "distractors": ["がくせいです", "せんせいです"] },
+          "correct": {
+            "incorrectJapanese": "わたしはがくせいです。",
+            "errorType": "wrong-meaning"
+          },
+          "fill": {
+            "promptJapanese": "わたしはがくせい＿。",
+            "answer": "じゃないです",
+            "options": ["です", "じゃないです"]
+          }
+        }
+      ]
+    },
+
+    {
+      "id": "question-ka",
+      "title": "か",
+      "subtitle": "Question Marker",
+      "description": "Use か at the end of a sentence to make a question.",
+      "tags": ["particle", "grammar", "jlpt-n5"],
+      "supportedModes": ["build", "correct", "fill"],
+      "items": [
+        {
+          "id": "are-you-student",
+          "english": "Are you a student?",
+          "japanese": "がくせいですか？",
+          "tokens": ["がくせいですか"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "か", "role": "question" },
+          "build": { "distractors": ["がくせいです", "せんせいです"] },
+          "correct": {
+            "incorrectJapanese": "がくせいです。",
+            "errorType": "missing-token"
+          },
+          "fill": {
+            "promptJapanese": "がくせいです＿？",
+            "answer": "か",
+            "options": ["か", "は", "を"]
+          }
+        },
+        {
+          "id": "is-this-book",
+          "english": "Is this a book?",
+          "japanese": "これはほんですか？",
+          "tokens": ["これ", "は", "ほんですか"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "か", "role": "question" },
+          "build": { "distractors": ["ほんです", "ざっしです"] },
+          "correct": {
+            "incorrectJapanese": "これはほんです。",
+            "errorType": "missing-token"
+          },
+          "fill": {
+            "promptJapanese": "これはほんです＿？",
+            "answer": "か",
+            "options": ["か", "は", "を"]
+          }
+        }
+      ]
+    },
+
+    {
+      "id": "possession-no",
+      "title": "の",
+      "subtitle": "Possession",
+      "description": "Use の to show possession or connection between nouns.",
+      "tags": ["particle", "grammar", "jlpt-n5"],
+      "supportedModes": ["build", "correct", "fill"],
+      "items": [
+        {
+          "id": "my-book",
+          "english": "My book",
+          "japanese": "わたしのほんです。",
+          "tokens": ["わたし", "の", "ほんです"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "の", "role": "possession" },
+          "build": { "distractors": ["は", "を", "が"] },
+          "correct": {
+            "incorrectJapanese": "わたしはほんです。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "わたし＿ほんです。",
+            "answer": "の",
+            "options": ["の", "は", "を", "に"]
+          }
+        },
+        {
+          "id": "japanese-university",
+          "english": "A Japanese university",
+          "japanese": "にほんのだいがくです。",
+          "tokens": ["にほん", "の", "だいがくです"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "の", "role": "connection" },
+          "build": { "distractors": ["は", "を", "が"] },
+          "correct": {
+            "incorrectJapanese": "にほんはだいがくです。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "にほん＿だいがくです。",
+            "answer": "の",
+            "options": ["の", "は", "が", "を"]
+          }
+        }
+      ]
     }
   ]
 }
