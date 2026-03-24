@@ -37,7 +37,7 @@ function AppContent() {
   }, [isDarkMode, theme]);
 
   return (
-    <div className="min-h-screen bg-page pb-[calc(4rem+env(safe-area-inset-bottom))] md:pb-0">
+    <div className="min-h-screen bg-page pb-[calc(4rem+env(safe-area-inset-bottom)+16px)] md:pb-4">
       <Navigation />
       <CloudSyncModal />
       <Routes>
