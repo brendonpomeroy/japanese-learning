@@ -60,21 +60,21 @@ export const TypePracticeCard: React.FC<TypePracticeCardProps> = ({
   };
 
   return (
-    <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
-      <div className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+    <div className="border-t border-border pt-4">
+      <div className="text-lg font-semibold text-primary mb-2">
         {currentWord.definition}
       </div>
       {showRomaji && (
-        <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+        <div className="text-sm text-secondary mb-2">
           {currentWord.romaji}
         </div>
       )}
-      <div className="text-sm text-gray-600 dark:text-gray-400 italic mb-4">
+      <div className="text-sm text-secondary italic mb-4">
         {currentWord.example_sentence}
       </div>
 
       {showHint && (
-        <div className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+        <div className="text-sm text-secondary mb-4">
           Hint: {getHint()}
         </div>
       )}
@@ -90,7 +90,7 @@ export const TypePracticeCard: React.FC<TypePracticeCardProps> = ({
             }
           }}
           disabled={isAnswered}
-          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
+          className="w-full px-4 py-2 border border-border rounded-lg bg-surface text-primary focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
           placeholder="Type the word in hiragana or kanji..."
         />
         <div className="flex gap-2">

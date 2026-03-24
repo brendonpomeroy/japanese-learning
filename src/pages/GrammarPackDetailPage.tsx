@@ -21,7 +21,7 @@ export const GrammarPackDetailPage = () => {
   if (!pack) {
     return (
       <div className="container mx-auto px-4 py-8 text-center">
-        <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4">
+        <h1 className="text-2xl font-bold text-primary mb-4">
           Pack not found
         </h1>
         <Link
@@ -46,24 +46,24 @@ export const GrammarPackDetailPage = () => {
     <div className="container mx-auto px-4 py-8 max-w-2xl">
       <Link
         to="/grammar"
-        className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 mb-6 inline-block"
+        className="text-sm text-secondary hover:text-gray-700 dark:hover:text-gray-300 mb-6 inline-block"
       >
         ← Back to Grammar Packs
       </Link>
 
       <div className="text-center mb-8">
-        <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-2">
+        <h1 className="text-5xl font-bold text-primary mb-2">
           {pack.title}
         </h1>
-        <h2 className="text-xl text-gray-700 dark:text-gray-300 mb-2">
+        <h2 className="text-xl text-secondary mb-2">
           {pack.subtitle}
         </h2>
-        <p className="text-gray-600 dark:text-gray-400">{pack.description}</p>
+        <p className="text-secondary">{pack.description}</p>
         <div className="flex flex-wrap gap-1 justify-center mt-3">
           {pack.tags.map(tag => (
             <span
               key={tag}
-              className="text-xs px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300"
+              className="text-xs px-2 py-0.5 rounded-full bg-accent-blue/10 text-accent-blue"
             >
               {tag}
             </span>
@@ -80,23 +80,23 @@ export const GrammarPackDetailPage = () => {
             <button
               key={mode}
               onClick={() => navigate(`/grammar/${pack.id}/${mode}`)}
-              className="w-full bg-white dark:bg-gray-800 rounded-lg shadow-md p-5 text-left hover:shadow-lg transition-all duration-200 hover:scale-[1.02]"
+              className="w-full bg-surface rounded-lg shadow-soft-md p-5 text-left hover:shadow-soft-lg transition-all duration-200 hover:scale-[1.02]"
             >
               <div className="flex items-center justify-between mb-1">
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+                <h3 className="text-lg font-bold text-primary">
                   {capitalize(mode)}
                 </h3>
                 {seen > 0 && (
-                  <span className="text-sm text-gray-500 dark:text-gray-400">
+                  <span className="text-sm text-secondary">
                     {correctCount}/{stats.totalItems} mastered
                   </span>
                 )}
               </div>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+              <p className="text-sm text-secondary mb-3">
                 {modeDescriptions[mode]}
               </p>
               {seen > 0 && (
-                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5">
+                <div className="w-full bg-surface-alt rounded-full h-1.5">
                   <div
                     className="h-1.5 rounded-full bg-rose-500 transition-all duration-300"
                     style={{

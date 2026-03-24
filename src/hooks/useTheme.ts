@@ -22,9 +22,18 @@ export const useTheme = () => {
     });
   };
 
+  const setTheme = (theme: 'default' | 'paper') => {
+    dispatch({
+      type: 'UPDATE_SETTINGS',
+      payload: { theme },
+    });
+  };
+
   return {
     isDarkMode: state.settings.darkMode,
+    theme: (state.settings.theme ?? 'default') as 'default' | 'paper',
     toggleDarkMode,
     setDarkMode,
+    setTheme,
   };
 };

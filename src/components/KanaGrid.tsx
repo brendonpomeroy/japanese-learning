@@ -41,7 +41,7 @@ const KanaGrid: React.FC<KanaGridProps> = ({
       className={`px-4 py-2 rounded-lg font-medium transition-colors ${
         selectedCategory === category
           ? 'bg-blue-600 text-white'
-          : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+          : 'bg-surface-alt text-secondary hover:bg-gray-300 dark:hover:bg-gray-600'
       }`}
     >
       {label}
@@ -64,14 +64,14 @@ const KanaGrid: React.FC<KanaGridProps> = ({
           ${
             highlightedCharacters.includes(character)
               ? 'border-green-500 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200'
-              : 'border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 hover:border-blue-500 dark:hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900'
+              : 'border-border bg-surface-alt hover:border-blue-500 dark:hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900'
           }
         `}
       >
         <span className={`font-japanese font-bold mb-1 dark:text-gray-100 whitespace-nowrap break-keep ${character.length > 1 ? 'text-sm' : 'text-2xl'}`}>
           {character}
         </span>
-        <span className="text-xs text-gray-600 dark:text-gray-300 font-mono whitespace-nowrap">
+        <span className="text-xs text-secondary font-mono whitespace-nowrap">
           {romaji}
         </span>
       </button>
@@ -85,7 +85,7 @@ const KanaGrid: React.FC<KanaGridProps> = ({
     const reversedColumns = [...columns].reverse();
     return (
       <div key={chartTitle} className="space-y-4">
-        <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-600 pb-2">
+        <h3 className="text-lg font-semibold text-secondary border-b border-border pb-2">
           {chartTitle}
         </h3>
         <div className="overflow-x-auto">
@@ -110,7 +110,7 @@ const KanaGrid: React.FC<KanaGridProps> = ({
   const renderCombinationChart = () => {
     return (
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-600 pb-2">
+        <h3 className="text-lg font-semibold text-secondary border-b border-border pb-2">
           Combinations
         </h3>
         <div className="overflow-x-auto">
@@ -151,7 +151,7 @@ const KanaGrid: React.FC<KanaGridProps> = ({
 
   const MobileChart: React.FC<{ chartTitle: string; columns: (string | null)[][] }> = ({ chartTitle, columns }) => (
     <div className="space-y-4">
-      <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-600 pb-2">
+      <h3 className="text-lg font-semibold text-secondary border-b border-border pb-2">
         {chartTitle}
       </h3>
       <div className="grid grid-cols-5 gap-1.5">
@@ -171,14 +171,14 @@ const KanaGrid: React.FC<KanaGridProps> = ({
                   ${
                     highlightedCharacters.includes(char)
                       ? 'border-green-500 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200'
-                      : 'border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 hover:border-blue-500 dark:hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900'
+                      : 'border-border bg-surface-alt hover:border-blue-500 dark:hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900'
                   }
                 `}
               >
                 <span className="font-japanese font-bold mb-0.5 dark:text-gray-100 text-lg">
                   {char}
                 </span>
-                <span className="text-[10px] text-gray-600 dark:text-gray-300 font-mono whitespace-nowrap">
+                <span className="text-[10px] text-secondary font-mono whitespace-nowrap">
                   {romaji}
                 </span>
               </button>
@@ -190,9 +190,9 @@ const KanaGrid: React.FC<KanaGridProps> = ({
   );
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+    <div className="bg-surface rounded-lg shadow-soft-md p-6">
       <div className="mb-6">
-        <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4">
+        <h2 className="text-2xl font-bold text-primary mb-4">
           {title}
         </h2>
         {!showCategory && (
@@ -222,7 +222,7 @@ const KanaGrid: React.FC<KanaGridProps> = ({
         )}
         {(categoryToShow === 'all' || categoryToShow === 'combinations') && (
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-600 pb-2">
+            <h3 className="text-lg font-semibold text-secondary border-b border-border pb-2">
               Combinations
             </h3>
             <div className="grid grid-cols-3 gap-1.5">
@@ -239,14 +239,14 @@ const KanaGrid: React.FC<KanaGridProps> = ({
                         ${
                           highlightedCharacters.includes(char)
                             ? 'border-green-500 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200'
-                            : 'border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 hover:border-blue-500 dark:hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900'
+                            : 'border-border bg-surface-alt hover:border-blue-500 dark:hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900'
                         }
                       `}
                     >
                       <span className="font-japanese font-bold mb-0.5 dark:text-gray-100 whitespace-nowrap break-keep text-xs">
                         {char}
                       </span>
-                      <span className="text-[10px] text-gray-600 dark:text-gray-300 font-mono whitespace-nowrap">
+                      <span className="text-[10px] text-secondary font-mono whitespace-nowrap">
                         {romaji}
                       </span>
                     </button>

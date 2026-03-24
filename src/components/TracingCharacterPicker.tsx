@@ -43,7 +43,7 @@ export function TracingCharacterPicker({
           className={`px-4 py-2 rounded-lg font-medium transition-colors ${
             kanaType === 'hiragana'
               ? 'bg-purple-600 text-white'
-              : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+              : 'bg-surface-alt text-secondary hover:bg-gray-300 dark:hover:bg-gray-600'
           }`}
         >
           Hiragana
@@ -53,7 +53,7 @@ export function TracingCharacterPicker({
           className={`px-4 py-2 rounded-lg font-medium transition-colors ${
             kanaType === 'katakana'
               ? 'bg-purple-600 text-white'
-              : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+              : 'bg-surface-alt text-secondary hover:bg-gray-300 dark:hover:bg-gray-600'
           }`}
         >
           Katakana
@@ -69,7 +69,7 @@ export function TracingCharacterPicker({
             className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
               category === cat.key
                 ? 'bg-blue-600 text-white'
-                : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                : 'bg-surface-alt text-secondary hover:bg-gray-300 dark:hover:bg-gray-600'
             }`}
           >
             {cat.label}
@@ -93,8 +93,8 @@ export function TracingCharacterPicker({
                     : mastery >= 80
                       ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-900/50'
                       : mastery > 0
-                        ? 'bg-yellow-50 dark:bg-yellow-900/20 text-gray-800 dark:text-gray-200 hover:bg-yellow-100 dark:hover:bg-yellow-900/30'
-                        : 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600'
+                        ? 'bg-yellow-50 dark:bg-yellow-900/20 text-primary hover:bg-yellow-100 dark:hover:bg-yellow-900/30'
+                        : 'bg-surface-alt text-primary hover:bg-gray-200 dark:hover:bg-gray-600'
                 }`}
                 aria-label={`${char} (${romaji})`}
               >

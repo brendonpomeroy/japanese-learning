@@ -40,9 +40,9 @@ export const WordFlashcard: React.FC<WordFlashcardProps> = ({
           onClick={handleFlip}
         >
           {/* Front of card */}
-          <div className="absolute inset-0 backface-hidden bg-white dark:bg-gray-800 rounded-lg shadow-xl p-8 flex flex-col items-center justify-center border-2 border-blue-500">
+          <div className="absolute inset-0 backface-hidden bg-surface rounded-lg shadow-xl p-8 flex flex-col items-center justify-center border-2 border-blue-500">
             <div className="text-center">
-              <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+              <p className="text-sm text-secondary mb-4">
                 Tap to reveal
               </p>
               <p className="text-6xl mb-6 font-japanese">
@@ -52,24 +52,24 @@ export const WordFlashcard: React.FC<WordFlashcardProps> = ({
           </div>
 
           {/* Back of card */}
-          <div className="absolute inset-0 backface-hidden bg-white dark:bg-gray-800 rounded-lg shadow-xl p-8 flex flex-col items-center justify-center border-2 border-green-500 rotate-y-180">
+          <div className="absolute inset-0 backface-hidden bg-surface rounded-lg shadow-xl p-8 flex flex-col items-center justify-center border-2 border-green-500 rotate-y-180">
             <div className="text-center space-y-3 w-full overflow-y-auto max-h-full">
               <div className="text-4xl mb-2 font-japanese">
                 {word.kana_kanji}
               </div>
               {word.kana_kanji !== word.hiragana && (
-                <div className="text-xl text-gray-600 dark:text-gray-400 font-japanese">
+                <div className="text-xl text-secondary font-japanese">
                   {word.hiragana}
                 </div>
               )}
               <div className="text-lg text-gray-500 dark:text-gray-500">
                 {word.romaji}
               </div>
-              <div className="text-2xl font-semibold text-blue-600 dark:text-blue-400 mt-2">
+              <div className="text-2xl font-semibold text-accent-blue mt-2">
                 {word.definition}
               </div>
-              <div className="mt-4 p-3 bg-gray-100 dark:bg-gray-700 rounded-lg">
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">
+              <div className="mt-4 p-3 bg-surface-alt rounded-lg">
+                <p className="text-sm text-secondary mb-1">
                   Example:
                 </p>
                 <p className="text-base font-japanese">
@@ -77,10 +77,10 @@ export const WordFlashcard: React.FC<WordFlashcardProps> = ({
                 </p>
               </div>
               <div className="flex gap-2 mt-2 justify-center">
-                <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm">
+                <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-accent-violet rounded-full text-sm">
                   {word.difficulty}
                 </span>
-                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">
+                <span className="px-3 py-1 bg-accent-blue/10 text-accent-blue rounded-full text-sm">
                   {word.topic}
                 </span>
               </div>
@@ -114,7 +114,7 @@ export const WordFlashcard: React.FC<WordFlashcardProps> = ({
       )}
 
       {!isFlipped && (
-        <p className="text-center text-gray-500 dark:text-gray-400 mt-4">
+        <p className="text-center text-secondary mt-4">
           Click the card to see the definition and example
         </p>
       )}

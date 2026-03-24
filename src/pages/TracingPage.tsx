@@ -107,14 +107,14 @@ export const TracingPage: React.FC = () => {
       <div className="mb-6">
         <Link
           to="/"
-          className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 mb-4 inline-flex items-center"
+          className="text-accent-blue hover:text-blue-800 dark:hover:text-blue-300 mb-4 inline-flex items-center"
         >
           ← Back to Home
         </Link>
-        <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-2">
+        <h1 className="text-4xl font-bold text-primary mb-2">
           Kana Tracing Practice
         </h1>
-        <p className="text-gray-600 dark:text-gray-300">
+        <p className="text-secondary">
           Trace characters to practice writing. Use your mouse, stylus, or
           finger.
         </p>
@@ -133,10 +133,10 @@ export const TracingPage: React.FC = () => {
       <div className="mt-6 flex flex-col items-center">
         {/* Character info */}
         <div className="text-center mb-4">
-          <span className="text-6xl font-japanese text-gray-800 dark:text-gray-100">
+          <span className="text-6xl font-japanese text-primary">
             {currentChar}
           </span>
-          <p className="text-xl text-gray-600 dark:text-gray-400 mt-1">
+          <p className="text-xl text-secondary mt-1">
             {currentRomaji}
           </p>
           {mastery > 0 && (

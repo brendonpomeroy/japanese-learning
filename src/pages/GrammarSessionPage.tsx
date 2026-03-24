@@ -74,7 +74,7 @@ export const GrammarSessionPage = () => {
   if (!pack || !grammarMode) {
     return (
       <div className="container mx-auto px-4 py-8 text-center">
-        <p className="text-gray-600 dark:text-gray-400">Invalid session.</p>
+        <p className="text-secondary">Invalid session.</p>
       </div>
     );
   }
@@ -82,7 +82,7 @@ export const GrammarSessionPage = () => {
   if (!currentSession.queue.length) {
     return (
       <div className="container mx-auto px-4 py-8 text-center">
-        <p className="text-gray-600 dark:text-gray-400">Loading...</p>
+        <p className="text-secondary">Loading...</p>
       </div>
     );
   }
@@ -95,21 +95,21 @@ export const GrammarSessionPage = () => {
       <div className="flex items-center justify-between mb-6">
         <button
           onClick={handleBack}
-          className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
+          className="text-sm text-secondary hover:text-gray-700 dark:hover:text-gray-300"
         >
           ← Exit
         </button>
-        <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+        <span className="text-sm font-medium text-secondary">
           {pack.title} — {grammarMode.charAt(0).toUpperCase() + grammarMode.slice(1)}
         </span>
-        <span className="text-sm text-gray-500 dark:text-gray-400">
+        <span className="text-sm text-secondary">
           {progress}
         </span>
       </div>
 
       {/* Progress bar */}
       {!currentSession.isComplete && (
-        <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mb-8">
+        <div className="w-full bg-surface-alt rounded-full h-2 mb-8">
           <div
             className="h-2 rounded-full bg-rose-500 transition-all duration-300"
             style={{
@@ -120,7 +120,7 @@ export const GrammarSessionPage = () => {
       )}
 
       {/* Exercise or Summary */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+      <div className="bg-surface rounded-lg shadow-soft-md p-6">
         {currentSession.isComplete ? (
           <SessionSummary
             results={currentSession.results}

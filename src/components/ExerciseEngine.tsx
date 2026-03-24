@@ -223,10 +223,10 @@ const ExerciseEngine: React.FC<ExerciseEngineProps> = ({
     if (currentQuestion.type === 'hiragana-to-romaji') {
       return (
         <div className="text-center">
-          <p className="text-lg text-gray-600 dark:text-gray-300 mb-4">
+          <p className="text-lg text-secondary mb-4">
             Select the correct romaji for:
           </p>
-          <div className="text-6xl font-japanese font-bold text-gray-800 dark:text-gray-100 mb-6">
+          <div className="text-6xl font-japanese font-bold text-primary mb-6">
             {currentQuestion.character}
           </div>
         </div>
@@ -234,10 +234,10 @@ const ExerciseEngine: React.FC<ExerciseEngineProps> = ({
     } else if (currentQuestion.type === 'typing') {
       return (
         <div className="text-center">
-          <p className="text-lg text-gray-600 dark:text-gray-300 mb-4">
+          <p className="text-lg text-secondary mb-4">
             Type the romaji for:
           </p>
-          <div className="text-6xl font-japanese font-bold text-gray-800 dark:text-gray-100 mb-6">
+          <div className="text-6xl font-japanese font-bold text-primary mb-6">
             {currentQuestion.character}
           </div>
         </div>
@@ -245,10 +245,10 @@ const ExerciseEngine: React.FC<ExerciseEngineProps> = ({
     } else {
       return (
         <div className="text-center">
-          <p className="text-lg text-gray-600 dark:text-gray-300 mb-4">
+          <p className="text-lg text-secondary mb-4">
             Select the correct hiragana for:
           </p>
-          <div className="text-4xl font-mono font-bold text-gray-800 dark:text-gray-100 mb-6">
+          <div className="text-4xl font-mono font-bold text-primary mb-6">
             {currentQuestion.romaji}
           </div>
         </div>
@@ -257,17 +257,17 @@ const ExerciseEngine: React.FC<ExerciseEngineProps> = ({
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 max-w-2xl mx-auto">
+    <div className="bg-surface rounded-lg shadow-soft-md p-6 max-w-2xl mx-auto">
       <div className="flex justify-between items-center mb-6">
-        <div className="text-sm text-gray-600 dark:text-gray-300">
+        <div className="text-sm text-secondary">
           Question {currentQuestionIndex + 1} of {questions.length}
         </div>
-        <div className="text-sm text-gray-600 dark:text-gray-300">
+        <div className="text-sm text-secondary">
           Score: {score}/{questions.length}
         </div>
         {timeLeft !== null && (
           <div
-            className={`text-sm font-bold ${timeLeft <= 10 ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-gray-300'}`}
+            className={`text-sm font-bold ${timeLeft <= 10 ? 'text-error' : 'text-secondary'}`}
           >
             Time: {timeLeft}s
           </div>
@@ -286,7 +286,7 @@ const ExerciseEngine: React.FC<ExerciseEngineProps> = ({
               onKeyPress={handleKeyPress}
               placeholder="Type the romaji here..."
               disabled={showResult}
-              className="flex-1 px-4 py-3 border-2 border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono text-lg"
+              className="flex-1 px-4 py-3 border-2 border-border bg-surface text-primary rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono text-lg"
               autoFocus
             />
             <button
@@ -309,14 +309,14 @@ const ExerciseEngine: React.FC<ExerciseEngineProps> = ({
                 p-4 rounded-lg border-2 transition-all duration-200 font-medium
                 ${
                   showResult && option === currentQuestion.correctAnswer
-                    ? 'border-green-500 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200'
+                    ? 'border-green-500 bg-success/10 text-success'
                     : showResult &&
                         option === selectedAnswer &&
                         option !== currentQuestion.correctAnswer
-                      ? 'border-red-500 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200'
+                      ? 'border-red-500 bg-error/10 text-error'
                       : showResult
-                        ? 'border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400'
-                        : 'border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 hover:border-blue-500 dark:hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900 text-gray-800 dark:text-gray-200'
+                        ? 'border-border bg-surface-alt text-secondary'
+                        : 'border-border bg-surface-alt hover:border-blue-500 dark:hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900 text-primary'
                 }
               `}
             >
@@ -344,8 +344,8 @@ const ExerciseEngine: React.FC<ExerciseEngineProps> = ({
                     currentQuestion.correctAnswer.toLowerCase()
                   : selectedAnswer === currentQuestion.correctAnswer
               )
-                ? 'text-green-600 dark:text-green-400'
-                : 'text-red-600 dark:text-red-400'
+                ? 'text-success'
+                : 'text-error'
             }`}
           >
             {(
@@ -361,7 +361,7 @@ const ExerciseEngine: React.FC<ExerciseEngineProps> = ({
             ? typedAnswer.toLowerCase().trim() !==
               currentQuestion.correctAnswer.toLowerCase()
             : selectedAnswer !== currentQuestion.correctAnswer) && (
-            <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">
+            <p className="text-sm text-secondary mt-2">
               The correct answer is:{' '}
               <span className="font-bold">{currentQuestion.correctAnswer}</span>
             </p>

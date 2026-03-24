@@ -202,17 +202,17 @@ const EmojiQuiz: React.FC<EmojiQuizProps> = ({
   }
 
   return (
-    <div className="max-w-2xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
+    <div className="max-w-2xl mx-auto bg-surface rounded-lg shadow-soft-lg p-8">
       <div className="mb-6">
         <div className="flex justify-between items-center mb-4">
-          <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
+          <span className="text-sm font-medium text-secondary">
             Question {currentQuestionIndex + 1} of {questions.length}
           </span>
-          <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
+          <span className="text-sm font-medium text-secondary">
             Score: {score}/{questions.length}
           </span>
         </div>
-        <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+        <div className="w-full bg-surface-alt rounded-full h-2">
           <div
             className="bg-blue-600 h-2 rounded-full transition-all duration-300"
             style={{
@@ -225,13 +225,13 @@ const EmojiQuiz: React.FC<EmojiQuizProps> = ({
       {/* Japanese Display Mode Toggle */}
       <div className="mb-6">
         <div className="flex items-center justify-center">
-          <div className="bg-gray-100 dark:bg-gray-700 rounded-lg p-1 flex">
+          <div className="bg-surface-alt rounded-lg p-1 flex">
             <button
               onClick={() => setJapaneseMode('japanese')}
               className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
                 japaneseMode === 'japanese'
                   ? 'bg-blue-600 text-white shadow-sm'
-                  : 'text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100'
+                  : 'text-secondary hover:text-gray-800 dark:hover:text-gray-100'
               }`}
             >
               漢字/カナ
@@ -241,7 +241,7 @@ const EmojiQuiz: React.FC<EmojiQuizProps> = ({
               className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
                 japaneseMode === 'hiragana'
                   ? 'bg-blue-600 text-white shadow-sm'
-                  : 'text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100'
+                  : 'text-secondary hover:text-gray-800 dark:hover:text-gray-100'
               }`}
             >
               ひらがな
@@ -251,28 +251,28 @@ const EmojiQuiz: React.FC<EmojiQuizProps> = ({
               className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
                 japaneseMode === 'romaji'
                   ? 'bg-blue-600 text-white shadow-sm'
-                  : 'text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100'
+                  : 'text-secondary hover:text-gray-800 dark:hover:text-gray-100'
               }`}
             >
               Romaji
             </button>
           </div>
         </div>
-        <p className="text-center text-xs text-gray-500 dark:text-gray-400 mt-2">
+        <p className="text-center text-xs text-secondary mt-2">
           Choose how Japanese answers are displayed
         </p>
       </div>
 
       <div className="text-center mb-8">
-        <h2 className="text-lg font-medium text-gray-700 dark:text-gray-300 mb-4">
+        <h2 className="text-lg font-medium text-secondary mb-4">
           {getQuestionText()}
         </h2>
         <div className="text-8xl mb-6">{currentQuestion.emoji}</div>
       </div>
 
       {answeredIncorrectly && (
-        <div className="bg-red-50 dark:bg-red-900 border border-red-200 dark:border-red-700 rounded-lg p-4 mb-6">
-          <div className="text-red-800 dark:text-red-200">
+        <div className="bg-error/10 border border-red-200 dark:border-red-700 rounded-lg p-4 mb-6">
+          <div className="text-error">
             <p className="font-medium mb-2">
               Incorrect! The correct answer is:
             </p>
@@ -313,20 +313,20 @@ const EmojiQuiz: React.FC<EmojiQuizProps> = ({
           if (showResult) {
             if (option === currentQuestion.correctAnswer) {
               buttonClass +=
-                'bg-green-100 dark:bg-green-900 border-green-500 text-green-800 dark:text-green-200';
+                'bg-success/10 border-green-500 text-success';
             } else if (
               option === selectedAnswer &&
               option !== currentQuestion.correctAnswer
             ) {
               buttonClass +=
-                'bg-red-100 dark:bg-red-900 border-red-500 text-red-800 dark:text-red-200';
+                'bg-error/10 border-red-500 text-error';
             } else {
               buttonClass +=
-                'bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-400';
+                'bg-surface-alt border-border text-secondary';
             }
           } else {
             buttonClass +=
-              'bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 hover:bg-blue-50 dark:hover:bg-blue-900 hover:border-blue-400 text-gray-800 dark:text-gray-200';
+              'bg-surface-alt border-border hover:bg-blue-50 dark:hover:bg-blue-900 hover:border-blue-400 text-primary';
           }
 
           return (

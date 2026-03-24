@@ -14,6 +14,7 @@ interface AppState {
     audioEnabled: boolean;
     darkMode: boolean;
     fontSize: 'small' | 'medium' | 'large';
+    theme: 'default' | 'paper';
   };
 }
 
@@ -46,6 +47,7 @@ const initialState: AppState = {
     audioEnabled: true,
     darkMode: false,
     fontSize: 'medium',
+    theme: 'default',
   },
 };
 

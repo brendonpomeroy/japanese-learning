@@ -47,14 +47,14 @@ export const Hiragana: React.FC = () => {
       <div className="mb-8">
         <Link
           to="/"
-          className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 mb-4 inline-flex items-center"
+          className="text-accent-blue hover:text-blue-800 dark:hover:text-blue-300 mb-4 inline-flex items-center"
         >
           ← Back to Home
         </Link>
-        <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-4">
+        <h1 className="text-4xl font-bold text-primary mb-4">
           Hiragana Characters
         </h1>
-        <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
+        <p className="text-lg text-secondary mb-6">
           Learn all hiragana characters including basic, dakuten, handakuten,
           and combinations
         </p>
@@ -67,7 +67,7 @@ export const Hiragana: React.FC = () => {
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                 selectedCategory === category.key
                   ? 'bg-purple-600 text-white'
-                  : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                  : 'bg-surface-alt text-secondary hover:bg-gray-300 dark:hover:bg-gray-600'
               }`}
             >
               {category.title}
@@ -76,8 +76,8 @@ export const Hiragana: React.FC = () => {
         </div>
 
         <div className="flex flex-wrap items-center gap-4 mb-6">
-          <div className="bg-blue-50 dark:bg-blue-900 rounded-lg p-4 flex-1">
-            <p className="text-blue-800 dark:text-blue-200 text-sm">
+          <div className="bg-accent-blue/10 rounded-lg p-4 flex-1">
+            <p className="text-accent-blue text-sm">
               <strong>Tip:</strong> Click on any character to hear its
               pronunciation
             </p>

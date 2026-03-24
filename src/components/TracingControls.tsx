@@ -24,7 +24,7 @@ export function TracingControls({
       <button
         onClick={onPrevious}
         disabled={!hasPrevious}
-        className="px-4 py-2 rounded-lg font-medium transition-colors bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 disabled:opacity-40 disabled:cursor-not-allowed"
+        className="px-4 py-2 rounded-lg font-medium transition-colors bg-surface-alt text-secondary hover:bg-gray-300 dark:hover:bg-gray-600 disabled:opacity-40 disabled:cursor-not-allowed"
         aria-label="Previous character"
       >
         ← Prev
@@ -57,7 +57,7 @@ export function TracingControls({
       <button
         onClick={onNext}
         disabled={!hasNext}
-        className="px-4 py-2 rounded-lg font-medium transition-colors bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 disabled:opacity-40 disabled:cursor-not-allowed"
+        className="px-4 py-2 rounded-lg font-medium transition-colors bg-surface-alt text-secondary hover:bg-gray-300 dark:hover:bg-gray-600 disabled:opacity-40 disabled:cursor-not-allowed"
         aria-label="Next character"
       >
         Next →

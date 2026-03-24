@@ -94,7 +94,7 @@ export const VocabPage: React.FC = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-4 md:p-8">
+    <div className="min-h-screen bg-page p-4 md:p-8">
       <div className="max-w-6xl mx-auto space-y-6">
         <VocabControls
           mode={state.mode}
@@ -116,25 +116,25 @@ export const VocabPage: React.FC = () => {
 
         {/* Practice Card */}
         {currentWord && (
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+          <div className="bg-surface rounded-lg shadow-soft-md p-6">
             {/* Stats Bar */}
             <div className="flex justify-between items-center text-sm mb-4">
               <div className="flex gap-4">
-                <span className="text-gray-600 dark:text-gray-400">
+                <span className="text-secondary">
                   Streak:{' '}
-                  <strong className="text-gray-900 dark:text-white">
+                  <strong className="text-primary">
                     {state.streak}
                   </strong>
                 </span>
-                <span className="text-gray-600 dark:text-gray-400">
+                <span className="text-secondary">
                   Session:{' '}
-                  <strong className="text-gray-900 dark:text-white">
+                  <strong className="text-primary">
                     {state.session.correct}/{state.session.total}
                   </strong>
                 </span>
-                <span className="text-gray-600 dark:text-gray-400">
+                <span className="text-secondary">
                   Total:{' '}
-                  <strong className="text-gray-900 dark:text-white">
+                  <strong className="text-primary">
                     {totalCorrect}/{totalSeen}
                   </strong>
                 </span>
@@ -165,8 +165,8 @@ export const VocabPage: React.FC = () => {
 
         {/* No words available */}
         {eligibleWords.length === 0 && (
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 text-center">
-            <p className="text-gray-600 dark:text-gray-400">
+          <div className="bg-surface rounded-lg shadow-soft-md p-6 text-center">
+            <p className="text-secondary">
               No words available with the selected filters. Please adjust your
               topic or difficulty selection.
             </p>

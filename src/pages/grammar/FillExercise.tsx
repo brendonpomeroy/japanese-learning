@@ -47,10 +47,10 @@ export const FillExercise: React.FC<FillExerciseProps> = ({
   return (
     <div className="space-y-6">
       <div className="text-center">
-        <p className="text-lg text-gray-600 dark:text-gray-400 mb-2">
+        <p className="text-lg text-secondary mb-2">
           {item.english}
         </p>
-        <p className="text-3xl font-bold text-gray-900 dark:text-white">
+        <p className="text-3xl font-bold text-primary">
           {parts[0]}
           <span className="inline-block mx-1 px-3 py-1 border-b-4 border-blue-400 dark:border-blue-500 min-w-[3rem] text-center">
             {isAnswered ? (
@@ -84,8 +84,8 @@ export const FillExercise: React.FC<FillExerciseProps> = ({
                     ? 'bg-green-500 text-white'
                     : isSelected
                       ? 'bg-red-500 text-white'
-                      : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
-                  : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                      : 'bg-surface-alt text-secondary'
+                  : 'bg-surface-alt text-secondary hover:bg-gray-300 dark:hover:bg-gray-600'
               } disabled:cursor-not-allowed`}
             >
               {option}
@@ -96,7 +96,7 @@ export const FillExercise: React.FC<FillExerciseProps> = ({
 
       {isAnswered && !isCorrect && (
         <div className="text-center space-y-3">
-          <p className="text-sm text-gray-600 dark:text-gray-400">
+          <p className="text-sm text-secondary">
             Correct answer: <span className="font-bold text-green-500">{item.japanese}</span>
           </p>
           <button
@@ -113,7 +113,7 @@ export const FillExercise: React.FC<FillExerciseProps> = ({
       )}
 
       {isAnswered && item.translationNotes.length > 0 && (
-        <div className="text-center text-sm text-gray-500 dark:text-gray-400 italic">
+        <div className="text-center text-sm text-secondary italic">
           {item.translationNotes.map((note, i) => (
             <p key={i}>{note}</p>
           ))}

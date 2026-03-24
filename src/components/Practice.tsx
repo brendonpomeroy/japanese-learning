@@ -78,7 +78,7 @@ function Practice() {
         <div className="mb-6">
           <button
             onClick={() => setCurrentExercise(null)}
-            className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 mb-4 inline-flex items-center"
+            className="text-accent-blue hover:text-blue-800 dark:hover:text-blue-300 mb-4 inline-flex items-center"
           >
             ← Back to Practice Menu
           </button>
@@ -98,30 +98,30 @@ function Practice() {
       <div className="mb-8">
         <Link
           to="/"
-          className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 mb-4 inline-flex items-center"
+          className="text-accent-blue hover:text-blue-800 dark:hover:text-blue-300 mb-4 inline-flex items-center"
         >
           ← Back to Home
         </Link>
-        <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-4">
+        <h1 className="text-4xl font-bold text-primary mb-4">
           Practice Exercises
         </h1>
-        <p className="text-lg text-gray-600 dark:text-gray-300">
+        <p className="text-lg text-secondary">
           Test your hiragana knowledge with different types of exercises
         </p>
       </div>
 
       {showResults && lastScore && (
-        <div className="bg-green-50 dark:bg-green-900 border border-green-200 dark:border-green-700 rounded-lg p-6 mb-8">
-          <h2 className="text-xl font-bold text-green-800 dark:text-green-200 mb-2">
+        <div className="bg-success/10 border border-green-200 dark:border-green-700 rounded-lg p-6 mb-8">
+          <h2 className="text-xl font-bold text-success mb-2">
             Exercise Complete!
           </h2>
-          <p className="text-green-700 dark:text-green-300">
+          <p className="text-success">
             You scored {lastScore.score} out of {lastScore.total} (
             {((lastScore.score / lastScore.total) * 100).toFixed(1)}%)
           </p>
           <button
             onClick={() => setShowResults(false)}
-            className="mt-3 text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-200 font-medium"
+            className="mt-3 text-success hover:text-green-800 dark:hover:text-green-200 font-medium"
           >
             Continue practicing →
           </button>
@@ -130,8 +130,8 @@ function Practice() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-8">
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-            <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4">
+          <div className="bg-surface rounded-lg shadow-soft-md p-6">
+            <h2 className="text-2xl font-bold text-primary mb-4">
               Select Category
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -142,7 +142,7 @@ function Practice() {
                   className={`p-3 rounded-lg font-medium transition-colors ${
                     selectedCategory === category.key
                       ? 'bg-blue-600 text-white'
-                      : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                      : 'bg-surface-alt text-secondary hover:bg-gray-300 dark:hover:bg-gray-600'
                   }`}
                 >
                   {category.title}
@@ -151,8 +151,8 @@ function Practice() {
             </div>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-            <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6">
+          <div className="bg-surface rounded-lg shadow-soft-md p-6">
+            <h2 className="text-2xl font-bold text-primary mb-6">
               Choose Exercise Type
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -164,14 +164,14 @@ function Practice() {
                 >
                   <div className="flex items-center gap-4 mb-3">
                     <span className="text-3xl">{exercise.icon}</span>
-                    <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">
+                    <h3 className="text-xl font-bold text-primary">
                       {exercise.title}
                     </h3>
                   </div>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">
+                  <p className="text-secondary mb-4">
                     {exercise.description}
                   </p>
-                  <div className="flex items-center text-blue-600 dark:text-blue-400 group-hover:text-blue-700 dark:group-hover:text-blue-300">
+                  <div className="flex items-center text-accent-blue group-hover:text-blue-700 dark:group-hover:text-blue-300">
                     <span className="mr-2">Start exercise</span>
                     <span className="transform group-hover:translate-x-1 transition-transform">
                       →

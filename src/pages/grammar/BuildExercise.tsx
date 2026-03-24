@@ -58,10 +58,10 @@ export const BuildExercise: React.FC<BuildExerciseProps> = ({
   return (
     <div className="space-y-6">
       <div className="text-center">
-        <p className="text-lg text-gray-600 dark:text-gray-400 mb-1">
+        <p className="text-lg text-secondary mb-1">
           Build the sentence:
         </p>
-        <p className="text-xl font-semibold text-gray-900 dark:text-white">
+        <p className="text-xl font-semibold text-primary">
           {item.english}
         </p>
       </div>
@@ -73,11 +73,11 @@ export const BuildExercise: React.FC<BuildExerciseProps> = ({
             ? isCorrect
               ? 'border-green-400 bg-green-50 dark:bg-green-900/20'
               : 'border-red-400 bg-red-50 dark:bg-red-900/20'
-            : 'border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800/50'
+            : 'border-border bg-surface-alt'
         }`}
       >
         {placed.length === 0 ? (
-          <span className="text-gray-400 dark:text-gray-500 text-sm">
+          <span className="text-secondary text-sm">
             Tap tiles below to build the sentence
           </span>
         ) : (
@@ -107,7 +107,7 @@ export const BuildExercise: React.FC<BuildExerciseProps> = ({
             key={`available-${index}`}
             onClick={() => handleTileClick(tile, index)}
             disabled={isAnswered}
-            className="px-4 py-2 rounded-lg font-medium text-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-4 py-2 rounded-lg font-medium text-lg bg-surface-alt text-secondary hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {tile}
           </button>
@@ -132,7 +132,7 @@ export const BuildExercise: React.FC<BuildExerciseProps> = ({
 
       {isAnswered && !isCorrect && (
         <div className="text-center space-y-3">
-          <p className="text-sm text-gray-600 dark:text-gray-400">
+          <p className="text-sm text-secondary">
             Correct answer:{' '}
             <span className="font-bold text-green-500">{item.japanese}</span>
           </p>
@@ -146,7 +146,7 @@ export const BuildExercise: React.FC<BuildExerciseProps> = ({
       )}
 
       {isAnswered && item.translationNotes.length > 0 && (
-        <div className="text-center text-sm text-gray-500 dark:text-gray-400 italic">
+        <div className="text-center text-sm text-secondary italic">
           {item.translationNotes.map((note, i) => (
             <p key={i}>{note}</p>
           ))}

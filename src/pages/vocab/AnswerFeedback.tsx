@@ -13,8 +13,8 @@ export const AnswerFeedback: React.FC<AnswerFeedbackProps> = ({
   <div
     className={`mt-4 p-4 rounded-lg ${
       isCorrect
-        ? 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200'
-        : 'bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200'
+        ? 'bg-success/10 text-success'
+        : 'bg-error/10 text-error'
     }`}
   >
     {isCorrect ? (

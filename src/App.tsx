@@ -20,19 +20,19 @@ import { TracingPage } from './pages/TracingPage';
 import { useTheme } from './hooks/useTheme';
 
 function AppContent() {
-  const { isDarkMode } = useTheme();
+  const { isDarkMode, theme } = useTheme();
 
   useEffect(() => {
-    console.log('Theme state changed, isDarkMode:', isDarkMode);
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
+    document.documentElement.classList.toggle('dark', isDarkMode);
+    if (theme === 'default') {
+      document.documentElement.removeAttribute('data-theme');
     } else {
-      document.documentElement.classList.remove('dark');
+      document.documentElement.setAttribute('data-theme', theme);
     }
-  }, [isDarkMode]);
+  }, [isDarkMode, theme]);
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 pb-16 md:pb-0">
+    <div className="min-h-screen bg-page pb-16 md:pb-0">
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />

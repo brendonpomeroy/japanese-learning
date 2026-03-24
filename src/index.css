@@ -2,6 +2,154 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* ───────────────────────────────────────────
+   Theme token registration (Tailwind v4)
+   Generates utility classes: bg-page, text-primary, etc.
+   Default values = current app appearance (gray/blue)
+   ─────────────────────────────────────────── */
+@theme {
+  /* Surfaces */
+  --color-page: #f3f4f6;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f9fafb;
+  --color-nav-bg: #2563eb;
+  --color-nav-border: transparent;
+
+  /* Text */
+  --color-primary: #1f2937;
+  --color-secondary: #4b5563;
+  --color-inverse: #ffffff;
+
+  /* Borders */
+  --color-border: #e5e7eb;
+  --color-border-light: #f3f4f6;
+
+  /* Interactive */
+  --color-link: #3b82f6;
+
+  /* Accents */
+  --color-accent-blue: #3b82f6;
+  --color-accent-violet: #8b5cf6;
+  --color-accent-orange: #f97316;
+  --color-accent-rose: #f43f5e;
+  --color-accent-green: #22c55e;
+
+  /* Feedback */
+  --color-success: #22c55e;
+  --color-error: #ef4444;
+
+  /* Soft shadows (warm-toned) */
+  --shadow-soft-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-soft-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-soft-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* ───────────────────────────────────────────
+   Default theme — dark mode overrides
+   ─────────────────────────────────────────── */
+.dark {
+  --color-page: #111827;
+  --color-surface: #1f2937;
+  --color-surface-alt: #374151;
+  --color-nav-bg: #1e3a8a;
+  --color-nav-border: transparent;
+
+  --color-primary: #f3f4f6;
+  --color-secondary: #9ca3af;
+  --color-inverse: #ffffff;
+
+  --color-border: #374151;
+  --color-border-light: #1f2937;
+
+  --color-link: #60a5fa;
+
+  --color-accent-blue: #60a5fa;
+  --color-accent-violet: #a78bfa;
+  --color-accent-orange: #fb923c;
+  --color-accent-rose: #fb7185;
+  --color-accent-green: #4ade80;
+
+  --color-success: #4ade80;
+  --color-error: #f87171;
+
+  --shadow-soft-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-soft-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-soft-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* ───────────────────────────────────────────
+   Paper Study theme — light
+   ─────────────────────────────────────────── */
+[data-theme='paper'] {
+  --color-page: #F7F3EC;
+  --color-surface: #FFFDF9;
+  --color-surface-alt: #F8F4ED;
+  --color-nav-bg: rgba(255, 253, 249, 0.85);
+  --color-nav-border: #E8E0D4;
+
+  --color-primary: #2A2A2A;
+  --color-secondary: #5F5A52;
+  --color-inverse: #FFFFFF;
+
+  --color-border: #E8E0D4;
+  --color-border-light: #F0EAE0;
+
+  --color-link: #5C84E6;
+
+  --color-accent-blue: #5C84E6;
+  --color-accent-violet: #9A6AF0;
+  --color-accent-orange: #F08A3E;
+  --color-accent-rose: #E85D7A;
+  --color-accent-green: #7FA97F;
+
+  --color-success: #7FA97F;
+  --color-error: #E85D7A;
+
+  --shadow-soft-sm: 0 1px 3px rgba(60, 40, 20, 0.06);
+  --shadow-soft-md: 0 4px 12px rgba(60, 40, 20, 0.08);
+  --shadow-soft-lg: 0 8px 24px rgba(60, 40, 20, 0.06);
+
+  --radius-sm: 10px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 22px;
+
+  font-family: 'Noto Sans JP', 'Inter', 'Hiragino Sans', system-ui, sans-serif;
+}
+
+/* ───────────────────────────────────────────
+   Paper Study theme — dark
+   ─────────────────────────────────────────── */
+[data-theme='paper'].dark {
+  --color-page: #1A1816;
+  --color-surface: #242220;
+  --color-surface-alt: #2E2B28;
+  --color-nav-bg: rgba(30, 28, 26, 0.9);
+  --color-nav-border: #3A3632;
+
+  --color-primary: #E8E2D8;
+  --color-secondary: #A09888;
+  --color-inverse: #FFFFFF;
+
+  --color-border: #3A3632;
+  --color-border-light: #322F2B;
+
+  --color-link: #7B9FEE;
+
+  --color-accent-blue: #7B9FEE;
+  --color-accent-violet: #B48AF5;
+  --color-accent-orange: #F5A060;
+  --color-accent-rose: #F07A92;
+  --color-accent-green: #6BC498;
+
+  --color-success: #6BC498;
+  --color-error: #F07A92;
+
+  --shadow-soft-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --shadow-soft-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-soft-lg: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
 /* Japanese font styling */
 .font-japanese {
   font-family:
@@ -31,16 +179,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--color-surface-alt);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
+  background: var(--color-border);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a1a1a1;
+  background: var(--color-secondary);
 }
 
 /* Smooth transitions */
@@ -54,7 +202,7 @@
 /* Focus styles */
 button:focus,
 input:focus {
-  outline: 2px solid #3b82f6;
+  outline: 2px solid var(--color-link);
   outline-offset: 2px;
 }
 
@@ -77,15 +225,13 @@ input:focus {
 /* Hover effects */
 .hover-lift:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-soft-lg);
 }
-
-
 
 /* Loading spinner */
 .loading-spinner {
-  border: 3px solid #f3f3f3;
-  border-top: 3px solid #3b82f6;
+  border: 3px solid var(--color-border-light);
+  border-top: 3px solid var(--color-link);
   border-radius: 50%;
   width: 40px;
   height: 40px;

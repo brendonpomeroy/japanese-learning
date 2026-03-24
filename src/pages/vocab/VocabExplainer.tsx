@@ -4,10 +4,10 @@ export const VocabExplainer: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md">
+    <div className="bg-surface rounded-lg shadow-soft-md">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between p-4 text-left text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-750 rounded-lg transition-colors"
+        className="w-full flex items-center justify-between p-4 text-left text-secondary hover:bg-surface-alt rounded-lg transition-colors"
       >
         <span className="font-medium">How does Vocab Practice work?</span>
         <svg
@@ -26,9 +26,9 @@ export const VocabExplainer: React.FC = () => {
       </button>
 
       {isOpen && (
-        <div className="px-4 pb-4 space-y-4 text-sm text-gray-600 dark:text-gray-400">
+        <div className="px-4 pb-4 space-y-4 text-sm text-secondary">
           <div>
-            <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">
+            <h3 className="font-semibold text-primary mb-1">
               Practice Modes
             </h3>
             <ul className="list-disc list-inside space-y-1">
@@ -44,7 +44,7 @@ export const VocabExplainer: React.FC = () => {
           </div>
 
           <div>
-            <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">
+            <h3 className="font-semibold text-primary mb-1">
               Smart Word Selection
             </h3>
             <p>
@@ -55,7 +55,7 @@ export const VocabExplainer: React.FC = () => {
           </div>
 
           <div>
-            <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">
+            <h3 className="font-semibold text-primary mb-1">
               Mastery & Progress
             </h3>
             <p>
@@ -67,7 +67,7 @@ export const VocabExplainer: React.FC = () => {
           </div>
 
           <div>
-            <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">
+            <h3 className="font-semibold text-primary mb-1">
               Filters & Settings
             </h3>
             <p>
@@ -79,7 +79,7 @@ export const VocabExplainer: React.FC = () => {
           </div>
 
           <div>
-            <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">
+            <h3 className="font-semibold text-primary mb-1">
               Stats
             </h3>
             <ul className="list-disc list-inside space-y-1">

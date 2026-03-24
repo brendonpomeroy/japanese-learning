@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState, useRef, useEffect, useCallback } from 'react';
-import ThemeToggle from './ThemeToggle';
+import { UserMenu, UserMenuMobile } from './UserMenu';
 
 type NavItem = {
   label: string;
@@ -93,8 +93,8 @@ function NavDropdown({
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`flex items-center gap-1 hover:text-blue-200 dark:hover:text-blue-300 transition-colors ${
-          groupActive ? 'text-blue-200 dark:text-blue-300 font-semibold' : ''
+        className={`flex items-center gap-1 hover:text-inverse/70 transition-colors ${
+          groupActive ? 'text-inverse/70 font-semibold' : ''
         }`}
         aria-expanded={isOpen}
         aria-haspopup="true"
@@ -117,7 +117,7 @@ function NavDropdown({
 
       {isOpen && (
         <div
-          className="absolute top-full left-0 mt-2 bg-white dark:bg-gray-800 rounded-lg shadow-xl py-2 min-w-48 z-50"
+          className="absolute top-full left-0 mt-2 bg-surface rounded-lg shadow-soft-lg py-2 min-w-48 z-50 border border-border"
           role="menu"
         >
           {group.items.map((item) => (
@@ -125,9 +125,9 @@ function NavDropdown({
               key={item.path}
               to={item.path}
               role="menuitem"
-              className={`flex items-center gap-3 px-4 py-2.5 text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors ${
+              className={`flex items-center gap-3 px-4 py-2.5 text-primary hover:bg-surface-alt transition-colors ${
                 isPathActive(item.path, currentPath)
-                  ? 'bg-blue-50 dark:bg-gray-700 text-blue-600 dark:text-blue-400 font-semibold'
+                  ? 'bg-surface-alt text-accent-blue font-semibold'
                   : ''
               }`}
               onClick={() => setIsOpen(false)}
@@ -170,7 +170,7 @@ function BottomSheet({
         className="fixed inset-0 bg-black/30 z-40 md:hidden"
         onClick={onClose}
       />
-      <div className="fixed bottom-16 left-0 right-0 bg-white dark:bg-gray-800 rounded-t-2xl shadow-2xl z-50 md:hidden bottom-sheet-enter">
+      <div className="fixed bottom-16 left-0 right-0 bg-surface rounded-t-2xl shadow-2xl z-50 md:hidden bottom-sheet-enter">
         <div className="p-4">{children}</div>
       </div>
     </>
@@ -208,7 +208,7 @@ function Navigation() {
   return (
     <>
       {/* Top bar */}
-      <nav className="bg-blue-600 dark:bg-blue-800 text-white shadow-lg">
+      <nav className="bg-nav-bg text-inverse shadow-lg backdrop-blur-lg border-b border-nav-border">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center py-4">
             <Link to="/" className="text-xl font-bold">
@@ -228,9 +228,9 @@ function Navigation() {
                   <Link
                     key={entry.path}
                     to={entry.path}
-                    className={`hover:text-blue-200 dark:hover:text-blue-300 transition-colors ${
+                    className={`hover:text-inverse/70 transition-colors ${
                       isPathActive(entry.path, location.pathname)
-                        ? 'text-blue-200 dark:text-blue-300 font-semibold'
+                        ? 'text-inverse/70 font-semibold'
                         : ''
                     }`}
                   >
@@ -239,7 +239,7 @@ function Navigation() {
                 ),
               )}
               <div className="ml-4">
-                <ThemeToggle />
+                <UserMenu />
               </div>
             </div>
           </div>
@@ -247,15 +247,15 @@ function Navigation() {
       </nav>
 
       {/* Mobile bottom tab bar */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 z-50 md:hidden">
+      <div className="fixed bottom-0 left-0 right-0 bg-surface border-t border-border z-50 md:hidden">
         <div className="flex justify-around items-center h-16 w-full">
           {/* Home tab */}
           <button
             onClick={() => handleMobileNav('/')}
             className={`flex flex-col items-center justify-center w-full h-full transition-colors ${
               location.pathname === '/'
-                ? 'text-blue-600 dark:text-blue-400'
-                : 'text-gray-500 dark:text-gray-400'
+                ? 'text-accent-blue'
+                : 'text-secondary'
             }`}
             aria-label="Home"
           >
@@ -280,8 +280,8 @@ function Navigation() {
             onClick={() => toggleSheet('learn')}
             className={`flex flex-col items-center justify-center w-full h-full transition-colors ${
               activeSheet === 'learn' || isGroupActive(learnGroup, location.pathname)
-                ? 'text-blue-600 dark:text-blue-400'
-                : 'text-gray-500 dark:text-gray-400'
+                ? 'text-accent-blue'
+                : 'text-secondary'
             }`}
             aria-label="Learn"
           >
@@ -306,8 +306,8 @@ function Navigation() {
             onClick={() => toggleSheet('practice')}
             className={`flex flex-col items-center justify-center w-full h-full transition-colors ${
               activeSheet === 'practice' || isGroupActive(practiceGroup, location.pathname)
-                ? 'text-blue-600 dark:text-blue-400'
-                : 'text-gray-500 dark:text-gray-400'
+                ? 'text-accent-blue'
+                : 'text-secondary'
             }`}
             aria-label="Practice"
           >
@@ -332,8 +332,8 @@ function Navigation() {
             onClick={() => toggleSheet('more')}
             className={`flex flex-col items-center justify-center w-full h-full transition-colors ${
               activeSheet === 'more'
-                ? 'text-blue-600 dark:text-blue-400'
-                : 'text-gray-500 dark:text-gray-400'
+                ? 'text-accent-blue'
+                : 'text-secondary'
             }`}
             aria-label="More"
           >
@@ -364,8 +364,8 @@ function Navigation() {
               onClick={() => handleMobileNav(item.path)}
               className={`flex items-center gap-3 p-3 rounded-xl transition-colors ${
                 isPathActive(item.path, location.pathname)
-                  ? 'bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 font-semibold'
-                  : 'bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600'
+                  ? 'bg-accent-blue/10 text-accent-blue font-semibold'
+                  : 'bg-surface-alt text-primary hover:bg-border-light'
               }`}
             >
               <span className="text-2xl">{item.icon}</span>
@@ -383,8 +383,8 @@ function Navigation() {
               onClick={() => handleMobileNav(item.path)}
               className={`flex items-center gap-3 p-3 rounded-xl transition-colors ${
                 isPathActive(item.path, location.pathname)
-                  ? 'bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 font-semibold'
-                  : 'bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600'
+                  ? 'bg-accent-blue/10 text-accent-blue font-semibold'
+                  : 'bg-surface-alt text-primary hover:bg-border-light'
               }`}
             >
               <span className="text-2xl">{item.icon}</span>
@@ -407,12 +407,7 @@ function Navigation() {
             <span className="text-2xl">📋</span>
             <span className="text-sm font-medium">Lessons</span>
           </button>
-          <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-xl">
-            <span className="text-sm font-medium text-gray-700 dark:text-gray-200">
-              Theme
-            </span>
-            <ThemeToggle />
-          </div>
+          <UserMenuMobile />
         </div>
       </BottomSheet>
     </>

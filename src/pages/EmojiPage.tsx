@@ -28,7 +28,7 @@ export const EmojiPage: React.FC = () => {
         <div className="mb-6">
           <button
             onClick={() => setShowQuiz(false)}
-            className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 mb-4 inline-flex items-center"
+            className="text-accent-blue hover:text-blue-800 dark:hover:text-blue-300 mb-4 inline-flex items-center"
           >
             ← Back to Emoji Quiz
           </button>
@@ -44,30 +44,30 @@ export const EmojiPage: React.FC = () => {
       <div className="mb-8">
         <Link
           to="/"
-          className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 mb-4 inline-flex items-center"
+          className="text-accent-blue hover:text-blue-800 dark:hover:text-blue-300 mb-4 inline-flex items-center"
         >
           ← Back to Home
         </Link>
-        <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-4">
+        <h1 className="text-4xl font-bold text-primary mb-4">
           Emoji Quiz
         </h1>
-        <p className="text-lg text-gray-600 dark:text-gray-300">
+        <p className="text-lg text-secondary">
           Test your Japanese vocabulary through emoji recognition!
         </p>
       </div>
 
       {showResults && lastScore && (
-        <div className="bg-green-50 dark:bg-green-900 border border-green-200 dark:border-green-700 rounded-lg p-6 mb-8">
-          <h2 className="text-xl font-bold text-green-800 dark:text-green-200 mb-2">
+        <div className="bg-success/10 border border-green-200 dark:border-green-700 rounded-lg p-6 mb-8">
+          <h2 className="text-xl font-bold text-success mb-2">
             Quiz Complete!
           </h2>
-          <p className="text-green-700 dark:text-green-300">
+          <p className="text-success">
             You scored {lastScore.score} out of {lastScore.total} (
             {((lastScore.score / lastScore.total) * 100).toFixed(1)}%)
           </p>
           <button
             onClick={() => setShowResults(false)}
-            className="mt-3 text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-200 font-medium"
+            className="mt-3 text-success hover:text-green-800 dark:hover:text-green-200 font-medium"
           >
             Take another quiz →
           </button>
@@ -76,18 +76,18 @@ export const EmojiPage: React.FC = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-8">
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-            <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4">
+          <div className="bg-surface rounded-lg shadow-soft-md p-6">
+            <h2 className="text-2xl font-bold text-primary mb-4">
               About Emoji Quiz
             </h2>
-            <div className="space-y-4 text-gray-600 dark:text-gray-300">
+            <div className="space-y-4 text-secondary">
               <p>
                 The emoji quiz helps you learn Japanese vocabulary through
                 visual recognition. You'll see an emoji and need to choose the
                 correct Japanese word.
               </p>
               <div className="space-y-2">
-                <h3 className="font-semibold text-gray-800 dark:text-gray-200">
+                <h3 className="font-semibold text-primary">
                   Display Options:
                 </h3>
                 <ul className="list-disc list-inside space-y-1 ml-4">
@@ -109,8 +109,8 @@ export const EmojiPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-            <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6">
+          <div className="bg-surface rounded-lg shadow-soft-md p-6">
+            <h2 className="text-2xl font-bold text-primary mb-6">
               Start Quiz
             </h2>
             <div className="text-center">
@@ -121,7 +121,7 @@ export const EmojiPage: React.FC = () => {
               >
                 Start Emoji Quiz
               </button>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">
+              <p className="text-sm text-secondary mt-4">
                 10 random questions • Multiple choice format
               </p>
             </div>
@@ -133,11 +133,11 @@ export const EmojiPage: React.FC = () => {
         </div>
       </div>
 
-      <div className="mt-8 bg-blue-50 dark:bg-blue-900 border border-blue-200 dark:border-blue-700 rounded-lg p-6">
-        <h3 className="text-lg font-bold text-blue-800 dark:text-blue-200 mb-2">
+      <div className="mt-8 bg-accent-blue/10 border border-blue-200 dark:border-blue-700 rounded-lg p-6">
+        <h3 className="text-lg font-bold text-accent-blue mb-2">
           💡 Learning Tips
         </h3>
-        <div className="text-blue-700 dark:text-blue-300 space-y-2">
+        <div className="text-accent-blue space-y-2">
           <p>
             • Pay attention to the full translations when you get answers wrong
           </p>

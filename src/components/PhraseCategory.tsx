@@ -39,8 +39,8 @@ const PhraseCategory: React.FC<PhraseCategoryProps> = ({
 
   return (
     <div className="space-y-6">
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-        <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-4">
+      <div className="bg-surface rounded-lg shadow-soft-md p-6">
+        <h1 className="text-3xl font-bold text-primary mb-4">
           {category in categoryTitles
             ? categoryTitles[category as keyof typeof categoryTitles]
             : category
@@ -54,11 +54,11 @@ const PhraseCategory: React.FC<PhraseCategoryProps> = ({
             placeholder="Search phrases..."
             value={searchTerm}
             onChange={e => setSearchTerm(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-4 py-2 border border-border bg-surface text-primary rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
         </div>
 
-        <div className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+        <div className="text-sm text-secondary mb-4">
           {filteredPhrases.length} phrase
           {filteredPhrases.length !== 1 ? 's' : ''} found
         </div>
@@ -71,8 +71,8 @@ const PhraseCategory: React.FC<PhraseCategoryProps> = ({
       </div>
 
       {filteredPhrases.length === 0 && searchTerm && (
-        <div className="bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg p-6 text-center">
-          <p className="text-gray-600 dark:text-gray-300">
+        <div className="bg-surface-alt border border-border rounded-lg p-6 text-center">
+          <p className="text-secondary">
             No phrases found matching "{searchTerm}"
           </p>
         </div>

@@ -40,15 +40,15 @@ export const VocabControls: React.FC<VocabControlsProps> = ({
   const topics = useMemo(() => getTopics(), []);
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-      <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
+    <div className="bg-surface rounded-lg shadow-soft-md p-6">
+      <h1 className="text-3xl font-bold mb-6 text-primary">
         Vocab Practice
       </h1>
 
       <div className="space-y-4">
         {/* Answer Mode Toggle */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <label className="block text-sm font-medium text-secondary mb-2">
             Answer Mode
           </label>
           <div className="flex gap-2">
@@ -69,7 +69,7 @@ export const VocabControls: React.FC<VocabControlsProps> = ({
 
         {/* Practice Mode Toggle */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <label className="block text-sm font-medium text-secondary mb-2">
             Practice Mode
           </label>
           <div className="flex gap-2">
@@ -91,7 +91,7 @@ export const VocabControls: React.FC<VocabControlsProps> = ({
         {/* Filters */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label className="block text-sm font-medium text-secondary mb-2">
               Difficulty
             </label>
             <select
@@ -99,7 +99,7 @@ export const VocabControls: React.FC<VocabControlsProps> = ({
               onChange={e =>
                 onSetDifficulty(e.target.value as DifficultyFilter)
               }
-              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              className="w-full px-4 py-2 border border-border rounded-lg bg-surface text-primary"
             >
               <option value="all">All</option>
               <option value="beginner">Beginner</option>
@@ -109,13 +109,13 @@ export const VocabControls: React.FC<VocabControlsProps> = ({
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label className="block text-sm font-medium text-secondary mb-2">
               Topic
             </label>
             <select
               value={selectedTopic}
               onChange={e => onSetTopic(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              className="w-full px-4 py-2 border border-border rounded-lg bg-surface text-primary"
             >
               <option value="all">All Topics</option>
               {topics.map(topic => (
@@ -136,7 +136,7 @@ export const VocabControls: React.FC<VocabControlsProps> = ({
               onChange={e => onSetSettings({ showRomaji: e.target.checked })}
               className="w-5 h-5 text-blue-500 rounded focus:ring-blue-500"
             />
-            <span className="ml-2 text-gray-700 dark:text-gray-300">
+            <span className="ml-2 text-secondary">
               Show Romaji
             </span>
           </label>
@@ -147,7 +147,7 @@ export const VocabControls: React.FC<VocabControlsProps> = ({
               onChange={e => onSetSettings({ showHint: e.target.checked })}
               className="w-5 h-5 text-blue-500 rounded focus:ring-blue-500"
             />
-            <span className="ml-2 text-gray-700 dark:text-gray-300">
+            <span className="ml-2 text-secondary">
               Show Hint
             </span>
           </label>

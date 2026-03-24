@@ -35,23 +35,23 @@ const ProgressTracker: React.FC = () => {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-      <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6">
+    <div className="bg-surface rounded-lg shadow-soft-md p-6">
+      <h2 className="text-2xl font-bold text-primary mb-6">
         Learning Progress
       </h2>
 
       <div className="grid grid-cols-1 gap-6 mb-8">
-        <div className="bg-blue-50 dark:bg-blue-900 rounded-lg p-4">
-          <h3 className="text-sm font-medium text-blue-800 dark:text-blue-200 mb-2">
+        <div className="bg-accent-blue/10 rounded-lg p-4">
+          <h3 className="text-sm font-medium text-accent-blue mb-2">
             Overall Progress
           </h3>
           <div className="flex items-center gap-3">
             <div
-              className={`text-2xl font-bold text-blue-600 dark:text-blue-300`}
+              className={`text-2xl font-bold text-accent-blue`}
             >
               {overallProgress.toFixed(1)}%
             </div>
-            <div className="flex-1 bg-gray-200 dark:bg-blue-700 rounded-full h-2">
+            <div className="flex-1 bg-surface-alt rounded-full h-2">
               <div
                 className={`h-2 rounded-full transition-all duration-300 bg-blue-600 dark:bg-blue-400`}
                 style={{
@@ -60,53 +60,53 @@ const ProgressTracker: React.FC = () => {
               />
             </div>
           </div>
-          <p className="text-xs text-gray-600 dark:text-gray-300 mt-1">
+          <p className="text-xs text-secondary mt-1">
             {masteredCharacters} of {totalCharacters} characters mastered
           </p>
         </div>
 
-        <div className="bg-green-50 dark:bg-green-900 rounded-lg p-4">
-          <h3 className="text-sm font-medium text-green-800 dark:text-green-200 mb-2">
+        <div className="bg-success/10 rounded-lg p-4">
+          <h3 className="text-sm font-medium text-success mb-2">
             Recent Success Rate
           </h3>
           <div className="flex items-center gap-3">
             <div
-              className={`text-2xl font-bold text-green-600 dark:text-green-300`}
+              className={`text-2xl font-bold text-success`}
             >
               {recentSuccessRate.toFixed(1)}%
             </div>
-            <div className="flex-1 bg-gray-200 dark:bg-green-700 rounded-full h-2">
+            <div className="flex-1 bg-surface-alt rounded-full h-2">
               <div
                 className={`h-2 rounded-full transition-all duration-300 bg-green-600 dark:bg-green-300`}
                 style={{ width: `${recentSuccessRate}%` }}
               />
             </div>
           </div>
-          <p className="text-xs text-gray-600 dark:text-gray-300 mt-1">
+          <p className="text-xs text-secondary mt-1">
             Last {recentResults.length} exercises
           </p>
         </div>
 
         <div className="bg-purple-50 dark:bg-purple-900 rounded-lg p-4">
-          <h3 className="text-sm font-medium text-purple-800 dark:text-purple-200 mb-2">
+          <h3 className="text-sm font-medium text-accent-violet mb-2">
             Practice Streak
           </h3>
           <div className="flex items-center gap-3">
-            <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">
+            <div className="text-2xl font-bold text-accent-violet">
               {progress.streak}
             </div>
-            <div className="text-sm text-gray-600 dark:text-gray-300">
+            <div className="text-sm text-secondary">
               {progress.streak === 1 ? 'day' : 'days'}
             </div>
           </div>
-          <p className="text-xs text-gray-600 dark:text-gray-300 mt-1">
+          <p className="text-xs text-secondary mt-1">
             Keep practicing daily!
           </p>
         </div>
       </div>
 
       <div className="mb-6">
-        <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-4">
+        <h3 className="text-lg font-semibold text-primary mb-4">
           Character Mastery
         </h3>
         <div className="space-y-2 max-h-64 overflow-y-auto">
@@ -115,15 +115,15 @@ const ProgressTracker: React.FC = () => {
             .map(([character, mastery]) => (
               <div
                 key={character}
-                className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
+                className="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-alt"
               >
-                <span className="text-xl font-japanese w-8 text-center dark:text-gray-100">
+                <span className="text-xl font-japanese w-8 text-center text-primary">
                   {character}
                 </span>
-                <span className="text-sm text-gray-600 dark:text-gray-300 w-12">
+                <span className="text-sm text-secondary w-12">
                   {allCharacters[character as keyof typeof allCharacters]}
                 </span>
-                <div className="flex-1 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                <div className="flex-1 bg-surface-alt rounded-full h-2">
                   <div
                     className={`h-2 rounded-full transition-all duration-300 ${getProgressBgColor(mastery)}`}
                     style={{ width: `${mastery}%` }}
@@ -140,34 +140,34 @@ const ProgressTracker: React.FC = () => {
       </div>
 
       <div>
-        <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-4">
+        <h3 className="text-lg font-semibold text-primary mb-4">
           Recent Activity
         </h3>
         <div className="space-y-2 max-h-48 overflow-y-auto">
           {recentResults.map((result, index) => (
             <div
               key={index}
-              className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
+              className="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-alt"
             >
               <span
-                className={`text-sm font-medium ${result.correct ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}
+                className={`text-sm font-medium ${result.correct ? 'text-success' : 'text-error'}`}
               >
                 {result.correct ? '✓' : '✗'}
               </span>
-              <span className="text-lg font-japanese dark:text-gray-100">
+              <span className="text-lg font-japanese text-primary">
                 {result.character}
               </span>
-              <span className="text-sm text-gray-600 dark:text-gray-300">
+              <span className="text-sm text-secondary">
                 {result.romaji}
               </span>
               <div className="flex-1"></div>
-              <span className="text-xs text-gray-500 dark:text-gray-400">
+              <span className="text-xs text-secondary">
                 {(result.timeSpent / 1000).toFixed(1)}s
               </span>
             </div>
           ))}
           {recentResults.length === 0 && (
-            <p className="text-gray-500 dark:text-gray-400 text-center py-4">
+            <p className="text-secondary text-center py-4">
               No recent activity
             </p>
           )}

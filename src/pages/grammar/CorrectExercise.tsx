@@ -106,10 +106,10 @@ export const CorrectExercise: React.FC<CorrectExerciseProps> = ({
   return (
     <div className="space-y-6">
       <div className="text-center">
-        <p className="text-lg text-gray-600 dark:text-gray-400 mb-1">
+        <p className="text-lg text-secondary mb-1">
           Find and fix the mistake:
         </p>
-        <p className="text-sm text-gray-500 dark:text-gray-400">
+        <p className="text-sm text-secondary">
           {item.english}
         </p>
       </div>
@@ -133,20 +133,20 @@ export const CorrectExercise: React.FC<CorrectExerciseProps> = ({
                     ? 'bg-red-200 dark:bg-red-800 text-red-800 dark:text-red-200 ring-2 ring-red-500'
                     : isSelected
                       ? 'bg-blue-500 text-white'
-                      : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                      : 'bg-surface-alt text-secondary hover:bg-gray-300 dark:hover:bg-gray-600'
               } disabled:cursor-not-allowed`}
             >
               {showCorrected ? correctToken : token}
             </button>
           );
         })}
-        <span className="px-1 py-2 text-xl text-gray-700 dark:text-gray-300">。</span>
+        <span className="px-1 py-2 text-xl text-secondary">。</span>
       </div>
 
       {/* Replacement options */}
       {selectedIndex !== null && !isAnswered && (
         <div className="text-center space-y-2">
-          <p className="text-sm text-gray-500 dark:text-gray-400">
+          <p className="text-sm text-secondary">
             Replace with:
           </p>
           <div className="flex gap-2 justify-center">
@@ -169,7 +169,7 @@ export const CorrectExercise: React.FC<CorrectExerciseProps> = ({
 
       {isAnswered && !isCorrect && (
         <div className="text-center space-y-3">
-          <p className="text-sm text-gray-600 dark:text-gray-400">
+          <p className="text-sm text-secondary">
             Correct answer:{' '}
             <span className="font-bold text-green-500">{item.japanese}</span>
           </p>
@@ -183,7 +183,7 @@ export const CorrectExercise: React.FC<CorrectExerciseProps> = ({
       )}
 
       {isAnswered && item.translationNotes.length > 0 && (
-        <div className="text-center text-sm text-gray-500 dark:text-gray-400 italic">
+        <div className="text-center text-sm text-secondary italic">
           {item.translationNotes.map((note, i) => (
             <p key={i}>{note}</p>
           ))}

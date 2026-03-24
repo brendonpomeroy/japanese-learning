@@ -79,25 +79,25 @@ export const MasteryDashboard: React.FC<MasteryDashboardProps> = ({
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       {/* Topic Mastery */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-        <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
+      <div className="bg-surface rounded-lg shadow-soft-md p-6">
+        <h2 className="text-xl font-semibold mb-4 text-primary">
           Topic Mastery
         </h2>
         <div className="space-y-2 max-h-96 overflow-y-auto">
           {topicMastery.map(tm => (
             <div
               key={tm.topic}
-              className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg"
+              className="flex justify-between items-center p-3 bg-surface-alt rounded-lg"
             >
               <div>
-                <div className="font-medium text-gray-900 dark:text-white">
+                <div className="font-medium text-primary">
                   {capitalize(tm.topic)}
                 </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">
+                <div className="text-sm text-secondary">
                   {tm.learned}/{tm.total} learned
                 </div>
               </div>
-              <div className="text-lg font-bold text-blue-600 dark:text-blue-400">
+              <div className="text-lg font-bold text-accent-blue">
                 {Math.round(tm.mastery * 100)}%
               </div>
             </div>
@@ -106,8 +106,8 @@ export const MasteryDashboard: React.FC<MasteryDashboardProps> = ({
       </div>
 
       {/* Top 5 Need Practice */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-        <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
+      <div className="bg-surface rounded-lg shadow-soft-md p-6">
+        <h2 className="text-xl font-semibold mb-4 text-primary">
           Top 5 Need More Practice
         </h2>
         <div className="space-y-3">
@@ -115,15 +115,15 @@ export const MasteryDashboard: React.FC<MasteryDashboardProps> = ({
             needPractice.map(item => (
               <div
                 key={item.word.word}
-                className="p-3 bg-gray-50 dark:bg-gray-700 rounded-lg"
+                className="p-3 bg-surface-alt rounded-lg"
               >
-                <div className="font-medium text-gray-900 dark:text-white mb-1">
+                <div className="font-medium text-primary mb-1">
                   {item.word.kana_kanji}
                 </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">
+                <div className="text-sm text-secondary mb-1">
                   {item.word.definition}
                 </div>
-                <div className="flex justify-between items-center text-xs text-gray-500 dark:text-gray-400">
+                <div className="flex justify-between items-center text-xs text-secondary">
                   <span>{item.word.topic}</span>
                   <span>
                     {Math.round(item.mastery * 100)}% mastery ({item.correct}/
@@ -133,7 +133,7 @@ export const MasteryDashboard: React.FC<MasteryDashboardProps> = ({
               </div>
             ))
           ) : (
-            <div className="text-gray-500 dark:text-gray-400 text-center py-4">
+            <div className="text-secondary text-center py-4">
               No words need practice yet. Keep practicing!
             </div>
           )}

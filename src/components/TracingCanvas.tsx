@@ -31,7 +31,7 @@ export function TracingCanvas({
   return (
     <canvas
       ref={canvasRef}
-      className="w-full aspect-square max-w-[400px] mx-auto border-2 border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 cursor-crosshair"
+      className="w-full aspect-square max-w-[400px] mx-auto border-2 border-border rounded-xl bg-surface cursor-crosshair"
       style={{ touchAction: 'none' }}
       role="img"
       aria-label={`Tracing canvas for character ${guideCharacter}`}
