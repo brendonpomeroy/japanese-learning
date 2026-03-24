@@ -164,6 +164,25 @@ function Home() {
         </Link>
 
         <Link
+          to="/grammar"
+          className="group bg-gradient-to-br from-rose-500 to-rose-600 rounded-lg shadow-lg p-6 text-white hover:from-rose-600 hover:to-rose-700 transition-all duration-200 transform hover:scale-105"
+        >
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-2xl font-bold">Grammar</h3>
+            <span className="text-3xl">を</span>
+          </div>
+          <p className="text-rose-100 mb-4">
+            Practice grammar patterns with focused sentence exercises
+          </p>
+          <div className="flex items-center text-rose-200 group-hover:text-white">
+            <span className="mr-2">Start practice</span>
+            <span className="transform group-hover:translate-x-1 transition-transform">
+              →
+            </span>
+          </div>
+        </Link>
+
+        <Link
           to="/practice"
           className="group bg-gradient-to-br from-green-500 to-green-600 rounded-lg shadow-lg p-6 text-white hover:from-green-600 hover:to-green-700 transition-all duration-200 transform hover:scale-105"
         >

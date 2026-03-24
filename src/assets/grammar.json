@@ -1,0 +1,392 @@
+{
+  "version": 1,
+  "packs": [
+    {
+      "id": "object-marker-wo",
+      "title": "を",
+      "subtitle": "Object Marker",
+      "description": "Use を to mark the direct object of a verb.",
+      "tags": ["particle", "grammar", "beginner", "jlpt-n5"],
+      "supportedModes": ["build", "correct", "fill"],
+      "items": [
+        {
+          "id": "burger-eat",
+          "english": "Eat a hamburger",
+          "japanese": "はんばーがーをたべます。",
+          "tokens": ["はんばーがー", "を", "たべます"],
+          "translationNotes": [],
+          "focus": {
+            "grammarPoint": "を",
+            "role": "object-marker"
+          },
+          "build": {
+            "distractors": ["は", "のみます", "こーひー"]
+          },
+          "correct": {
+            "incorrectJapanese": "はんばーがーがたべます。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "はんばーがー＿たべます。",
+            "answer": "を",
+            "options": ["は", "が", "を", "に"]
+          }
+        },
+        {
+          "id": "music-listen",
+          "english": "Listen to music",
+          "japanese": "おんがくをききます。",
+          "tokens": ["おんがく", "を", "ききます"],
+          "translationNotes": [],
+          "focus": {
+            "grammarPoint": "を",
+            "role": "object-marker"
+          },
+          "build": {
+            "distractors": ["は", "のみます", "てれび", "みます"]
+          },
+          "correct": {
+            "incorrectJapanese": "おんがくがききます。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "おんがく＿ききます。",
+            "answer": "を",
+            "options": ["は", "が", "を", "で"]
+          }
+        },
+        {
+          "id": "coffee-drink",
+          "english": "Drink coffee",
+          "japanese": "こーひーをのみます。",
+          "tokens": ["こーひー", "を", "のみます"],
+          "translationNotes": [],
+          "focus": {
+            "grammarPoint": "を",
+            "role": "object-marker"
+          },
+          "build": {
+            "distractors": ["は", "たべます", "みず", "ききます"]
+          },
+          "correct": {
+            "incorrectJapanese": "こーひーがのみます。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "こーひー＿のみます。",
+            "answer": "を",
+            "options": ["は", "を", "に", "で"]
+          }
+        },
+        {
+          "id": "japanese-speak",
+          "english": "Speak Japanese",
+          "japanese": "にほんごをはなします。",
+          "tokens": ["にほんご", "を", "はなします"],
+          "translationNotes": [],
+          "focus": {
+            "grammarPoint": "を",
+            "role": "object-marker"
+          },
+          "build": {
+            "distractors": ["は", "ききます", "えいご", "よみます"]
+          },
+          "correct": {
+            "incorrectJapanese": "にほんごがはなします。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "にほんご＿はなします。",
+            "answer": "を",
+            "options": ["は", "が", "を", "に"]
+          }
+        },
+        {
+          "id": "water-drink",
+          "english": "Drink water",
+          "japanese": "みずをのみます。",
+          "tokens": ["みず", "を", "のみます"],
+          "translationNotes": [],
+          "focus": {
+            "grammarPoint": "を",
+            "role": "object-marker"
+          },
+          "build": {
+            "distractors": ["は", "たべます", "こーひー", "ききます"]
+          },
+          "correct": {
+            "incorrectJapanese": "みずがのみます。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "みず＿のみます。",
+            "answer": "を",
+            "options": ["は", "が", "を", "で"]
+          }
+        },
+        {
+          "id": "sushi-eat",
+          "english": "Eat sushi",
+          "japanese": "すしをたべます。",
+          "tokens": ["すし", "を", "たべます"],
+          "translationNotes": [],
+          "focus": {
+            "grammarPoint": "を",
+            "role": "object-marker"
+          },
+          "build": {
+            "distractors": ["は", "のみます", "ぱん", "ききます"]
+          },
+          "correct": {
+            "incorrectJapanese": "すしがたべます。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "すし＿たべます。",
+            "answer": "を",
+            "options": ["は", "が", "を", "に"]
+          }
+        },
+        {
+          "id": "book-read",
+          "english": "Read a book",
+          "japanese": "ほんをよみます。",
+          "tokens": ["ほん", "を", "よみます"],
+          "translationNotes": [],
+          "focus": {
+            "grammarPoint": "を",
+            "role": "object-marker"
+          },
+          "build": {
+            "distractors": ["は", "かきます", "しんぶん", "のみます"]
+          },
+          "correct": {
+            "incorrectJapanese": "ほんがよみます。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "ほん＿よみます。",
+            "answer": "を",
+            "options": ["は", "が", "を", "で"]
+          }
+        },
+        {
+          "id": "movie-watch",
+          "english": "Watch a movie",
+          "japanese": "えいがをみます。",
+          "tokens": ["えいが", "を", "みます"],
+          "translationNotes": [],
+          "focus": {
+            "grammarPoint": "を",
+            "role": "object-marker"
+          },
+          "build": {
+            "distractors": ["は", "よみます", "てれび", "ききます"]
+          },
+          "correct": {
+            "incorrectJapanese": "えいががみます。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "えいが＿みます。",
+            "answer": "を",
+            "options": ["は", "が", "を", "に"]
+          }
+        },
+        {
+          "id": "tv-watch",
+          "english": "Watch TV",
+          "japanese": "てれびをみます。",
+          "tokens": ["てれび", "を", "みます"],
+          "translationNotes": [],
+          "focus": {
+            "grammarPoint": "を",
+            "role": "object-marker"
+          },
+          "build": {
+            "distractors": ["は", "ききます", "えいが", "よみます"]
+          },
+          "correct": {
+            "incorrectJapanese": "てれびがみます。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "てれび＿みます。",
+            "answer": "を",
+            "options": ["は", "が", "を", "で"]
+          }
+        },
+        {
+          "id": "english-speak",
+          "english": "Speak English",
+          "japanese": "えいごをはなします。",
+          "tokens": ["えいご", "を", "はなします"],
+          "translationNotes": [],
+          "focus": {
+            "grammarPoint": "を",
+            "role": "object-marker"
+          },
+          "build": {
+            "distractors": ["は", "のみます", "にほんご", "ききます"]
+          },
+          "correct": {
+            "incorrectJapanese": "えいごがはなします。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "えいご＿はなします。",
+            "answer": "を",
+            "options": ["は", "が", "を", "に"]
+          }
+        },
+        {
+          "id": "newspaper-read",
+          "english": "Read the newspaper",
+          "japanese": "しんぶんをよみます。",
+          "tokens": ["しんぶん", "を", "よみます"],
+          "translationNotes": [],
+          "focus": {
+            "grammarPoint": "を",
+            "role": "object-marker"
+          },
+          "build": {
+            "distractors": ["は", "みます", "ほん", "のみます"]
+          },
+          "correct": {
+            "incorrectJapanese": "しんぶんがよみます。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "しんぶん＿よみます。",
+            "answer": "を",
+            "options": ["は", "が", "を", "で"]
+          }
+        },
+        {
+          "id": "tea-drink",
+          "english": "Drink tea",
+          "japanese": "おちゃをのみます。",
+          "tokens": ["おちゃ", "を", "のみます"],
+          "translationNotes": [],
+          "focus": {
+            "grammarPoint": "を",
+            "role": "object-marker"
+          },
+          "build": {
+            "distractors": ["は", "たべます", "みず", "ききます"]
+          },
+          "correct": {
+            "incorrectJapanese": "おちゃがのみます。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "おちゃ＿のみます。",
+            "answer": "を",
+            "options": ["は", "が", "を", "に"]
+          }
+        },
+        {
+          "id": "music-every-day-listen",
+          "english": "I listen to music every day",
+          "japanese": "まいにち おんがくをききます。",
+          "tokens": ["まいにち", "おんがく", "を", "ききます"],
+          "translationNotes": [
+            "まいにち means every day."
+          ],
+          "focus": {
+            "grammarPoint": "を",
+            "role": "object-marker"
+          },
+          "build": {
+            "distractors": ["は", "のみます", "だいがくで", "に"]
+          },
+          "correct": {
+            "incorrectJapanese": "まいにち おんがくがききます。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "まいにち おんがく＿ききます。",
+            "answer": "を",
+            "options": ["は", "が", "を", "で"]
+          }
+        },
+        {
+          "id": "library-book-read",
+          "english": "Read a book at the library",
+          "japanese": "としょかんで ほんをよみます。",
+          "tokens": ["としょかんで", "ほん", "を", "よみます"],
+          "translationNotes": [
+            "としょかんで indicates the place where the action happens."
+          ],
+          "focus": {
+            "grammarPoint": "を",
+            "role": "object-marker"
+          },
+          "build": {
+            "distractors": ["は", "に", "かきます", "きっさてんで"]
+          },
+          "correct": {
+            "incorrectJapanese": "としょかんで ほんがよみます。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "としょかんで ほん＿よみます。",
+            "answer": "を",
+            "options": ["は", "が", "を", "に"]
+          }
+        },
+        {
+          "id": "cafe-coffee-drink",
+          "english": "Drink coffee at a cafe",
+          "japanese": "きっさてんで こーひーをのみます。",
+          "tokens": ["きっさてんで", "こーひー", "を", "のみます"],
+          "translationNotes": [
+            "きっさてんで indicates the place where the action happens."
+          ],
+          "focus": {
+            "grammarPoint": "を",
+            "role": "object-marker"
+          },
+          "build": {
+            "distractors": ["は", "に", "たべます", "まいにち"]
+          },
+          "correct": {
+            "incorrectJapanese": "きっさてんで こーひーがのみます。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "きっさてんで こーひー＿のみます。",
+            "answer": "を",
+            "options": ["は", "が", "を", "で"]
+          }
+        },
+        {
+          "id": "daily-university-japanese-speak",
+          "english": "Every day, I speak Japanese at university",
+          "japanese": "まいにち だいがくで にほんごをはなします。",
+          "tokens": ["まいにち", "だいがくで", "にほんご", "を", "はなします"],
+          "translationNotes": [
+            "だいがくで indicates the place where the action happens.",
+            "This sentence combines time, place, object, and verb."
+          ],
+          "focus": {
+            "grammarPoint": "を",
+            "role": "object-marker"
+          },
+          "build": {
+            "distractors": ["は", "に", "ききます", "としょかんで"]
+          },
+          "correct": {
+            "incorrectJapanese": "まいにち だいがくで にほんごがはなします。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "まいにち だいがくで にほんご＿はなします。",
+            "answer": "を",
+            "options": ["は", "が", "を", "で"]
+          }
+        }
+      ]
+    }
+  ]
+}

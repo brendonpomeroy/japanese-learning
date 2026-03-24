@@ -59,6 +59,16 @@ function Navigation() {
               Hiragana
             </Link>
             <Link
+              to="/katakana"
+              className={`hover:text-blue-200 dark:hover:text-blue-300 transition-colors ${
+                isActive('/katakana')
+                  ? 'text-blue-200 dark:text-blue-300 font-semibold'
+                  : ''
+              }`}
+            >
+              Katakana
+            </Link>
+            <Link
               to="/emoji"
               className={`hover:text-blue-200 dark:hover:text-blue-300 transition-colors ${
                 isActive('/emoji')
@@ -87,6 +97,16 @@ function Navigation() {
               }`}
             >
               Vocab
+            </Link>
+            <Link
+              to="/grammar"
+              className={`hover:text-blue-200 dark:hover:text-blue-300 transition-colors ${
+                location.pathname.startsWith('/grammar')
+                  ? 'text-blue-200 dark:text-blue-300 font-semibold'
+                  : ''
+              }`}
+            >
+              Grammar
             </Link>
             <Link
               to="/practice"
@@ -168,6 +188,17 @@ function Navigation() {
               Hiragana
             </Link>
             <Link
+              to="/katakana"
+              className={`block py-2 px-4 hover:bg-blue-700 dark:hover:bg-blue-700 rounded transition-colors ${
+                isActive('/katakana')
+                  ? 'bg-blue-700 dark:bg-blue-700 font-semibold'
+                  : ''
+              }`}
+              onClick={closeMobileMenu}
+            >
+              Katakana
+            </Link>
+            <Link
               to="/emoji"
               className={`block py-2 px-4 hover:bg-blue-700 dark:hover:bg-blue-700 rounded transition-colors ${
                 isActive('/emoji')
@@ -199,6 +230,17 @@ function Navigation() {
               onClick={closeMobileMenu}
             >
               Vocab
+            </Link>
+            <Link
+              to="/grammar"
+              className={`block py-2 px-4 hover:bg-blue-700 dark:hover:bg-blue-700 rounded transition-colors ${
+                location.pathname.startsWith('/grammar')
+                  ? 'bg-blue-700 dark:bg-blue-700 font-semibold'
+                  : ''
+              }`}
+              onClick={closeMobileMenu}
+            >
+              Grammar
             </Link>
             <Link
               to="/practice"

@@ -103,30 +103,6 @@ input:focus {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-/* Character grid responsive adjustments */
-@media (max-width: 640px) {
-  .hiragana-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (min-width: 641px) and (max-width: 768px) {
-  .hiragana-grid {
-    grid-template-columns: repeat(6, 1fr);
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  .hiragana-grid {
-    grid-template-columns: repeat(8, 1fr);
-  }
-}
-
-@media (min-width: 1025px) {
-  .hiragana-grid {
-    grid-template-columns: repeat(10, 1fr);
-  }
-}
 
 /* Mobile navigation improvements */
 @media (max-width: 768px) {
