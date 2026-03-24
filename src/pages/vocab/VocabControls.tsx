@@ -41,9 +41,7 @@ export const VocabControls: React.FC<VocabControlsProps> = ({
 
   return (
     <div className="bg-surface rounded-lg shadow-soft-md p-6">
-      <h1 className="text-3xl font-bold mb-6 text-primary">
-        Vocab Practice
-      </h1>
+      <h1 className="text-3xl font-bold mb-6 text-primary">Vocab Practice</h1>
 
       <div className="space-y-4">
         {/* Answer Mode Toggle */}
@@ -136,9 +134,7 @@ export const VocabControls: React.FC<VocabControlsProps> = ({
               onChange={e => onSetSettings({ showRomaji: e.target.checked })}
               className="w-5 h-5 text-accent-blue rounded focus:ring-accent-blue"
             />
-            <span className="ml-2 text-secondary">
-              Show Romaji
-            </span>
+            <span className="ml-2 text-secondary">Show Romaji</span>
           </label>
           <label className="flex items-center cursor-pointer">
             <input
@@ -147,9 +143,7 @@ export const VocabControls: React.FC<VocabControlsProps> = ({
               onChange={e => onSetSettings({ showHint: e.target.checked })}
               className="w-5 h-5 text-accent-blue rounded focus:ring-accent-blue"
             />
-            <span className="ml-2 text-secondary">
-              Show Hint
-            </span>
+            <span className="ml-2 text-secondary">Show Hint</span>
           </label>
         </div>
 

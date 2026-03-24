@@ -16,7 +16,8 @@ export const SessionSummary: React.FC<SessionSummaryProps> = ({
 }) => {
   const correctCount = results.filter(r => r.correct).length;
   const totalCount = results.length;
-  const percentage = totalCount > 0 ? Math.round((correctCount / totalCount) * 100) : 0;
+  const percentage =
+    totalCount > 0 ? Math.round((correctCount / totalCount) * 100) : 0;
 
   const incorrectResults = results.filter(r => !r.correct);
   const itemMap = new Map(items.map(item => [item.id, item]));
@@ -28,7 +29,15 @@ export const SessionSummary: React.FC<SessionSummaryProps> = ({
           Session Complete
         </h2>
         <div className="text-5xl font-bold mb-2">
-          <span className={percentage >= 70 ? 'text-success' : percentage >= 40 ? 'text-warning' : 'text-error'}>
+          <span
+            className={
+              percentage >= 70
+                ? 'text-success'
+                : percentage >= 40
+                  ? 'text-warning'
+                  : 'text-error'
+            }
+          >
             {percentage}%
           </span>
         </div>
@@ -39,18 +48,14 @@ export const SessionSummary: React.FC<SessionSummaryProps> = ({
 
       {incorrectResults.length > 0 && (
         <div className="text-left bg-error/10 rounded-lg p-4 max-w-md mx-auto">
-          <h3 className="font-semibold text-error mb-3">
-            Review these items:
-          </h3>
+          <h3 className="font-semibold text-error mb-3">Review these items:</h3>
           <ul className="space-y-2">
             {incorrectResults.map((result, i) => {
               const item = itemMap.get(result.itemId);
               if (!item) return null;
               return (
                 <li key={i} className="text-sm">
-                  <span className="text-secondary">
-                    {item.english}
-                  </span>
+                  <span className="text-secondary">{item.english}</span>
                   <span className="mx-2 text-secondary">→</span>
                   <span className="font-medium text-primary">
                     {item.japanese}

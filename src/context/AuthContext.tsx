@@ -100,7 +100,7 @@ const defaultCheckers: Record<SyncedKey, (v: unknown) => boolean> = {
 };
 
 function isLocalEmpty(): boolean {
-  return SYNCED_KEYS.every((key) => {
+  return SYNCED_KEYS.every(key => {
     try {
       const raw = localStorage.getItem(key);
       if (!raw) return true;
@@ -167,10 +167,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
 
   // Derived — sync is ready when auth is done AND no pending conflict
   const isSyncReady =
-    isSupabaseEnabled &&
-    !!user &&
-    !isResolvingCloudSync &&
-    !pendingConflict;
+    isSupabaseEnabled && !!user && !isResolvingCloudSync && !pendingConflict;
 
   // ------------------------------------------------------------------
   // Conflict comparison logic
@@ -178,7 +175,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
 
   const compareKeys = useCallback(
     (cloudData: Record<string, CloudBackedValue>): PerKeyComparison[] => {
-      return SYNCED_KEYS.map((key) => {
+      return SYNCED_KEYS.map(key => {
         const cloud = cloudData[key] ?? null;
         const localMeta = readSyncMeta(key);
 
@@ -190,14 +187,25 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
           /* empty */
         }
 
-        const hasLocal = localPayload !== null && !defaultCheckers[key](localPayload);
+        const hasLocal =
+          localPayload !== null && !defaultCheckers[key](localPayload);
         const hasCloud = cloud !== null;
 
         if (!hasLocal && !hasCloud) {
-          return { key, direction: 'equal' as const, localMeta, cloudMeta: null };
+          return {
+            key,
+            direction: 'equal' as const,
+            localMeta,
+            cloudMeta: null,
+          };
         }
         if (hasLocal && !hasCloud) {
-          return { key, direction: 'local' as const, localMeta, cloudMeta: null };
+          return {
+            key,
+            direction: 'local' as const,
+            localMeta,
+            cloudMeta: null,
+          };
         }
         if (!hasLocal && hasCloud) {
           return {
@@ -250,7 +258,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
         };
       });
     },
-    [],
+    []
   );
 
   // ------------------------------------------------------------------
@@ -284,9 +292,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
 
         // Case 3: both exist — compare per key
         const comparisons = compareKeys(cloudData);
-        const differing = comparisons.filter(
-          (c) => c.direction !== 'equal',
-        );
+        const differing = comparisons.filter(c => c.direction !== 'equal');
 
         if (differing.length === 0) {
           // Everything equal — nothing to do
@@ -295,7 +301,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
         }
 
         // Check if all diffs point the same direction
-        const directions = new Set(differing.map((c) => c.direction));
+        const directions = new Set(differing.map(c => c.direction));
 
         if (directions.size === 1) {
           const dir = differing[0].direction;
@@ -323,7 +329,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
         setIsResolvingCloudSync(false);
       }
     },
-    [compareKeys],
+    [compareKeys]
   );
 
   // ------------------------------------------------------------------
@@ -428,7 +434,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
         setIsAuthenticating(false);
       }
     },
-    [],
+    []
   );
 
   const signOut = useCallback(async () => {

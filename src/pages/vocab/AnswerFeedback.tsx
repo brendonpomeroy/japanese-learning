@@ -12,9 +12,7 @@ export const AnswerFeedback: React.FC<AnswerFeedbackProps> = ({
 }) => (
   <div
     className={`mt-4 p-4 rounded-lg ${
-      isCorrect
-        ? 'bg-success/10 text-success'
-        : 'bg-error/10 text-error'
+      isCorrect ? 'bg-success/10 text-success' : 'bg-error/10 text-error'
     }`}
   >
     {isCorrect ? (

@@ -51,9 +51,7 @@ export const McqPracticeCard: React.FC<McqPracticeCardProps> = ({
         {currentWord.definition}
       </div>
       {showRomaji && (
-        <div className="text-sm text-secondary mb-2">
-          {currentWord.romaji}
-        </div>
+        <div className="text-sm text-secondary mb-2">{currentWord.romaji}</div>
       )}
       <div className="text-sm text-secondary italic mb-4">
         {currentWord.example_sentence}

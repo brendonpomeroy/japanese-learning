@@ -124,9 +124,7 @@ export const getAllKatakana = () => {
   };
 };
 
-export const getKatakanaByCategory = (
-  category: keyof typeof katakanaData
-) => {
+export const getKatakanaByCategory = (category: keyof typeof katakanaData) => {
   return katakanaData[category];
 };
 

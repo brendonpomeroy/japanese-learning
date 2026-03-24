@@ -93,7 +93,7 @@ function saveProgressToStorage(progress: ProgressData): void {
   try {
     localStorage.setItem(
       'japanese-learning-progress',
-      JSON.stringify(progress),
+      JSON.stringify(progress)
     );
   } catch (e) {
     console.error('Error saving progress:', e);
@@ -104,7 +104,7 @@ function saveSettingsToStorage(settings: AppState['settings']): void {
   try {
     localStorage.setItem(
       'japanese-learning-settings',
-      JSON.stringify(settings),
+      JSON.stringify(settings)
     );
   } catch (e) {
     console.error('Error saving settings:', e);
@@ -139,10 +139,10 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
       const newHistory = [...state.progress.exerciseHistory, action.payload];
       const character = action.payload.character;
       const characterResults = newHistory.filter(
-        (r) => r.character === character,
+        r => r.character === character
       );
       const successRate =
-        characterResults.filter((r) => r.correct).length /
+        characterResults.filter(r => r.correct).length /
         characterResults.length;
 
       return {
@@ -159,7 +159,7 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
             [character]: Math.min(
               100,
               (state.progress.characterMastery[character] || 0) +
-                (action.payload.correct ? 10 : -5),
+                (action.payload.correct ? 10 : -5)
             ),
           },
         },
@@ -171,9 +171,9 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
         action.payload,
       ];
       const emoji = action.payload.emoji;
-      const emojiResults = newEmojiHistory.filter((r) => r.emoji === emoji);
+      const emojiResults = newEmojiHistory.filter(r => r.emoji === emoji);
       const emojiSuccessRate =
-        emojiResults.filter((r) => r.correct).length / emojiResults.length;
+        emojiResults.filter(r => r.correct).length / emojiResults.length;
 
       return {
         ...state,
@@ -191,8 +191,8 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
               Math.max(
                 0,
                 (state.progress.emojiMastery[emoji] || 0) +
-                  (action.payload.correct ? 10 : -5),
-              ),
+                  (action.payload.correct ? 10 : -5)
+              )
             ),
           },
         },
@@ -204,9 +204,9 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
         action.payload,
       ];
       const word = action.payload.word;
-      const wordResults = newVocabularyHistory.filter((r) => r.word === word);
+      const wordResults = newVocabularyHistory.filter(r => r.word === word);
       const wordSuccessRate =
-        wordResults.filter((r) => r.correct).length / wordResults.length;
+        wordResults.filter(r => r.correct).length / wordResults.length;
 
       return {
         ...state,
@@ -224,8 +224,8 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
               Math.max(
                 0,
                 (state.progress.vocabularyMastery[word] || 0) +
-                  (action.payload.correct ? 10 : -5),
-              ),
+                  (action.payload.correct ? 10 : -5)
+              )
             ),
           },
         },

@@ -21,9 +21,7 @@ export const GrammarPackDetailPage = () => {
   if (!pack) {
     return (
       <div className="container mx-auto px-4 py-8 text-center">
-        <h1 className="text-2xl font-bold text-primary mb-4">
-          Pack not found
-        </h1>
+        <h1 className="text-2xl font-bold text-primary mb-4">Pack not found</h1>
         <Link
           to="/grammar"
           className="text-accent-blue hover:text-accent-blue/80 underline"
@@ -52,12 +50,8 @@ export const GrammarPackDetailPage = () => {
       </Link>
 
       <div className="text-center mb-8">
-        <h1 className="text-5xl font-bold text-primary mb-2">
-          {pack.title}
-        </h1>
-        <h2 className="text-xl text-secondary mb-2">
-          {pack.subtitle}
-        </h2>
+        <h1 className="text-5xl font-bold text-primary mb-2">{pack.title}</h1>
+        <h2 className="text-xl text-secondary mb-2">{pack.subtitle}</h2>
         <p className="text-secondary">{pack.description}</p>
         <div className="flex flex-wrap gap-1 justify-center mt-3">
           {pack.tags.map(tag => (

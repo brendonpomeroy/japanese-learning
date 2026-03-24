@@ -65,18 +65,14 @@ export const TypePracticeCard: React.FC<TypePracticeCardProps> = ({
         {currentWord.definition}
       </div>
       {showRomaji && (
-        <div className="text-sm text-secondary mb-2">
-          {currentWord.romaji}
-        </div>
+        <div className="text-sm text-secondary mb-2">{currentWord.romaji}</div>
       )}
       <div className="text-sm text-secondary italic mb-4">
         {currentWord.example_sentence}
       </div>
 
       {showHint && (
-        <div className="text-sm text-secondary mb-4">
-          Hint: {getHint()}
-        </div>
+        <div className="text-sm text-secondary mb-4">Hint: {getHint()}</div>
       )}
 
       <div className="space-y-4">

@@ -34,8 +34,7 @@ export function selectSessionItems(
   const weak = itemsWithProgress.filter(
     ip =>
       ip.progress.seen > 0 &&
-      (ip.progress.streak === 0 ||
-        ip.progress.correct / ip.progress.seen < 0.5)
+      (ip.progress.streak === 0 || ip.progress.correct / ip.progress.seen < 0.5)
   );
   const mastered = itemsWithProgress.filter(
     ip =>

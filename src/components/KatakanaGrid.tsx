@@ -30,9 +30,7 @@ const dakutenColumns: (string | null)[][] = [
   ['バ', 'ビ', 'ブ', 'ベ', 'ボ'],
 ];
 
-const handakutenColumns: (string | null)[][] = [
-  ['パ', 'ピ', 'プ', 'ペ', 'ポ'],
-];
+const handakutenColumns: (string | null)[][] = [['パ', 'ピ', 'プ', 'ペ', 'ポ']];
 
 const combinationRows: { label: string; chars: [string, string, string] }[] = [
   { label: 'k', chars: ['キャ', 'キュ', 'キョ'] },
@@ -55,7 +53,7 @@ const allKatakana: Record<string, string> = {
   ...katakanaData.combinations,
 };
 
-const KatakanaGrid: React.FC<KatakanaGridProps> = (props) => (
+const KatakanaGrid: React.FC<KatakanaGridProps> = props => (
   <KanaGrid
     title="Katakana Characters"
     allCharacters={allKatakana}

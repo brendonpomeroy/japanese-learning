@@ -9,11 +9,8 @@
 import { useAuth } from '../hooks/useAuth';
 
 export function CloudSyncModal() {
-  const {
-    pendingConflict,
-    resolveConflictUseCloud,
-    resolveConflictKeepLocal,
-  } = useAuth();
+  const { pendingConflict, resolveConflictUseCloud, resolveConflictKeepLocal } =
+    useAuth();
 
   if (!pendingConflict) return null;
 
@@ -31,8 +28,8 @@ export function CloudSyncModal() {
         {/* Per-key details */}
         <div className="mb-5 space-y-2">
           {pendingConflict.comparisons
-            .filter((c) => c.direction !== 'equal')
-            .map((c) => (
+            .filter(c => c.direction !== 'equal')
+            .map(c => (
               <div
                 key={c.key}
                 className="flex items-center justify-between rounded-lg bg-surface-alt px-3 py-2 text-xs"

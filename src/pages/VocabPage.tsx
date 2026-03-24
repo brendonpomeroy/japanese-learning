@@ -122,9 +122,7 @@ export const VocabPage: React.FC = () => {
               <div className="flex gap-4">
                 <span className="text-secondary">
                   Streak:{' '}
-                  <strong className="text-primary">
-                    {state.streak}
-                  </strong>
+                  <strong className="text-primary">{state.streak}</strong>
                 </span>
                 <span className="text-secondary">
                   Session:{' '}

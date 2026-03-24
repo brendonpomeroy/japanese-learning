@@ -46,9 +46,7 @@ const ProgressTracker: React.FC = () => {
             Overall Progress
           </h3>
           <div className="flex items-center gap-3">
-            <div
-              className={`text-2xl font-bold text-accent-blue`}
-            >
+            <div className={`text-2xl font-bold text-accent-blue`}>
               {overallProgress.toFixed(1)}%
             </div>
             <div className="flex-1 bg-surface-alt rounded-full h-2">
@@ -70,9 +68,7 @@ const ProgressTracker: React.FC = () => {
             Recent Success Rate
           </h3>
           <div className="flex items-center gap-3">
-            <div
-              className={`text-2xl font-bold text-success`}
-            >
+            <div className={`text-2xl font-bold text-success`}>
               {recentSuccessRate.toFixed(1)}%
             </div>
             <div className="flex-1 bg-surface-alt rounded-full h-2">
@@ -99,9 +95,7 @@ const ProgressTracker: React.FC = () => {
               {progress.streak === 1 ? 'day' : 'days'}
             </div>
           </div>
-          <p className="text-xs text-secondary mt-1">
-            Keep practicing daily!
-          </p>
+          <p className="text-xs text-secondary mt-1">Keep practicing daily!</p>
         </div>
       </div>
 
@@ -157,9 +151,7 @@ const ProgressTracker: React.FC = () => {
               <span className="text-lg font-japanese text-primary">
                 {result.character}
               </span>
-              <span className="text-sm text-secondary">
-                {result.romaji}
-              </span>
+              <span className="text-sm text-secondary">{result.romaji}</span>
               <div className="flex-1"></div>
               <span className="text-xs text-secondary">
                 {(result.timeSpent / 1000).toFixed(1)}s

@@ -42,9 +42,7 @@ export const WordFlashcard: React.FC<WordFlashcardProps> = ({
           {/* Front of card */}
           <div className="absolute inset-0 backface-hidden bg-surface rounded-lg shadow-xl p-8 flex flex-col items-center justify-center border-2 border-accent-blue">
             <div className="text-center">
-              <p className="text-sm text-secondary mb-4">
-                Tap to reveal
-              </p>
+              <p className="text-sm text-secondary mb-4">Tap to reveal</p>
               <p className="text-6xl mb-6 font-japanese">
                 {showRomaji ? word.hiragana : word.kana_kanji}
               </p>
@@ -62,16 +60,12 @@ export const WordFlashcard: React.FC<WordFlashcardProps> = ({
                   {word.hiragana}
                 </div>
               )}
-              <div className="text-lg text-secondary">
-                {word.romaji}
-              </div>
+              <div className="text-lg text-secondary">{word.romaji}</div>
               <div className="text-2xl font-semibold text-accent-blue mt-2">
                 {word.definition}
               </div>
               <div className="mt-4 p-3 bg-surface-alt rounded-lg">
-                <p className="text-sm text-secondary mb-1">
-                  Example:
-                </p>
+                <p className="text-sm text-secondary mb-1">Example:</p>
                 <p className="text-base font-japanese">
                   {word.example_sentence}
                 </p>

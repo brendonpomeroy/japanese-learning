@@ -51,7 +51,7 @@ function isPathActive(path: string, currentPath: string): boolean {
 }
 
 function isGroupActive(group: NavGroup, currentPath: string): boolean {
-  return group.items.some((item) => isPathActive(item.path, currentPath));
+  return group.items.some(item => isPathActive(item.path, currentPath));
 }
 
 // Desktop dropdown component
@@ -119,7 +119,7 @@ function NavDropdown({
           className="absolute top-full left-0 mt-2 bg-surface rounded-lg shadow-soft-lg py-2 min-w-48 z-50 border border-border"
           role="menu"
         >
-          {group.items.map((item) => (
+          {group.items.map(item => (
             <Link
               key={item.path}
               to={item.path}
@@ -188,7 +188,9 @@ function BottomSheet({
     <>
       <div
         className={`fixed inset-0 bg-white/30 backdrop-blur-sm z-40 md:hidden dark:bg-black/30 ${
-          animating === 'exit' ? 'bottom-sheet-backdrop-exit' : 'bottom-sheet-backdrop-enter'
+          animating === 'exit'
+            ? 'bottom-sheet-backdrop-exit'
+            : 'bottom-sheet-backdrop-enter'
         }`}
         onClick={onClose}
       />
@@ -226,10 +228,10 @@ function Navigation() {
   };
 
   const learnGroup = navConfig.find(
-    (e) => isGroup(e) && e.label === 'Learn',
+    e => isGroup(e) && e.label === 'Learn'
   ) as NavGroup;
   const practiceGroup = navConfig.find(
-    (e) => isGroup(e) && e.label === 'Practice',
+    e => isGroup(e) && e.label === 'Practice'
   ) as NavGroup;
 
   return (
@@ -244,7 +246,7 @@ function Navigation() {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-6">
-              {navConfig.map((entry) =>
+              {navConfig.map(entry =>
                 isGroup(entry) ? (
                   <NavDropdown
                     key={entry.label}
@@ -263,7 +265,7 @@ function Navigation() {
                   >
                     {entry.label}
                   </Link>
-                ),
+                )
               )}
               <div className="ml-4">
                 <UserMenu />
@@ -280,9 +282,7 @@ function Navigation() {
           <button
             onClick={() => handleMobileNav('/')}
             className={`flex flex-col items-center justify-center w-full h-full transition-colors ${
-              location.pathname === '/'
-                ? 'text-accent-blue'
-                : 'text-secondary'
+              location.pathname === '/' ? 'text-accent-blue' : 'text-secondary'
             }`}
             aria-label="Home"
           >
@@ -306,7 +306,8 @@ function Navigation() {
           <button
             onClick={() => toggleSheet('learn')}
             className={`flex flex-col items-center justify-center w-full h-full transition-colors ${
-              activeSheet === 'learn' || isGroupActive(learnGroup, location.pathname)
+              activeSheet === 'learn' ||
+              isGroupActive(learnGroup, location.pathname)
                 ? 'text-accent-blue'
                 : 'text-secondary'
             }`}
@@ -332,7 +333,8 @@ function Navigation() {
           <button
             onClick={() => toggleSheet('practice')}
             className={`flex flex-col items-center justify-center w-full h-full transition-colors ${
-              activeSheet === 'practice' || isGroupActive(practiceGroup, location.pathname)
+              activeSheet === 'practice' ||
+              isGroupActive(practiceGroup, location.pathname)
                 ? 'text-accent-blue'
                 : 'text-secondary'
             }`}
@@ -358,9 +360,7 @@ function Navigation() {
           <button
             onClick={() => toggleSheet('more')}
             className={`flex flex-col items-center justify-center w-full h-full transition-colors ${
-              activeSheet === 'more'
-                ? 'text-accent-blue'
-                : 'text-secondary'
+              activeSheet === 'more' ? 'text-accent-blue' : 'text-secondary'
             }`}
             aria-label="More"
           >
@@ -385,7 +385,7 @@ function Navigation() {
       {/* Bottom sheets */}
       <BottomSheet isOpen={activeSheet === 'learn'} onClose={closeSheet}>
         <div className="grid grid-cols-2 gap-3">
-          {learnGroup.items.map((item) => (
+          {learnGroup.items.map(item => (
             <button
               key={item.path}
               onClick={() => handleMobileNav(item.path)}
@@ -404,7 +404,7 @@ function Navigation() {
 
       <BottomSheet isOpen={activeSheet === 'practice'} onClose={closeSheet}>
         <div className="grid grid-cols-2 gap-3">
-          {practiceGroup.items.map((item) => (
+          {practiceGroup.items.map(item => (
             <button
               key={item.path}
               onClick={() => handleMobileNav(item.path)}

@@ -68,7 +68,9 @@ const KanaGrid: React.FC<KanaGridProps> = ({
           }
         `}
       >
-        <span className={`font-japanese font-bold mb-1 text-primary whitespace-nowrap break-keep ${character.length > 1 ? 'text-sm' : 'text-2xl'}`}>
+        <span
+          className={`font-japanese font-bold mb-1 text-primary whitespace-nowrap break-keep ${character.length > 1 ? 'text-sm' : 'text-2xl'}`}
+        >
           {character}
         </span>
         <span className="text-xs text-secondary font-mono whitespace-nowrap">
@@ -149,7 +151,10 @@ const KanaGrid: React.FC<KanaGridProps> = ({
     return charts;
   };
 
-  const MobileChart: React.FC<{ chartTitle: string; columns: (string | null)[][] }> = ({ chartTitle, columns }) => (
+  const MobileChart: React.FC<{
+    chartTitle: string;
+    columns: (string | null)[][];
+  }> = ({ chartTitle, columns }) => (
     <div className="space-y-4">
       <h3 className="text-lg font-semibold text-secondary border-b border-border pb-2">
         {chartTitle}
@@ -158,7 +163,12 @@ const KanaGrid: React.FC<KanaGridProps> = ({
         {columns.flatMap((col, colIdx) =>
           col.map((char, rowIdx) => {
             if (!char) {
-              return <div key={`${colIdx}-${rowIdx}`} className="aspect-square max-w-16 max-h-16" />;
+              return (
+                <div
+                  key={`${colIdx}-${rowIdx}`}
+                  className="aspect-square max-w-16 max-h-16"
+                />
+              );
             }
             const romaji = allCharacters[char] || '';
             return (
@@ -192,9 +202,7 @@ const KanaGrid: React.FC<KanaGridProps> = ({
   return (
     <div className="bg-surface rounded-lg shadow-soft-md p-6">
       <div className="mb-6">
-        <h2 className="text-2xl font-bold text-primary mb-4">
-          {title}
-        </h2>
+        <h2 className="text-2xl font-bold text-primary mb-4">{title}</h2>
         {!showCategory && (
           <div className="flex flex-wrap gap-2 mb-4">
             <CategoryButton category="all" label="All" />

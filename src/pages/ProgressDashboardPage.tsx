@@ -11,9 +11,12 @@ import { katakanaData } from '../data/katakanaData';
 /** Return Tailwind bg class for a 0-100 mastery score */
 function masteryColor(score: number): string {
   if (score === 0) return 'bg-surface-alt text-secondary/40';
-  if (score < 25) return 'bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300';
-  if (score < 50) return 'bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-300';
-  if (score < 75) return 'bg-yellow-100 dark:bg-yellow-900/40 text-yellow-700 dark:text-yellow-300';
+  if (score < 25)
+    return 'bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300';
+  if (score < 50)
+    return 'bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-300';
+  if (score < 75)
+    return 'bg-yellow-100 dark:bg-yellow-900/40 text-yellow-700 dark:text-yellow-300';
   return 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300';
 }
 
@@ -31,7 +34,15 @@ function pct(n: number, d: number) {
 
 /* ── tiny ring progress ──────────────────────────────────── */
 
-function RingProgress({ value, size = 80, label }: { value: number; size?: number; label: string }) {
+function RingProgress({
+  value,
+  size = 80,
+  label,
+}: {
+  value: number;
+  size?: number;
+  label: string;
+}) {
   const stroke = 6;
   const radius = (size - stroke) / 2;
   const circumference = 2 * Math.PI * radius;
@@ -112,7 +123,17 @@ function KanaMasteryGrid({
 
 /* ── stat card ───────────────────────────────────────────── */
 
-function StatCard({ icon, label, value, sub }: { icon: string; label: string; value: string | number; sub?: string }) {
+function StatCard({
+  icon,
+  label,
+  value,
+  sub,
+}: {
+  icon: string;
+  label: string;
+  value: string | number;
+  sub?: string;
+}) {
   return (
     <div className="bg-surface rounded-xl border border-border p-4 flex items-center gap-3">
       <span className="text-2xl">{icon}</span>
@@ -127,7 +148,15 @@ function StatCard({ icon, label, value, sub }: { icon: string; label: string; va
 
 /* ── section wrapper ─────────────────────────────────────── */
 
-function Section({ title, children, icon }: { title: string; children: React.ReactNode; icon: string }) {
+function Section({
+  title,
+  children,
+  icon,
+}: {
+  title: string;
+  children: React.ReactNode;
+  icon: string;
+}) {
   return (
     <section className="bg-surface rounded-2xl border border-border p-5 space-y-4">
       <h3 className="text-base font-semibold text-primary flex items-center gap-2">
@@ -150,7 +179,7 @@ function MasteryLegend() {
   ];
   return (
     <div className="flex flex-wrap gap-3 text-[11px] text-secondary">
-      {levels.map((l) => (
+      {levels.map(l => (
         <span key={l.label} className="flex items-center gap-1">
           <span className={`w-3 h-3 rounded ${l.cls}`} />
           {l.label}
@@ -171,20 +200,54 @@ export function ProgressDashboardPage() {
   /* ── kana stats ───────────────────────── */
 
   const hiraganaStats = useMemo(() => {
-    const all = { ...hiraganaData.basic, ...hiraganaData.dakuten, ...hiraganaData.handakuten, ...hiraganaData.combinations };
+    const all = {
+      ...hiraganaData.basic,
+      ...hiraganaData.dakuten,
+      ...hiraganaData.handakuten,
+      ...hiraganaData.combinations,
+    };
     const total = Object.keys(all).length;
-    const practiced = Object.keys(all).filter((c) => (progress.characterMastery[c] ?? 0) > 0).length;
-    const mastered = Object.keys(all).filter((c) => (progress.characterMastery[c] ?? 0) >= 75).length;
-    const avg = total > 0 ? Math.round(Object.keys(all).reduce((s, c) => s + (progress.characterMastery[c] ?? 0), 0) / total) : 0;
+    const practiced = Object.keys(all).filter(
+      c => (progress.characterMastery[c] ?? 0) > 0
+    ).length;
+    const mastered = Object.keys(all).filter(
+      c => (progress.characterMastery[c] ?? 0) >= 75
+    ).length;
+    const avg =
+      total > 0
+        ? Math.round(
+            Object.keys(all).reduce(
+              (s, c) => s + (progress.characterMastery[c] ?? 0),
+              0
+            ) / total
+          )
+        : 0;
     return { total, practiced, mastered, avg };
   }, [progress.characterMastery]);
 
   const katakanaStats = useMemo(() => {
-    const all = { ...katakanaData.basic, ...katakanaData.dakuten, ...katakanaData.handakuten, ...katakanaData.combinations };
+    const all = {
+      ...katakanaData.basic,
+      ...katakanaData.dakuten,
+      ...katakanaData.handakuten,
+      ...katakanaData.combinations,
+    };
     const total = Object.keys(all).length;
-    const practiced = Object.keys(all).filter((c) => (progress.characterMastery[c] ?? 0) > 0).length;
-    const mastered = Object.keys(all).filter((c) => (progress.characterMastery[c] ?? 0) >= 75).length;
-    const avg = total > 0 ? Math.round(Object.keys(all).reduce((s, c) => s + (progress.characterMastery[c] ?? 0), 0) / total) : 0;
+    const practiced = Object.keys(all).filter(
+      c => (progress.characterMastery[c] ?? 0) > 0
+    ).length;
+    const mastered = Object.keys(all).filter(
+      c => (progress.characterMastery[c] ?? 0) >= 75
+    ).length;
+    const avg =
+      total > 0
+        ? Math.round(
+            Object.keys(all).reduce(
+              (s, c) => s + (progress.characterMastery[c] ?? 0),
+              0
+            ) / total
+          )
+        : 0;
     return { total, practiced, mastered, avg };
   }, [progress.characterMastery]);
 
@@ -194,9 +257,12 @@ export function ProgressDashboardPage() {
     const entries = Object.entries(progress.emojiMastery);
     const total = entries.length;
     const mastered = entries.filter(([, v]) => v >= 75).length;
-    const avg = total > 0 ? Math.round(entries.reduce((s, [, v]) => s + v, 0) / total) : 0;
+    const avg =
+      total > 0
+        ? Math.round(entries.reduce((s, [, v]) => s + v, 0) / total)
+        : 0;
     const totalAttempts = progress.emojiExerciseHistory.length;
-    const correct = progress.emojiExerciseHistory.filter((e) => e.correct).length;
+    const correct = progress.emojiExerciseHistory.filter(e => e.correct).length;
     return { total, mastered, avg, totalAttempts, correct };
   }, [progress.emojiMastery, progress.emojiExerciseHistory]);
 
@@ -208,10 +274,22 @@ export function ProgressDashboardPage() {
     const totalWords = entries.length;
     const totalAttempts = entries.reduce((s, e) => s + e.seen, 0);
     const totalCorrect = entries.reduce((s, e) => s + e.correct, 0);
-    const mastered = entries.filter((e) => e.seen > 0 && e.correct / e.seen >= 0.75 && e.seen >= 3).length;
-    const avgAccuracy = totalAttempts > 0 ? Math.round((totalCorrect / totalAttempts) * 100) : 0;
-    const dueNow = entries.filter((e) => e.dueAt && new Date(e.dueAt) <= new Date()).length;
-    return { totalWords, totalAttempts, totalCorrect, mastered, avgAccuracy, dueNow };
+    const mastered = entries.filter(
+      e => e.seen > 0 && e.correct / e.seen >= 0.75 && e.seen >= 3
+    ).length;
+    const avgAccuracy =
+      totalAttempts > 0 ? Math.round((totalCorrect / totalAttempts) * 100) : 0;
+    const dueNow = entries.filter(
+      e => e.dueAt && new Date(e.dueAt) <= new Date()
+    ).length;
+    return {
+      totalWords,
+      totalAttempts,
+      totalCorrect,
+      mastered,
+      avgAccuracy,
+      dueNow,
+    };
   }, [vocab.state.wordProgress]);
 
   /* ── grammar stats ────────────────────── */
@@ -231,7 +309,8 @@ export function ProgressDashboardPage() {
         }
       }
     }
-    const accuracy = totalSeen > 0 ? Math.round((totalCorrect / totalSeen) * 100) : 0;
+    const accuracy =
+      totalSeen > 0 ? Math.round((totalCorrect / totalSeen) * 100) : 0;
     return { totalItems, totalSeen, totalCorrect, accuracy };
   }, [grammar.state.progress]);
 
@@ -252,7 +331,10 @@ export function ProgressDashboardPage() {
     return `${(seconds / 3600).toFixed(1)}h`;
   };
 
-  const totalTime = Object.values(progress.timeSpent).reduce((s, t) => s + t, 0);
+  const totalTime = Object.values(progress.timeSpent).reduce(
+    (s, t) => s + t,
+    0
+  );
 
   return (
     <main className="max-w-3xl mx-auto px-4 py-8 space-y-6">
@@ -263,13 +345,27 @@ export function ProgressDashboardPage() {
           className="p-2 -ml-2 rounded-lg hover:bg-surface-alt transition-colors text-secondary"
           aria-label="Back to Home"
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15 19l-7-7 7-7"
+            />
           </svg>
         </Link>
         <div>
-          <h1 className="text-2xl font-bold text-primary">Progress Dashboard</h1>
-          <p className="text-sm text-secondary">Your learning journey at a glance</p>
+          <h1 className="text-2xl font-bold text-primary">
+            Progress Dashboard
+          </h1>
+          <p className="text-sm text-secondary">
+            Your learning journey at a glance
+          </p>
         </div>
       </div>
 
@@ -286,23 +382,63 @@ export function ProgressDashboardPage() {
       {/* ── Quick stats ──────────────────── */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         <StatCard icon="🔥" label="Day streak" value={streakDays} />
-        <StatCard icon="📝" label="Total exercises" value={totalExercises.toLocaleString()} />
-        <StatCard icon="⏱️" label="Time practiced" value={formatTime(totalTime)} />
-        <StatCard icon="📅" label="Last practiced" value={progress.lastPracticeDate ? new Date(progress.lastPracticeDate).toLocaleDateString() : '–'} />
+        <StatCard
+          icon="📝"
+          label="Total exercises"
+          value={totalExercises.toLocaleString()}
+        />
+        <StatCard
+          icon="⏱️"
+          label="Time practiced"
+          value={formatTime(totalTime)}
+        />
+        <StatCard
+          icon="📅"
+          label="Last practiced"
+          value={
+            progress.lastPracticeDate
+              ? new Date(progress.lastPracticeDate).toLocaleDateString()
+              : '–'
+          }
+        />
       </div>
 
       {/* ── Hiragana ─────────────────────── */}
       <Section title="Hiragana Mastery" icon="あ">
         <div className="flex flex-wrap gap-4 text-sm text-secondary">
-          <span><strong className="text-primary">{hiraganaStats.practiced}</strong>/{hiraganaStats.total} practiced</span>
-          <span><strong className="text-primary">{hiraganaStats.mastered}</strong> mastered</span>
-          <span>Avg <strong className="text-primary">{hiraganaStats.avg}%</strong></span>
+          <span>
+            <strong className="text-primary">{hiraganaStats.practiced}</strong>/
+            {hiraganaStats.total} practiced
+          </span>
+          <span>
+            <strong className="text-primary">{hiraganaStats.mastered}</strong>{' '}
+            mastered
+          </span>
+          <span>
+            Avg <strong className="text-primary">{hiraganaStats.avg}%</strong>
+          </span>
         </div>
         <div className="space-y-4">
-          <KanaMasteryGrid data={hiraganaData.basic} mastery={progress.characterMastery} categoryLabel="Basic (Gojūon)" />
-          <KanaMasteryGrid data={hiraganaData.dakuten} mastery={progress.characterMastery} categoryLabel="Dakuten" />
-          <KanaMasteryGrid data={hiraganaData.handakuten} mastery={progress.characterMastery} categoryLabel="Handakuten" />
-          <KanaMasteryGrid data={hiraganaData.combinations} mastery={progress.characterMastery} categoryLabel="Combinations (Yōon)" />
+          <KanaMasteryGrid
+            data={hiraganaData.basic}
+            mastery={progress.characterMastery}
+            categoryLabel="Basic (Gojūon)"
+          />
+          <KanaMasteryGrid
+            data={hiraganaData.dakuten}
+            mastery={progress.characterMastery}
+            categoryLabel="Dakuten"
+          />
+          <KanaMasteryGrid
+            data={hiraganaData.handakuten}
+            mastery={progress.characterMastery}
+            categoryLabel="Handakuten"
+          />
+          <KanaMasteryGrid
+            data={hiraganaData.combinations}
+            mastery={progress.characterMastery}
+            categoryLabel="Combinations (Yōon)"
+          />
         </div>
         <MasteryLegend />
       </Section>
@@ -310,15 +446,39 @@ export function ProgressDashboardPage() {
       {/* ── Katakana ─────────────────────── */}
       <Section title="Katakana Mastery" icon="カ">
         <div className="flex flex-wrap gap-4 text-sm text-secondary">
-          <span><strong className="text-primary">{katakanaStats.practiced}</strong>/{katakanaStats.total} practiced</span>
-          <span><strong className="text-primary">{katakanaStats.mastered}</strong> mastered</span>
-          <span>Avg <strong className="text-primary">{katakanaStats.avg}%</strong></span>
+          <span>
+            <strong className="text-primary">{katakanaStats.practiced}</strong>/
+            {katakanaStats.total} practiced
+          </span>
+          <span>
+            <strong className="text-primary">{katakanaStats.mastered}</strong>{' '}
+            mastered
+          </span>
+          <span>
+            Avg <strong className="text-primary">{katakanaStats.avg}%</strong>
+          </span>
         </div>
         <div className="space-y-4">
-          <KanaMasteryGrid data={katakanaData.basic} mastery={progress.characterMastery} categoryLabel="Basic (Gojūon)" />
-          <KanaMasteryGrid data={katakanaData.dakuten} mastery={progress.characterMastery} categoryLabel="Dakuten" />
-          <KanaMasteryGrid data={katakanaData.handakuten} mastery={progress.characterMastery} categoryLabel="Handakuten" />
-          <KanaMasteryGrid data={katakanaData.combinations} mastery={progress.characterMastery} categoryLabel="Combinations (Yōon)" />
+          <KanaMasteryGrid
+            data={katakanaData.basic}
+            mastery={progress.characterMastery}
+            categoryLabel="Basic (Gojūon)"
+          />
+          <KanaMasteryGrid
+            data={katakanaData.dakuten}
+            mastery={progress.characterMastery}
+            categoryLabel="Dakuten"
+          />
+          <KanaMasteryGrid
+            data={katakanaData.handakuten}
+            mastery={progress.characterMastery}
+            categoryLabel="Handakuten"
+          />
+          <KanaMasteryGrid
+            data={katakanaData.combinations}
+            mastery={progress.characterMastery}
+            categoryLabel="Combinations (Yōon)"
+          />
         </div>
         <MasteryLegend />
       </Section>
@@ -326,16 +486,31 @@ export function ProgressDashboardPage() {
       {/* ── Vocabulary ───────────────────── */}
       <Section title="Vocabulary" icon="📚">
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-          <StatCard icon="📖" label="Words studied" value={vocabStats.totalWords} />
-          <StatCard icon="✅" label="Accuracy" value={`${vocabStats.avgAccuracy}%`} sub={`${vocabStats.totalCorrect}/${vocabStats.totalAttempts} correct`} />
-          <StatCard icon="🏆" label="Mastered" value={vocabStats.mastered} sub="≥75% with 3+ attempts" />
+          <StatCard
+            icon="📖"
+            label="Words studied"
+            value={vocabStats.totalWords}
+          />
+          <StatCard
+            icon="✅"
+            label="Accuracy"
+            value={`${vocabStats.avgAccuracy}%`}
+            sub={`${vocabStats.totalCorrect}/${vocabStats.totalAttempts} correct`}
+          />
+          <StatCard
+            icon="🏆"
+            label="Mastered"
+            value={vocabStats.mastered}
+            sub="≥75% with 3+ attempts"
+          />
         </div>
         {vocabStats.dueNow > 0 && (
           <Link
             to="/vocab"
             className="inline-flex items-center gap-2 text-sm font-medium text-accent-blue hover:underline"
           >
-            {vocabStats.dueNow} word{vocabStats.dueNow !== 1 ? 's' : ''} due for review →
+            {vocabStats.dueNow} word{vocabStats.dueNow !== 1 ? 's' : ''} due for
+            review →
           </Link>
         )}
       </Section>
@@ -343,9 +518,22 @@ export function ProgressDashboardPage() {
       {/* ── Grammar ──────────────────────── */}
       <Section title="Grammar" icon="📝">
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-          <StatCard icon="🧩" label="Items practiced" value={grammarStats.totalItems} />
-          <StatCard icon="🔄" label="Total attempts" value={grammarStats.totalSeen} />
-          <StatCard icon="🎯" label="Accuracy" value={`${grammarStats.accuracy}%`} sub={`${grammarStats.totalCorrect}/${grammarStats.totalSeen} correct`} />
+          <StatCard
+            icon="🧩"
+            label="Items practiced"
+            value={grammarStats.totalItems}
+          />
+          <StatCard
+            icon="🔄"
+            label="Total attempts"
+            value={grammarStats.totalSeen}
+          />
+          <StatCard
+            icon="🎯"
+            label="Accuracy"
+            value={`${grammarStats.accuracy}%`}
+            sub={`${grammarStats.totalCorrect}/${grammarStats.totalSeen} correct`}
+          />
         </div>
       </Section>
 
@@ -353,8 +541,18 @@ export function ProgressDashboardPage() {
       <Section title="Emoji Quiz" icon="😄">
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           <StatCard icon="🎮" label="Emojis studied" value={emojiStats.total} />
-          <StatCard icon="✅" label="Accuracy" value={`${pct(emojiStats.correct, emojiStats.totalAttempts)}%`} sub={`${emojiStats.correct}/${emojiStats.totalAttempts} correct`} />
-          <StatCard icon="🏆" label="Mastered" value={emojiStats.mastered} sub="≥75% mastery" />
+          <StatCard
+            icon="✅"
+            label="Accuracy"
+            value={`${pct(emojiStats.correct, emojiStats.totalAttempts)}%`}
+            sub={`${emojiStats.correct}/${emojiStats.totalAttempts} correct`}
+          />
+          <StatCard
+            icon="🏆"
+            label="Mastered"
+            value={emojiStats.mastered}
+            sub="≥75% mastery"
+          />
         </div>
       </Section>
     </main>

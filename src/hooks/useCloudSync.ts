@@ -9,11 +9,7 @@
 import { useEffect, useRef, useCallback } from 'react';
 import { supabase } from '../lib/supabase';
 import { getDeviceId } from '../lib/device';
-import {
-  type SyncedKey,
-  readSyncMeta,
-  wrapCloudValue,
-} from '../lib/cloudData';
+import { type SyncedKey, readSyncMeta, wrapCloudValue } from '../lib/cloudData';
 import { useAuth } from './useAuth';
 
 const DEBOUNCE_MS = 300;
@@ -65,7 +61,7 @@ export function useCloudSync<T>({
           data: wrapped,
           updated_at: new Date().toISOString(),
         },
-        { onConflict: 'user_id,key' },
+        { onConflict: 'user_id,key' }
       )
       .then(({ error }) => {
         if (error) {

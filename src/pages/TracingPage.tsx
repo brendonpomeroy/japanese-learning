@@ -14,9 +14,9 @@ export const TracingPage: React.FC = () => {
   const { state, dispatch } = useApp();
   const isDarkMode = state.settings.darkMode;
 
-  const initialKana = (searchParams.get('kana') === 'katakana'
-    ? 'katakana'
-    : 'hiragana') as KanaType;
+  const initialKana = (
+    searchParams.get('kana') === 'katakana' ? 'katakana' : 'hiragana'
+  ) as KanaType;
   const initialChar = searchParams.get('char');
 
   const [kanaType, setKanaType] = useState<KanaType>(initialKana);
@@ -82,23 +82,23 @@ export const TracingPage: React.FC = () => {
     if (currentIndex < characterList.length - 1) {
       setCurrentIndex(i => i + 1);
     }
-  }, [dispatch, currentChar, currentRomaji, currentIndex, characterList.length]);
+  }, [
+    dispatch,
+    currentChar,
+    currentRomaji,
+    currentIndex,
+    characterList.length,
+  ]);
 
-  const handleKanaTypeChange = useCallback(
-    (type: KanaType) => {
-      setKanaType(type);
-      setCurrentIndex(0);
-    },
-    []
-  );
+  const handleKanaTypeChange = useCallback((type: KanaType) => {
+    setKanaType(type);
+    setCurrentIndex(0);
+  }, []);
 
-  const handleCategoryChange = useCallback(
-    (cat: HiraganaCategory) => {
-      setCategory(cat);
-      setCurrentIndex(0);
-    },
-    []
-  );
+  const handleCategoryChange = useCallback((cat: HiraganaCategory) => {
+    setCategory(cat);
+    setCurrentIndex(0);
+  }, []);
 
   const mastery = state.progress.characterMastery[currentChar] || 0;
 
@@ -136,13 +136,9 @@ export const TracingPage: React.FC = () => {
           <span className="text-6xl font-japanese text-primary">
             {currentChar}
           </span>
-          <p className="text-xl text-secondary mt-1">
-            {currentRomaji}
-          </p>
+          <p className="text-xl text-secondary mt-1">{currentRomaji}</p>
           {mastery > 0 && (
-            <p className="text-sm text-secondary mt-1">
-              Mastery: {mastery}%
-            </p>
+            <p className="text-sm text-secondary mt-1">Mastery: {mastery}%</p>
           )}
         </div>
 

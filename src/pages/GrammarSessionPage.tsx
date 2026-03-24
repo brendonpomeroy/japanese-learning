@@ -100,11 +100,10 @@ export const GrammarSessionPage = () => {
           ← Exit
         </button>
         <span className="text-sm font-medium text-secondary">
-          {pack.title} — {grammarMode.charAt(0).toUpperCase() + grammarMode.slice(1)}
+          {pack.title} —{' '}
+          {grammarMode.charAt(0).toUpperCase() + grammarMode.slice(1)}
         </span>
-        <span className="text-sm text-secondary">
-          {progress}
-        </span>
+        <span className="text-sm text-secondary">{progress}</span>
       </div>
 
       {/* Progress bar */}

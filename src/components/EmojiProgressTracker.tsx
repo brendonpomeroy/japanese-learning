@@ -27,9 +27,7 @@ const EmojiProgressTracker: React.FC = () => {
 
   return (
     <div className="bg-surface rounded-lg shadow-soft-md p-6">
-      <h2 className="text-2xl font-bold text-primary mb-6">
-        Emoji Progress
-      </h2>
+      <h2 className="text-2xl font-bold text-primary mb-6">Emoji Progress</h2>
 
       {/* Overall Progress */}
       <div className="mb-6">
@@ -55,17 +53,13 @@ const EmojiProgressTracker: React.FC = () => {
           <div className="text-2xl font-bold text-accent-orange">
             {emojiExerciseHistory.length}
           </div>
-          <div className="text-sm text-accent-orange">
-            Total Attempts
-          </div>
+          <div className="text-sm text-accent-orange">Total Attempts</div>
         </div>
         <div className="bg-success/10 rounded-lg p-4">
           <div className="text-2xl font-bold text-success">
             {overallSuccessRate.toFixed(1)}%
           </div>
-          <div className="text-sm text-success">
-            Success Rate
-          </div>
+          <div className="text-sm text-success">Success Rate</div>
         </div>
       </div>
 
@@ -98,9 +92,7 @@ const EmojiProgressTracker: React.FC = () => {
                 </div>
                 <div
                   className={`text-sm font-medium ${
-                    result.correct
-                      ? 'text-success'
-                      : 'text-error'
+                    result.correct ? 'text-success' : 'text-error'
                   }`}
                 >
                   {result.correct ? '✓' : '✗'}

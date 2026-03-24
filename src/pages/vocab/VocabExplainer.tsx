@@ -28,9 +28,7 @@ export const VocabExplainer: React.FC = () => {
       {isOpen && (
         <div className="px-4 pb-4 space-y-4 text-sm text-secondary">
           <div>
-            <h3 className="font-semibold text-primary mb-1">
-              Practice Modes
-            </h3>
+            <h3 className="font-semibold text-primary mb-1">Practice Modes</h3>
             <ul className="list-disc list-inside space-y-1">
               <li>
                 <strong>Type It</strong> — Type the Japanese word in hiragana or
@@ -73,15 +71,13 @@ export const VocabExplainer: React.FC = () => {
             <p>
               Use the controls above to filter words by difficulty (beginner,
               intermediate, advanced) or topic. Toggle "Show Romaji" to display
-              romanized pronunciations, or "Show Hint" (in Type mode) to see
-              the first character and word length.
+              romanized pronunciations, or "Show Hint" (in Type mode) to see the
+              first character and word length.
             </p>
           </div>
 
           <div>
-            <h3 className="font-semibold text-primary mb-1">
-              Stats
-            </h3>
+            <h3 className="font-semibold text-primary mb-1">Stats</h3>
             <ul className="list-disc list-inside space-y-1">
               <li>
                 <strong>Streak</strong> — Consecutive correct answers. Resets on

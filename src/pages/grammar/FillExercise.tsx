@@ -47,16 +47,12 @@ export const FillExercise: React.FC<FillExerciseProps> = ({
   return (
     <div className="space-y-6">
       <div className="text-center">
-        <p className="text-lg text-secondary mb-2">
-          {item.english}
-        </p>
+        <p className="text-lg text-secondary mb-2">{item.english}</p>
         <p className="text-3xl font-bold text-primary">
           {parts[0]}
           <span className="inline-block mx-1 px-3 py-1 border-b-4 border-accent-blue min-w-[3rem] text-center">
             {isAnswered ? (
-              <span
-                className={isCorrect ? 'text-success' : 'text-error'}
-              >
+              <span className={isCorrect ? 'text-success' : 'text-error'}>
                 {selectedOption}
               </span>
             ) : (
@@ -97,7 +93,8 @@ export const FillExercise: React.FC<FillExerciseProps> = ({
       {isAnswered && !isCorrect && (
         <div className="text-center space-y-3">
           <p className="text-sm text-secondary">
-            Correct answer: <span className="font-bold text-success">{item.japanese}</span>
+            Correct answer:{' '}
+            <span className="font-bold text-success">{item.japanese}</span>
           </p>
           <button
             onClick={handleNext}
@@ -109,7 +106,7 @@ export const FillExercise: React.FC<FillExerciseProps> = ({
       )}
 
       {isAnswered && isCorrect && (
-                <p className="text-center text-success font-medium">Correct!</p>
+        <p className="text-center text-success font-medium">Correct!</p>
       )}
 
       {isAnswered && item.translationNotes.length > 0 && (

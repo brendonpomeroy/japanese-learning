@@ -290,9 +290,7 @@
           "english": "I listen to music every day",
           "japanese": "まいにち おんがくをききます。",
           "tokens": ["まいにち", "おんがく", "を", "ききます"],
-          "translationNotes": [
-            "まいにち means every day."
-          ],
+          "translationNotes": ["まいにち means every day."],
           "focus": {
             "grammarPoint": "を",
             "role": "object-marker"

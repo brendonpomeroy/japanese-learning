@@ -37,7 +37,8 @@ const ExerciseEngine: React.FC<ExerciseEngineProps> = ({
 
   const generateRandomOptions = useCallback(
     (correctAnswer: string, isRomaji: boolean) => {
-      const allChars = kanaType === 'katakana' ? getAllKatakana() : getAllHiragana();
+      const allChars =
+        kanaType === 'katakana' ? getAllKatakana() : getAllHiragana();
       const allOptions = isRomaji
         ? Object.values(allChars)
         : Object.keys(allChars);
@@ -53,7 +54,8 @@ const ExerciseEngine: React.FC<ExerciseEngineProps> = ({
   );
 
   const generateQuestion = useCallback((): QuizQuestion => {
-    const getRandomChar = kanaType === 'katakana' ? getRandomKatakana : getRandomHiragana;
+    const getRandomChar =
+      kanaType === 'katakana' ? getRandomKatakana : getRandomHiragana;
     const { character, romaji } = getRandomChar(category);
 
     let questionType: 'hiragana-to-romaji' | 'romaji-to-hiragana' | 'typing';
@@ -240,9 +242,7 @@ const ExerciseEngine: React.FC<ExerciseEngineProps> = ({
     } else if (currentQuestion.type === 'typing') {
       return (
         <div className="text-center">
-          <p className="text-lg text-secondary mb-4">
-            Type the romaji for:
-          </p>
+          <p className="text-lg text-secondary mb-4">Type the romaji for:</p>
           <div className="text-6xl font-japanese font-bold text-primary mb-6">
             {currentQuestion.character}
           </div>

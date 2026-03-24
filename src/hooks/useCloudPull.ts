@@ -21,7 +21,7 @@ import {
 // ---------------------------------------------------------------------------
 
 export async function pullAllKeys(
-  userId: string,
+  userId: string
 ): Promise<Record<string, CloudBackedValue>> {
   if (!supabase) return {};
 
@@ -49,7 +49,7 @@ export async function pullAllKeys(
 export async function upsertKey(
   userId: string,
   key: SyncedKey,
-  wrapped: CloudBackedValue,
+  wrapped: CloudBackedValue
 ): Promise<void> {
   if (!supabase) return;
 
@@ -60,7 +60,7 @@ export async function upsertKey(
       data: wrapped,
       updated_at: new Date().toISOString(),
     },
-    { onConflict: 'user_id,key' },
+    { onConflict: 'user_id,key' }
   );
 
   if (error) {
@@ -100,7 +100,7 @@ export async function pushAllKeys(userId: string): Promise<void> {
 // ---------------------------------------------------------------------------
 
 export function restoreCloudLocally(
-  cloudData: Record<string, CloudBackedValue>,
+  cloudData: Record<string, CloudBackedValue>
 ): void {
   for (const key of SYNCED_KEYS) {
     const cloudValue = cloudData[key];

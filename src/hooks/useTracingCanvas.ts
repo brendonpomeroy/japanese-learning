@@ -24,9 +24,7 @@ export function useTracingCanvas({
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const isDrawingRef = useRef(false);
   const [hasStrokes, setHasStrokes] = useState(false);
-  const strokesRef = useRef<{ x: number; y: number; pressure: number }[][]>(
-    []
-  );
+  const strokesRef = useRef<{ x: number; y: number; pressure: number }[][]>([]);
   const currentStrokeRef = useRef<{ x: number; y: number; pressure: number }[]>(
     []
   );
@@ -165,7 +163,8 @@ export function useTracingCanvas({
       if (!isDrawingRef.current) return;
       e.preventDefault();
       const point = getCanvasPoint(e);
-      const prev = currentStrokeRef.current[currentStrokeRef.current.length - 1];
+      const prev =
+        currentStrokeRef.current[currentStrokeRef.current.length - 1];
       currentStrokeRef.current.push(point);
 
       const ctx = canvas.getContext('2d');

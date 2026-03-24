@@ -15,7 +15,11 @@ export interface GrammarItem {
   };
   correct?: {
     incorrectJapanese: string;
-    errorType: 'wrong-particle' | 'wrong-order' | 'wrong-verb' | 'missing-token';
+    errorType:
+      | 'wrong-particle'
+      | 'wrong-order'
+      | 'wrong-verb'
+      | 'missing-token';
   };
   fill?: {
     promptJapanese: string;

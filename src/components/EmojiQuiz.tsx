@@ -312,17 +312,14 @@ const EmojiQuiz: React.FC<EmojiQuizProps> = ({
 
           if (showResult) {
             if (option === currentQuestion.correctAnswer) {
-              buttonClass +=
-                'bg-success/10 border-success text-success';
+              buttonClass += 'bg-success/10 border-success text-success';
             } else if (
               option === selectedAnswer &&
               option !== currentQuestion.correctAnswer
             ) {
-              buttonClass +=
-                'bg-error/10 border-error text-error';
+              buttonClass += 'bg-error/10 border-error text-error';
             } else {
-              buttonClass +=
-                'bg-surface-alt border-border text-secondary';
+              buttonClass += 'bg-surface-alt border-border text-secondary';
             }
           } else {
             buttonClass +=

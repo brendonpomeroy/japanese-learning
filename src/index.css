@@ -94,38 +94,38 @@
    Paper Study theme — light
    ─────────────────────────────────────────── */
 [data-theme='paper'] {
-  --color-page: #F7F3EC;
-  --color-surface: #FFFDF9;
-  --color-surface-alt: #F8F4ED;
+  --color-page: #f7f3ec;
+  --color-surface: #fffdf9;
+  --color-surface-alt: #f8f4ed;
   --color-nav-bg: rgba(255, 253, 249, 0.85);
-  --color-nav-border: #E8E0D4;
+  --color-nav-border: #e8e0d4;
 
-  --color-primary: #2A2A2A;
-  --color-secondary: #5F5A52;
-  --color-muted: #8A847A;
-  --color-inverse: #3D3832;
+  --color-primary: #2a2a2a;
+  --color-secondary: #5f5a52;
+  --color-muted: #8a847a;
+  --color-inverse: #3d3832;
 
-  --color-border: #E8E0D4;
-  --color-border-light: #F0EAE0;
+  --color-border: #e8e0d4;
+  --color-border-light: #f0eae0;
 
-  --color-link: #5C84E6;
+  --color-link: #5c84e6;
 
-  --color-accent-blue: #5C84E6;
-  --color-accent-violet: #9A6AF0;
-  --color-accent-orange: #F08A3E;
-  --color-accent-rose: #E85D7A;
-  --color-accent-green: #7FA97F;
-  --color-accent-gold: #D8B25A;
+  --color-accent-blue: #5c84e6;
+  --color-accent-violet: #9a6af0;
+  --color-accent-orange: #f08a3e;
+  --color-accent-rose: #e85d7a;
+  --color-accent-green: #7fa97f;
+  --color-accent-gold: #d8b25a;
 
-  --color-success: #7FA97F;
-  --color-error: #E85D7A;
-  --color-warning: #D8B25A;
+  --color-success: #7fa97f;
+  --color-error: #e85d7a;
+  --color-warning: #d8b25a;
 
   --shadow-soft-sm: 0 2px 8px rgba(60, 40, 20, 0.04);
   --shadow-soft-md: 0 6px 16px rgba(60, 40, 20, 0.05);
   --shadow-soft-lg: 0 10px 30px rgba(60, 40, 20, 0.08);
 
-  --color-input-bg: #FCFAF6;
+  --color-input-bg: #fcfaf6;
 
   font-family: 'Noto Sans JP', 'Inter', 'Hiragino Sans', system-ui, sans-serif;
   line-height: 1.6;
@@ -135,38 +135,38 @@
    Paper Study theme — dark
    ─────────────────────────────────────────── */
 [data-theme='paper'].dark {
-  --color-page: #1A1816;
+  --color-page: #1a1816;
   --color-surface: #242220;
-  --color-surface-alt: #2E2B28;
+  --color-surface-alt: #2e2b28;
   --color-nav-bg: rgba(30, 28, 26, 0.9);
-  --color-nav-border: #3A3632;
+  --color-nav-border: #3a3632;
 
-  --color-primary: #E8E2D8;
-  --color-secondary: #A09888;
+  --color-primary: #e8e2d8;
+  --color-secondary: #a09888;
   --color-muted: #706860;
-  --color-inverse: #FFFFFF;
+  --color-inverse: #ffffff;
 
-  --color-border: #3A3632;
-  --color-border-light: #322F2B;
+  --color-border: #3a3632;
+  --color-border-light: #322f2b;
 
-  --color-link: #7B9FEE;
+  --color-link: #7b9fee;
 
-  --color-accent-blue: #7B9FEE;
-  --color-accent-violet: #B48AF5;
-  --color-accent-orange: #F5A060;
-  --color-accent-rose: #F07A92;
-  --color-accent-green: #6BC498;
-  --color-accent-gold: #E0C06A;
+  --color-accent-blue: #7b9fee;
+  --color-accent-violet: #b48af5;
+  --color-accent-orange: #f5a060;
+  --color-accent-rose: #f07a92;
+  --color-accent-green: #6bc498;
+  --color-accent-gold: #e0c06a;
 
-  --color-success: #6BC498;
-  --color-error: #F07A92;
-  --color-warning: #E0C06A;
+  --color-success: #6bc498;
+  --color-error: #f07a92;
+  --color-warning: #e0c06a;
 
   --shadow-soft-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
   --shadow-soft-md: 0 6px 16px rgba(0, 0, 0, 0.3);
   --shadow-soft-lg: 0 10px 30px rgba(0, 0, 0, 0.4);
 
-  --color-input-bg: #2A2826;
+  --color-input-bg: #2a2826;
 }
 
 /* ───────────────────────────────────────────
@@ -180,12 +180,32 @@
     /* subtle dot grain — mimics paper fiber */
     radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
     /* warm vignette — darker edges like aged paper */
-    radial-gradient(ellipse at 50% 0%, transparent 50%, rgba(180, 160, 130, 0.08) 100%),
-    radial-gradient(ellipse at 50% 100%, transparent 50%, rgba(180, 160, 130, 0.06) 100%),
+      radial-gradient(
+        ellipse at 50% 0%,
+        transparent 50%,
+        rgba(180, 160, 130, 0.08) 100%
+      ),
+    radial-gradient(
+      ellipse at 50% 100%,
+      transparent 50%,
+      rgba(180, 160, 130, 0.06) 100%
+    ),
     /* soft light variation — uneven paper surface */
-    radial-gradient(circle at 30% 25%, rgba(255, 248, 230, 0.5), transparent 45%),
-    radial-gradient(circle at 70% 70%, rgba(245, 235, 215, 0.35), transparent 50%),
-    radial-gradient(circle at 85% 15%, rgba(240, 230, 210, 0.25), transparent 35%);
+      radial-gradient(
+        circle at 30% 25%,
+        rgba(255, 248, 230, 0.5),
+        transparent 45%
+      ),
+    radial-gradient(
+      circle at 70% 70%,
+      rgba(245, 235, 215, 0.35),
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(240, 230, 210, 0.25),
+      transparent 35%
+    );
   background-size:
     4px 4px,
     100% 100%,
@@ -200,11 +220,27 @@
     /* grain — lighter points on dark bg */
     radial-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
     /* subtle warm vignette */
-    radial-gradient(ellipse at 50% 0%, transparent 55%, rgba(0, 0, 0, 0.15) 100%),
-    radial-gradient(ellipse at 50% 100%, transparent 55%, rgba(0, 0, 0, 0.1) 100%),
+      radial-gradient(
+        ellipse at 50% 0%,
+        transparent 55%,
+        rgba(0, 0, 0, 0.15) 100%
+      ),
+    radial-gradient(
+      ellipse at 50% 100%,
+      transparent 55%,
+      rgba(0, 0, 0, 0.1) 100%
+    ),
     /* surface variation */
-    radial-gradient(circle at 30% 25%, rgba(255, 245, 220, 0.02), transparent 45%),
-    radial-gradient(circle at 70% 70%, rgba(255, 240, 210, 0.015), transparent 50%);
+      radial-gradient(
+        circle at 30% 25%,
+        rgba(255, 245, 220, 0.02),
+        transparent 45%
+      ),
+    radial-gradient(
+      circle at 70% 70%,
+      rgba(255, 240, 210, 0.015),
+      transparent 50%
+    );
   background-size:
     4px 4px,
     100% 100%,
@@ -230,7 +266,7 @@
   padding: 24px;
 }
 [data-theme='paper'] .gradient-card::after {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   background: radial-gradient(
@@ -269,7 +305,7 @@
 
 /* Paper buttons */
 [data-theme='paper'] button:not(.no-paper),
-[data-theme='paper'] a[class*="rounded"] {
+[data-theme='paper'] a[class*='rounded'] {
   border-radius: 12px;
 }
 [data-theme='paper'] .btn-primary {
@@ -294,7 +330,7 @@
 [data-theme='paper'] input,
 [data-theme='paper'] textarea,
 [data-theme='paper'] select {
-  background: var(--color-input-bg, #FCFAF6);
+  background: var(--color-input-bg, #fcfaf6);
   border: 1px solid var(--color-border);
   border-radius: 12px;
   padding: 10px 14px;
@@ -322,36 +358,36 @@
 
 /* Paper gradient backgrounds for feature cards */
 [data-theme='paper'] .gradient-blue {
-  background: linear-gradient(135deg, #5C84E6 0%, #6A95F0 100%);
+  background: linear-gradient(135deg, #5c84e6 0%, #6a95f0 100%);
 }
 [data-theme='paper'] .gradient-purple {
-  background: linear-gradient(135deg, #9A6AF0 0%, #B27BF2 100%);
+  background: linear-gradient(135deg, #9a6af0 0%, #b27bf2 100%);
 }
 [data-theme='paper'] .gradient-orange {
-  background: linear-gradient(135deg, #F08A3E 0%, #F59A52 100%);
+  background: linear-gradient(135deg, #f08a3e 0%, #f59a52 100%);
 }
 [data-theme='paper'] .gradient-rose {
-  background: linear-gradient(135deg, #E85D7A 0%, #F06E8A 100%);
+  background: linear-gradient(135deg, #e85d7a 0%, #f06e8a 100%);
 }
 [data-theme='paper'] .gradient-green {
-  background: linear-gradient(135deg, #7FA97F 0%, #92BC92 100%);
+  background: linear-gradient(135deg, #7fa97f 0%, #92bc92 100%);
 }
 
 /* Dark paper gradients — slightly muted */
 [data-theme='paper'].dark .gradient-blue {
-  background: linear-gradient(135deg, #4A6FC0 0%, #5A82D0 100%);
+  background: linear-gradient(135deg, #4a6fc0 0%, #5a82d0 100%);
 }
 [data-theme='paper'].dark .gradient-purple {
-  background: linear-gradient(135deg, #7E55C8 0%, #9468D8 100%);
+  background: linear-gradient(135deg, #7e55c8 0%, #9468d8 100%);
 }
 [data-theme='paper'].dark .gradient-orange {
-  background: linear-gradient(135deg, #D07530 0%, #E08842 100%);
+  background: linear-gradient(135deg, #d07530 0%, #e08842 100%);
 }
 [data-theme='paper'].dark .gradient-rose {
-  background: linear-gradient(135deg, #C84D68 0%, #D86078 100%);
+  background: linear-gradient(135deg, #c84d68 0%, #d86078 100%);
 }
 [data-theme='paper'].dark .gradient-green {
-  background: linear-gradient(135deg, #6A8F6A 0%, #7DA27D 100%);
+  background: linear-gradient(135deg, #6a8f6a 0%, #7da27d 100%);
 }
 
 /* Japanese font styling */
@@ -385,13 +421,21 @@
 }
 
 @keyframes backdropFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes backdropFadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 .bottom-sheet-enter {

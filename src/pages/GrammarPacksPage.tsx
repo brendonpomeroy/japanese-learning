@@ -10,9 +10,7 @@ export const GrammarPacksPage = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold text-primary mb-2">
-          Grammar Packs
-        </h1>
+        <h1 className="text-4xl font-bold text-primary mb-2">Grammar Packs</h1>
         <p className="text-secondary">
           Focused grammar exercises to build sentence patterns
         </p>
@@ -44,9 +42,7 @@ export const GrammarPacksPage = () => {
               <h3 className="text-lg font-semibold text-secondary mb-2">
                 {pack.subtitle}
               </h3>
-              <p className="text-secondary text-sm mb-4">
-                {pack.description}
-              </p>
+              <p className="text-secondary text-sm mb-4">{pack.description}</p>
 
               <div className="flex flex-wrap gap-1 mb-4">
                 {pack.tags.map(tag => (

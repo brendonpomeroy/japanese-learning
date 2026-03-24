@@ -234,12 +234,9 @@ export const GrammarProvider: React.FC<{ children: ReactNode }> = ({
     [state.progress]
   );
 
-  const answerItem = useCallback(
-    (itemId: string, isCorrect: boolean) => {
-      dispatch({ type: 'ANSWER_ITEM', payload: { itemId, isCorrect } });
-    },
-    []
-  );
+  const answerItem = useCallback((itemId: string, isCorrect: boolean) => {
+    dispatch({ type: 'ANSWER_ITEM', payload: { itemId, isCorrect } });
+  }, []);
 
   const nextQuestion = useCallback(() => {
     dispatch({ type: 'NEXT_QUESTION' });

@@ -88,17 +88,13 @@ function Home() {
                   {progress.exerciseHistory.length +
                     (progress.emojiExerciseHistory?.length || 0)}
                 </div>
-                <div className="text-xs text-accent-blue">
-                  Total Attempts
-                </div>
+                <div className="text-xs text-accent-blue">Total Attempts</div>
               </div>
               <div className="text-center">
                 <div className="text-lg font-bold text-accent-blue">
                   {progress.streak || 0}
                 </div>
-                <div className="text-xs text-accent-blue">
-                  Day Streak
-                </div>
+                <div className="text-xs text-accent-blue">Day Streak</div>
               </div>
             </div>
           </div>

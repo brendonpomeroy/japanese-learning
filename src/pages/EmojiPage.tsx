@@ -48,9 +48,7 @@ export const EmojiPage: React.FC = () => {
         >
           ← Back to Home
         </Link>
-        <h1 className="text-4xl font-bold text-primary mb-4">
-          Emoji Quiz
-        </h1>
+        <h1 className="text-4xl font-bold text-primary mb-4">Emoji Quiz</h1>
         <p className="text-lg text-secondary">
           Test your Japanese vocabulary through emoji recognition!
         </p>
@@ -87,9 +85,7 @@ export const EmojiPage: React.FC = () => {
                 correct Japanese word.
               </p>
               <div className="space-y-2">
-                <h3 className="font-semibold text-primary">
-                  Display Options:
-                </h3>
+                <h3 className="font-semibold text-primary">Display Options:</h3>
                 <ul className="list-disc list-inside space-y-1 ml-4">
                   <li>
                     <strong>漢字/カナ:</strong> Kanji and katakana characters
@@ -110,9 +106,7 @@ export const EmojiPage: React.FC = () => {
           </div>
 
           <div className="bg-surface rounded-lg shadow-soft-md p-6">
-            <h2 className="text-2xl font-bold text-primary mb-6">
-              Start Quiz
-            </h2>
+            <h2 className="text-2xl font-bold text-primary mb-6">Start Quiz</h2>
             <div className="text-center">
               <div className="text-6xl mb-6">🎯📝🎌</div>
               <button

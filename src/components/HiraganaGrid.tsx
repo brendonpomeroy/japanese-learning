@@ -30,9 +30,7 @@ const dakutenColumns: (string | null)[][] = [
   ['ば', 'び', 'ぶ', 'べ', 'ぼ'],
 ];
 
-const handakutenColumns: (string | null)[][] = [
-  ['ぱ', 'ぴ', 'ぷ', 'ぺ', 'ぽ'],
-];
+const handakutenColumns: (string | null)[][] = [['ぱ', 'ぴ', 'ぷ', 'ぺ', 'ぽ']];
 
 const combinationRows: { label: string; chars: [string, string, string] }[] = [
   { label: 'k', chars: ['きゃ', 'きゅ', 'きょ'] },
@@ -55,7 +53,7 @@ const allHiragana: Record<string, string> = {
   ...hiraganaData.combinations,
 };
 
-const HiraganaGrid: React.FC<HiraganaGridProps> = (props) => (
+const HiraganaGrid: React.FC<HiraganaGridProps> = props => (
   <KanaGrid
     title="Hiragana Characters"
     allCharacters={allHiragana}

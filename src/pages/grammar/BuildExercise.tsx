@@ -58,12 +58,8 @@ export const BuildExercise: React.FC<BuildExerciseProps> = ({
   return (
     <div className="space-y-6">
       <div className="text-center">
-        <p className="text-lg text-secondary mb-1">
-          Build the sentence:
-        </p>
-        <p className="text-xl font-semibold text-primary">
-          {item.english}
-        </p>
+        <p className="text-lg text-secondary mb-1">Build the sentence:</p>
+        <p className="text-xl font-semibold text-primary">{item.english}</p>
       </div>
 
       {/* Answer area */}
@@ -127,14 +123,14 @@ export const BuildExercise: React.FC<BuildExerciseProps> = ({
       )}
 
       {isAnswered && isCorrect && (
-                <p className="text-center text-success font-medium">Correct!</p>
+        <p className="text-center text-success font-medium">Correct!</p>
       )}
 
       {isAnswered && !isCorrect && (
         <div className="text-center space-y-3">
           <p className="text-sm text-secondary">
             Correct answer:{' '}
-                        <span className="font-bold text-success">{item.japanese}</span>
+            <span className="font-bold text-success">{item.japanese}</span>
           </p>
           <button
             onClick={handleNext}

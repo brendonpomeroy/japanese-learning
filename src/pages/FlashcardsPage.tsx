@@ -125,25 +125,19 @@ export const FlashcardsPage: React.FC = () => {
                   <div className="text-3xl font-bold text-accent-blue">
                     {masteryStats.totalWords}
                   </div>
-                  <div className="text-sm text-secondary">
-                    Words Practiced
-                  </div>
+                  <div className="text-sm text-secondary">Words Practiced</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-success">
                     {masteryStats.masteredWords}
                   </div>
-                  <div className="text-sm text-secondary">
-                    Mastered (80%+)
-                  </div>
+                  <div className="text-sm text-secondary">Mastered (80%+)</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-accent-violet">
                     {Math.round(masteryStats.averageMastery)}%
                   </div>
-                  <div className="text-sm text-secondary">
-                    Average Mastery
-                  </div>
+                  <div className="text-sm text-secondary">Average Mastery</div>
                 </div>
               </div>
             </div>
@@ -160,25 +154,19 @@ export const FlashcardsPage: React.FC = () => {
                   <div className="text-3xl font-bold text-primary">
                     {sessionStats.total}
                   </div>
-                  <div className="text-sm text-secondary">
-                    Total Cards
-                  </div>
+                  <div className="text-sm text-secondary">Total Cards</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-success">
                     {sessionStats.correct}
                   </div>
-                  <div className="text-sm text-secondary">
-                    Got It!
-                  </div>
+                  <div className="text-sm text-secondary">Got It!</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-error">
                     {sessionStats.needsPractice}
                   </div>
-                  <div className="text-sm text-secondary">
-                    Need Practice
-                  </div>
+                  <div className="text-sm text-secondary">Need Practice</div>
                 </div>
               </div>
               <button

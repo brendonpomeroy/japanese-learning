@@ -199,9 +199,7 @@ function Practice() {
                       {exercise.title}
                     </h3>
                   </div>
-                  <p className="text-secondary mb-4">
-                    {exercise.description}
-                  </p>
+                  <p className="text-secondary mb-4">{exercise.description}</p>
                   <div className="flex items-center text-accent-blue group-hover:text-accent-blue/80">
                     <span className="mr-2">Start exercise</span>
                     <span className="transform group-hover:translate-x-1 transition-transform">

@@ -42,9 +42,7 @@ const PhraseCard: React.FC<PhraseCardProps> = ({ phrase, onPlayAudio }) => {
             </span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-sm text-secondary font-medium">
-              Romaji:
-            </span>
+            <span className="text-sm text-secondary font-medium">Romaji:</span>
             <span className="text-lg font-mono text-primary">
               {phrase.romaji}
             </span>
@@ -53,9 +51,7 @@ const PhraseCard: React.FC<PhraseCardProps> = ({ phrase, onPlayAudio }) => {
       </div>
 
       <div className="mb-4">
-        <p className="text-secondary italic">
-          {phrase.explanation}
-        </p>
+        <p className="text-secondary italic">{phrase.explanation}</p>
       </div>
 
       <div className="border-t border-border pt-4">
@@ -74,9 +70,7 @@ const PhraseCard: React.FC<PhraseCardProps> = ({ phrase, onPlayAudio }) => {
                 <span className="font-japanese font-medium text-primary min-w-0 flex-shrink-0">
                   {word}
                 </span>
-                <span className="text-secondary">
-                  {meaning}
-                </span>
+                <span className="text-secondary">{meaning}</span>
               </div>
             ))}
           </div>

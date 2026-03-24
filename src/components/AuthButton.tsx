@@ -75,7 +75,7 @@ export function CloudBackupModal({ isOpen, onClose }: CloudBackupModalProps) {
   return createPortal(
     <div
       className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 backdrop-blur-sm"
-      onClick={(e) => {
+      onClick={e => {
         if (e.target === e.currentTarget) onClose();
       }}
     >
@@ -215,7 +215,7 @@ export function CloudBackupModal({ isOpen, onClose }: CloudBackupModalProps) {
                 type="email"
                 placeholder="your@email.com"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={e => setEmail(e.target.value)}
                 className="w-full text-sm px-4 py-2.5 rounded-xl bg-surface-alt text-primary placeholder-tertiary border border-border focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-accent-blue/30 transition-colors"
                 autoFocus
               />
@@ -240,6 +240,6 @@ export function CloudBackupModal({ isOpen, onClose }: CloudBackupModalProps) {
         )}
       </div>
     </div>,
-    document.body,
+    document.body
   );
 }

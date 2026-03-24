@@ -87,7 +87,8 @@ export const CorrectExercise: React.FC<CorrectExerciseProps> = ({
   const handleReplacementClick = (replacement: string) => {
     if (isAnswered || selectedIndex === null) return;
 
-    const pickedCorrectToken = selectedIndex === wrongIndex && replacement === correctToken;
+    const pickedCorrectToken =
+      selectedIndex === wrongIndex && replacement === correctToken;
     setIsAnswered(true);
     setIsCorrect(pickedCorrectToken);
     onAnswer(pickedCorrectToken);
@@ -106,12 +107,8 @@ export const CorrectExercise: React.FC<CorrectExerciseProps> = ({
   return (
     <div className="space-y-6">
       <div className="text-center">
-        <p className="text-lg text-secondary mb-1">
-          Find and fix the mistake:
-        </p>
-        <p className="text-sm text-secondary">
-          {item.english}
-        </p>
+        <p className="text-lg text-secondary mb-1">Find and fix the mistake:</p>
+        <p className="text-sm text-secondary">{item.english}</p>
       </div>
 
       {/* Incorrect sentence as tappable tokens */}
@@ -146,9 +143,7 @@ export const CorrectExercise: React.FC<CorrectExerciseProps> = ({
       {/* Replacement options */}
       {selectedIndex !== null && !isAnswered && (
         <div className="text-center space-y-2">
-          <p className="text-sm text-secondary">
-            Replace with:
-          </p>
+          <p className="text-sm text-secondary">Replace with:</p>
           <div className="flex gap-2 justify-center">
             {replacementOptions.map(option => (
               <button
@@ -164,14 +159,14 @@ export const CorrectExercise: React.FC<CorrectExerciseProps> = ({
       )}
 
       {isAnswered && isCorrect && (
-                <p className="text-center text-success font-medium">Correct!</p>
+        <p className="text-center text-success font-medium">Correct!</p>
       )}
 
       {isAnswered && !isCorrect && (
         <div className="text-center space-y-3">
           <p className="text-sm text-secondary">
             Correct answer:{' '}
-                        <span className="font-bold text-success">{item.japanese}</span>
+            <span className="font-bold text-success">{item.japanese}</span>
           </p>
           <button
             onClick={handleNext}

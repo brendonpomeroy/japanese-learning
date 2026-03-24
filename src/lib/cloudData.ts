@@ -42,7 +42,7 @@ export function metaKey(key: SyncedKey): string {
 
 export function wrapCloudValue<T>(
   payload: T,
-  meta: LocalSyncMeta,
+  meta: LocalSyncMeta
 ): CloudBackedValue<T> {
   return {
     schemaVersion: 1,
@@ -63,16 +63,12 @@ export function isCloudBackedValue(value: unknown): value is CloudBackedValue {
   );
 }
 
-export function getClientUpdatedAt(
-  value: unknown,
-): string | null {
+export function getClientUpdatedAt(value: unknown): string | null {
   if (isCloudBackedValue(value)) return value.clientUpdatedAt;
   return null;
 }
 
-export function getPayload<T = unknown>(
-  value: unknown,
-): T | null {
+export function getPayload<T = unknown>(value: unknown): T | null {
   if (isCloudBackedValue(value)) return value.payload as T;
   return null;
 }
