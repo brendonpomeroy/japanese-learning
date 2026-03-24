@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useCallback } from 'react';
+import { VocabExplainer } from './vocab/VocabExplainer';
 import { useVocab } from '../features/vocab/useVocab';
 import { vocabWords } from '../features/vocab/vocabData';
 import {
@@ -108,6 +109,8 @@ export const VocabPage: React.FC = () => {
           onSetSettings={setSettings}
           onResetProgress={handleResetProgress}
         />
+
+        <VocabExplainer />
 
         <MasteryDashboard wordProgress={state.wordProgress} />
 

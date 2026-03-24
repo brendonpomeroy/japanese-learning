@@ -16,6 +16,7 @@ import { VocabPage } from './pages/VocabPage';
 import { GrammarPacksPage } from './pages/GrammarPacksPage';
 import { GrammarPackDetailPage } from './pages/GrammarPackDetailPage';
 import { GrammarSessionPage } from './pages/GrammarSessionPage';
+import { TracingPage } from './pages/TracingPage';
 import { useTheme } from './hooks/useTheme';
 
 function AppContent() {
@@ -46,6 +47,7 @@ function AppContent() {
         <Route path="/grammar" element={<GrammarPacksPage />} />
         <Route path="/grammar/:packId" element={<GrammarPackDetailPage />} />
         <Route path="/grammar/:packId/:mode" element={<GrammarSessionPage />} />
+        <Route path="/tracing" element={<TracingPage />} />
       </Routes>
     </div>
   );

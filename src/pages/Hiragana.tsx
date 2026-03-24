@@ -75,11 +75,19 @@ export const Hiragana: React.FC = () => {
           ))}
         </div>
 
-        <div className="bg-blue-50 dark:bg-blue-900 rounded-lg p-4 mb-6">
-          <p className="text-blue-800 dark:text-blue-200 text-sm">
-            <strong>Tip:</strong> Click on any character to hear its
-            pronunciation
-          </p>
+        <div className="flex flex-wrap items-center gap-4 mb-6">
+          <div className="bg-blue-50 dark:bg-blue-900 rounded-lg p-4 flex-1">
+            <p className="text-blue-800 dark:text-blue-200 text-sm">
+              <strong>Tip:</strong> Click on any character to hear its
+              pronunciation
+            </p>
+          </div>
+          <Link
+            to="/tracing?kana=hiragana"
+            className="px-4 py-2 rounded-lg font-medium transition-colors bg-purple-600 text-white hover:bg-purple-700"
+          >
+            ✍️ Practice Tracing
+          </Link>
         </div>
       </div>
 
