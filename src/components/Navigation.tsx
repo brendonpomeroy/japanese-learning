@@ -208,7 +208,7 @@ function Navigation() {
   return (
     <>
       {/* Top bar */}
-      <nav className="bg-nav-bg text-inverse shadow-lg backdrop-blur-lg border-b border-nav-border">
+      <nav className="relative z-50 bg-nav-bg text-inverse shadow-lg backdrop-blur-lg border-b border-nav-border">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center py-4">
             <Link to="/" className="text-xl font-bold">

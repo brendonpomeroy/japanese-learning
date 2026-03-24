@@ -27,7 +27,7 @@ type AppAction =
   | { type: 'UPDATE_SETTINGS'; payload: Partial<AppState['settings']> }
   | { type: 'RESET_PROGRESS' };
 
-const initialState: AppState = {
+const defaultState: AppState = {
   progress: {
     characterMastery: {},
     exerciseHistory: [],
@@ -50,6 +50,27 @@ const initialState: AppState = {
     theme: 'default',
   },
 };
+
+function loadInitialState(): AppState {
+  const state = { ...defaultState };
+  try {
+    const savedProgress = localStorage.getItem('japanese-learning-progress');
+    if (savedProgress) {
+      state.progress = { ...state.progress, ...JSON.parse(savedProgress) };
+    }
+  } catch (e) {
+    console.error('Error loading saved progress:', e);
+  }
+  try {
+    const savedSettings = localStorage.getItem('japanese-learning-settings');
+    if (savedSettings) {
+      state.settings = { ...state.settings, ...JSON.parse(savedSettings) };
+    }
+  } catch (e) {
+    console.error('Error loading saved settings:', e);
+  }
+  return state;
+}
 
 const AppContext = createContext<{
   state: AppState;
@@ -178,7 +199,7 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
     case 'RESET_PROGRESS':
       return {
         ...state,
-        progress: initialState.progress,
+        progress: defaultState.progress,
       };
     default:
       return state;
@@ -188,34 +209,7 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
 export const AppProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [state, dispatch] = useReducer(appReducer, initialState);
-
-  // Load state from localStorage on mount
-  useEffect(() => {
-    const savedProgress = localStorage.getItem('japanese-learning-progress');
-    const savedSettings = localStorage.getItem('japanese-learning-settings');
-
-    console.log('Loading saved settings:', savedSettings);
-
-    if (savedProgress) {
-      try {
-        const parsed = JSON.parse(savedProgress);
-        dispatch({ type: 'UPDATE_PROGRESS', payload: parsed });
-      } catch (error) {
-        console.error('Error loading saved progress:', error);
-      }
-    }
-
-    if (savedSettings) {
-      try {
-        const parsed = JSON.parse(savedSettings);
-        console.log('Parsed settings:', parsed);
-        dispatch({ type: 'UPDATE_SETTINGS', payload: parsed });
-      } catch (error) {
-        console.error('Error loading saved settings:', error);
-      }
-    }
-  }, []);
+  const [state, dispatch] = useReducer(appReducer, undefined, loadInitialState);
 
   // Save progress to localStorage whenever it changes
   useEffect(() => {
