@@ -17,6 +17,25 @@ export const GrammarPacksPage = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <Link
+          to="/grammar/quiz"
+          className="group md:col-span-2 lg:col-span-3 bg-gradient-to-r from-accent-rose/10 to-accent-blue/10 rounded-lg shadow-soft-md p-6 hover:shadow-soft-lg transition-all duration-200 transform hover:scale-[1.02] border-2 border-accent-rose/20"
+        >
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="text-2xl font-bold text-primary mb-1">
+                Grammar Quiz
+              </h2>
+              <p className="text-secondary text-sm">
+                Mix items from multiple packs for a real challenge
+              </p>
+            </div>
+            <span className="text-2xl transform group-hover:translate-x-1 transition-transform text-accent-rose">
+              →
+            </span>
+          </div>
+        </Link>
+
         {grammarPacks.map(pack => {
           const stats = computePackStats(pack, state.progress);
           const totalSeen =

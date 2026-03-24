@@ -18,8 +18,8 @@ import {
   createDefaultSession,
   createDefaultItemProgress,
 } from './types';
-import { getPackItems } from './grammarData';
-import { selectSessionItems, getPackModeProgress } from './utils';
+import { getPackItems, getItemsForPacks } from './grammarData';
+import { selectSessionItems, selectQuizSessionItems, getPackModeProgress } from './utils';
 import { getDeviceId } from '../../lib/device';
 import { writeSyncMeta } from '../../lib/cloudData';
 import { useCloudSync } from '../../hooks/useCloudSync';
@@ -30,6 +30,7 @@ const STORAGE_KEY = 'grammar_progress_v1';
 interface GrammarContextValue {
   state: GrammarState;
   startSession: (packId: string, mode: GrammarMode) => void;
+  startQuizSession: (packIds: string[], mode: GrammarMode) => void;
   answerItem: (itemId: string, isCorrect: boolean) => void;
   nextQuestion: () => void;
   endSession: () => void;
@@ -43,7 +44,12 @@ type GrammarAction =
   | { type: 'HYDRATE'; payload: GrammarState }
   | {
       type: 'START_SESSION';
-      payload: { packId: string; mode: GrammarMode; queue: string[] };
+      payload: {
+        packIds: string[];
+        mode: GrammarMode;
+        queue: string[];
+        packIdByItemId: Record<string, string>;
+      };
     }
   | { type: 'ANSWER_ITEM'; payload: { itemId: string; isCorrect: boolean } }
   | { type: 'NEXT_QUESTION' }
@@ -60,13 +66,14 @@ function grammarReducer(
       return action.payload;
 
     case 'START_SESSION': {
-      const { packId, mode, queue } = action.payload;
+      const { packIds, mode, queue, packIdByItemId } = action.payload;
       return {
         ...state,
         currentSession: {
-          packId,
+          packIds,
           mode,
           queue,
+          packIdByItemId,
           currentIndex: 0,
           results: [],
           isComplete: false,
@@ -77,7 +84,8 @@ function grammarReducer(
     case 'ANSWER_ITEM': {
       const { itemId, isCorrect } = action.payload;
       const { currentSession, progress } = state;
-      const { packId, mode } = currentSession;
+      const { mode, packIdByItemId } = currentSession;
+      const packId = packIdByItemId[itemId];
 
       if (!packId || !mode) return state;
 
@@ -229,7 +237,30 @@ export const GrammarProvider: React.FC<{ children: ReactNode }> = ({
       const items = getPackItems(packId);
       const modeProgress = getPackModeProgress(state.progress, packId, mode);
       const queue = selectSessionItems(items, modeProgress);
-      dispatch({ type: 'START_SESSION', payload: { packId, mode, queue } });
+      const packIdByItemId: Record<string, string> = {};
+      for (const id of queue) {
+        packIdByItemId[id] = packId;
+      }
+      dispatch({
+        type: 'START_SESSION',
+        payload: { packIds: [packId], mode, queue, packIdByItemId },
+      });
+    },
+    [state.progress]
+  );
+
+  const startQuizSession = useCallback(
+    (packIds: string[], mode: GrammarMode) => {
+      const itemsWithPack = getItemsForPacks(packIds, mode);
+      const { queue, packIdByItemId } = selectQuizSessionItems(
+        itemsWithPack,
+        state.progress,
+        mode
+      );
+      dispatch({
+        type: 'START_SESSION',
+        payload: { packIds, mode, queue, packIdByItemId },
+      });
     },
     [state.progress]
   );
@@ -257,6 +288,7 @@ export const GrammarProvider: React.FC<{ children: ReactNode }> = ({
   const value: GrammarContextValue = {
     state,
     startSession,
+    startQuizSession,
     answerItem,
     nextQuestion,
     endSession,

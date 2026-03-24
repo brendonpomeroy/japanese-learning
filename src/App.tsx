@@ -18,6 +18,8 @@ import { VocabPage } from './pages/VocabPage';
 import { GrammarPacksPage } from './pages/GrammarPacksPage';
 import { GrammarPackDetailPage } from './pages/GrammarPackDetailPage';
 import { GrammarSessionPage } from './pages/GrammarSessionPage';
+import { GrammarQuizSetupPage } from './pages/GrammarQuizSetupPage';
+import { GrammarQuizSessionPage } from './pages/GrammarQuizSessionPage';
 import { TracingPage } from './pages/TracingPage';
 import { ProgressDashboardPage } from './pages/ProgressDashboardPage';
 import { useTheme } from './hooks/useTheme';
@@ -49,6 +51,8 @@ function AppContent() {
         <Route path="/flashcards" element={<FlashcardsPage />} />
         <Route path="/vocab" element={<VocabPage />} />
         <Route path="/grammar" element={<GrammarPacksPage />} />
+        <Route path="/grammar/quiz" element={<GrammarQuizSetupPage />} />
+        <Route path="/grammar/quiz/:mode" element={<GrammarQuizSessionPage />} />
         <Route path="/grammar/:packId" element={<GrammarPackDetailPage />} />
         <Route path="/grammar/:packId/:mode" element={<GrammarSessionPage />} />
         <Route path="/tracing" element={<TracingPage />} />

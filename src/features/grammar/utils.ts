@@ -74,6 +74,55 @@ export function checkFillAnswer(selected: string, answer: string): boolean {
   return selected === answer;
 }
 
+export function selectQuizSessionItems(
+  itemsWithPack: Array<{ item: GrammarItem; packId: string }>,
+  progress: GrammarProgress,
+  mode: GrammarMode,
+  count: number = 10
+): { queue: string[]; packIdByItemId: Record<string, string> } {
+  if (itemsWithPack.length === 0) return { queue: [], packIdByItemId: {} };
+
+  const packIdByItemId: Record<string, string> = {};
+  for (const { item, packId } of itemsWithPack) {
+    packIdByItemId[item.id] = packId;
+  }
+
+  const withProgress = itemsWithPack.map(({ item, packId }) => {
+    const modeProgress = getPackModeProgress(progress, packId, mode);
+    const ip = modeProgress[item.id] ?? createDefaultItemProgress();
+    return { item, progress: ip };
+  });
+
+  const unseen = withProgress.filter(ip => ip.progress.seen === 0);
+  const weak = withProgress.filter(
+    ip =>
+      ip.progress.seen > 0 &&
+      (ip.progress.streak === 0 || ip.progress.correct / ip.progress.seen < 0.5)
+  );
+  const mastered = withProgress.filter(
+    ip =>
+      ip.progress.seen > 0 &&
+      ip.progress.streak > 0 &&
+      ip.progress.correct / ip.progress.seen >= 0.5
+  );
+
+  const queue: string[] = [];
+  for (const id of shuffle(unseen).map(ip => ip.item.id)) {
+    if (queue.length >= count) break;
+    queue.push(id);
+  }
+  for (const id of shuffle(weak).map(ip => ip.item.id)) {
+    if (queue.length >= count) break;
+    queue.push(id);
+  }
+  for (const id of shuffle(mastered).map(ip => ip.item.id)) {
+    if (queue.length >= count) break;
+    queue.push(id);
+  }
+
+  return { queue: shuffle(queue), packIdByItemId };
+}
+
 export function computePackStats(
   pack: GrammarPack,
   progress: GrammarProgress

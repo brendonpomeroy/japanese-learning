@@ -59,9 +59,10 @@ export interface SessionResult {
 }
 
 export interface GrammarSession {
-  packId: string | null;
+  packIds: string[] | null;
   mode: GrammarMode | null;
   queue: string[];
+  packIdByItemId: Record<string, string>;
   currentIndex: number;
   results: SessionResult[];
   isComplete: boolean;
@@ -80,9 +81,10 @@ export const createDefaultItemProgress = (): ItemProgress => ({
 });
 
 export const createDefaultSession = (): GrammarSession => ({
-  packId: null,
+  packIds: null,
   mode: null,
   queue: [],
+  packIdByItemId: {},
   currentIndex: 0,
   results: [],
   isComplete: false,

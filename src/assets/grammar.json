@@ -447,6 +447,204 @@
             "answer": "は",
             "options": ["は", "が", "を", "に"]
           }
+        },
+        {
+          "id": "this-is-cat",
+          "english": "This is a cat",
+          "japanese": "これはねこです。",
+          "tokens": ["これ", "は", "ねこです"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "は", "role": "topic-marker" },
+          "build": { "distractors": ["を", "が", "いぬです"] },
+          "correct": {
+            "incorrectJapanese": "これをねこです。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "これ＿ねこです。",
+            "answer": "は",
+            "options": ["は", "が", "を", "に"]
+          }
+        },
+        {
+          "id": "that-is-car",
+          "english": "That over there is a car",
+          "japanese": "あれはくるまです。",
+          "tokens": ["あれ", "は", "くるまです"],
+          "translationNotes": ["あれ refers to something far from both speaker and listener."],
+          "focus": { "grammarPoint": "は", "role": "topic-marker" },
+          "build": { "distractors": ["を", "が", "でんしゃです"] },
+          "correct": {
+            "incorrectJapanese": "あれがくるまです。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "あれ＿くるまです。",
+            "answer": "は",
+            "options": ["は", "が", "を", "の"]
+          }
+        },
+        {
+          "id": "that-is-pen",
+          "english": "That is a pen",
+          "japanese": "それはぺんです。",
+          "tokens": ["それ", "は", "ぺんです"],
+          "translationNotes": ["それ refers to something near the listener."],
+          "focus": { "grammarPoint": "は", "role": "topic-marker" },
+          "build": { "distractors": ["を", "が", "ほんです"] },
+          "correct": {
+            "incorrectJapanese": "それをぺんです。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "それ＿ぺんです。",
+            "answer": "は",
+            "options": ["は", "が", "を", "に"]
+          }
+        },
+        {
+          "id": "tanaka-is-japanese",
+          "english": "Mr. Tanaka is Japanese",
+          "japanese": "たなかさんはにほんじんです。",
+          "tokens": ["たなかさん", "は", "にほんじんです"],
+          "translationNotes": ["さん is an honorific similar to Mr./Ms."],
+          "focus": { "grammarPoint": "は", "role": "topic-marker" },
+          "build": { "distractors": ["を", "が", "あめりかじんです"] },
+          "correct": {
+            "incorrectJapanese": "たなかさんをにほんじんです。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "たなかさん＿にほんじんです。",
+            "answer": "は",
+            "options": ["は", "が", "を", "の"]
+          }
+        },
+        {
+          "id": "friend-is-student",
+          "english": "My friend is a student",
+          "japanese": "ともだちはがくせいです。",
+          "tokens": ["ともだち", "は", "がくせいです"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "は", "role": "topic-marker" },
+          "build": { "distractors": ["を", "が", "せんせいです"] },
+          "correct": {
+            "incorrectJapanese": "ともだちをがくせいです。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "ともだち＿がくせいです。",
+            "answer": "は",
+            "options": ["は", "が", "を", "に"]
+          }
+        },
+        {
+          "id": "today-is-monday",
+          "english": "Today is Monday",
+          "japanese": "きょうはげつようびです。",
+          "tokens": ["きょう", "は", "げつようびです"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "は", "role": "topic-marker" },
+          "build": { "distractors": ["を", "が", "かようびです"] },
+          "correct": {
+            "incorrectJapanese": "きょうをげつようびです。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "きょう＿げつようびです。",
+            "answer": "は",
+            "options": ["は", "が", "を", "に"]
+          }
+        },
+        {
+          "id": "i-am-japanese",
+          "english": "I am Japanese",
+          "japanese": "わたしはにほんじんです。",
+          "tokens": ["わたし", "は", "にほんじんです"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "は", "role": "topic-marker" },
+          "build": { "distractors": ["を", "が", "あめりかじんです"] },
+          "correct": {
+            "incorrectJapanese": "わたしをにほんじんです。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "わたし＿にほんじんです。",
+            "answer": "は",
+            "options": ["は", "が", "を", "に"]
+          }
+        },
+        {
+          "id": "that-person-is-teacher",
+          "english": "That person is a teacher",
+          "japanese": "あのひとはせんせいです。",
+          "tokens": ["あのひと", "は", "せんせいです"],
+          "translationNotes": ["あのひと means 'that person'."],
+          "focus": { "grammarPoint": "は", "role": "topic-marker" },
+          "build": { "distractors": ["を", "が", "がくせいです"] },
+          "correct": {
+            "incorrectJapanese": "あのひとをせんせいです。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "あのひと＿せんせいです。",
+            "answer": "は",
+            "options": ["は", "が", "を", "の"]
+          }
+        },
+        {
+          "id": "japanese-is-fun",
+          "english": "Japanese is fun",
+          "japanese": "にほんごはたのしいです。",
+          "tokens": ["にほんご", "は", "たのしいです"],
+          "translationNotes": ["たのしい is an い-adjective meaning fun/enjoyable."],
+          "focus": { "grammarPoint": "は", "role": "topic-marker" },
+          "build": { "distractors": ["を", "が", "むずかしいです"] },
+          "correct": {
+            "incorrectJapanese": "にほんごをたのしいです。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "にほんご＿たのしいです。",
+            "answer": "は",
+            "options": ["は", "が", "を", "に"]
+          }
+        },
+        {
+          "id": "today-nice-weather",
+          "english": "Today is nice weather",
+          "japanese": "きょうはいいてんきです。",
+          "tokens": ["きょう", "は", "いいてんきです"],
+          "translationNotes": ["いいてんき means good weather."],
+          "focus": { "grammarPoint": "は", "role": "topic-marker" },
+          "build": { "distractors": ["を", "が", "わるいてんきです"] },
+          "correct": {
+            "incorrectJapanese": "きょうがいいてんきです。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "きょう＿いいてんきです。",
+            "answer": "は",
+            "options": ["は", "が", "を", "で"]
+          }
+        },
+        {
+          "id": "i-am-well",
+          "english": "I am well",
+          "japanese": "わたしはげんきです。",
+          "tokens": ["わたし", "は", "げんきです"],
+          "translationNotes": ["げんき means healthy/energetic."],
+          "focus": { "grammarPoint": "は", "role": "topic-marker" },
+          "build": { "distractors": ["を", "が", "びょうきです"] },
+          "correct": {
+            "incorrectJapanese": "わたしをげんきです。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "わたし＿げんきです。",
+            "answer": "は",
+            "options": ["は", "が", "を", "に"]
+          }
         }
       ]
     },
@@ -491,6 +689,150 @@
           },
           "fill": {
             "promptJapanese": "わたしはがくせい＿。",
+            "answer": "じゃないです",
+            "options": ["です", "じゃないです"]
+          }
+        },
+        {
+          "id": "teacher-positive",
+          "english": "I am a teacher",
+          "japanese": "わたしはせんせいです。",
+          "tokens": ["わたし", "は", "せんせいです"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "です", "role": "positive" },
+          "build": { "distractors": ["せんせいじゃないです", "がくせいです"] },
+          "correct": {
+            "incorrectJapanese": "わたしはせんせいじゃないです。",
+            "errorType": "wrong-meaning"
+          },
+          "fill": {
+            "promptJapanese": "わたしはせんせい＿。",
+            "answer": "です",
+            "options": ["です", "じゃないです"]
+          }
+        },
+        {
+          "id": "teacher-negative",
+          "english": "I am not a teacher",
+          "japanese": "わたしはせんせいじゃないです。",
+          "tokens": ["わたし", "は", "せんせいじゃないです"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "じゃないです", "role": "negative" },
+          "build": { "distractors": ["せんせいです", "がくせいです"] },
+          "correct": {
+            "incorrectJapanese": "わたしはせんせいです。",
+            "errorType": "wrong-meaning"
+          },
+          "fill": {
+            "promptJapanese": "わたしはせんせい＿。",
+            "answer": "じゃないです",
+            "options": ["です", "じゃないです"]
+          }
+        },
+        {
+          "id": "cat-positive",
+          "english": "This is a cat",
+          "japanese": "これはねこです。",
+          "tokens": ["これ", "は", "ねこです"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "です", "role": "positive" },
+          "build": { "distractors": ["ねこじゃないです", "いぬです"] },
+          "correct": {
+            "incorrectJapanese": "これはねこじゃないです。",
+            "errorType": "wrong-meaning"
+          },
+          "fill": {
+            "promptJapanese": "これはねこ＿。",
+            "answer": "です",
+            "options": ["です", "じゃないです"]
+          }
+        },
+        {
+          "id": "cat-negative",
+          "english": "This is not a cat",
+          "japanese": "これはねこじゃないです。",
+          "tokens": ["これ", "は", "ねこじゃないです"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "じゃないです", "role": "negative" },
+          "build": { "distractors": ["ねこです", "いぬです"] },
+          "correct": {
+            "incorrectJapanese": "これはねこです。",
+            "errorType": "wrong-meaning"
+          },
+          "fill": {
+            "promptJapanese": "これはねこ＿。",
+            "answer": "じゃないです",
+            "options": ["です", "じゃないです"]
+          }
+        },
+        {
+          "id": "car-positive",
+          "english": "That is a car",
+          "japanese": "あれはくるまです。",
+          "tokens": ["あれ", "は", "くるまです"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "です", "role": "positive" },
+          "build": { "distractors": ["くるまじゃないです", "でんしゃです"] },
+          "correct": {
+            "incorrectJapanese": "あれはくるまじゃないです。",
+            "errorType": "wrong-meaning"
+          },
+          "fill": {
+            "promptJapanese": "あれはくるま＿。",
+            "answer": "です",
+            "options": ["です", "じゃないです"]
+          }
+        },
+        {
+          "id": "car-negative",
+          "english": "That is not a car",
+          "japanese": "あれはくるまじゃないです。",
+          "tokens": ["あれ", "は", "くるまじゃないです"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "じゃないです", "role": "negative" },
+          "build": { "distractors": ["くるまです", "でんしゃです"] },
+          "correct": {
+            "incorrectJapanese": "あれはくるまです。",
+            "errorType": "wrong-meaning"
+          },
+          "fill": {
+            "promptJapanese": "あれはくるま＿。",
+            "answer": "じゃないです",
+            "options": ["です", "じゃないです"]
+          }
+        },
+        {
+          "id": "japanese-positive",
+          "english": "Mr. Tanaka is Japanese",
+          "japanese": "たなかさんはにほんじんです。",
+          "tokens": ["たなかさん", "は", "にほんじんです"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "です", "role": "positive" },
+          "build": { "distractors": ["にほんじんじゃないです", "あめりかじんです"] },
+          "correct": {
+            "incorrectJapanese": "たなかさんはにほんじんじゃないです。",
+            "errorType": "wrong-meaning"
+          },
+          "fill": {
+            "promptJapanese": "たなかさんはにほんじん＿。",
+            "answer": "です",
+            "options": ["です", "じゃないです"]
+          }
+        },
+        {
+          "id": "japanese-negative",
+          "english": "Mr. Tanaka is not Japanese",
+          "japanese": "たなかさんはにほんじんじゃないです。",
+          "tokens": ["たなかさん", "は", "にほんじんじゃないです"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "じゃないです", "role": "negative" },
+          "build": { "distractors": ["にほんじんです", "あめりかじんです"] },
+          "correct": {
+            "incorrectJapanese": "たなかさんはにほんじんです。",
+            "errorType": "wrong-meaning"
+          },
+          "fill": {
+            "promptJapanese": "たなかさんはにほんじん＿。",
             "answer": "じゃないです",
             "options": ["です", "じゃないです"]
           }
@@ -541,6 +883,150 @@
             "answer": "か",
             "options": ["か", "は", "を"]
           }
+        },
+        {
+          "id": "are-you-japanese",
+          "english": "Are you Japanese?",
+          "japanese": "にほんじんですか？",
+          "tokens": ["にほんじんですか"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "か", "role": "question" },
+          "build": { "distractors": ["にほんじんです", "あめりかじんです"] },
+          "correct": {
+            "incorrectJapanese": "にほんじんです。",
+            "errorType": "missing-token"
+          },
+          "fill": {
+            "promptJapanese": "にほんじんです＿？",
+            "answer": "か",
+            "options": ["か", "は", "を"]
+          }
+        },
+        {
+          "id": "are-you-teacher",
+          "english": "Are you a teacher?",
+          "japanese": "せんせいですか？",
+          "tokens": ["せんせいですか"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "か", "role": "question" },
+          "build": { "distractors": ["せんせいです", "がくせいです"] },
+          "correct": {
+            "incorrectJapanese": "せんせいです。",
+            "errorType": "missing-token"
+          },
+          "fill": {
+            "promptJapanese": "せんせいです＿？",
+            "answer": "か",
+            "options": ["か", "は", "を"]
+          }
+        },
+        {
+          "id": "what-is-that",
+          "english": "What is that?",
+          "japanese": "あれはなんですか？",
+          "tokens": ["あれ", "は", "なんですか"],
+          "translationNotes": ["なん means 'what'."],
+          "focus": { "grammarPoint": "か", "role": "question" },
+          "build": { "distractors": ["なんです", "ほんです"] },
+          "correct": {
+            "incorrectJapanese": "あれはなんです。",
+            "errorType": "missing-token"
+          },
+          "fill": {
+            "promptJapanese": "あれはなんです＿？",
+            "answer": "か",
+            "options": ["か", "は", "を"]
+          }
+        },
+        {
+          "id": "is-this-cat",
+          "english": "Is this a cat?",
+          "japanese": "これはねこですか？",
+          "tokens": ["これ", "は", "ねこですか"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "か", "role": "question" },
+          "build": { "distractors": ["ねこです", "いぬです"] },
+          "correct": {
+            "incorrectJapanese": "これはねこです。",
+            "errorType": "missing-token"
+          },
+          "fill": {
+            "promptJapanese": "これはねこです＿？",
+            "answer": "か",
+            "options": ["か", "は", "を"]
+          }
+        },
+        {
+          "id": "are-you-well",
+          "english": "Are you well?",
+          "japanese": "げんきですか？",
+          "tokens": ["げんきですか"],
+          "translationNotes": ["A very common greeting."],
+          "focus": { "grammarPoint": "か", "role": "question" },
+          "build": { "distractors": ["げんきです", "びょうきです"] },
+          "correct": {
+            "incorrectJapanese": "げんきです。",
+            "errorType": "missing-token"
+          },
+          "fill": {
+            "promptJapanese": "げんきです＿？",
+            "answer": "か",
+            "options": ["か", "は", "を"]
+          }
+        },
+        {
+          "id": "do-you-speak-japanese",
+          "english": "Do you speak Japanese?",
+          "japanese": "にほんごをはなしますか？",
+          "tokens": ["にほんご", "を", "はなしますか"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "か", "role": "question" },
+          "build": { "distractors": ["はなします", "ききます"] },
+          "correct": {
+            "incorrectJapanese": "にほんごをはなします。",
+            "errorType": "missing-token"
+          },
+          "fill": {
+            "promptJapanese": "にほんごをはなします＿？",
+            "answer": "か",
+            "options": ["か", "は", "を"]
+          }
+        },
+        {
+          "id": "is-today-monday",
+          "english": "Is today Monday?",
+          "japanese": "きょうはげつようびですか？",
+          "tokens": ["きょう", "は", "げつようびですか"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "か", "role": "question" },
+          "build": { "distractors": ["げつようびです", "かようびです"] },
+          "correct": {
+            "incorrectJapanese": "きょうはげつようびです。",
+            "errorType": "missing-token"
+          },
+          "fill": {
+            "promptJapanese": "きょうはげつようびです＿？",
+            "answer": "か",
+            "options": ["か", "は", "を"]
+          }
+        },
+        {
+          "id": "is-that-person-student",
+          "english": "Is that person a student?",
+          "japanese": "あのひとはがくせいですか？",
+          "tokens": ["あのひと", "は", "がくせいですか"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "か", "role": "question" },
+          "build": { "distractors": ["がくせいです", "せんせいです"] },
+          "correct": {
+            "incorrectJapanese": "あのひとはがくせいです。",
+            "errorType": "missing-token"
+          },
+          "fill": {
+            "promptJapanese": "あのひとはがくせいです＿？",
+            "answer": "か",
+            "options": ["か", "は", "を"]
+          }
         }
       ]
     },
@@ -585,6 +1071,150 @@
           },
           "fill": {
             "promptJapanese": "にほん＿だいがくです。",
+            "answer": "の",
+            "options": ["の", "は", "が", "を"]
+          }
+        },
+        {
+          "id": "teachers-car",
+          "english": "The teacher's car",
+          "japanese": "せんせいのくるまです。",
+          "tokens": ["せんせい", "の", "くるまです"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "の", "role": "possession" },
+          "build": { "distractors": ["は", "を", "が"] },
+          "correct": {
+            "incorrectJapanese": "せんせいはくるまです。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "せんせい＿くるまです。",
+            "answer": "の",
+            "options": ["の", "は", "を", "に"]
+          }
+        },
+        {
+          "id": "friends-house",
+          "english": "My friend's house",
+          "japanese": "ともだちのいえです。",
+          "tokens": ["ともだち", "の", "いえです"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "の", "role": "possession" },
+          "build": { "distractors": ["は", "を", "が"] },
+          "correct": {
+            "incorrectJapanese": "ともだちはいえです。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "ともだち＿いえです。",
+            "answer": "の",
+            "options": ["の", "は", "が", "を"]
+          }
+        },
+        {
+          "id": "my-cat",
+          "english": "My cat",
+          "japanese": "わたしのねこです。",
+          "tokens": ["わたし", "の", "ねこです"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "の", "role": "possession" },
+          "build": { "distractors": ["は", "を", "が"] },
+          "correct": {
+            "incorrectJapanese": "わたしはねこです。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "わたし＿ねこです。",
+            "answer": "の",
+            "options": ["の", "は", "を", "に"]
+          }
+        },
+        {
+          "id": "schools-teacher",
+          "english": "The school's teacher",
+          "japanese": "がっこうのせんせいです。",
+          "tokens": ["がっこう", "の", "せんせいです"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "の", "role": "connection" },
+          "build": { "distractors": ["は", "を", "が"] },
+          "correct": {
+            "incorrectJapanese": "がっこうはせんせいです。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "がっこう＿せんせいです。",
+            "answer": "の",
+            "options": ["の", "は", "が", "を"]
+          }
+        },
+        {
+          "id": "japanese-food",
+          "english": "Japanese food",
+          "japanese": "にほんのたべものです。",
+          "tokens": ["にほん", "の", "たべものです"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "の", "role": "connection" },
+          "build": { "distractors": ["は", "を", "が"] },
+          "correct": {
+            "incorrectJapanese": "にほんはたべものです。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "にほん＿たべものです。",
+            "answer": "の",
+            "options": ["の", "は", "を", "に"]
+          }
+        },
+        {
+          "id": "my-friend",
+          "english": "My friend",
+          "japanese": "わたしのともだちです。",
+          "tokens": ["わたし", "の", "ともだちです"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "の", "role": "possession" },
+          "build": { "distractors": ["は", "を", "が"] },
+          "correct": {
+            "incorrectJapanese": "わたしはともだちです。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "わたし＿ともだちです。",
+            "answer": "の",
+            "options": ["の", "は", "が", "を"]
+          }
+        },
+        {
+          "id": "tanaka-bag",
+          "english": "Mr. Tanaka's bag",
+          "japanese": "たなかさんのかばんです。",
+          "tokens": ["たなかさん", "の", "かばんです"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "の", "role": "possession" },
+          "build": { "distractors": ["は", "を", "が"] },
+          "correct": {
+            "incorrectJapanese": "たなかさんはかばんです。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "たなかさん＿かばんです。",
+            "answer": "の",
+            "options": ["の", "は", "を", "に"]
+          }
+        },
+        {
+          "id": "university-library",
+          "english": "The university's library",
+          "japanese": "だいがくのとしょかんです。",
+          "tokens": ["だいがく", "の", "としょかんです"],
+          "translationNotes": [],
+          "focus": { "grammarPoint": "の", "role": "connection" },
+          "build": { "distractors": ["は", "を", "が"] },
+          "correct": {
+            "incorrectJapanese": "だいがくはとしょかんです。",
+            "errorType": "wrong-particle"
+          },
+          "fill": {
+            "promptJapanese": "だいがく＿としょかんです。",
             "answer": "の",
             "options": ["の", "は", "が", "を"]
           }
