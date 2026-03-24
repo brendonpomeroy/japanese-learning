@@ -79,6 +79,16 @@ function Navigation() {
               Flashcards
             </Link>
             <Link
+              to="/vocab"
+              className={`hover:text-blue-200 dark:hover:text-blue-300 transition-colors ${
+                isActive('/vocab')
+                  ? 'text-blue-200 dark:text-blue-300 font-semibold'
+                  : ''
+              }`}
+            >
+              Vocab
+            </Link>
+            <Link
               to="/practice"
               className={`hover:text-blue-200 dark:hover:text-blue-300 transition-colors ${
                 isActive('/practice')
@@ -178,6 +188,17 @@ function Navigation() {
               onClick={closeMobileMenu}
             >
               Flashcards
+            </Link>
+            <Link
+              to="/vocab"
+              className={`block py-2 px-4 hover:bg-blue-700 dark:hover:bg-blue-700 rounded transition-colors ${
+                isActive('/vocab')
+                  ? 'bg-blue-700 dark:bg-blue-700 font-semibold'
+                  : ''
+              }`}
+              onClick={closeMobileMenu}
+            >
+              Vocab
             </Link>
             <Link
               to="/practice"

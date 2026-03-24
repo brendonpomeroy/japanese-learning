@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
 import { AppProvider } from './context/AppContext';
+import { VocabProvider } from './features/vocab/VocabContext';
 import Navigation from './components/Navigation';
 import Home from './components/Home';
 import Lessons from './components/Lessons';
@@ -9,6 +10,7 @@ import Phrases from './pages/Phrases';
 import Hiragana from './pages/Hiragana';
 import EmojiPage from './pages/EmojiPage';
 import { FlashcardsPage } from './pages/FlashcardsPage';
+import { VocabPage } from './pages/VocabPage';
 import { useTheme } from './hooks/useTheme';
 
 function AppContent() {
@@ -34,6 +36,7 @@ function AppContent() {
         <Route path="/hiragana" element={<Hiragana />} />
         <Route path="/emoji" element={<EmojiPage />} />
         <Route path="/flashcards" element={<FlashcardsPage />} />
+        <Route path="/vocab" element={<VocabPage />} />
       </Routes>
     </div>
   );
@@ -42,9 +45,11 @@ function AppContent() {
 function App() {
   return (
     <AppProvider>
-      <Router>
-        <AppContent />
-      </Router>
+      <VocabProvider>
+        <Router>
+          <AppContent />
+        </Router>
+      </VocabProvider>
     </AppProvider>
   );
 }
