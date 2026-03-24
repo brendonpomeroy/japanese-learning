@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import EmojiQuiz from '../components/EmojiQuiz';
 import EmojiProgressTracker from '../components/EmojiProgressTracker';
 
-function EmojiPage() {
+export const EmojiPage: React.FC = () => {
   const [showQuiz, setShowQuiz] = useState(false);
   const [showResults, setShowResults] = useState(false);
   const [lastScore, setLastScore] = useState<{
@@ -152,6 +152,4 @@ function EmojiPage() {
       </div>
     </div>
   );
-}
-
-export default EmojiPage;
+};

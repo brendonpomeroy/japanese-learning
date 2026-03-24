@@ -1,14 +1,20 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { WordFlashcard } from '../components/WordFlashcard';
-import { AppContext } from '../context/AppContext';
+import { ToggleButton } from '../components/ToggleButton';
+import { useApp } from '../hooks/useApp';
 import type { Word } from '../types';
 import wordsData from '../assets/words.json';
+import { capitalize, shuffle } from '../utils/helpers';
 
 type Difficulty = 'all' | 'beginner' | 'intermediate' | 'advanced';
 type Topic = 'all' | string;
 
+const topics = Array.from(
+  new Set((wordsData.words as Word[]).map((w) => w.topic))
+).sort();
+
 export const FlashcardsPage: React.FC = () => {
-  const context = useContext(AppContext);
+  const { state, dispatch } = useApp();
   const [selectedDifficulty, setSelectedDifficulty] = useState<Difficulty>('all');
   const [selectedTopic, setSelectedTopic] = useState<Topic>('all');
   const [showRomaji, setShowRomaji] = useState(false);
@@ -22,17 +28,6 @@ export const FlashcardsPage: React.FC = () => {
     total: 0,
   });
 
-  if (!context) {
-    throw new Error('AppContext must be used within AppProvider');
-  }
-
-  const { state, dispatch } = context;
-
-  // Get unique topics from words
-  const topics = Array.from(
-    new Set((wordsData.words as Word[]).map((w) => w.topic))
-  ).sort();
-
   // Filter words based on selection
   useEffect(() => {
     let filtered: Word[] = wordsData.words as Word[];
@@ -45,10 +40,7 @@ export const FlashcardsPage: React.FC = () => {
       filtered = filtered.filter((w) => w.topic === selectedTopic);
     }
 
-    // Shuffle words
-    filtered = [...filtered].sort(() => Math.random() - 0.5);
-
-    setFilteredWords(filtered);
+    setFilteredWords(shuffle(filtered));
     setCurrentIndex(0);
   }, [selectedDifficulty, selectedTopic]);
 
@@ -76,11 +68,11 @@ export const FlashcardsPage: React.FC = () => {
     });
 
     // Update session stats
-    setSessionStats({
-      correct: sessionStats.correct + (correct ? 1 : 0),
-      needsPractice: sessionStats.needsPractice + (correct ? 0 : 1),
-      total: sessionStats.total + 1,
-    });
+    setSessionStats((prev) => ({
+      correct: prev.correct + (correct ? 1 : 0),
+      needsPractice: prev.needsPractice + (correct ? 0 : 1),
+      total: prev.total + 1,
+    }));
 
     // Move to next card or finish
     if (currentIndex < filteredWords.length - 1) {
@@ -209,17 +201,13 @@ export const FlashcardsPage: React.FC = () => {
               <div className="flex flex-wrap gap-2">
                 {(['all', 'beginner', 'intermediate', 'advanced'] as Difficulty[]).map(
                   (diff) => (
-                    <button
+                    <ToggleButton
                       key={diff}
+                      active={selectedDifficulty === diff}
                       onClick={() => setSelectedDifficulty(diff)}
-                      className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                        selectedDifficulty === diff
-                          ? 'bg-blue-500 text-white'
-                          : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
-                      }`}
                     >
-                      {diff.charAt(0).toUpperCase() + diff.slice(1)}
-                    </button>
+                      {capitalize(diff)}
+                    </ToggleButton>
                   )
                 )}
               </div>
@@ -231,28 +219,20 @@ export const FlashcardsPage: React.FC = () => {
                 Topic
               </label>
               <div className="flex flex-wrap gap-2">
-                <button
+                <ToggleButton
+                  active={selectedTopic === 'all'}
                   onClick={() => setSelectedTopic('all')}
-                  className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                    selectedTopic === 'all'
-                      ? 'bg-blue-500 text-white'
-                      : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
-                  }`}
                 >
                   All Topics
-                </button>
+                </ToggleButton>
                 {topics.map((topic) => (
-                  <button
+                  <ToggleButton
                     key={topic}
+                    active={selectedTopic === topic}
                     onClick={() => setSelectedTopic(topic)}
-                    className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                      selectedTopic === topic
-                        ? 'bg-blue-500 text-white'
-                        : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
-                    }`}
                   >
-                    {topic.charAt(0).toUpperCase() + topic.slice(1)}
-                  </button>
+                    {capitalize(topic)}
+                  </ToggleButton>
                 ))}
               </div>
             </div>

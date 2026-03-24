@@ -2,22 +2,13 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import HiraganaGrid from '../components/HiraganaGrid';
 import ProgressTracker from '../components/ProgressTracker';
+import { speakJapanese } from '../utils/helpers';
 import type { HiraganaCategory } from '../types';
 
-function Hiragana() {
+export const Hiragana: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<
     HiraganaCategory | 'all'
   >('all');
-
-  const handleCharacterClick = (character: string) => {
-    // Simple text-to-speech for character pronunciation
-    if ('speechSynthesis' in window) {
-      const utterance = new SpeechSynthesisUtterance(character);
-      utterance.lang = 'ja-JP';
-      utterance.rate = 0.8;
-      speechSynthesis.speak(utterance);
-    }
-  };
 
   const categories: {
     key: HiraganaCategory | 'all';
@@ -95,7 +86,7 @@ function Hiragana() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2">
           <HiraganaGrid
-            onCharacterClick={handleCharacterClick}
+            onCharacterClick={speakJapanese}
             showCategory={
               selectedCategory === 'all' ? undefined : selectedCategory
             }
@@ -108,6 +99,4 @@ function Hiragana() {
       </div>
     </div>
   );
-}
-
-export default Hiragana;
+};

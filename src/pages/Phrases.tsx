@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PhraseCategory from '../components/PhraseCategory';
+import { speakJapanese } from '../utils/helpers';
 import type { PhraseCategoryType } from '../types';
 
 const categories: {
@@ -35,19 +36,9 @@ const categories: {
   },
 ];
 
-function Phrases() {
+export const Phrases: React.FC = () => {
   const [selectedCategory, setSelectedCategory] =
     useState<PhraseCategoryType>('learning_japanese');
-
-  const handlePlayAudio = (text: string) => {
-    // Simple text-to-speech implementation
-    if ('speechSynthesis' in window) {
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'ja-JP';
-      utterance.rate = 0.8;
-      speechSynthesis.speak(utterance);
-    }
-  };
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -86,10 +77,8 @@ function Phrases() {
 
       <PhraseCategory
         category={selectedCategory}
-        onPlayAudio={handlePlayAudio}
+        onPlayAudio={speakJapanese}
       />
     </div>
   );
-}
-
-export default Phrases;
+};

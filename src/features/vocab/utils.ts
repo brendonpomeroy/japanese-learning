@@ -1,4 +1,5 @@
 import type { VocabWord, WordProgress, DifficultyFilter, TopicFilter } from './types';
+import { shuffle } from '../../utils/helpers';
 
 export function getEligibleWords(
   words: VocabWord[],
@@ -109,7 +110,7 @@ export function generateMcqOptions(
   );
 
   // Shuffle and take from same difficulty
-  const shuffledSame = [...sameDifficulty].sort(() => Math.random() - 0.5);
+  const shuffledSame = shuffle(sameDifficulty);
   for (const word of shuffledSame) {
     if (options.length >= count) break;
     options.push(word);
@@ -119,7 +120,7 @@ export function generateMcqOptions(
   // If we still need more, get from any eligible words
   if (options.length < count) {
     const remaining = eligibleWords.filter((w) => !used.has(w.word));
-    const shuffled = [...remaining].sort(() => Math.random() - 0.5);
+    const shuffled = shuffle(remaining);
     for (const word of shuffled) {
       if (options.length >= count) break;
       options.push(word);
@@ -128,5 +129,5 @@ export function generateMcqOptions(
   }
 
   // Shuffle final options (so correct answer isn't always first)
-  return options.sort(() => Math.random() - 0.5);
+  return shuffle(options);
 }
