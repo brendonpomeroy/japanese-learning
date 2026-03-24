@@ -214,7 +214,7 @@ const EmojiQuiz: React.FC<EmojiQuizProps> = ({
         </div>
         <div className="w-full bg-surface-alt rounded-full h-2">
           <div
-            className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+            className="bg-accent-blue h-2 rounded-full transition-all duration-300"
             style={{
               width: `${((currentQuestionIndex + 1) / questions.length) * 100}%`,
             }}
@@ -230,8 +230,8 @@ const EmojiQuiz: React.FC<EmojiQuizProps> = ({
               onClick={() => setJapaneseMode('japanese')}
               className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
                 japaneseMode === 'japanese'
-                  ? 'bg-blue-600 text-white shadow-sm'
-                  : 'text-secondary hover:text-gray-800 dark:hover:text-gray-100'
+                  ? 'bg-accent-blue text-white shadow-sm'
+                  : 'text-secondary hover:text-primary'
               }`}
             >
               漢字/カナ
@@ -240,8 +240,8 @@ const EmojiQuiz: React.FC<EmojiQuizProps> = ({
               onClick={() => setJapaneseMode('hiragana')}
               className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
                 japaneseMode === 'hiragana'
-                  ? 'bg-blue-600 text-white shadow-sm'
-                  : 'text-secondary hover:text-gray-800 dark:hover:text-gray-100'
+                  ? 'bg-accent-blue text-white shadow-sm'
+                  : 'text-secondary hover:text-primary'
               }`}
             >
               ひらがな
@@ -250,8 +250,8 @@ const EmojiQuiz: React.FC<EmojiQuizProps> = ({
               onClick={() => setJapaneseMode('romaji')}
               className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
                 japaneseMode === 'romaji'
-                  ? 'bg-blue-600 text-white shadow-sm'
-                  : 'text-secondary hover:text-gray-800 dark:hover:text-gray-100'
+                  ? 'bg-accent-blue text-white shadow-sm'
+                  : 'text-secondary hover:text-primary'
               }`}
             >
               Romaji
@@ -271,7 +271,7 @@ const EmojiQuiz: React.FC<EmojiQuizProps> = ({
       </div>
 
       {answeredIncorrectly && (
-        <div className="bg-error/10 border border-red-200 dark:border-red-700 rounded-lg p-4 mb-6">
+        <div className="bg-error/10 border border-error/30 rounded-lg p-4 mb-6">
           <div className="text-error">
             <p className="font-medium mb-2">
               Incorrect! The correct answer is:
@@ -313,20 +313,20 @@ const EmojiQuiz: React.FC<EmojiQuizProps> = ({
           if (showResult) {
             if (option === currentQuestion.correctAnswer) {
               buttonClass +=
-                'bg-success/10 border-green-500 text-success';
+                'bg-success/10 border-success text-success';
             } else if (
               option === selectedAnswer &&
               option !== currentQuestion.correctAnswer
             ) {
               buttonClass +=
-                'bg-error/10 border-red-500 text-error';
+                'bg-error/10 border-error text-error';
             } else {
               buttonClass +=
                 'bg-surface-alt border-border text-secondary';
             }
           } else {
             buttonClass +=
-              'bg-surface-alt border-border hover:bg-blue-50 dark:hover:bg-blue-900 hover:border-blue-400 text-primary';
+              'bg-surface-alt border-border hover:bg-accent-blue/10 hover:border-accent-blue text-primary';
           }
 
           return (
@@ -346,7 +346,7 @@ const EmojiQuiz: React.FC<EmojiQuizProps> = ({
         <div className="text-center">
           <button
             onClick={handleNext}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-lg transition-colors"
+            className="bg-accent-blue hover:bg-accent-blue/80 text-white font-medium py-3 px-8 rounded-lg transition-colors"
           >
             {currentQuestionIndex + 1 >= questions.length
               ? 'Finish Quiz'

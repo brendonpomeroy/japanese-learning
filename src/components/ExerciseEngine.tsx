@@ -214,7 +214,7 @@ const ExerciseEngine: React.FC<ExerciseEngineProps> = ({
   if (!currentQuestion) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent-blue"></div>
       </div>
     );
   }
@@ -286,13 +286,13 @@ const ExerciseEngine: React.FC<ExerciseEngineProps> = ({
               onKeyPress={handleKeyPress}
               placeholder="Type the romaji here..."
               disabled={showResult}
-              className="flex-1 px-4 py-3 border-2 border-border bg-surface text-primary rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono text-lg"
+              className="flex-1 px-4 py-3 border-2 border-border bg-surface text-primary rounded-lg focus:ring-2 focus:ring-accent-blue focus:border-transparent font-mono text-lg"
               autoFocus
             />
             <button
               onClick={() => handleTypingSubmit(typedAnswer)}
               disabled={showResult || !typedAnswer.trim()}
-              className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-300 dark:disabled:bg-gray-600 disabled:cursor-not-allowed font-medium"
+              className="px-6 py-3 bg-accent-blue text-white rounded-lg hover:bg-accent-blue/80 disabled:bg-border disabled:cursor-not-allowed font-medium"
             >
               Submit
             </button>
@@ -309,14 +309,14 @@ const ExerciseEngine: React.FC<ExerciseEngineProps> = ({
                 p-4 rounded-lg border-2 transition-all duration-200 font-medium
                 ${
                   showResult && option === currentQuestion.correctAnswer
-                    ? 'border-green-500 bg-success/10 text-success'
+                    ? 'border-success bg-success/10 text-success'
                     : showResult &&
                         option === selectedAnswer &&
                         option !== currentQuestion.correctAnswer
-                      ? 'border-red-500 bg-error/10 text-error'
+                      ? 'border-error bg-error/10 text-error'
                       : showResult
                         ? 'border-border bg-surface-alt text-secondary'
-                        : 'border-border bg-surface-alt hover:border-blue-500 dark:hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900 text-primary'
+                        : 'border-border bg-surface-alt hover:border-accent-blue hover:bg-accent-blue/10 text-primary'
                 }
               `}
             >

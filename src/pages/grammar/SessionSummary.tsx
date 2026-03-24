@@ -28,7 +28,7 @@ export const SessionSummary: React.FC<SessionSummaryProps> = ({
           Session Complete
         </h2>
         <div className="text-5xl font-bold mb-2">
-          <span className={percentage >= 70 ? 'text-green-500' : percentage >= 40 ? 'text-yellow-500' : 'text-red-500'}>
+          <span className={percentage >= 70 ? 'text-success' : percentage >= 40 ? 'text-warning' : 'text-error'}>
             {percentage}%
           </span>
         </div>
@@ -65,13 +65,13 @@ export const SessionSummary: React.FC<SessionSummaryProps> = ({
       <div className="flex gap-3 justify-center">
         <button
           onClick={onRetry}
-          className="px-6 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-medium transition-colors"
+          className="px-6 py-2 bg-accent-blue hover:bg-accent-blue/80 text-white rounded-lg font-medium transition-colors"
         >
           Try Again
         </button>
         <button
           onClick={onBack}
-          className="px-6 py-2 bg-surface-alt hover:bg-gray-300 dark:hover:bg-gray-600 text-secondary rounded-lg font-medium transition-colors"
+          className="px-6 py-2 bg-surface-alt hover:bg-border text-secondary rounded-lg font-medium transition-colors"
         >
           Back to Pack
         </button>

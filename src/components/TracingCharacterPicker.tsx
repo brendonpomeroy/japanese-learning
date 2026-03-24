@@ -42,8 +42,8 @@ export function TracingCharacterPicker({
           onClick={() => onKanaTypeChange('hiragana')}
           className={`px-4 py-2 rounded-lg font-medium transition-colors ${
             kanaType === 'hiragana'
-              ? 'bg-purple-600 text-white'
-              : 'bg-surface-alt text-secondary hover:bg-gray-300 dark:hover:bg-gray-600'
+              ? 'bg-accent-violet text-white'
+              : 'bg-surface-alt text-secondary hover:bg-border'
           }`}
         >
           Hiragana
@@ -52,8 +52,8 @@ export function TracingCharacterPicker({
           onClick={() => onKanaTypeChange('katakana')}
           className={`px-4 py-2 rounded-lg font-medium transition-colors ${
             kanaType === 'katakana'
-              ? 'bg-purple-600 text-white'
-              : 'bg-surface-alt text-secondary hover:bg-gray-300 dark:hover:bg-gray-600'
+              ? 'bg-accent-violet text-white'
+              : 'bg-surface-alt text-secondary hover:bg-border'
           }`}
         >
           Katakana
@@ -68,8 +68,8 @@ export function TracingCharacterPicker({
             onClick={() => onCategoryChange(cat.key)}
             className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
               category === cat.key
-                ? 'bg-blue-600 text-white'
-                : 'bg-surface-alt text-secondary hover:bg-gray-300 dark:hover:bg-gray-600'
+                ? 'bg-accent-blue text-white'
+                : 'bg-surface-alt text-secondary hover:bg-border'
             }`}
           >
             {cat.label}
@@ -89,12 +89,12 @@ export function TracingCharacterPicker({
                 onClick={() => onCharacterSelect(char, romaji)}
                 className={`flex flex-col items-center min-w-[3rem] px-2 py-1.5 rounded-lg text-sm transition-colors ${
                   isActive
-                    ? 'bg-blue-600 text-white ring-2 ring-blue-400'
+                    ? 'bg-accent-blue text-white ring-2 ring-accent-blue'
                     : mastery >= 80
-                      ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-900/50'
+                      ? 'bg-success/10 text-success hover:bg-success/20'
                       : mastery > 0
-                        ? 'bg-yellow-50 dark:bg-yellow-900/20 text-primary hover:bg-yellow-100 dark:hover:bg-yellow-900/30'
-                        : 'bg-surface-alt text-primary hover:bg-gray-200 dark:hover:bg-gray-600'
+                        ? 'bg-warning/10 text-primary hover:bg-warning/20'
+                        : 'bg-surface-alt text-primary hover:bg-border'
                 }`}
                 aria-label={`${char} (${romaji})`}
               >

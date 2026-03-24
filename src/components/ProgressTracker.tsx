@@ -23,15 +23,15 @@ const ProgressTracker: React.FC = () => {
       : 0;
 
   const getProgressColor = (progress: number) => {
-    if (progress >= 80) return 'text-green-600';
-    if (progress >= 60) return 'text-yellow-600';
-    return 'text-red-600';
+    if (progress >= 80) return 'text-success';
+    if (progress >= 60) return 'text-warning';
+    return 'text-error';
   };
 
   const getProgressBgColor = (progress: number) => {
-    if (progress >= 80) return 'bg-green-500';
-    if (progress >= 60) return 'bg-yellow-500';
-    return 'bg-red-500';
+    if (progress >= 80) return 'bg-success';
+    if (progress >= 60) return 'bg-warning';
+    return 'bg-error';
   };
 
   return (
@@ -53,7 +53,7 @@ const ProgressTracker: React.FC = () => {
             </div>
             <div className="flex-1 bg-surface-alt rounded-full h-2">
               <div
-                className={`h-2 rounded-full transition-all duration-300 bg-blue-600 dark:bg-blue-400`}
+                className={`h-2 rounded-full transition-all duration-300 bg-accent-blue`}
                 style={{
                   width: `${overallProgress > 0 ? overallProgress : 5}%`,
                 }}
@@ -77,7 +77,7 @@ const ProgressTracker: React.FC = () => {
             </div>
             <div className="flex-1 bg-surface-alt rounded-full h-2">
               <div
-                className={`h-2 rounded-full transition-all duration-300 bg-green-600 dark:bg-green-300`}
+                className={`h-2 rounded-full transition-all duration-300 bg-success`}
                 style={{ width: `${recentSuccessRate}%` }}
               />
             </div>
@@ -87,7 +87,7 @@ const ProgressTracker: React.FC = () => {
           </p>
         </div>
 
-        <div className="bg-purple-50 dark:bg-purple-900 rounded-lg p-4">
+        <div className="bg-accent-violet/10 rounded-lg p-4">
           <h3 className="text-sm font-medium text-accent-violet mb-2">
             Practice Streak
           </h3>

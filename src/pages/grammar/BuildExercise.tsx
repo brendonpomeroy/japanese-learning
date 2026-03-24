@@ -71,8 +71,8 @@ export const BuildExercise: React.FC<BuildExerciseProps> = ({
         className={`min-h-[4rem] p-4 rounded-lg border-2 border-dashed flex flex-wrap gap-2 items-center justify-center ${
           isAnswered
             ? isCorrect
-              ? 'border-green-400 bg-green-50 dark:bg-green-900/20'
-              : 'border-red-400 bg-red-50 dark:bg-red-900/20'
+              ? 'border-success bg-success/10'
+              : 'border-error bg-error/10'
             : 'border-border bg-surface-alt'
         }`}
       >
@@ -89,9 +89,9 @@ export const BuildExercise: React.FC<BuildExerciseProps> = ({
               className={`px-4 py-2 rounded-lg font-medium text-lg transition-colors ${
                 isAnswered
                   ? isCorrect
-                    ? 'bg-green-500 text-white'
-                    : 'bg-red-200 dark:bg-red-800 text-red-800 dark:text-red-200'
-                  : 'bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-200 hover:bg-blue-200 dark:hover:bg-blue-700'
+                    ? 'bg-success text-white'
+                    : 'bg-error/20 text-error'
+                  : 'bg-accent-blue/10 text-accent-blue hover:bg-accent-blue/20'
               } disabled:cursor-not-allowed`}
             >
               {tile}
@@ -107,7 +107,7 @@ export const BuildExercise: React.FC<BuildExerciseProps> = ({
             key={`available-${index}`}
             onClick={() => handleTileClick(tile, index)}
             disabled={isAnswered}
-            className="px-4 py-2 rounded-lg font-medium text-lg bg-surface-alt text-secondary hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-4 py-2 rounded-lg font-medium text-lg bg-surface-alt text-secondary hover:bg-border transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {tile}
           </button>
@@ -119,7 +119,7 @@ export const BuildExercise: React.FC<BuildExerciseProps> = ({
         <div className="text-center">
           <button
             onClick={handleCheck}
-            className="px-8 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-medium transition-colors"
+            className="px-8 py-2 bg-accent-blue hover:bg-accent-blue/80 text-white rounded-lg font-medium transition-colors"
           >
             Check
           </button>
@@ -127,18 +127,18 @@ export const BuildExercise: React.FC<BuildExerciseProps> = ({
       )}
 
       {isAnswered && isCorrect && (
-        <p className="text-center text-green-500 font-medium">Correct!</p>
+                <p className="text-center text-success font-medium">Correct!</p>
       )}
 
       {isAnswered && !isCorrect && (
         <div className="text-center space-y-3">
           <p className="text-sm text-secondary">
             Correct answer:{' '}
-            <span className="font-bold text-green-500">{item.japanese}</span>
+                        <span className="font-bold text-success">{item.japanese}</span>
           </p>
           <button
             onClick={handleNext}
-            className="px-6 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium transition-colors"
+            className="px-6 py-2 bg-success hover:bg-success/80 text-white rounded-lg font-medium transition-colors"
           >
             Next
           </button>

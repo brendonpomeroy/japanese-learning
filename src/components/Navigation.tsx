@@ -400,8 +400,8 @@ function Navigation() {
             onClick={() => handleMobileNav('/lessons')}
             className={`flex items-center gap-3 w-full p-3 rounded-xl transition-colors ${
               isPathActive('/lessons', location.pathname)
-                ? 'bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 font-semibold'
-                : 'bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600'
+                ? 'bg-accent-blue/10 text-accent-blue font-semibold'
+                : 'bg-surface-alt text-primary hover:bg-border-light'
             }`}
           >
             <span className="text-2xl">📋</span>

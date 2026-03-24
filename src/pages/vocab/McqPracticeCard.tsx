@@ -74,11 +74,11 @@ export const McqPracticeCard: React.FC<McqPracticeCardProps> = ({
                 className={`px-6 py-3 rounded-lg font-medium transition-colors text-left ${
                   showResult
                     ? isCorrectOption
-                      ? 'bg-green-500 text-white'
+                      ? 'bg-success text-white'
                       : isSelected
-                        ? 'bg-red-500 text-white'
+                        ? 'bg-error text-white'
                         : 'bg-surface-alt text-secondary'
-                    : 'bg-surface-alt text-secondary hover:bg-gray-300 dark:hover:bg-gray-600'
+                    : 'bg-surface-alt text-secondary hover:bg-border'
                 } disabled:opacity-50 disabled:cursor-not-allowed`}
               >
                 {option.kana_kanji}
@@ -89,7 +89,7 @@ export const McqPracticeCard: React.FC<McqPracticeCardProps> = ({
         {isAnswered && !isCorrect && (
           <button
             onClick={handleNext}
-            className="w-full px-6 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium transition-colors"
+            className="w-full px-6 py-2 bg-success hover:bg-success/90 text-white rounded-lg font-medium transition-colors"
           >
             Next
           </button>

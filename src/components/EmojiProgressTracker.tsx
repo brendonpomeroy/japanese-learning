@@ -43,7 +43,7 @@ const EmojiProgressTracker: React.FC = () => {
         </div>
         <div className="w-full bg-surface-alt rounded-full h-3">
           <div
-            className="h-3 rounded-full bg-gradient-to-r from-orange-400 to-orange-600 transition-all duration-300"
+            className="h-3 rounded-full bg-accent-orange transition-all duration-300"
             style={{ width: `${overallProgress}%` }}
           />
         </div>
@@ -51,7 +51,7 @@ const EmojiProgressTracker: React.FC = () => {
 
       {/* Stats Grid */}
       <div className="grid grid-cols-2 gap-4 mb-6">
-        <div className="bg-orange-50 dark:bg-orange-900 rounded-lg p-4">
+        <div className="bg-accent-orange/10 rounded-lg p-4">
           <div className="text-2xl font-bold text-accent-orange">
             {emojiExerciseHistory.length}
           </div>
@@ -81,8 +81,8 @@ const EmojiProgressTracker: React.FC = () => {
                 key={index}
                 className={`flex items-center justify-between p-3 rounded-lg ${
                   result.correct
-                    ? 'bg-success/10 border border-green-200 dark:border-green-700'
-                    : 'bg-error/10 border border-red-200 dark:border-red-700'
+                    ? 'bg-success/10 border border-success/30'
+                    : 'bg-error/10 border border-error/30'
                 }`}
               >
                 <div className="flex items-center gap-3">
@@ -140,7 +140,7 @@ const EmojiProgressTracker: React.FC = () => {
                       </div>
                       <div className="w-16 bg-surface-alt rounded-full h-2">
                         <div
-                          className="h-2 rounded-full bg-orange-500"
+                          className="h-2 rounded-full bg-accent-orange"
                           style={{ width: `${mastery}%` }}
                         />
                       </div>

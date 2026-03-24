@@ -40,7 +40,7 @@ export const WordFlashcard: React.FC<WordFlashcardProps> = ({
           onClick={handleFlip}
         >
           {/* Front of card */}
-          <div className="absolute inset-0 backface-hidden bg-surface rounded-lg shadow-xl p-8 flex flex-col items-center justify-center border-2 border-blue-500">
+          <div className="absolute inset-0 backface-hidden bg-surface rounded-lg shadow-xl p-8 flex flex-col items-center justify-center border-2 border-accent-blue">
             <div className="text-center">
               <p className="text-sm text-secondary mb-4">
                 Tap to reveal
@@ -52,7 +52,7 @@ export const WordFlashcard: React.FC<WordFlashcardProps> = ({
           </div>
 
           {/* Back of card */}
-          <div className="absolute inset-0 backface-hidden bg-surface rounded-lg shadow-xl p-8 flex flex-col items-center justify-center border-2 border-green-500 rotate-y-180">
+          <div className="absolute inset-0 backface-hidden bg-surface rounded-lg shadow-xl p-8 flex flex-col items-center justify-center border-2 border-success rotate-y-180">
             <div className="text-center space-y-3 w-full overflow-y-auto max-h-full">
               <div className="text-4xl mb-2 font-japanese">
                 {word.kana_kanji}
@@ -62,7 +62,7 @@ export const WordFlashcard: React.FC<WordFlashcardProps> = ({
                   {word.hiragana}
                 </div>
               )}
-              <div className="text-lg text-gray-500 dark:text-gray-500">
+              <div className="text-lg text-secondary">
                 {word.romaji}
               </div>
               <div className="text-2xl font-semibold text-accent-blue mt-2">
@@ -77,7 +77,7 @@ export const WordFlashcard: React.FC<WordFlashcardProps> = ({
                 </p>
               </div>
               <div className="flex gap-2 mt-2 justify-center">
-                <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-accent-violet rounded-full text-sm">
+                <span className="px-3 py-1 bg-accent-violet/10 text-accent-violet rounded-full text-sm">
                   {word.difficulty}
                 </span>
                 <span className="px-3 py-1 bg-accent-blue/10 text-accent-blue rounded-full text-sm">
@@ -97,7 +97,7 @@ export const WordFlashcard: React.FC<WordFlashcardProps> = ({
               e.stopPropagation();
               handleAnswer(false);
             }}
-            className="px-8 py-3 bg-red-500 hover:bg-red-600 text-white rounded-lg font-medium transition-colors"
+            className="px-8 py-3 bg-error hover:bg-error/80 text-white rounded-lg font-medium transition-colors"
           >
             Need Practice
           </button>
@@ -106,7 +106,7 @@ export const WordFlashcard: React.FC<WordFlashcardProps> = ({
               e.stopPropagation();
               handleAnswer(true);
             }}
-            className="px-8 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium transition-colors"
+            className="px-8 py-3 bg-success hover:bg-success/80 text-white rounded-lg font-medium transition-colors"
           >
             Got It!
           </button>

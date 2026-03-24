@@ -10,7 +10,7 @@ const PhraseCard: React.FC<PhraseCardProps> = ({ phrase, onPlayAudio }) => {
   const [showBreakdown, setShowBreakdown] = useState(false);
 
   return (
-    <div className="bg-surface rounded-lg shadow-soft-md p-6 mb-4 border-l-4 border-blue-500 dark:border-blue-400">
+    <div className="bg-surface rounded-lg shadow-soft-md p-6 mb-4 border-l-4 border-accent-blue">
       <div className="mb-4">
         <h3 className="text-xl font-bold text-primary mb-2">
           {phrase.english}
@@ -26,7 +26,7 @@ const PhraseCard: React.FC<PhraseCardProps> = ({ phrase, onPlayAudio }) => {
             {onPlayAudio && (
               <button
                 onClick={() => onPlayAudio(phrase.japanese)}
-                className="text-accent-blue hover:text-blue-800 dark:hover:text-blue-300 ml-2"
+                className="text-accent-blue hover:text-accent-blue/80 ml-2"
                 title="Play audio"
               >
                 🔊
@@ -61,7 +61,7 @@ const PhraseCard: React.FC<PhraseCardProps> = ({ phrase, onPlayAudio }) => {
       <div className="border-t border-border pt-4">
         <button
           onClick={() => setShowBreakdown(!showBreakdown)}
-          className="flex items-center gap-2 text-accent-blue hover:text-blue-800 dark:hover:text-blue-300 font-medium"
+          className="flex items-center gap-2 text-accent-blue hover:text-accent-blue/80 font-medium"
         >
           <span>{showBreakdown ? '▼' : '▶'}</span>
           Word Breakdown

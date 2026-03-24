@@ -69,7 +69,7 @@ export const GrammarPacksPage = () => {
                   </div>
                   <div className="w-full bg-surface-alt rounded-full h-2">
                     <div
-                      className="h-2 rounded-full bg-rose-500 transition-all duration-300"
+                      className="h-2 rounded-full bg-accent-rose transition-all duration-300"
                       style={{
                         width: `${(totalSeen / totalPossible) * 100}%`,
                       }}
@@ -78,7 +78,7 @@ export const GrammarPacksPage = () => {
                 </div>
               )}
 
-              <div className="flex items-center text-sm text-secondary group-hover:text-rose-500 dark:group-hover:text-rose-400">
+              <div className="flex items-center text-sm text-secondary group-hover:text-accent-rose">
                 <span className="mr-1">
                   {pack.supportedModes.map(m => capitalize(m)).join(' / ')}
                 </span>

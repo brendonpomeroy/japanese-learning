@@ -78,7 +78,7 @@ function Practice() {
         <div className="mb-6">
           <button
             onClick={() => setCurrentExercise(null)}
-            className="text-accent-blue hover:text-blue-800 dark:hover:text-blue-300 mb-4 inline-flex items-center"
+            className="text-accent-blue hover:text-accent-blue/80 mb-4 inline-flex items-center"
           >
             ← Back to Practice Menu
           </button>
@@ -98,7 +98,7 @@ function Practice() {
       <div className="mb-8">
         <Link
           to="/"
-          className="text-accent-blue hover:text-blue-800 dark:hover:text-blue-300 mb-4 inline-flex items-center"
+          className="text-accent-blue hover:text-accent-blue/80 mb-4 inline-flex items-center"
         >
           ← Back to Home
         </Link>
@@ -111,7 +111,7 @@ function Practice() {
       </div>
 
       {showResults && lastScore && (
-        <div className="bg-success/10 border border-green-200 dark:border-green-700 rounded-lg p-6 mb-8">
+        <div className="bg-success/10 border border-success/30 rounded-lg p-6 mb-8">
           <h2 className="text-xl font-bold text-success mb-2">
             Exercise Complete!
           </h2>
@@ -121,7 +121,7 @@ function Practice() {
           </p>
           <button
             onClick={() => setShowResults(false)}
-            className="mt-3 text-success hover:text-green-800 dark:hover:text-green-200 font-medium"
+            className="mt-3 text-success hover:text-success/80 font-medium"
           >
             Continue practicing →
           </button>
@@ -141,8 +141,8 @@ function Practice() {
                   onClick={() => setSelectedCategory(category.key)}
                   className={`p-3 rounded-lg font-medium transition-colors ${
                     selectedCategory === category.key
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-surface-alt text-secondary hover:bg-gray-300 dark:hover:bg-gray-600'
+                      ? 'bg-accent-blue text-white'
+                      : 'bg-surface-alt text-secondary hover:bg-border'
                   }`}
                 >
                   {category.title}
@@ -160,7 +160,7 @@ function Practice() {
                 <button
                   key={exercise.type}
                   onClick={() => handleStartExercise(exercise.type)}
-                  className="group bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900 dark:to-blue-800 hover:from-blue-100 hover:to-blue-200 dark:hover:from-blue-800 dark:hover:to-blue-700 rounded-lg p-6 text-left transition-all duration-200 transform hover:scale-105 border-2 border-transparent hover:border-blue-300 dark:hover:border-blue-500"
+                  className="group bg-accent-blue/5 hover:bg-accent-blue/10 rounded-lg p-6 text-left transition-all duration-200 transform hover:scale-105 border-2 border-transparent hover:border-accent-blue"
                 >
                   <div className="flex items-center gap-4 mb-3">
                     <span className="text-3xl">{exercise.icon}</span>
@@ -171,7 +171,7 @@ function Practice() {
                   <p className="text-secondary mb-4">
                     {exercise.description}
                   </p>
-                  <div className="flex items-center text-accent-blue group-hover:text-blue-700 dark:group-hover:text-blue-300">
+                  <div className="flex items-center text-accent-blue group-hover:text-accent-blue/80">
                     <span className="mr-2">Start exercise</span>
                     <span className="transform group-hover:translate-x-1 transition-transform">
                       →

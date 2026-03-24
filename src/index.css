@@ -33,10 +33,18 @@
   --color-accent-orange: #f97316;
   --color-accent-rose: #f43f5e;
   --color-accent-green: #22c55e;
+  --color-accent-gold: #eab308;
 
   /* Feedback */
   --color-success: #22c55e;
   --color-error: #ef4444;
+  --color-warning: #eab308;
+
+  /* Muted */
+  --color-muted: #9ca3af;
+
+  /* Input */
+  --color-input-bg: #ffffff;
 
   /* Soft shadows (warm-toned) */
   --shadow-soft-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
@@ -68,9 +76,14 @@
   --color-accent-orange: #fb923c;
   --color-accent-rose: #fb7185;
   --color-accent-green: #4ade80;
+  --color-accent-gold: #facc15;
 
   --color-success: #4ade80;
   --color-error: #f87171;
+  --color-warning: #facc15;
+
+  --color-muted: #6b7280;
+  --color-input-bg: #1f2937;
 
   --shadow-soft-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
   --shadow-soft-md: 0 4px 12px rgba(0, 0, 0, 0.4);
@@ -89,7 +102,8 @@
 
   --color-primary: #2A2A2A;
   --color-secondary: #5F5A52;
-  --color-inverse: #FFFFFF;
+  --color-muted: #8A847A;
+  --color-inverse: #3D3832;
 
   --color-border: #E8E0D4;
   --color-border-light: #F0EAE0;
@@ -101,20 +115,20 @@
   --color-accent-orange: #F08A3E;
   --color-accent-rose: #E85D7A;
   --color-accent-green: #7FA97F;
+  --color-accent-gold: #D8B25A;
 
   --color-success: #7FA97F;
   --color-error: #E85D7A;
+  --color-warning: #D8B25A;
 
-  --shadow-soft-sm: 0 1px 3px rgba(60, 40, 20, 0.06);
-  --shadow-soft-md: 0 4px 12px rgba(60, 40, 20, 0.08);
-  --shadow-soft-lg: 0 8px 24px rgba(60, 40, 20, 0.06);
+  --shadow-soft-sm: 0 2px 8px rgba(60, 40, 20, 0.04);
+  --shadow-soft-md: 0 6px 16px rgba(60, 40, 20, 0.05);
+  --shadow-soft-lg: 0 10px 30px rgba(60, 40, 20, 0.08);
 
-  --radius-sm: 10px;
-  --radius-md: 12px;
-  --radius-lg: 18px;
-  --radius-xl: 22px;
+  --color-input-bg: #FCFAF6;
 
   font-family: 'Noto Sans JP', 'Inter', 'Hiragino Sans', system-ui, sans-serif;
+  line-height: 1.6;
 }
 
 /* ───────────────────────────────────────────
@@ -129,6 +143,7 @@
 
   --color-primary: #E8E2D8;
   --color-secondary: #A09888;
+  --color-muted: #706860;
   --color-inverse: #FFFFFF;
 
   --color-border: #3A3632;
@@ -141,13 +156,202 @@
   --color-accent-orange: #F5A060;
   --color-accent-rose: #F07A92;
   --color-accent-green: #6BC498;
+  --color-accent-gold: #E0C06A;
 
   --color-success: #6BC498;
   --color-error: #F07A92;
+  --color-warning: #E0C06A;
 
-  --shadow-soft-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
-  --shadow-soft-md: 0 4px 12px rgba(0, 0, 0, 0.3);
-  --shadow-soft-lg: 0 10px 25px rgba(0, 0, 0, 0.4);
+  --shadow-soft-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-soft-md: 0 6px 16px rgba(0, 0, 0, 0.3);
+  --shadow-soft-lg: 0 10px 30px rgba(0, 0, 0, 0.4);
+
+  --color-input-bg: #2A2826;
+}
+
+/* ───────────────────────────────────────────
+   Paper theme — component recipes
+   ─────────────────────────────────────────── */
+
+/* Paper texture — layered grain + fiber + vignette (no images) */
+[data-theme='paper'] .bg-page {
+  background-color: var(--color-page);
+  background-image:
+    /* subtle dot grain — mimics paper fiber */
+    radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    /* warm vignette — darker edges like aged paper */
+    radial-gradient(ellipse at 50% 0%, transparent 50%, rgba(180, 160, 130, 0.08) 100%),
+    radial-gradient(ellipse at 50% 100%, transparent 50%, rgba(180, 160, 130, 0.06) 100%),
+    /* soft light variation — uneven paper surface */
+    radial-gradient(circle at 30% 25%, rgba(255, 248, 230, 0.5), transparent 45%),
+    radial-gradient(circle at 70% 70%, rgba(245, 235, 215, 0.35), transparent 50%),
+    radial-gradient(circle at 85% 15%, rgba(240, 230, 210, 0.25), transparent 35%);
+  background-size:
+    4px 4px,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%;
+}
+[data-theme='paper'].dark .bg-page {
+  background-color: var(--color-page);
+  background-image:
+    /* grain — lighter points on dark bg */
+    radial-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    /* subtle warm vignette */
+    radial-gradient(ellipse at 50% 0%, transparent 55%, rgba(0, 0, 0, 0.15) 100%),
+    radial-gradient(ellipse at 50% 100%, transparent 55%, rgba(0, 0, 0, 0.1) 100%),
+    /* surface variation */
+    radial-gradient(circle at 30% 25%, rgba(255, 245, 220, 0.02), transparent 45%),
+    radial-gradient(circle at 70% 70%, rgba(255, 240, 210, 0.015), transparent 50%);
+  background-size:
+    4px 4px,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%;
+}
+
+/* Paper cards — soft elevation, large radii */
+[data-theme='paper'] .paper-card {
+  background: var(--color-surface);
+  border-radius: 18px;
+  box-shadow: var(--shadow-soft-md);
+  padding: 24px;
+}
+
+/* Gradient feature cards — with premium highlight overlay */
+[data-theme='paper'] .gradient-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow: var(--shadow-soft-md);
+  padding: 24px;
+}
+[data-theme='paper'] .gradient-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top right,
+    rgba(255, 255, 255, 0.25),
+    transparent 60%
+  );
+  pointer-events: none;
+}
+[data-theme='paper'].dark .gradient-card::after {
+  background: radial-gradient(
+    circle at top right,
+    rgba(255, 255, 255, 0.1),
+    transparent 60%
+  );
+}
+
+/* CTA chips inside gradient cards */
+[data-theme='paper'] .cta-chip {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 6px 10px;
+  backdrop-filter: blur(6px);
+}
+
+/* Paper rounded overrides */
+[data-theme='paper'] .rounded-lg {
+  border-radius: 18px;
+}
+[data-theme='paper'] .rounded-xl {
+  border-radius: 22px;
+}
+[data-theme='paper'] .rounded-md {
+  border-radius: 12px;
+}
+
+/* Paper buttons */
+[data-theme='paper'] button:not(.no-paper),
+[data-theme='paper'] a[class*="rounded"] {
+  border-radius: 12px;
+}
+[data-theme='paper'] .btn-primary {
+  background: var(--color-accent-blue);
+  color: white;
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-weight: 600;
+}
+[data-theme='paper'] .btn-primary:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+[data-theme='paper'] .btn-secondary {
+  background: var(--color-surface-alt);
+  color: var(--color-primary);
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+}
+
+/* Paper inputs */
+[data-theme='paper'] input,
+[data-theme='paper'] textarea,
+[data-theme='paper'] select {
+  background: var(--color-input-bg, #FCFAF6);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 10px 14px;
+}
+[data-theme='paper'] input:focus,
+[data-theme='paper'] textarea:focus,
+[data-theme='paper'] select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(92, 132, 230, 0.15);
+  border-color: var(--color-accent-blue);
+}
+
+/* Paper focus ring — softer than default blue */
+[data-theme='paper'] button:focus,
+[data-theme='paper'] a:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(92, 132, 230, 0.15);
+}
+
+/* Paper progress bar backgrounds */
+[data-theme='paper'] .progress-track {
+  background: var(--color-border);
+  border-radius: 10px;
+}
+
+/* Paper gradient backgrounds for feature cards */
+[data-theme='paper'] .gradient-blue {
+  background: linear-gradient(135deg, #5C84E6 0%, #6A95F0 100%);
+}
+[data-theme='paper'] .gradient-purple {
+  background: linear-gradient(135deg, #9A6AF0 0%, #B27BF2 100%);
+}
+[data-theme='paper'] .gradient-orange {
+  background: linear-gradient(135deg, #F08A3E 0%, #F59A52 100%);
+}
+[data-theme='paper'] .gradient-rose {
+  background: linear-gradient(135deg, #E85D7A 0%, #F06E8A 100%);
+}
+[data-theme='paper'] .gradient-green {
+  background: linear-gradient(135deg, #7FA97F 0%, #92BC92 100%);
+}
+
+/* Dark paper gradients — slightly muted */
+[data-theme='paper'].dark .gradient-blue {
+  background: linear-gradient(135deg, #4A6FC0 0%, #5A82D0 100%);
+}
+[data-theme='paper'].dark .gradient-purple {
+  background: linear-gradient(135deg, #7E55C8 0%, #9468D8 100%);
+}
+[data-theme='paper'].dark .gradient-orange {
+  background: linear-gradient(135deg, #D07530 0%, #E08842 100%);
+}
+[data-theme='paper'].dark .gradient-rose {
+  background: linear-gradient(135deg, #C84D68 0%, #D86078 100%);
+}
+[data-theme='paper'].dark .gradient-green {
+  background: linear-gradient(135deg, #6A8F6A 0%, #7DA27D 100%);
 }
 
 /* Japanese font styling */

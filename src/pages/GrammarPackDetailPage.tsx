@@ -26,7 +26,7 @@ export const GrammarPackDetailPage = () => {
         </h1>
         <Link
           to="/grammar"
-          className="text-blue-500 hover:text-blue-600 underline"
+          className="text-accent-blue hover:text-accent-blue/80 underline"
         >
           Back to Grammar Packs
         </Link>
@@ -46,7 +46,7 @@ export const GrammarPackDetailPage = () => {
     <div className="container mx-auto px-4 py-8 max-w-2xl">
       <Link
         to="/grammar"
-        className="text-sm text-secondary hover:text-gray-700 dark:hover:text-gray-300 mb-6 inline-block"
+        className="text-sm text-secondary hover:text-primary mb-6 inline-block"
       >
         ← Back to Grammar Packs
       </Link>
@@ -98,7 +98,7 @@ export const GrammarPackDetailPage = () => {
               {seen > 0 && (
                 <div className="w-full bg-surface-alt rounded-full h-1.5">
                   <div
-                    className="h-1.5 rounded-full bg-rose-500 transition-all duration-300"
+                    className="h-1.5 rounded-full bg-accent-rose transition-all duration-300"
                     style={{
                       width: `${(seen / stats.totalItems) * 100}%`,
                     }}
@@ -113,7 +113,7 @@ export const GrammarPackDetailPage = () => {
       <div className="text-center">
         <button
           onClick={handleReset}
-          className="text-sm text-red-500 hover:text-red-600 underline"
+          className="text-sm text-error hover:text-error/80 underline"
         >
           Reset progress for this pack
         </button>

@@ -40,8 +40,8 @@ const KanaGrid: React.FC<KanaGridProps> = ({
       onClick={() => setSelectedCategory(category)}
       className={`px-4 py-2 rounded-lg font-medium transition-colors ${
         selectedCategory === category
-          ? 'bg-blue-600 text-white'
-          : 'bg-surface-alt text-secondary hover:bg-gray-300 dark:hover:bg-gray-600'
+          ? 'bg-accent-blue text-white'
+          : 'bg-surface-alt text-secondary hover:bg-border'
       }`}
     >
       {label}
@@ -63,12 +63,12 @@ const KanaGrid: React.FC<KanaGridProps> = ({
           flex flex-col items-center justify-center p-1 hover:scale-105
           ${
             highlightedCharacters.includes(character)
-              ? 'border-green-500 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200'
-              : 'border-border bg-surface-alt hover:border-blue-500 dark:hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900'
+              ? 'border-success bg-success/10 text-success'
+              : 'border-border bg-surface-alt hover:border-accent-blue hover:bg-accent-blue/10'
           }
         `}
       >
-        <span className={`font-japanese font-bold mb-1 dark:text-gray-100 whitespace-nowrap break-keep ${character.length > 1 ? 'text-sm' : 'text-2xl'}`}>
+        <span className={`font-japanese font-bold mb-1 text-primary whitespace-nowrap break-keep ${character.length > 1 ? 'text-sm' : 'text-2xl'}`}>
           {character}
         </span>
         <span className="text-xs text-secondary font-mono whitespace-nowrap">
@@ -170,12 +170,12 @@ const KanaGrid: React.FC<KanaGridProps> = ({
                   flex flex-col items-center justify-center p-1 hover:scale-105
                   ${
                     highlightedCharacters.includes(char)
-                      ? 'border-green-500 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200'
-                      : 'border-border bg-surface-alt hover:border-blue-500 dark:hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900'
+                      ? 'border-success bg-success/10 text-success'
+                      : 'border-border bg-surface-alt hover:border-accent-blue hover:bg-accent-blue/10'
                   }
                 `}
               >
-                <span className="font-japanese font-bold mb-0.5 dark:text-gray-100 text-lg">
+                <span className="font-japanese font-bold mb-0.5 text-primary text-lg">
                   {char}
                 </span>
                 <span className="text-[10px] text-secondary font-mono whitespace-nowrap">
@@ -238,12 +238,12 @@ const KanaGrid: React.FC<KanaGridProps> = ({
                         flex flex-col items-center justify-center p-1 hover:scale-105
                         ${
                           highlightedCharacters.includes(char)
-                            ? 'border-green-500 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200'
-                            : 'border-border bg-surface-alt hover:border-blue-500 dark:hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900'
+                            ? 'border-success bg-success/10 text-success'
+                            : 'border-border bg-surface-alt hover:border-accent-blue hover:bg-accent-blue/10'
                         }
                       `}
                     >
-                      <span className="font-japanese font-bold mb-0.5 dark:text-gray-100 whitespace-nowrap break-keep text-xs">
+                      <span className="font-japanese font-bold mb-0.5 text-primary whitespace-nowrap break-keep text-xs">
                         {char}
                       </span>
                       <span className="text-[10px] text-secondary font-mono whitespace-nowrap">

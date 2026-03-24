@@ -45,7 +45,7 @@ export const Phrases: React.FC = () => {
       <div className="mb-8">
         <Link
           to="/"
-          className="text-accent-blue hover:text-blue-800 dark:hover:text-blue-300 mb-4 inline-flex items-center"
+          className="text-accent-blue hover:text-accent-blue/80 mb-4 inline-flex items-center"
         >
           ← Back to Home
         </Link>
@@ -65,8 +65,8 @@ export const Phrases: React.FC = () => {
               onClick={() => setSelectedCategory(category.key)}
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                 selectedCategory === category.key
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-surface-alt text-secondary hover:bg-gray-300 dark:hover:bg-gray-600'
+                  ? 'bg-accent-blue text-white'
+                  : 'bg-surface-alt text-secondary hover:bg-border'
               }`}
             >
               {category.title}

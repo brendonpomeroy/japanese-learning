@@ -54,9 +54,9 @@ function Home() {
                     {hiraganaProgress.toFixed(1)}%)
                   </span>
                 </div>
-                <div className="w-full bg-accent-blue/20 rounded-full h-2">
+                <div className="w-full bg-accent-blue/20 rounded-full h-2 progress-track">
                   <div
-                    className="h-2 rounded-full bg-purple-500 transition-all duration-300"
+                    className="h-2 rounded-full bg-accent-violet transition-all duration-300"
                     style={{ width: `${hiraganaProgress}%` }}
                   />
                 </div>
@@ -73,9 +73,9 @@ function Home() {
                     {masteredEmojis}/{totalEmojis} ({emojiProgress.toFixed(1)}%)
                   </span>
                 </div>
-                <div className="w-full bg-accent-blue/20 rounded-full h-2">
+                <div className="w-full bg-accent-blue/20 rounded-full h-2 progress-track">
                   <div
-                    className="h-2 rounded-full bg-orange-500 transition-all duration-300"
+                    className="h-2 rounded-full bg-accent-orange transition-all duration-300"
                     style={{ width: `${emojiProgress}%` }}
                   />
                 </div>
@@ -108,16 +108,16 @@ function Home() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
         <Link
           to="/phrases"
-          className="group bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg shadow-lg p-6 text-white hover:from-blue-600 hover:to-blue-700 transition-all duration-200 transform hover:scale-105"
+          className="group gradient-card bg-gradient-to-br from-blue-500 to-blue-600 gradient-blue rounded-lg shadow-soft-lg p-6 text-white hover:brightness-105 transition-all duration-200 transform hover:scale-105 hover:-translate-y-0.5"
         >
-          <div className="flex items-center justify-between mb-4">
+          <div className="relative z-10 flex items-center justify-between mb-4">
             <h3 className="text-2xl font-bold">Phrases</h3>
             <span className="text-3xl">💬</span>
           </div>
-          <p className="text-blue-100 mb-4">
+          <p className="relative z-10 text-white/80 mb-4">
             Learn essential Japanese phrases for daily conversation
           </p>
-          <div className="flex items-center text-blue-200 group-hover:text-white">
+          <div className="relative z-10 flex items-center text-white/70 group-hover:text-white cta-chip w-fit">
             <span className="mr-2">Start learning</span>
             <span className="transform group-hover:translate-x-1 transition-transform">
               →
@@ -127,16 +127,16 @@ function Home() {
 
         <Link
           to="/hiragana"
-          className="group bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg shadow-lg p-6 text-white hover:from-purple-600 hover:to-purple-700 transition-all duration-200 transform hover:scale-105"
+          className="group gradient-card bg-gradient-to-br from-purple-500 to-purple-600 gradient-purple rounded-lg shadow-soft-lg p-6 text-white hover:brightness-105 transition-all duration-200 transform hover:scale-105 hover:-translate-y-0.5"
         >
-          <div className="flex items-center justify-between mb-4">
+          <div className="relative z-10 flex items-center justify-between mb-4">
             <h3 className="text-2xl font-bold">Hiragana</h3>
             <span className="text-3xl">ひ</span>
           </div>
-          <p className="text-purple-100 mb-4">
+          <p className="relative z-10 text-white/80 mb-4">
             Master all hiragana characters with interactive exercises
           </p>
-          <div className="flex items-center text-purple-200 group-hover:text-white">
+          <div className="relative z-10 flex items-center text-white/70 group-hover:text-white cta-chip w-fit">
             <span className="mr-2">Practice now</span>
             <span className="transform group-hover:translate-x-1 transition-transform">
               →
@@ -146,16 +146,16 @@ function Home() {
 
         <Link
           to="/emoji"
-          className="group bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg shadow-lg p-6 text-white hover:from-orange-600 hover:to-orange-700 transition-all duration-200 transform hover:scale-105"
+          className="group gradient-card bg-gradient-to-br from-orange-500 to-orange-600 gradient-orange rounded-lg shadow-soft-lg p-6 text-white hover:brightness-105 transition-all duration-200 transform hover:scale-105 hover:-translate-y-0.5"
         >
-          <div className="flex items-center justify-between mb-4">
+          <div className="relative z-10 flex items-center justify-between mb-4">
             <h3 className="text-2xl font-bold">Emoji Quiz</h3>
             <span className="text-3xl">😊</span>
           </div>
-          <p className="text-orange-100 mb-4">
+          <p className="relative z-10 text-white/80 mb-4">
             Learn Japanese words through fun emoji recognition
           </p>
-          <div className="flex items-center text-orange-200 group-hover:text-white">
+          <div className="relative z-10 flex items-center text-white/70 group-hover:text-white cta-chip w-fit">
             <span className="mr-2">Take quiz</span>
             <span className="transform group-hover:translate-x-1 transition-transform">
               →
@@ -165,16 +165,16 @@ function Home() {
 
         <Link
           to="/grammar"
-          className="group bg-gradient-to-br from-rose-500 to-rose-600 rounded-lg shadow-lg p-6 text-white hover:from-rose-600 hover:to-rose-700 transition-all duration-200 transform hover:scale-105"
+          className="group gradient-card bg-gradient-to-br from-rose-500 to-rose-600 gradient-rose rounded-lg shadow-soft-lg p-6 text-white hover:brightness-105 transition-all duration-200 transform hover:scale-105 hover:-translate-y-0.5"
         >
-          <div className="flex items-center justify-between mb-4">
+          <div className="relative z-10 flex items-center justify-between mb-4">
             <h3 className="text-2xl font-bold">Grammar</h3>
             <span className="text-3xl">を</span>
           </div>
-          <p className="text-rose-100 mb-4">
+          <p className="relative z-10 text-white/80 mb-4">
             Practice grammar patterns with focused sentence exercises
           </p>
-          <div className="flex items-center text-rose-200 group-hover:text-white">
+          <div className="relative z-10 flex items-center text-white/70 group-hover:text-white cta-chip w-fit">
             <span className="mr-2">Start practice</span>
             <span className="transform group-hover:translate-x-1 transition-transform">
               →
@@ -184,16 +184,16 @@ function Home() {
 
         <Link
           to="/practice"
-          className="group bg-gradient-to-br from-green-500 to-green-600 rounded-lg shadow-lg p-6 text-white hover:from-green-600 hover:to-green-700 transition-all duration-200 transform hover:scale-105"
+          className="group gradient-card bg-gradient-to-br from-green-500 to-green-600 gradient-green rounded-lg shadow-soft-lg p-6 text-white hover:brightness-105 transition-all duration-200 transform hover:scale-105 hover:-translate-y-0.5"
         >
-          <div className="flex items-center justify-between mb-4">
+          <div className="relative z-10 flex items-center justify-between mb-4">
             <h3 className="text-2xl font-bold">Practice</h3>
             <span className="text-3xl">🎯</span>
           </div>
-          <p className="text-green-100 mb-4">
+          <p className="relative z-10 text-white/80 mb-4">
             Test your knowledge with quizzes and exercises
           </p>
-          <div className="flex items-center text-green-200 group-hover:text-white">
+          <div className="relative z-10 flex items-center text-white/70 group-hover:text-white cta-chip w-fit">
             <span className="mr-2">Take quiz</span>
             <span className="transform group-hover:translate-x-1 transition-transform">
               →

@@ -28,7 +28,7 @@ export const EmojiPage: React.FC = () => {
         <div className="mb-6">
           <button
             onClick={() => setShowQuiz(false)}
-            className="text-accent-blue hover:text-blue-800 dark:hover:text-blue-300 mb-4 inline-flex items-center"
+            className="text-accent-blue hover:text-accent-blue/80 mb-4 inline-flex items-center"
           >
             ← Back to Emoji Quiz
           </button>
@@ -44,7 +44,7 @@ export const EmojiPage: React.FC = () => {
       <div className="mb-8">
         <Link
           to="/"
-          className="text-accent-blue hover:text-blue-800 dark:hover:text-blue-300 mb-4 inline-flex items-center"
+          className="text-accent-blue hover:text-accent-blue/80 mb-4 inline-flex items-center"
         >
           ← Back to Home
         </Link>
@@ -57,7 +57,7 @@ export const EmojiPage: React.FC = () => {
       </div>
 
       {showResults && lastScore && (
-        <div className="bg-success/10 border border-green-200 dark:border-green-700 rounded-lg p-6 mb-8">
+        <div className="bg-success/10 border border-success/30 rounded-lg p-6 mb-8">
           <h2 className="text-xl font-bold text-success mb-2">
             Quiz Complete!
           </h2>
@@ -67,7 +67,7 @@ export const EmojiPage: React.FC = () => {
           </p>
           <button
             onClick={() => setShowResults(false)}
-            className="mt-3 text-success hover:text-green-800 dark:hover:text-green-200 font-medium"
+            className="mt-3 text-success hover:text-success/80 font-medium"
           >
             Take another quiz →
           </button>
@@ -117,7 +117,7 @@ export const EmojiPage: React.FC = () => {
               <div className="text-6xl mb-6">🎯📝🎌</div>
               <button
                 onClick={handleStartQuiz}
-                className="bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg"
+                className="bg-accent-blue hover:bg-accent-blue/80 text-white font-bold py-4 px-8 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-soft-lg"
               >
                 Start Emoji Quiz
               </button>
@@ -133,7 +133,7 @@ export const EmojiPage: React.FC = () => {
         </div>
       </div>
 
-      <div className="mt-8 bg-accent-blue/10 border border-blue-200 dark:border-blue-700 rounded-lg p-6">
+      <div className="mt-8 bg-accent-blue/10 border border-accent-blue/30 rounded-lg p-6">
         <h3 className="text-lg font-bold text-accent-blue mb-2">
           💡 Learning Tips
         </h3>

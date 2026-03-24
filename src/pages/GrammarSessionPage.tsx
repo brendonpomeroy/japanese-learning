@@ -95,7 +95,7 @@ export const GrammarSessionPage = () => {
       <div className="flex items-center justify-between mb-6">
         <button
           onClick={handleBack}
-          className="text-sm text-secondary hover:text-gray-700 dark:hover:text-gray-300"
+          className="text-sm text-secondary hover:text-primary"
         >
           ← Exit
         </button>
@@ -111,7 +111,7 @@ export const GrammarSessionPage = () => {
       {!currentSession.isComplete && (
         <div className="w-full bg-surface-alt rounded-full h-2 mb-8">
           <div
-            className="h-2 rounded-full bg-rose-500 transition-all duration-300"
+            className="h-2 rounded-full bg-accent-rose transition-all duration-300"
             style={{
               width: `${(currentSession.currentIndex / currentSession.queue.length) * 100}%`,
             }}

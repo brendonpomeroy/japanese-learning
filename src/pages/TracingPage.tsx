@@ -107,7 +107,7 @@ export const TracingPage: React.FC = () => {
       <div className="mb-6">
         <Link
           to="/"
-          className="text-accent-blue hover:text-blue-800 dark:hover:text-blue-300 mb-4 inline-flex items-center"
+          className="text-accent-blue hover:text-accent-blue/80 mb-4 inline-flex items-center"
         >
           ← Back to Home
         </Link>
@@ -140,7 +140,7 @@ export const TracingPage: React.FC = () => {
             {currentRomaji}
           </p>
           {mastery > 0 && (
-            <p className="text-sm text-gray-500 dark:text-gray-500 mt-1">
+            <p className="text-sm text-secondary mt-1">
               Mastery: {mastery}%
             </p>
           )}
@@ -167,7 +167,7 @@ export const TracingPage: React.FC = () => {
 
         {/* Session stats */}
         {sessionCount > 0 && (
-          <p className="text-sm text-gray-500 dark:text-gray-500 mt-4">
+          <p className="text-sm text-secondary mt-4">
             Characters practiced this session: {sessionCount}
           </p>
         )}

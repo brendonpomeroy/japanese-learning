@@ -183,7 +183,7 @@ export const FlashcardsPage: React.FC = () => {
               </div>
               <button
                 onClick={handleRestart}
-                className="w-full px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-medium transition-colors"
+                className="w-full px-6 py-3 bg-accent-blue hover:bg-accent-blue/80 text-white rounded-lg font-medium transition-colors"
               >
                 Practice Again
               </button>
@@ -252,7 +252,7 @@ export const FlashcardsPage: React.FC = () => {
                   type="checkbox"
                   checked={showRomaji}
                   onChange={e => setShowRomaji(e.target.checked)}
-                  className="w-5 h-5 text-blue-500 rounded focus:ring-blue-500"
+                  className="w-5 h-5 text-accent-blue rounded focus:ring-accent-blue"
                 />
                 <span className="ml-3 text-secondary">
                   Show hiragana on front (otherwise shows kanji/kana)
@@ -271,7 +271,7 @@ export const FlashcardsPage: React.FC = () => {
                 className={`px-8 py-3 rounded-lg font-medium transition-colors ${
                   filteredWords.length === 0
                     ? 'bg-surface-alt text-secondary cursor-not-allowed'
-                    : 'bg-green-500 hover:bg-green-600 text-white'
+                    : 'bg-success hover:bg-success/80 text-white'
                 }`}
               >
                 Start Practice
@@ -329,7 +329,7 @@ export const FlashcardsPage: React.FC = () => {
           </div>
           <button
             onClick={() => setIsStarted(false)}
-            className="px-4 py-2 bg-surface-alt hover:bg-gray-300 dark:hover:bg-gray-600 text-secondary rounded-lg font-medium transition-colors"
+            className="px-4 py-2 bg-surface-alt hover:bg-border text-secondary rounded-lg font-medium transition-colors"
           >
             Exit
           </button>
@@ -338,7 +338,7 @@ export const FlashcardsPage: React.FC = () => {
         {/* Progress Bar */}
         <div className="w-full bg-surface-alt rounded-full h-2 mb-8">
           <div
-            className="bg-blue-500 h-2 rounded-full transition-all duration-300"
+            className="bg-accent-blue h-2 rounded-full transition-all duration-300"
             style={{
               width: `${((currentIndex + 1) / filteredWords.length) * 100}%`,
             }}

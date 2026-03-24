@@ -128,12 +128,12 @@ export const CorrectExercise: React.FC<CorrectExerciseProps> = ({
               disabled={isAnswered}
               className={`px-4 py-2 rounded-lg font-medium text-xl transition-colors ${
                 showCorrected
-                  ? 'bg-green-500 text-white'
+                  ? 'bg-success text-white'
                   : showWrong && !isCorrect
-                    ? 'bg-red-200 dark:bg-red-800 text-red-800 dark:text-red-200 ring-2 ring-red-500'
+                    ? 'bg-error/20 text-error ring-2 ring-error'
                     : isSelected
-                      ? 'bg-blue-500 text-white'
-                      : 'bg-surface-alt text-secondary hover:bg-gray-300 dark:hover:bg-gray-600'
+                      ? 'bg-accent-blue text-white'
+                      : 'bg-surface-alt text-secondary hover:bg-border'
               } disabled:cursor-not-allowed`}
             >
               {showCorrected ? correctToken : token}
@@ -154,7 +154,7 @@ export const CorrectExercise: React.FC<CorrectExerciseProps> = ({
               <button
                 key={option}
                 onClick={() => handleReplacementClick(option)}
-                className="px-5 py-2 rounded-lg font-medium text-lg bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-200 hover:bg-blue-200 dark:hover:bg-blue-700 transition-colors"
+                className="px-5 py-2 rounded-lg font-medium text-lg bg-accent-blue/10 text-accent-blue hover:bg-accent-blue/20 transition-colors"
               >
                 {option}
               </button>
@@ -164,18 +164,18 @@ export const CorrectExercise: React.FC<CorrectExerciseProps> = ({
       )}
 
       {isAnswered && isCorrect && (
-        <p className="text-center text-green-500 font-medium">Correct!</p>
+                <p className="text-center text-success font-medium">Correct!</p>
       )}
 
       {isAnswered && !isCorrect && (
         <div className="text-center space-y-3">
           <p className="text-sm text-secondary">
             Correct answer:{' '}
-            <span className="font-bold text-green-500">{item.japanese}</span>
+                        <span className="font-bold text-success">{item.japanese}</span>
           </p>
           <button
             onClick={handleNext}
-            className="px-6 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium transition-colors"
+            className="px-6 py-2 bg-success hover:bg-success/80 text-white rounded-lg font-medium transition-colors"
           >
             Next
           </button>

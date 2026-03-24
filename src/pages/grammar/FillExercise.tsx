@@ -52,15 +52,15 @@ export const FillExercise: React.FC<FillExerciseProps> = ({
         </p>
         <p className="text-3xl font-bold text-primary">
           {parts[0]}
-          <span className="inline-block mx-1 px-3 py-1 border-b-4 border-blue-400 dark:border-blue-500 min-w-[3rem] text-center">
+          <span className="inline-block mx-1 px-3 py-1 border-b-4 border-accent-blue min-w-[3rem] text-center">
             {isAnswered ? (
               <span
-                className={isCorrect ? 'text-green-500' : 'text-red-500'}
+                className={isCorrect ? 'text-success' : 'text-error'}
               >
                 {selectedOption}
               </span>
             ) : (
-              <span className="text-blue-400 dark:text-blue-500">?</span>
+              <span className="text-accent-blue">?</span>
             )}
           </span>
           {parts[1]}
@@ -81,11 +81,11 @@ export const FillExercise: React.FC<FillExerciseProps> = ({
               className={`px-6 py-3 rounded-lg font-medium text-xl transition-colors ${
                 showResult
                   ? isCorrectOption
-                    ? 'bg-green-500 text-white'
+                    ? 'bg-success text-white'
                     : isSelected
-                      ? 'bg-red-500 text-white'
+                      ? 'bg-error text-white'
                       : 'bg-surface-alt text-secondary'
-                  : 'bg-surface-alt text-secondary hover:bg-gray-300 dark:hover:bg-gray-600'
+                  : 'bg-surface-alt text-secondary hover:bg-border'
               } disabled:cursor-not-allowed`}
             >
               {option}
@@ -97,11 +97,11 @@ export const FillExercise: React.FC<FillExerciseProps> = ({
       {isAnswered && !isCorrect && (
         <div className="text-center space-y-3">
           <p className="text-sm text-secondary">
-            Correct answer: <span className="font-bold text-green-500">{item.japanese}</span>
+            Correct answer: <span className="font-bold text-success">{item.japanese}</span>
           </p>
           <button
             onClick={handleNext}
-            className="px-6 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium transition-colors"
+            className="px-6 py-2 bg-success hover:bg-success/80 text-white rounded-lg font-medium transition-colors"
           >
             Next
           </button>
@@ -109,7 +109,7 @@ export const FillExercise: React.FC<FillExerciseProps> = ({
       )}
 
       {isAnswered && isCorrect && (
-        <p className="text-center text-green-500 font-medium">Correct!</p>
+                <p className="text-center text-success font-medium">Correct!</p>
       )}
 
       {isAnswered && item.translationNotes.length > 0 && (
