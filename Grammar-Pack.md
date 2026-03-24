@@ -98,6 +98,7 @@ a bit of metadata
 And the app can immediately turn that into practice.
 
 Exercise Modes
+
 1. Build
 Purpose
 
@@ -130,7 +131,7 @@ Why it matters
 
 This is the highest-value mode because it trains generation rather than passive recognition.
 
-2. Correct
+1. Correct
 Purpose
 
 Train grammar awareness and error detection.
@@ -163,7 +164,7 @@ Why it matters
 
 Correction tasks strengthen understanding by forcing the learner to notice what is wrong, not just identify what looks familiar.
 
-3. Fill
+1. Fill
 Purpose
 
 Train focused particle recognition.
@@ -220,7 +221,7 @@ Example progression:
 
 Whenever possible, the user should build or fix a sentence rather than only choose from obvious options.
 
-4. Reuse the same core data across modes
+1. Reuse the same core data across modes
 
 A single sentence item should drive:
 
