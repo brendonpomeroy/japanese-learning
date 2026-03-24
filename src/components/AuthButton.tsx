@@ -2,12 +2,13 @@
  * CloudBackupModal — a standalone modal opened from Settings.
  *
  * Shows:
- *  - Email magic-link sign-in form when signed out
+ *  - Email OTP sign-in form when signed out
+ *  - 6-digit code entry after email is sent
  *  - Account info + sign-out when signed in
  *  - Sync status indicator
  */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { useAuth } from '../hooks/useAuth';
 
@@ -23,13 +24,18 @@ export function CloudBackupModal({ isOpen, onClose }: CloudBackupModalProps) {
     isAuthenticating,
     isResolvingCloudSync,
     isSyncReady,
-    signInWithMagicLink,
+    sendOtp,
+    verifyOtp,
     signOut,
   } = useAuth();
 
   const [email, setEmail] = useState('');
-  const [status, setStatus] = useState<'idle' | 'sent' | 'error'>('idle');
+  const [otpCode, setOtpCode] = useState('');
+  const [status, setStatus] = useState<'idle' | 'sent' | 'verifying' | 'error'>(
+    'idle',
+  );
   const [errorMsg, setErrorMsg] = useState('');
+  const otpInputRef = useRef<HTMLInputElement>(null);
 
   // Reset form state when modal opens
   useEffect(() => {
@@ -37,8 +43,16 @@ export function CloudBackupModal({ isOpen, onClose }: CloudBackupModalProps) {
       setStatus('idle');
       setErrorMsg('');
       setEmail('');
+      setOtpCode('');
     }
   }, [isOpen]);
+
+  // Auto-focus OTP input when code entry shows
+  useEffect(() => {
+    if (status === 'sent') {
+      setTimeout(() => otpInputRef.current?.focus(), 100);
+    }
+  }, [status]);
 
   // Close on Escape
   useEffect(() => {
@@ -52,19 +66,32 @@ export function CloudBackupModal({ isOpen, onClose }: CloudBackupModalProps) {
 
   if (!isOpen || !isAuthEnabled) return null;
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSendCode = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim()) return;
     setStatus('idle');
     setErrorMsg('');
 
-    const { error } = await signInWithMagicLink(email.trim());
+    const { error } = await sendOtp(email.trim());
     if (error) {
       setStatus('error');
       setErrorMsg(error);
     } else {
       setStatus('sent');
     }
+  };
+
+  const handleVerifyCode = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!otpCode.trim() || otpCode.length !== 6) return;
+    setErrorMsg('');
+
+    const { error } = await verifyOtp(email.trim(), otpCode.trim());
+    if (error) {
+      setStatus('sent');
+      setErrorMsg(error);
+    }
+    // On success, onAuthStateChange fires and the modal shows signed-in state
   };
 
   const handleSignOut = async () => {
@@ -171,46 +198,90 @@ export function CloudBackupModal({ isOpen, onClose }: CloudBackupModalProps) {
             </button>
           </div>
         ) : status === 'sent' ? (
-          /* Magic link sent */
-          <div className="text-center space-y-3 py-4">
-            <div className="w-12 h-12 mx-auto rounded-full bg-green-500/10 flex items-center justify-center">
-              <svg
-                className="w-6 h-6 text-green-500"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                />
-              </svg>
+          /* OTP code entry */
+          <div className="space-y-4">
+            <div className="text-center space-y-2">
+              <div className="w-12 h-12 mx-auto rounded-full bg-accent-blue/10 flex items-center justify-center">
+                <svg
+                  className="w-6 h-6 text-accent-blue"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+              </div>
+              <p className="text-sm font-medium text-primary">
+                Enter your code
+              </p>
+              <p className="text-xs text-secondary">
+                We sent a 6-digit code to <strong>{email}</strong>
+              </p>
             </div>
-            <p className="text-sm font-medium text-primary">
-              Check your email!
-            </p>
-            <p className="text-xs text-secondary">
-              We sent a magic link to <strong>{email}</strong>. Click the link
-              to sign in.
-            </p>
-            <button
-              onClick={() => setStatus('idle')}
-              className="text-xs text-accent-blue hover:underline"
-            >
-              Try a different email
-            </button>
+
+            <form onSubmit={handleVerifyCode} className="space-y-3">
+              <input
+                ref={otpInputRef}
+                type="text"
+                inputMode="numeric"
+                pattern="[0-9]*"
+                autoComplete="one-time-code"
+                maxLength={6}
+                placeholder="000000"
+                value={otpCode}
+                onChange={e =>
+                  setOtpCode(e.target.value.replace(/\D/g, '').slice(0, 6))
+                }
+                className="w-full text-center text-2xl tracking-[0.5em] font-mono px-4 py-3 rounded-xl bg-surface-alt text-primary placeholder-tertiary border border-border focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-accent-blue/30 transition-colors"
+              />
+
+              {errorMsg && (
+                <p className="text-xs text-red-500 text-center">{errorMsg}</p>
+              )}
+
+              <button
+                type="submit"
+                disabled={isAuthenticating || otpCode.length !== 6}
+                className="w-full rounded-xl bg-accent-blue px-4 py-2.5 text-sm font-semibold text-white disabled:opacity-50 hover:bg-accent-blue/90 transition-colors"
+              >
+                {isAuthenticating ? 'Verifying…' : 'Verify Code'}
+              </button>
+            </form>
+
+            <div className="flex items-center justify-between">
+              <button
+                onClick={() => {
+                  setStatus('idle');
+                  setOtpCode('');
+                  setErrorMsg('');
+                }}
+                className="text-xs text-accent-blue hover:underline"
+              >
+                Use a different email
+              </button>
+              <button
+                onClick={() => handleSendCode({ preventDefault: () => {} } as React.FormEvent)}
+                disabled={isAuthenticating}
+                className="text-xs text-accent-blue hover:underline disabled:opacity-50"
+              >
+                Resend code
+              </button>
+            </div>
           </div>
         ) : (
           /* Sign in form */
           <div className="space-y-4">
             <p className="text-sm text-secondary">
               Sign in with your email to enable cloud backup. We'll send you a
-              magic link — no password needed.
+              code — no password needed.
             </p>
 
-            <form onSubmit={handleSubmit} className="space-y-3">
+            <form onSubmit={handleSendCode} className="space-y-3">
               <input
                 type="email"
                 placeholder="your@email.com"
@@ -229,7 +300,7 @@ export function CloudBackupModal({ isOpen, onClose }: CloudBackupModalProps) {
                 disabled={isAuthenticating || !email.trim()}
                 className="w-full rounded-xl bg-accent-blue px-4 py-2.5 text-sm font-semibold text-white disabled:opacity-50 hover:bg-accent-blue/90 transition-colors"
               >
-                {isAuthenticating ? 'Sending…' : 'Send Magic Link'}
+                {isAuthenticating ? 'Sending…' : 'Send Code'}
               </button>
             </form>
 

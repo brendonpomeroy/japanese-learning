@@ -140,7 +140,11 @@ interface AuthContextValue {
   isResolvingCloudSync: boolean;
   isSyncReady: boolean;
   pendingConflict: CloudConflictState | null;
-  signInWithMagicLink: (email: string) => Promise<{ error: string | null }>;
+  sendOtp: (email: string) => Promise<{ error: string | null }>;
+  verifyOtp: (
+    email: string,
+    token: string,
+  ) => Promise<{ error: string | null }>;
   signOut: () => Promise<void>;
   resolveConflictUseCloud: () => Promise<void>;
   resolveConflictKeepLocal: () => Promise<void>;
@@ -417,16 +421,30 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
   // Sign in / out
   // ------------------------------------------------------------------
 
-  const signInWithMagicLink = useCallback(
+  const sendOtp = useCallback(
     async (email: string): Promise<{ error: string | null }> => {
       if (!supabase) return { error: 'Cloud sync is not configured' };
       setIsAuthenticating(true);
       try {
-        const { error } = await supabase.auth.signInWithOtp({
+        const { error } = await supabase.auth.signInWithOtp({ email });
+        if (error) return { error: error.message };
+        return { error: null };
+      } finally {
+        setIsAuthenticating(false);
+      }
+    },
+    [],
+  );
+
+  const verifyOtp = useCallback(
+    async (email: string, token: string): Promise<{ error: string | null }> => {
+      if (!supabase) return { error: 'Cloud sync is not configured' };
+      setIsAuthenticating(true);
+      try {
+        const { error } = await supabase.auth.verifyOtp({
           email,
-          options: {
-            emailRedirectTo: window.location.origin,
-          },
+          token,
+          type: 'email',
         });
         if (error) return { error: error.message };
         return { error: null };
@@ -434,7 +452,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
         setIsAuthenticating(false);
       }
     },
-    []
+    [],
   );
 
   const signOut = useCallback(async () => {
@@ -456,7 +474,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     isResolvingCloudSync,
     isSyncReady,
     pendingConflict,
-    signInWithMagicLink,
+    sendOtp,
+    verifyOtp,
     signOut,
     resolveConflictUseCloud,
     resolveConflictKeepLocal,

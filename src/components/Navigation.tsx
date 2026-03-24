@@ -237,7 +237,7 @@ function Navigation() {
   return (
     <>
       {/* Top bar */}
-      <nav className="relative z-50 bg-nav-bg text-inverse shadow-lg backdrop-blur-lg border-b border-nav-border">
+      <nav className="relative z-50 bg-nav-bg text-inverse shadow-lg backdrop-blur-lg border-b border-nav-border pt-[env(safe-area-inset-top)]">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center py-4">
             <Link to="/" className="text-xl font-bold">
@@ -276,7 +276,7 @@ function Navigation() {
       </nav>
 
       {/* Mobile bottom tab bar */}
-      <div className="fixed bottom-0 left-0 right-0 bg-surface border-t border-border z-50 md:hidden">
+      <div className="fixed bottom-0 left-0 right-0 bg-surface border-t border-border z-50 md:hidden pb-[env(safe-area-inset-bottom)]">
         <div className="flex justify-around items-center h-16 w-full">
           {/* Home tab */}
           <button
