@@ -202,70 +202,62 @@ function Home() {
         </Link>
       </div>
 
-      <div className="bg-surface rounded-lg shadow-soft-md p-8">
-        <h2 className="text-3xl font-bold text-primary mb-6">
+      <div className="bg-surface border border-border rounded-lg shadow-soft-md p-8">
+        <h2 className="text-2xl font-bold text-primary mb-6">
           Learning Features
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="flex items-start gap-4">
-            <div className="bg-accent-blue/10 rounded-full p-3 flex-shrink-0">
-              <span className="text-accent-blue text-xl">
-                📚
-              </span>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="flex items-start gap-4 bg-surface-alt rounded-lg p-4">
+            <div className="bg-border-light rounded-md p-3 flex-shrink-0">
+              <span className="text-xl">📚</span>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-primary mb-2">
+              <h3 className="text-base font-semibold text-primary mb-1">
                 Comprehensive Phrases
               </h3>
-              <p className="text-secondary">
+              <p className="text-sm text-secondary">
                 Learn categorized phrases with English, Japanese, hiragana, and
                 romaji
               </p>
             </div>
           </div>
-          <div className="flex items-start gap-4">
-            <div className="bg-accent-violet/10 rounded-full p-3 flex-shrink-0">
-              <span className="text-accent-violet text-xl">
-                ✍️
-              </span>
+          <div className="flex items-start gap-4 bg-surface-alt rounded-lg p-4">
+            <div className="bg-border-light rounded-md p-3 flex-shrink-0">
+              <span className="text-xl">✍️</span>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-primary mb-2">
+              <h3 className="text-base font-semibold text-primary mb-1">
                 Complete Hiragana
               </h3>
-              <p className="text-secondary">
+              <p className="text-sm text-secondary">
                 All 46 basic characters plus dakuten, handakuten, and
                 combinations
               </p>
             </div>
           </div>
-          <div className="flex items-start gap-4">
-            <div className="bg-accent-green/10 rounded-full p-3 flex-shrink-0">
-              <span className="text-accent-green text-xl">
-                🎮
-              </span>
+          <div className="flex items-start gap-4 bg-surface-alt rounded-lg p-4">
+            <div className="bg-border-light rounded-md p-3 flex-shrink-0">
+              <span className="text-xl">🎮</span>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-primary mb-2">
+              <h3 className="text-base font-semibold text-primary mb-1">
                 Interactive Exercises
               </h3>
-              <p className="text-secondary">
+              <p className="text-sm text-secondary">
                 Multiple quiz types including recognition, production, and speed
                 challenges
               </p>
             </div>
           </div>
-          <div className="flex items-start gap-4">
-            <div className="bg-accent-orange/10 rounded-full p-3 flex-shrink-0">
-              <span className="text-accent-orange text-xl">
-                📊
-              </span>
+          <div className="flex items-start gap-4 bg-surface-alt rounded-lg p-4">
+            <div className="bg-border-light rounded-md p-3 flex-shrink-0">
+              <span className="text-xl">📊</span>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-primary mb-2">
+              <h3 className="text-base font-semibold text-primary mb-1">
                 Progress Tracking
               </h3>
-              <p className="text-secondary">
+              <p className="text-sm text-secondary">
                 Track your mastery level and success rates for each character
               </p>
             </div>
