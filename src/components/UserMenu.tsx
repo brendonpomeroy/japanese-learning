@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../hooks/useTheme';
 import { useAuth } from '../hooks/useAuth';
 import { CloudBackupModal } from './AuthButton';
@@ -21,6 +22,7 @@ const themes = [
 export function UserMenu() {
   const { theme, setTheme } = useTheme();
   const { user, isAuthEnabled, isResolvingCloudSync, isSyncReady } = useAuth();
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [showCloudModal, setShowCloudModal] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -133,9 +135,35 @@ export function UserMenu() {
             </div>
           </div>
 
+          {/* Progress Dashboard */}
+          <div className="px-4 pt-3 mt-2 border-t border-border-light">
+            <button
+              onClick={() => {
+                setIsOpen(false);
+                navigate('/progress');
+              }}
+              className="flex items-center gap-3 w-full px-3 py-2 rounded-lg text-left text-primary hover:bg-surface-alt transition-colors"
+            >
+              <svg
+                className="w-4 h-4 text-accent-blue"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                />
+              </svg>
+              <span className="text-sm">Progress</span>
+            </button>
+          </div>
+
           {/* Cloud Backup */}
           {isAuthEnabled && (
-            <div className="px-4 pt-3 mt-2 border-t border-border-light">
+            <div className="px-4 pt-1">
               <button
                 onClick={() => {
                   setIsOpen(false);
@@ -186,6 +214,7 @@ export function UserMenu() {
 export function UserMenuMobile() {
   const { theme, setTheme } = useTheme();
   const { user, isAuthEnabled, isResolvingCloudSync, isSyncReady } = useAuth();
+  const navigate = useNavigate();
   const [showCloudModal, setShowCloudModal] = useState(false);
 
   return (
@@ -242,6 +271,27 @@ export function UserMenuMobile() {
           ))}
         </div>
       </div>
+
+      {/* Progress Dashboard */}
+      <button
+        onClick={() => navigate('/progress')}
+        className="flex items-center gap-3 w-full p-3 rounded-xl bg-surface-alt text-primary hover:bg-border-light transition-colors"
+      >
+        <svg
+          className="w-5 h-5 text-accent-blue"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={2}
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+          />
+        </svg>
+        <span className="text-sm font-medium">Progress</span>
+      </button>
 
       {/* Cloud Backup */}
       {isAuthEnabled && (
