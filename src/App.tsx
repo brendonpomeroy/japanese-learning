@@ -1,8 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
+import { AuthProvider } from './context/AuthContext';
 import { AppProvider } from './context/AppContext';
 import { VocabProvider } from './features/vocab/VocabContext';
 import { GrammarProvider } from './features/grammar/GrammarContext';
+import { CloudSyncModal } from './components/CloudSyncModal';
 import Navigation from './components/Navigation';
 import Home from './components/Home';
 import Lessons from './components/Lessons';
@@ -34,6 +36,7 @@ function AppContent() {
   return (
     <div className="min-h-screen bg-page pb-16 md:pb-0">
       <Navigation />
+      <CloudSyncModal />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/lessons" element={<Lessons />} />
@@ -55,15 +58,17 @@ function AppContent() {
 
 function App() {
   return (
-    <AppProvider>
-      <VocabProvider>
-        <GrammarProvider>
-          <Router>
-            <AppContent />
-          </Router>
-        </GrammarProvider>
-      </VocabProvider>
-    </AppProvider>
+    <AuthProvider>
+      <AppProvider>
+        <VocabProvider>
+          <GrammarProvider>
+            <Router>
+              <AppContent />
+            </Router>
+          </GrammarProvider>
+        </VocabProvider>
+      </AppProvider>
+    </AuthProvider>
   );
 }
 

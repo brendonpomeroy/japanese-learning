@@ -478,7 +478,7 @@ input:focus {
 /* Mobile-specific improvements */
 @media (max-width: 768px) {
   /* Improve touch targets */
-  button {
+  button:not(.no-paper) {
     min-height: 44px;
     min-width: 44px;
   }

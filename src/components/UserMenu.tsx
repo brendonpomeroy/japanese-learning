@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useTheme } from '../hooks/useTheme';
+import { useAuth } from '../hooks/useAuth';
+import { CloudBackupModal } from './AuthButton';
 import ThemeToggle from './ThemeToggle';
 
 const themes = [
@@ -18,7 +20,9 @@ const themes = [
 /** Desktop dropdown for theme + appearance settings */
 export function UserMenu() {
   const { theme, setTheme } = useTheme();
+  const { user, isAuthEnabled, isResolvingCloudSync, isSyncReady } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
+  const [showCloudModal, setShowCloudModal] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -128,8 +132,52 @@ export function UserMenu() {
               ))}
             </div>
           </div>
+
+          {/* Cloud Backup */}
+          {isAuthEnabled && (
+            <div className="px-4 pt-3 mt-2 border-t border-border-light">
+              <button
+                onClick={() => {
+                  setIsOpen(false);
+                  setShowCloudModal(true);
+                }}
+                className="flex items-center gap-3 w-full px-3 py-2 rounded-lg text-left text-primary hover:bg-surface-alt transition-colors"
+              >
+                <svg
+                  className="w-4 h-4 text-accent-blue"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
+                  />
+                </svg>
+                <span className="text-sm">Cloud Backup</span>
+                {user && (
+                  <span
+                    className={`w-2 h-2 rounded-full ml-auto ${
+                      isResolvingCloudSync
+                        ? 'bg-amber-400 animate-pulse'
+                        : isSyncReady
+                          ? 'bg-green-400'
+                          : 'bg-gray-400'
+                    }`}
+                  />
+                )}
+              </button>
+            </div>
+          )}
         </div>
       )}
+
+      <CloudBackupModal
+        isOpen={showCloudModal}
+        onClose={() => setShowCloudModal(false)}
+      />
     </div>
   );
 }
@@ -137,8 +185,11 @@ export function UserMenu() {
 /** Inline version for mobile bottom sheets */
 export function UserMenuMobile() {
   const { theme, setTheme } = useTheme();
+  const { user, isAuthEnabled, isResolvingCloudSync, isSyncReady } = useAuth();
+  const [showCloudModal, setShowCloudModal] = useState(false);
 
   return (
+    <>
     <div className="space-y-3">
       {/* Dark mode row */}
       <div className="flex items-center justify-between p-3 bg-surface-alt rounded-xl">
@@ -191,6 +242,46 @@ export function UserMenuMobile() {
           ))}
         </div>
       </div>
+
+      {/* Cloud Backup */}
+      {isAuthEnabled && (
+        <button
+          onClick={() => setShowCloudModal(true)}
+          className="flex items-center gap-3 w-full p-3 rounded-xl bg-surface-alt text-primary hover:bg-border-light transition-colors"
+        >
+          <svg
+            className="w-5 h-5 text-accent-blue"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
+            />
+          </svg>
+          <span className="text-sm font-medium">Cloud Backup</span>
+          {user && (
+            <span
+              className={`w-2 h-2 rounded-full ml-auto ${
+                isResolvingCloudSync
+                  ? 'bg-amber-400 animate-pulse'
+                  : isSyncReady
+                    ? 'bg-green-400'
+                    : 'bg-gray-400'
+              }`}
+            />
+          )}
+        </button>
+      )}
     </div>
+
+    <CloudBackupModal
+      isOpen={showCloudModal}
+      onClose={() => setShowCloudModal(false)}
+    />
+    </>
   );
 }

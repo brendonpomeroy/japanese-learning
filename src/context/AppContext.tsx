@@ -1,4 +1,10 @@
-import React, { createContext, useReducer, useEffect } from 'react';
+import React, {
+  createContext,
+  useReducer,
+  useEffect,
+  useState,
+  useRef,
+} from 'react';
 import type { ReactNode } from 'react';
 import type {
   ProgressData,
@@ -6,6 +12,10 @@ import type {
   EmojiExerciseResult,
   WordExerciseResult,
 } from '../types';
+import { getDeviceId } from '../lib/device';
+import { writeSyncMeta } from '../lib/cloudData';
+import { useCloudSync } from '../hooks/useCloudSync';
+import { useAuth } from '../hooks/useAuth';
 
 interface AppState {
   progress: ProgressData;
@@ -25,7 +35,9 @@ type AppAction =
   | { type: 'ADD_WORD_EXERCISE_RESULT'; payload: WordExerciseResult }
   | { type: 'SET_CURRENT_EXERCISE'; payload: string | null }
   | { type: 'UPDATE_SETTINGS'; payload: Partial<AppState['settings']> }
-  | { type: 'RESET_PROGRESS' };
+  | { type: 'RESET_PROGRESS' }
+  | { type: 'HYDRATE_PROGRESS'; payload: ProgressData }
+  | { type: 'HYDRATE_SETTINGS'; payload: AppState['settings'] };
 
 const defaultState: AppState = {
   progress: {
@@ -51,25 +63,52 @@ const defaultState: AppState = {
   },
 };
 
-function loadInitialState(): AppState {
-  const state = { ...defaultState };
+// ---------------------------------------------------------------------------
+// localStorage helpers (matching VocabContext / GrammarContext pattern)
+// ---------------------------------------------------------------------------
+
+function loadProgressFromStorage(): ProgressData | null {
   try {
-    const savedProgress = localStorage.getItem('japanese-learning-progress');
-    if (savedProgress) {
-      state.progress = { ...state.progress, ...JSON.parse(savedProgress) };
-    }
+    const raw = localStorage.getItem('japanese-learning-progress');
+    if (!raw) return null;
+    return { ...defaultState.progress, ...JSON.parse(raw) };
   } catch (e) {
     console.error('Error loading saved progress:', e);
+    return null;
   }
+}
+
+function loadSettingsFromStorage(): AppState['settings'] | null {
   try {
-    const savedSettings = localStorage.getItem('japanese-learning-settings');
-    if (savedSettings) {
-      state.settings = { ...state.settings, ...JSON.parse(savedSettings) };
-    }
+    const raw = localStorage.getItem('japanese-learning-settings');
+    if (!raw) return null;
+    return { ...defaultState.settings, ...JSON.parse(raw) };
   } catch (e) {
     console.error('Error loading saved settings:', e);
+    return null;
   }
-  return state;
+}
+
+function saveProgressToStorage(progress: ProgressData): void {
+  try {
+    localStorage.setItem(
+      'japanese-learning-progress',
+      JSON.stringify(progress),
+    );
+  } catch (e) {
+    console.error('Error saving progress:', e);
+  }
+}
+
+function saveSettingsToStorage(settings: AppState['settings']): void {
+  try {
+    localStorage.setItem(
+      'japanese-learning-settings',
+      JSON.stringify(settings),
+    );
+  } catch (e) {
+    console.error('Error saving settings:', e);
+  }
 }
 
 const AppContext = createContext<{
@@ -81,6 +120,16 @@ export { AppContext };
 
 const appReducer = (state: AppState, action: AppAction): AppState => {
   switch (action.type) {
+    case 'HYDRATE_PROGRESS':
+      return {
+        ...state,
+        progress: action.payload,
+      };
+    case 'HYDRATE_SETTINGS':
+      return {
+        ...state,
+        settings: action.payload,
+      };
     case 'UPDATE_PROGRESS':
       return {
         ...state,
@@ -90,10 +139,10 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
       const newHistory = [...state.progress.exerciseHistory, action.payload];
       const character = action.payload.character;
       const characterResults = newHistory.filter(
-        r => r.character === character
+        (r) => r.character === character,
       );
       const successRate =
-        characterResults.filter(r => r.correct).length /
+        characterResults.filter((r) => r.correct).length /
         characterResults.length;
 
       return {
@@ -110,7 +159,7 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
             [character]: Math.min(
               100,
               (state.progress.characterMastery[character] || 0) +
-                (action.payload.correct ? 10 : -5)
+                (action.payload.correct ? 10 : -5),
             ),
           },
         },
@@ -122,9 +171,9 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
         action.payload,
       ];
       const emoji = action.payload.emoji;
-      const emojiResults = newEmojiHistory.filter(r => r.emoji === emoji);
+      const emojiResults = newEmojiHistory.filter((r) => r.emoji === emoji);
       const emojiSuccessRate =
-        emojiResults.filter(r => r.correct).length / emojiResults.length;
+        emojiResults.filter((r) => r.correct).length / emojiResults.length;
 
       return {
         ...state,
@@ -142,8 +191,8 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
               Math.max(
                 0,
                 (state.progress.emojiMastery[emoji] || 0) +
-                  (action.payload.correct ? 10 : -5)
-              )
+                  (action.payload.correct ? 10 : -5),
+              ),
             ),
           },
         },
@@ -155,9 +204,9 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
         action.payload,
       ];
       const word = action.payload.word;
-      const wordResults = newVocabularyHistory.filter(r => r.word === word);
+      const wordResults = newVocabularyHistory.filter((r) => r.word === word);
       const wordSuccessRate =
-        wordResults.filter(r => r.correct).length / wordResults.length;
+        wordResults.filter((r) => r.correct).length / wordResults.length;
 
       return {
         ...state,
@@ -175,8 +224,8 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
               Math.max(
                 0,
                 (state.progress.vocabularyMastery[word] || 0) +
-                  (action.payload.correct ? 10 : -5)
-              )
+                  (action.payload.correct ? 10 : -5),
+              ),
             ),
           },
         },
@@ -188,9 +237,7 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
         currentExercise: action.payload,
       };
     case 'UPDATE_SETTINGS': {
-      console.log('UPDATE_SETTINGS action received:', action.payload);
       const newSettings = { ...state.settings, ...action.payload };
-      console.log('New settings state:', newSettings);
       return {
         ...state,
         settings: newSettings,
@@ -209,23 +256,64 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
 export const AppProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [state, dispatch] = useReducer(appReducer, undefined, loadInitialState);
+  const [state, dispatch] = useReducer(appReducer, defaultState);
+  const [isHydrated, setIsHydrated] = useState(false);
+  const isHydratingRef = useRef(true);
+  const { isSyncReady } = useAuth();
 
-  // Save progress to localStorage whenever it changes
+  // Hydrate from localStorage on mount
   useEffect(() => {
-    localStorage.setItem(
-      'japanese-learning-progress',
-      JSON.stringify(state.progress)
-    );
-  }, [state.progress]);
+    isHydratingRef.current = true;
+    const progress = loadProgressFromStorage();
+    if (progress) {
+      dispatch({ type: 'HYDRATE_PROGRESS', payload: progress });
+    }
+    const settings = loadSettingsFromStorage();
+    if (settings) {
+      dispatch({ type: 'HYDRATE_SETTINGS', payload: settings });
+    }
+    isHydratingRef.current = false;
+    setIsHydrated(true);
+  }, []);
 
-  // Save settings to localStorage whenever they change
+  // Persist progress to localStorage (gated on hydration)
   useEffect(() => {
-    localStorage.setItem(
-      'japanese-learning-settings',
-      JSON.stringify(state.settings)
-    );
-  }, [state.settings]);
+    if (!isHydrated) return;
+    saveProgressToStorage(state.progress);
+    if (!isHydratingRef.current) {
+      writeSyncMeta('japanese-learning-progress', {
+        clientUpdatedAt: new Date().toISOString(),
+        deviceId: getDeviceId(),
+      });
+    }
+  }, [state.progress, isHydrated]);
+
+  // Persist settings to localStorage (gated on hydration)
+  useEffect(() => {
+    if (!isHydrated) return;
+    saveSettingsToStorage(state.settings);
+    if (!isHydratingRef.current) {
+      writeSyncMeta('japanese-learning-settings', {
+        clientUpdatedAt: new Date().toISOString(),
+        deviceId: getDeviceId(),
+      });
+    }
+  }, [state.settings, isHydrated]);
+
+  // Cloud sync for progress and settings
+  useCloudSync({
+    storageKey: 'japanese-learning-progress',
+    payload: state.progress,
+    isHydrated,
+    isEnabled: isSyncReady,
+  });
+
+  useCloudSync({
+    storageKey: 'japanese-learning-settings',
+    payload: state.settings,
+    isHydrated,
+    isEnabled: isSyncReady,
+  });
 
   return (
     <AppContext.Provider value={{ state, dispatch }}>

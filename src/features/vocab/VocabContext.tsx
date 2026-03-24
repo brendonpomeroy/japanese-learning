@@ -4,6 +4,7 @@ import React, {
   useEffect,
   useCallback,
   useState,
+  useRef,
 } from 'react';
 import type { ReactNode } from 'react';
 import type {
@@ -17,6 +18,10 @@ import type {
   WordProgress,
 } from './types';
 import { createDefaultVocabState, createDefaultWordProgress } from './types';
+import { getDeviceId } from '../../lib/device';
+import { writeSyncMeta } from '../../lib/cloudData';
+import { useCloudSync } from '../../hooks/useCloudSync';
+import { useAuth } from '../../hooks/useAuth';
 
 const STORAGE_KEY = 'vocab_progress_v2';
 
@@ -205,13 +210,17 @@ export const VocabProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [state, dispatch] = useReducer(vocabReducer, createDefaultVocabState());
   const [isHydrated, setIsHydrated] = useState(false);
+  const isHydratingRef = useRef(true);
+  const { isSyncReady } = useAuth();
 
   // Hydrate from localStorage on mount
   useEffect(() => {
+    isHydratingRef.current = true;
     const loaded = loadStateFromStorage();
     if (loaded) {
       dispatch({ type: 'HYDRATE', payload: loaded });
     }
+    isHydratingRef.current = false;
     setIsHydrated(true);
   }, []);
 
@@ -219,8 +228,22 @@ export const VocabProvider: React.FC<{ children: ReactNode }> = ({
   useEffect(() => {
     if (isHydrated) {
       saveStateToStorage(state);
+      if (!isHydratingRef.current) {
+        writeSyncMeta('vocab_progress_v2', {
+          clientUpdatedAt: new Date().toISOString(),
+          deviceId: getDeviceId(),
+        });
+      }
     }
   }, [state, isHydrated]);
+
+  // Cloud sync
+  useCloudSync({
+    storageKey: 'vocab_progress_v2',
+    payload: state,
+    isHydrated,
+    isEnabled: isSyncReady,
+  });
 
   const setMode = useCallback((mode: VocabMode) => {
     dispatch({ type: 'SET_MODE', payload: mode });

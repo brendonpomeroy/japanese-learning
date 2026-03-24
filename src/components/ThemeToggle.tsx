@@ -8,7 +8,7 @@ const ThemeToggle: React.FC = () => {
     <button
       onClick={toggleDarkMode}
       className={`
-        relative inline-flex items-center w-14 h-7 rounded-full transition-all duration-300 ease-in-out
+        no-paper relative inline-flex shrink-0 items-center w-14 h-7 rounded-full transition-all duration-300 ease-in-out
         ${isDarkMode ? 'bg-indigo-900 shadow-[0_0_10px_rgba(99,102,241,0.4)]' : 'bg-amber-300 shadow-[0_0_10px_rgba(251,191,36,0.4)]'}
       `}
       aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
@@ -16,7 +16,7 @@ const ThemeToggle: React.FC = () => {
       {/* Sliding thumb with icon inside */}
       <span
         className={`
-          absolute top-0.5 w-6 h-6 rounded-full shadow-md
+          absolute top-0.5 w-6 h-6 rounded-full! shadow-md
           flex items-center justify-center
           transform transition-all duration-300 ease-in-out
           ${

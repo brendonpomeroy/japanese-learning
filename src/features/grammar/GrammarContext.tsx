@@ -4,6 +4,7 @@ import React, {
   useEffect,
   useCallback,
   useState,
+  useRef,
 } from 'react';
 import type { ReactNode } from 'react';
 import type {
@@ -19,6 +20,10 @@ import {
 } from './types';
 import { getPackItems } from './grammarData';
 import { selectSessionItems, getPackModeProgress } from './utils';
+import { getDeviceId } from '../../lib/device';
+import { writeSyncMeta } from '../../lib/cloudData';
+import { useCloudSync } from '../../hooks/useCloudSync';
+import { useAuth } from '../../hooks/useAuth';
 
 const STORAGE_KEY = 'grammar_progress_v1';
 
@@ -186,20 +191,38 @@ export const GrammarProvider: React.FC<{ children: ReactNode }> = ({
     createDefaultGrammarState()
   );
   const [isHydrated, setIsHydrated] = useState(false);
+  const isHydratingRef = useRef(true);
+  const { isSyncReady } = useAuth();
 
   useEffect(() => {
+    isHydratingRef.current = true;
     const loaded = loadStateFromStorage();
     if (loaded) {
       dispatch({ type: 'HYDRATE', payload: loaded });
     }
+    isHydratingRef.current = false;
     setIsHydrated(true);
   }, []);
 
   useEffect(() => {
     if (isHydrated) {
       saveStateToStorage(state);
+      if (!isHydratingRef.current) {
+        writeSyncMeta('grammar_progress_v1', {
+          clientUpdatedAt: new Date().toISOString(),
+          deviceId: getDeviceId(),
+        });
+      }
     }
   }, [state, isHydrated]);
+
+  // Cloud sync
+  useCloudSync({
+    storageKey: 'grammar_progress_v1',
+    payload: state,
+    isHydrated,
+    isEnabled: isSyncReady,
+  });
 
   const startSession = useCallback(
     (packId: string, mode: GrammarMode) => {
