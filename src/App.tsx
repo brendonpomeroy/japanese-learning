@@ -31,7 +31,7 @@ function AppContent() {
   }, [isDarkMode]);
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 pb-16 md:pb-0">
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
