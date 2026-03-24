@@ -43,7 +43,6 @@ const navConfig: NavEntry[] = [
       { label: 'Practice', path: '/practice', icon: '🎯' },
     ],
   },
-  { label: 'Lessons', path: '/lessons', icon: '📋' },
 ];
 
 function isPathActive(path: string, currentPath: string): boolean {
@@ -170,7 +169,7 @@ function BottomSheet({
         className="fixed inset-0 bg-black/30 z-40 md:hidden"
         onClick={onClose}
       />
-      <div className="fixed bottom-16 left-0 right-0 bg-surface rounded-t-2xl shadow-2xl z-50 md:hidden bottom-sheet-enter">
+      <div className="fixed bottom-16 left-0 right-0 bg-surface rounded-t-2xl shadow-2xl z-40 md:hidden bottom-sheet-enter">
         <div className="p-4">{children}</div>
       </div>
     </>
@@ -396,17 +395,6 @@ function Navigation() {
 
       <BottomSheet isOpen={activeSheet === 'more'} onClose={closeSheet}>
         <div className="space-y-3">
-          <button
-            onClick={() => handleMobileNav('/lessons')}
-            className={`flex items-center gap-3 w-full p-3 rounded-xl transition-colors ${
-              isPathActive('/lessons', location.pathname)
-                ? 'bg-accent-blue/10 text-accent-blue font-semibold'
-                : 'bg-surface-alt text-primary hover:bg-border-light'
-            }`}
-          >
-            <span className="text-2xl">📋</span>
-            <span className="text-sm font-medium">Lessons</span>
-          </button>
           <UserMenuMobile />
         </div>
       </BottomSheet>
