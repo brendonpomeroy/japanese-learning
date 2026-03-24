@@ -75,10 +75,7 @@ export const Phrases: React.FC = () => {
         </div>
       </div>
 
-      <PhraseCategory
-        category={selectedCategory}
-        onPlayAudio={speakJapanese}
-      />
+      <PhraseCategory category={selectedCategory} onPlayAudio={speakJapanese} />
     </div>
   );
 };

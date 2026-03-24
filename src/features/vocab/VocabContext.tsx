@@ -1,4 +1,10 @@
-import React, { createContext, useReducer, useEffect, useCallback, useState } from 'react';
+import React, {
+  createContext,
+  useReducer,
+  useEffect,
+  useCallback,
+  useState,
+} from 'react';
 import type { ReactNode } from 'react';
 import type {
   VocabState,
@@ -10,10 +16,7 @@ import type {
   VocabSettings,
   WordProgress,
 } from './types';
-import {
-  createDefaultVocabState,
-  createDefaultWordProgress,
-} from './types';
+import { createDefaultVocabState, createDefaultWordProgress } from './types';
 
 const STORAGE_KEY = 'vocab_progress_v2';
 
@@ -67,7 +70,8 @@ function vocabReducer(state: VocabState, action: VocabAction): VocabState {
     case 'ANSWER_WORD': {
       const { wordKey, result, isCorrect } = action.payload;
       const now = new Date().toISOString();
-      const currentProgress = state.wordProgress[wordKey] || createDefaultWordProgress();
+      const currentProgress =
+        state.wordProgress[wordKey] || createDefaultWordProgress();
 
       // Update stats
       const newProgress: WordProgress = {
@@ -199,10 +203,7 @@ function saveStateToStorage(state: VocabState): void {
 export const VocabProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [state, dispatch] = useReducer(
-    vocabReducer,
-    createDefaultVocabState()
-  );
+  const [state, dispatch] = useReducer(vocabReducer, createDefaultVocabState());
   const [isHydrated, setIsHydrated] = useState(false);
 
   // Hydrate from localStorage on mount

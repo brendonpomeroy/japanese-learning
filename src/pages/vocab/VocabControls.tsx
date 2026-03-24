@@ -52,10 +52,16 @@ export const VocabControls: React.FC<VocabControlsProps> = ({
             Answer Mode
           </label>
           <div className="flex gap-2">
-            <ToggleButton active={mode === 'type'} onClick={() => onSetMode('type')}>
+            <ToggleButton
+              active={mode === 'type'}
+              onClick={() => onSetMode('type')}
+            >
               Type It
             </ToggleButton>
-            <ToggleButton active={mode === 'mcq'} onClick={() => onSetMode('mcq')}>
+            <ToggleButton
+              active={mode === 'mcq'}
+              onClick={() => onSetMode('mcq')}
+            >
               Pick 1 of 3
             </ToggleButton>
           </div>
@@ -90,7 +96,7 @@ export const VocabControls: React.FC<VocabControlsProps> = ({
             </label>
             <select
               value={selectedDifficulty}
-              onChange={(e) =>
+              onChange={e =>
                 onSetDifficulty(e.target.value as DifficultyFilter)
               }
               className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
@@ -108,11 +114,11 @@ export const VocabControls: React.FC<VocabControlsProps> = ({
             </label>
             <select
               value={selectedTopic}
-              onChange={(e) => onSetTopic(e.target.value)}
+              onChange={e => onSetTopic(e.target.value)}
               className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
             >
               <option value="all">All Topics</option>
-              {topics.map((topic) => (
+              {topics.map(topic => (
                 <option key={topic} value={topic}>
                   {capitalize(topic)}
                 </option>
@@ -127,7 +133,7 @@ export const VocabControls: React.FC<VocabControlsProps> = ({
             <input
               type="checkbox"
               checked={settings.showRomaji}
-              onChange={(e) => onSetSettings({ showRomaji: e.target.checked })}
+              onChange={e => onSetSettings({ showRomaji: e.target.checked })}
               className="w-5 h-5 text-blue-500 rounded focus:ring-blue-500"
             />
             <span className="ml-2 text-gray-700 dark:text-gray-300">
@@ -138,7 +144,7 @@ export const VocabControls: React.FC<VocabControlsProps> = ({
             <input
               type="checkbox"
               checked={settings.showHint}
-              onChange={(e) => onSetSettings({ showHint: e.target.checked })}
+              onChange={e => onSetSettings({ showHint: e.target.checked })}
               className="w-5 h-5 text-blue-500 rounded focus:ring-blue-500"
             />
             <span className="ml-2 text-gray-700 dark:text-gray-300">

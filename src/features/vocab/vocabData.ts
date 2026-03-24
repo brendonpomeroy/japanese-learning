@@ -7,7 +7,7 @@ export const vocabWords: VocabWord[] = vocabData.words;
 
 export const getTopics = (): string[] => {
   const topics = new Set<string>();
-  vocabWords.forEach((word) => {
+  vocabWords.forEach(word => {
     topics.add(word.topic);
   });
   return Array.from(topics).sort();

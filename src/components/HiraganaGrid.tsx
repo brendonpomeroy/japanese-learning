@@ -13,28 +13,28 @@ interface HiraganaGridProps {
 // Columns are ordered right-to-left in traditional Japanese order
 const basicColumns: (string | null)[][] = [
   // Each sub-array is [a, i, u, e, o] for that consonant group
-  ['あ', 'い', 'う', 'え', 'お'],       // vowels
-  ['か', 'き', 'く', 'け', 'こ'],       // k
-  ['さ', 'し', 'す', 'せ', 'そ'],       // s
-  ['た', 'ち', 'つ', 'て', 'と'],       // t
-  ['な', 'に', 'ぬ', 'ね', 'の'],       // n
-  ['は', 'ひ', 'ふ', 'へ', 'ほ'],       // h
-  ['ま', 'み', 'む', 'め', 'も'],       // m
-  ['や', null, 'ゆ', null, 'よ'],       // y
-  ['ら', 'り', 'る', 'れ', 'ろ'],       // r
-  ['わ', 'ゐ', null, 'ゑ', 'を'],       // w
-  ['ん', null, null, null, null],        // n (standalone)
+  ['あ', 'い', 'う', 'え', 'お'], // vowels
+  ['か', 'き', 'く', 'け', 'こ'], // k
+  ['さ', 'し', 'す', 'せ', 'そ'], // s
+  ['た', 'ち', 'つ', 'て', 'と'], // t
+  ['な', 'に', 'ぬ', 'ね', 'の'], // n
+  ['は', 'ひ', 'ふ', 'へ', 'ほ'], // h
+  ['ま', 'み', 'む', 'め', 'も'], // m
+  ['や', null, 'ゆ', null, 'よ'], // y
+  ['ら', 'り', 'る', 'れ', 'ろ'], // r
+  ['わ', 'ゐ', null, 'ゑ', 'を'], // w
+  ['ん', null, null, null, null], // n (standalone)
 ];
 
 const dakutenColumns: (string | null)[][] = [
-  ['が', 'ぎ', 'ぐ', 'げ', 'ご'],       // g
-  ['ざ', 'じ', 'ず', 'ぜ', 'ぞ'],       // z
-  ['だ', 'ぢ', 'づ', 'で', 'ど'],       // d
-  ['ば', 'び', 'ぶ', 'べ', 'ぼ'],       // b
+  ['が', 'ぎ', 'ぐ', 'げ', 'ご'], // g
+  ['ざ', 'じ', 'ず', 'ぜ', 'ぞ'], // z
+  ['だ', 'ぢ', 'づ', 'で', 'ど'], // d
+  ['ば', 'び', 'ぶ', 'べ', 'ぼ'], // b
 ];
 
 const handakutenColumns: (string | null)[][] = [
-  ['ぱ', 'ぴ', 'ぷ', 'ぺ', 'ぽ'],       // p
+  ['ぱ', 'ぴ', 'ぷ', 'ぺ', 'ぽ'], // p
 ];
 
 // Combination chart: rows are consonant groups, columns are ya, yu, yo
@@ -105,7 +105,9 @@ const HiraganaGrid: React.FC<HiraganaGridProps> = ({
     </button>
   );
 
-  const CharacterCell: React.FC<{ character: string | null }> = ({ character }) => {
+  const CharacterCell: React.FC<{ character: string | null }> = ({
+    character,
+  }) => {
     if (!character) {
       return <div className="aspect-square" />;
     }
@@ -133,7 +135,10 @@ const HiraganaGrid: React.FC<HiraganaGridProps> = ({
     );
   };
 
-  const renderTraditionalChart = (columns: (string | null)[][], title: string) => {
+  const renderTraditionalChart = (
+    columns: (string | null)[][],
+    title: string
+  ) => {
     // Render as rows (a, i, u, e, o) with columns reversed (right-to-left)
     const reversedColumns = [...columns].reverse();
     return (
@@ -174,17 +179,20 @@ const HiraganaGrid: React.FC<HiraganaGridProps> = ({
           <table className="border-collapse">
             <thead>
               <tr>
-                {comboVowels.map((v) => (
-                  <th key={v} className="p-1 text-sm text-gray-400 dark:text-gray-500 font-mono font-normal">
+                {comboVowels.map(v => (
+                  <th
+                    key={v}
+                    className="p-1 text-sm text-gray-400 dark:text-gray-500 font-mono font-normal"
+                  >
                     {v}
                   </th>
                 ))}
               </tr>
             </thead>
             <tbody>
-              {combinationRows.map((row) => (
+              {combinationRows.map(row => (
                 <tr key={row.label}>
-                  {row.chars.map((char) => (
+                  {row.chars.map(char => (
                     <td key={char} className="p-1">
                       <CharacterCell character={char} />
                     </td>
@@ -233,9 +241,7 @@ const HiraganaGrid: React.FC<HiraganaGridProps> = ({
       </div>
 
       {/* Desktop: Traditional chart layout */}
-      <div className="hidden md:block space-y-8">
-        {getDesktopCharts()}
-      </div>
+      <div className="hidden md:block space-y-8">{getDesktopCharts()}</div>
 
       {/* Mobile: Flat grid layout */}
       <div className="md:hidden space-y-8">
@@ -248,7 +254,9 @@ const HiraganaGrid: React.FC<HiraganaGridProps> = ({
               {Object.entries(characters).map(([character, romaji]) => (
                 <button
                   key={character}
-                  onClick={() => onCharacterClick?.(character, romaji as string)}
+                  onClick={() =>
+                    onCharacterClick?.(character, romaji as string)
+                  }
                   className={`
                     aspect-square rounded-lg border-2 transition-all duration-200
                     flex flex-col items-center justify-center p-2 hover:scale-105

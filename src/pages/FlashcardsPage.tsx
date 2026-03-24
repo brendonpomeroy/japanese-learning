@@ -10,12 +10,13 @@ type Difficulty = 'all' | 'beginner' | 'intermediate' | 'advanced';
 type Topic = 'all' | string;
 
 const topics = Array.from(
-  new Set((wordsData.words as Word[]).map((w) => w.topic))
+  new Set((wordsData.words as Word[]).map(w => w.topic))
 ).sort();
 
 export const FlashcardsPage: React.FC = () => {
   const { state, dispatch } = useApp();
-  const [selectedDifficulty, setSelectedDifficulty] = useState<Difficulty>('all');
+  const [selectedDifficulty, setSelectedDifficulty] =
+    useState<Difficulty>('all');
   const [selectedTopic, setSelectedTopic] = useState<Topic>('all');
   const [showRomaji, setShowRomaji] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
@@ -33,11 +34,11 @@ export const FlashcardsPage: React.FC = () => {
     let filtered: Word[] = wordsData.words as Word[];
 
     if (selectedDifficulty !== 'all') {
-      filtered = filtered.filter((w) => w.difficulty === selectedDifficulty);
+      filtered = filtered.filter(w => w.difficulty === selectedDifficulty);
     }
 
     if (selectedTopic !== 'all') {
-      filtered = filtered.filter((w) => w.topic === selectedTopic);
+      filtered = filtered.filter(w => w.topic === selectedTopic);
     }
 
     setFilteredWords(shuffle(filtered));
@@ -68,7 +69,7 @@ export const FlashcardsPage: React.FC = () => {
     });
 
     // Update session stats
-    setSessionStats((prev) => ({
+    setSessionStats(prev => ({
       correct: prev.correct + (correct ? 1 : 0),
       needsPractice: prev.needsPractice + (correct ? 0 : 1),
       total: prev.total + 1,
@@ -95,11 +96,13 @@ export const FlashcardsPage: React.FC = () => {
     totalWords: Object.keys(state.progress.vocabularyMastery).length,
     averageMastery:
       Object.keys(state.progress.vocabularyMastery).length > 0
-        ? Object.values(state.progress.vocabularyMastery).reduce((a, b) => a + b, 0) /
-          Object.keys(state.progress.vocabularyMastery).length
+        ? Object.values(state.progress.vocabularyMastery).reduce(
+            (a, b) => a + b,
+            0
+          ) / Object.keys(state.progress.vocabularyMastery).length
         : 0,
     masteredWords: Object.values(state.progress.vocabularyMastery).filter(
-      (m) => m >= 80
+      m => m >= 80
     ).length,
   };
 
@@ -199,17 +202,22 @@ export const FlashcardsPage: React.FC = () => {
                 Difficulty Level
               </label>
               <div className="flex flex-wrap gap-2">
-                {(['all', 'beginner', 'intermediate', 'advanced'] as Difficulty[]).map(
-                  (diff) => (
-                    <ToggleButton
-                      key={diff}
-                      active={selectedDifficulty === diff}
-                      onClick={() => setSelectedDifficulty(diff)}
-                    >
-                      {capitalize(diff)}
-                    </ToggleButton>
-                  )
-                )}
+                {(
+                  [
+                    'all',
+                    'beginner',
+                    'intermediate',
+                    'advanced',
+                  ] as Difficulty[]
+                ).map(diff => (
+                  <ToggleButton
+                    key={diff}
+                    active={selectedDifficulty === diff}
+                    onClick={() => setSelectedDifficulty(diff)}
+                  >
+                    {capitalize(diff)}
+                  </ToggleButton>
+                ))}
               </div>
             </div>
 
@@ -225,7 +233,7 @@ export const FlashcardsPage: React.FC = () => {
                 >
                   All Topics
                 </ToggleButton>
-                {topics.map((topic) => (
+                {topics.map(topic => (
                   <ToggleButton
                     key={topic}
                     active={selectedTopic === topic}
@@ -243,7 +251,7 @@ export const FlashcardsPage: React.FC = () => {
                 <input
                   type="checkbox"
                   checked={showRomaji}
-                  onChange={(e) => setShowRomaji(e.target.checked)}
+                  onChange={e => setShowRomaji(e.target.checked)}
                   className="w-5 h-5 text-blue-500 rounded focus:ring-blue-500"
                 />
                 <span className="ml-3 text-gray-700 dark:text-gray-300">
@@ -254,8 +262,8 @@ export const FlashcardsPage: React.FC = () => {
 
             <div className="flex items-center justify-between">
               <p className="text-gray-600 dark:text-gray-400">
-                {filteredWords.length} word{filteredWords.length !== 1 ? 's' : ''}{' '}
-                available
+                {filteredWords.length} word
+                {filteredWords.length !== 1 ? 's' : ''} available
               </p>
               <button
                 onClick={handleStart}
@@ -277,17 +285,22 @@ export const FlashcardsPage: React.FC = () => {
               How It Works
             </h2>
             <ul className="space-y-2 text-gray-600 dark:text-gray-400">
-              <li>• Click on a card to flip it and see the definition and example</li>
               <li>
-                • Mark "Got It!" if you knew the word, or "Need Practice" if you need
-                to review it
+                • Click on a card to flip it and see the definition and example
+              </li>
+              <li>
+                • Mark "Got It!" if you knew the word, or "Need Practice" if you
+                need to review it
               </li>
               <li>• Your progress is tracked and saved automatically</li>
               <li>
-                • Words you mark as "Need Practice" will decrease in mastery, helping
-                you focus on difficult words
+                • Words you mark as "Need Practice" will decrease in mastery,
+                helping you focus on difficult words
               </li>
-              <li>• Mix and match difficulty levels and topics to customize your study</li>
+              <li>
+                • Mix and match difficulty levels and topics to customize your
+                study
+              </li>
             </ul>
           </div>
         </div>

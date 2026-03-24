@@ -61,7 +61,7 @@ export const McqPracticeCard: React.FC<McqPracticeCardProps> = ({
 
       <div className="space-y-4">
         <div className="grid grid-cols-1 gap-2">
-          {mcqOptions.map((option) => {
+          {mcqOptions.map(option => {
             const isSelected = selectedOption === option.word;
             const isCorrectOption = option.word === currentWord.word;
             const showResult = isAnswered && (isSelected || isCorrectOption);
@@ -76,8 +76,8 @@ export const McqPracticeCard: React.FC<McqPracticeCardProps> = ({
                     ? isCorrectOption
                       ? 'bg-green-500 text-white'
                       : isSelected
-                      ? 'bg-red-500 text-white'
-                      : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
+                        ? 'bg-red-500 text-white'
+                        : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
                     : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
                 } disabled:opacity-50 disabled:cursor-not-allowed`}
               >

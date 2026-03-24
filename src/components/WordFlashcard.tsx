@@ -54,7 +54,9 @@ export const WordFlashcard: React.FC<WordFlashcardProps> = ({
           {/* Back of card */}
           <div className="absolute inset-0 backface-hidden bg-white dark:bg-gray-800 rounded-lg shadow-xl p-8 flex flex-col items-center justify-center border-2 border-green-500 rotate-y-180">
             <div className="text-center space-y-3 w-full overflow-y-auto max-h-full">
-              <div className="text-4xl mb-2 font-japanese">{word.kana_kanji}</div>
+              <div className="text-4xl mb-2 font-japanese">
+                {word.kana_kanji}
+              </div>
               {word.kana_kanji !== word.hiragana && (
                 <div className="text-xl text-gray-600 dark:text-gray-400 font-japanese">
                   {word.hiragana}
@@ -70,7 +72,9 @@ export const WordFlashcard: React.FC<WordFlashcardProps> = ({
                 <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">
                   Example:
                 </p>
-                <p className="text-base font-japanese">{word.example_sentence}</p>
+                <p className="text-base font-japanese">
+                  {word.example_sentence}
+                </p>
               </div>
               <div className="flex gap-2 mt-2 justify-center">
                 <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm">
@@ -89,7 +93,7 @@ export const WordFlashcard: React.FC<WordFlashcardProps> = ({
       {isFlipped && !answered && (
         <div className="flex gap-4 mt-8">
           <button
-            onClick={(e) => {
+            onClick={e => {
               e.stopPropagation();
               handleAnswer(false);
             }}
@@ -98,7 +102,7 @@ export const WordFlashcard: React.FC<WordFlashcardProps> = ({
             Need Practice
           </button>
           <button
-            onClick={(e) => {
+            onClick={e => {
               e.stopPropagation();
               handleAnswer(true);
             }}

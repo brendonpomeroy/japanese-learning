@@ -83,8 +83,8 @@ export const TypePracticeCard: React.FC<TypePracticeCardProps> = ({
         <input
           type="text"
           value={userInput}
-          onChange={(e) => setUserInput(e.target.value)}
-          onKeyDown={(e) => {
+          onChange={e => setUserInput(e.target.value)}
+          onKeyDown={e => {
             if (e.key === 'Enter' && !isAnswered) {
               handleSubmit();
             }

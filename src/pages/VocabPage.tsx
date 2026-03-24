@@ -31,7 +31,11 @@ export const VocabPage: React.FC = () => {
 
   const eligibleWords = useMemo(
     () =>
-      getEligibleWords(vocabWords, state.selectedTopic, state.selectedDifficulty),
+      getEligibleWords(
+        vocabWords,
+        state.selectedTopic,
+        state.selectedDifficulty
+      ),
     [state.selectedTopic, state.selectedDifficulty]
   );
 
@@ -46,7 +50,7 @@ export const VocabPage: React.FC = () => {
     if (!next) return;
 
     setCurrentWord(next);
-    setCardKey((k) => k + 1);
+    setCardKey(k => k + 1);
 
     if (state.mode === 'mcq') {
       setMcqOptions(generateMcqOptions(next, eligibleWords, 3));
@@ -84,8 +88,7 @@ export const VocabPage: React.FC = () => {
   );
 
   const totalSeen = useMemo(
-    () =>
-      Object.values(state.wordProgress).reduce((sum, p) => sum + p.seen, 0),
+    () => Object.values(state.wordProgress).reduce((sum, p) => sum + p.seen, 0),
     [state.wordProgress]
   );
 

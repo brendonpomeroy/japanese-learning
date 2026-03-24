@@ -100,7 +100,7 @@ And the app can immediately turn that into practice.
 Exercise Modes
 
 1. Build
-Purpose
+   Purpose
 
 Train sentence construction and recall.
 
@@ -132,7 +132,7 @@ Why it matters
 This is the highest-value mode because it trains generation rather than passive recognition.
 
 1. Correct
-Purpose
+   Purpose
 
 Train grammar awareness and error detection.
 
@@ -165,7 +165,7 @@ Why it matters
 Correction tasks strengthen understanding by forcing the learner to notice what is wrong, not just identify what looks familiar.
 
 1. Fill
-Purpose
+   Purpose
 
 Train focused particle recognition.
 
@@ -206,8 +206,7 @@ For example:
 pack 1: を
 pack 2: は vs が
 pack 3: に
-pack 4: で
-2. Build before expand
+pack 4: で 2. Build before expand
 
 Start with short base sentences before introducing time and place expansions.
 
@@ -216,8 +215,7 @@ Example progression:
 こーひーをのみます。
 まいにち こーひーをのみます。
 だいがくで にほんごをはなします。
-まいにち だいがくで にほんごをはなします。
-3. Prefer production over recognition
+まいにち だいがくで にほんごをはなします。3. Prefer production over recognition
 
 Whenever possible, the user should build or fix a sentence rather than only choose from obvious options.
 
@@ -287,136 +285,136 @@ The data should be stored in a local JSON file and be generic enough to support 
 I recommend a structure like this:
 
 {
-  "version": 1,
-  "packs": [
-    {
-      "id": "object-marker-wo",
-      "title": "を",
-      "subtitle": "Object Marker",
-      "description": "Use を to mark the direct object of a verb.",
-      "tags": ["particle", "beginner", "grammar"],
-      "supportedModes": ["build", "correct", "fill"],
-      "items": [
-        {
-          "id": "burger-eat",
-          "english": "Eat a hamburger",
-          "japanese": "はんばーがーをたべます。",
-          "tokens": ["はんばーがー", "を", "たべます"],
-          "translationNotes": [],
-          "focus": {
-            "grammarPoint": "を",
-            "role": "object-marker"
-          },
-          "build": {
-            "distractors": ["は", "のみます", "こーひー"]
-          },
-          "correct": {
-            "incorrectJapanese": "はんばーがーがたべます。",
-            "errorType": "wrong-particle"
-          },
-          "fill": {
-            "promptJapanese": "はんばーがー＿たべます。",
-            "answer": "を",
-            "options": ["は", "が", "を", "に"]
-          }
-        },
-        {
-          "id": "music-listen",
-          "english": "Listen to music",
-          "japanese": "おんがくをききます。",
-          "tokens": ["おんがく", "を", "ききます"],
-          "translationNotes": [],
-          "focus": {
-            "grammarPoint": "を",
-            "role": "object-marker"
-          },
-          "build": {
-            "distractors": ["は", "のみます", "こーひー"]
-          },
-          "correct": {
-            "incorrectJapanese": "おんがくがききます。",
-            "errorType": "wrong-particle"
-          },
-          "fill": {
-            "promptJapanese": "おんがく＿ききます。",
-            "answer": "を",
-            "options": ["は", "が", "を", "で"]
-          }
-        },
-        {
-          "id": "coffee-drink",
-          "english": "Drink coffee",
-          "japanese": "こーひーをのみます。",
-          "tokens": ["こーひー", "を", "のみます"],
-          "translationNotes": [],
-          "focus": {
-            "grammarPoint": "を",
-            "role": "object-marker"
-          },
-          "build": {
-            "distractors": ["は", "たべます", "おんがく"]
-          },
-          "correct": {
-            "incorrectJapanese": "こーひーがのみます。",
-            "errorType": "wrong-particle"
-          },
-          "fill": {
-            "promptJapanese": "こーひー＿のみます。",
-            "answer": "を",
-            "options": ["は", "を", "に", "で"]
-          }
-        },
-        {
-          "id": "japanese-speak",
-          "english": "Speak Japanese",
-          "japanese": "にほんごをはなします。",
-          "tokens": ["にほんご", "を", "はなします"],
-          "translationNotes": [],
-          "focus": {
-            "grammarPoint": "を",
-            "role": "object-marker"
-          },
-          "build": {
-            "distractors": ["は", "ききます", "おんがく"]
-          },
-          "correct": {
-            "incorrectJapanese": "にほんごがはなします。",
-            "errorType": "wrong-particle"
-          },
-          "fill": {
-            "promptJapanese": "にほんご＿はなします。",
-            "answer": "を",
-            "options": ["は", "が", "を", "に"]
-          }
-        },
-        {
-          "id": "daily-university-speak-japanese",
-          "english": "Every day, I speak Japanese at university",
-          "japanese": "まいにち だいがくで にほんごをはなします。",
-          "tokens": ["まいにち", "だいがくで", "にほんご", "を", "はなします"],
-          "translationNotes": [
-            "だいがくで indicates the place where the action happens."
-          ],
-          "focus": {
-            "grammarPoint": "を",
-            "role": "object-marker"
-          },
-          "build": {
-            "distractors": ["は", "に", "たべます"]
-          },
-          "correct": {
-            "incorrectJapanese": "まいにち だいがくで にほんごがはなします。",
-            "errorType": "wrong-particle"
-          },
-          "fill": {
-            "promptJapanese": "まいにち だいがくで にほんご＿はなします。",
-            "answer": "を",
-            "options": ["は", "が", "を", "で"]
-          }
-        }
-      ]
-    }
-  ]
+"version": 1,
+"packs": [
+{
+"id": "object-marker-wo",
+"title": "を",
+"subtitle": "Object Marker",
+"description": "Use を to mark the direct object of a verb.",
+"tags": ["particle", "beginner", "grammar"],
+"supportedModes": ["build", "correct", "fill"],
+"items": [
+{
+"id": "burger-eat",
+"english": "Eat a hamburger",
+"japanese": "はんばーがーをたべます。",
+"tokens": ["はんばーがー", "を", "たべます"],
+"translationNotes": [],
+"focus": {
+"grammarPoint": "を",
+"role": "object-marker"
+},
+"build": {
+"distractors": ["は", "のみます", "こーひー"]
+},
+"correct": {
+"incorrectJapanese": "はんばーがーがたべます。",
+"errorType": "wrong-particle"
+},
+"fill": {
+"promptJapanese": "はんばーがー＿たべます。",
+"answer": "を",
+"options": ["は", "が", "を", "に"]
+}
+},
+{
+"id": "music-listen",
+"english": "Listen to music",
+"japanese": "おんがくをききます。",
+"tokens": ["おんがく", "を", "ききます"],
+"translationNotes": [],
+"focus": {
+"grammarPoint": "を",
+"role": "object-marker"
+},
+"build": {
+"distractors": ["は", "のみます", "こーひー"]
+},
+"correct": {
+"incorrectJapanese": "おんがくがききます。",
+"errorType": "wrong-particle"
+},
+"fill": {
+"promptJapanese": "おんがく＿ききます。",
+"answer": "を",
+"options": ["は", "が", "を", "で"]
+}
+},
+{
+"id": "coffee-drink",
+"english": "Drink coffee",
+"japanese": "こーひーをのみます。",
+"tokens": ["こーひー", "を", "のみます"],
+"translationNotes": [],
+"focus": {
+"grammarPoint": "を",
+"role": "object-marker"
+},
+"build": {
+"distractors": ["は", "たべます", "おんがく"]
+},
+"correct": {
+"incorrectJapanese": "こーひーがのみます。",
+"errorType": "wrong-particle"
+},
+"fill": {
+"promptJapanese": "こーひー＿のみます。",
+"answer": "を",
+"options": ["は", "を", "に", "で"]
+}
+},
+{
+"id": "japanese-speak",
+"english": "Speak Japanese",
+"japanese": "にほんごをはなします。",
+"tokens": ["にほんご", "を", "はなします"],
+"translationNotes": [],
+"focus": {
+"grammarPoint": "を",
+"role": "object-marker"
+},
+"build": {
+"distractors": ["は", "ききます", "おんがく"]
+},
+"correct": {
+"incorrectJapanese": "にほんごがはなします。",
+"errorType": "wrong-particle"
+},
+"fill": {
+"promptJapanese": "にほんご＿はなします。",
+"answer": "を",
+"options": ["は", "が", "を", "に"]
+}
+},
+{
+"id": "daily-university-speak-japanese",
+"english": "Every day, I speak Japanese at university",
+"japanese": "まいにち だいがくで にほんごをはなします。",
+"tokens": ["まいにち", "だいがくで", "にほんご", "を", "はなします"],
+"translationNotes": [
+"だいがくで indicates the place where the action happens."
+],
+"focus": {
+"grammarPoint": "を",
+"role": "object-marker"
+},
+"build": {
+"distractors": ["は", "に", "たべます"]
+},
+"correct": {
+"incorrectJapanese": "まいにち だいがくで にほんごがはなします。",
+"errorType": "wrong-particle"
+},
+"fill": {
+"promptJapanese": "まいにち だいがくで にほんご＿はなします。",
+"answer": "を",
+"options": ["は", "が", "を", "で"]
+}
+}
+]
+}
+]
 }
 Format Design Notes
 Top level
@@ -527,44 +525,44 @@ Recommended TypeScript Types
 Here is a matching type definition you can use in your React/Vite app.
 
 export type GrammarDataFile = {
-  version: number;
-  packs: GrammarPack[];
+version: number;
+packs: GrammarPack[];
 };
 
 export type GrammarPack = {
-  id: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  tags: string[];
-  supportedModes: GrammarMode[];
-  items: GrammarItem[];
+id: string;
+title: string;
+subtitle: string;
+description: string;
+tags: string[];
+supportedModes: GrammarMode[];
+items: GrammarItem[];
 };
 
 export type GrammarMode = "build" | "correct" | "fill";
 
 export type GrammarItem = {
-  id: string;
-  english: string;
-  japanese: string;
-  tokens: string[];
-  translationNotes: string[];
-  focus: {
-    grammarPoint: string;
-    role: string;
-  };
-  build?: {
-    distractors: string[];
-  };
-  correct?: {
-    incorrectJapanese: string;
-    errorType: "wrong-particle" | "wrong-order" | "wrong-verb" | "missing-token";
-  };
-  fill?: {
-    promptJapanese: string;
-    answer: string;
-    options: string[];
-  };
+id: string;
+english: string;
+japanese: string;
+tokens: string[];
+translationNotes: string[];
+focus: {
+grammarPoint: string;
+role: string;
+};
+build?: {
+distractors: string[];
+};
+correct?: {
+incorrectJapanese: string;
+errorType: "wrong-particle" | "wrong-order" | "wrong-verb" | "missing-token";
+};
+fill?: {
+promptJapanese: string;
+answer: string;
+options: string[];
+};
 };
 Local Progress Storage Proposal
 
@@ -573,20 +571,20 @@ Since there is no auth, store progress in local storage keyed by pack and mode.
 Example shape:
 
 {
-  "grammarProgress": {
-    "object-marker-wo": {
-      "build": {
-        "burger-eat": { "seen": 4, "correct": 3, "streak": 2 },
-        "coffee-drink": { "seen": 2, "correct": 1, "streak": 0 }
-      },
-      "correct": {
-        "burger-eat": { "seen": 1, "correct": 1, "streak": 1 }
-      },
-      "fill": {
-        "japanese-speak": { "seen": 5, "correct": 5, "streak": 5 }
-      }
-    }
-  }
+"grammarProgress": {
+"object-marker-wo": {
+"build": {
+"burger-eat": { "seen": 4, "correct": 3, "streak": 2 },
+"coffee-drink": { "seen": 2, "correct": 1, "streak": 0 }
+},
+"correct": {
+"burger-eat": { "seen": 1, "correct": 1, "streak": 1 }
+},
+"fill": {
+"japanese-speak": { "seen": 5, "correct": 5, "streak": 5 }
+}
+}
+}
 }
 
 This is enough for lightweight weighting such as:

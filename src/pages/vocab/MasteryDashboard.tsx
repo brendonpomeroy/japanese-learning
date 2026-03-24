@@ -20,14 +20,14 @@ export const MasteryDashboard: React.FC<MasteryDashboardProps> = ({
       total: number;
     }> = [];
 
-    topics.forEach((topic) => {
-      const topicWords = vocabWords.filter((w) => w.topic === topic);
+    topics.forEach(topic => {
+      const topicWords = vocabWords.filter(w => w.topic === topic);
       if (topicWords.length === 0) return;
 
       let totalMastery = 0;
       let learnedCount = 0;
 
-      topicWords.forEach((word) => {
+      topicWords.forEach(word => {
         const progress = wordProgress[word.word];
         if (progress) {
           const mastery =
@@ -50,7 +50,7 @@ export const MasteryDashboard: React.FC<MasteryDashboardProps> = ({
     topicMastery.sort((a, b) => b.mastery - a.mastery);
 
     const needPractice = vocabWords
-      .map((word) => {
+      .map(word => {
         const progress = wordProgress[word.word];
         if (!progress || progress.seen < 1) return null;
 
@@ -84,7 +84,7 @@ export const MasteryDashboard: React.FC<MasteryDashboardProps> = ({
           Topic Mastery
         </h2>
         <div className="space-y-2 max-h-96 overflow-y-auto">
-          {topicMastery.map((tm) => (
+          {topicMastery.map(tm => (
             <div
               key={tm.topic}
               className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg"
@@ -112,7 +112,7 @@ export const MasteryDashboard: React.FC<MasteryDashboardProps> = ({
         </h2>
         <div className="space-y-3">
           {needPractice.length > 0 ? (
-            needPractice.map((item) => (
+            needPractice.map(item => (
               <div
                 key={item.word.word}
                 className="p-3 bg-gray-50 dark:bg-gray-700 rounded-lg"
