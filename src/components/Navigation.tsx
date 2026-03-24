@@ -40,7 +40,7 @@ const navConfig: NavEntry[] = [
       { label: 'Flashcards', path: '/flashcards', icon: '🗂️' },
       { label: 'Emoji Quiz', path: '/emoji', icon: '😄' },
       { label: 'Tracing', path: '/tracing', icon: '✍️' },
-      { label: 'Practice', path: '/practice', icon: '🎯' },
+      { label: 'Kana Practice', path: '/practice', icon: '🎯' },
     ],
   },
 ];
