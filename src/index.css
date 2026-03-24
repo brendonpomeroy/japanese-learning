@@ -361,7 +361,7 @@
     'Hiragino Sans', 'Yu Gothic', 'Meiryo', 'Arial Unicode MS', sans-serif;
 }
 
-/* Bottom sheet animation */
+/* Bottom sheet animations */
 @keyframes sheetSlideUp {
   from {
     transform: translateY(100%);
@@ -373,8 +373,41 @@
   }
 }
 
+@keyframes sheetSlideDown {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes backdropFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes backdropFadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
 .bottom-sheet-enter {
-  animation: sheetSlideUp 0.25s ease-out;
+  animation: sheetSlideUp 0.25s ease-out forwards;
+}
+
+.bottom-sheet-exit {
+  animation: sheetSlideDown 0.2s ease-in forwards;
+}
+
+.bottom-sheet-backdrop-enter {
+  animation: backdropFadeIn 0.25s ease-out forwards;
+}
+
+.bottom-sheet-backdrop-exit {
+  animation: backdropFadeOut 0.2s ease-in forwards;
 }
 
 /* Custom scrollbar */

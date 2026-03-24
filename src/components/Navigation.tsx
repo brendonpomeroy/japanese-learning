@@ -151,6 +151,27 @@ function BottomSheet({
   onClose: () => void;
   children: React.ReactNode;
 }) {
+  const [visible, setVisible] = useState(false);
+  const [animating, setAnimating] = useState<'enter' | 'exit' | null>(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      setVisible(true);
+      setAnimating('enter');
+    } else if (visible) {
+      setAnimating('exit');
+    }
+  }, [isOpen]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const handleAnimationEnd = () => {
+    if (animating === 'exit') {
+      setVisible(false);
+      setAnimating(null);
+    } else {
+      setAnimating(null);
+    }
+  };
+
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -161,15 +182,22 @@ function BottomSheet({
     return () => document.removeEventListener('keydown', handleEscape);
   }, [isOpen, onClose]);
 
-  if (!isOpen) return null;
+  if (!visible) return null;
 
   return (
     <>
       <div
-        className="fixed inset-0 bg-black/30 z-40 md:hidden"
+        className={`fixed inset-0 bg-white/30 backdrop-blur-sm z-40 md:hidden dark:bg-black/30 ${
+          animating === 'exit' ? 'bottom-sheet-backdrop-exit' : 'bottom-sheet-backdrop-enter'
+        }`}
         onClick={onClose}
       />
-      <div className="fixed bottom-16 left-0 right-0 bg-surface rounded-t-2xl shadow-2xl z-40 md:hidden bottom-sheet-enter">
+      <div
+        className={`fixed bottom-16 left-0 right-0 bg-surface rounded-t-2xl shadow-2xl z-40 md:hidden ${
+          animating === 'exit' ? 'bottom-sheet-exit' : 'bottom-sheet-enter'
+        }`}
+        onAnimationEnd={handleAnimationEnd}
+      >
         <div className="p-4">{children}</div>
       </div>
     </>
