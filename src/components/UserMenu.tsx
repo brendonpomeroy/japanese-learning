@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../hooks/useTheme';
 import { useAuth } from '../hooks/useAuth';
+import { usePwaInstall } from '../hooks/usePwaInstall';
 import { CloudBackupModal } from './AuthButton';
 import ThemeToggle from './ThemeToggle';
 
@@ -214,8 +215,10 @@ export function UserMenu() {
 export function UserMenuMobile() {
   const { theme, setTheme } = useTheme();
   const { user, isAuthEnabled, isResolvingCloudSync, isSyncReady } = useAuth();
+  const { canPrompt, isIos, isInstalled, promptInstall } = usePwaInstall();
   const navigate = useNavigate();
   const [showCloudModal, setShowCloudModal] = useState(false);
+  const [showIosGuide, setShowIosGuide] = useState(false);
 
   return (
     <>
@@ -325,6 +328,63 @@ export function UserMenuMobile() {
               />
             )}
           </button>
+        )}
+
+        {/* Install App */}
+        {!isInstalled && (canPrompt || isIos) && (
+          <button
+            onClick={() => {
+              if (canPrompt) {
+                promptInstall();
+              } else {
+                setShowIosGuide(prev => !prev);
+              }
+            }}
+            className="flex items-center gap-3 w-full p-3 rounded-xl bg-surface-alt text-primary hover:bg-border-light transition-colors"
+          >
+            <svg
+              className="w-5 h-5 text-accent-blue"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 3v12m0-12L8 7m4-4l4 4"
+              />
+            </svg>
+            <span className="text-sm font-medium">Install App</span>
+          </button>
+        )}
+
+        {/* iOS install instructions */}
+        {showIosGuide && (
+          <div className="p-3 rounded-xl bg-accent-blue/10 text-sm text-primary space-y-1">
+            <p className="font-medium">To install on iOS:</p>
+            <ol className="list-decimal list-inside space-y-0.5 text-secondary">
+              <li>
+                Tap the Share button{' '}
+                <svg
+                  className="inline w-4 h-4 -mt-0.5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 3v12m0-12L8 7m4-4l4 4"
+                  />
+                </svg>{' '}
+                in Safari
+              </li>
+              <li>Scroll down and tap <strong>Add to Home Screen</strong></li>
+              <li>Tap <strong>Add</strong></li>
+            </ol>
+          </div>
         )}
       </div>
 
