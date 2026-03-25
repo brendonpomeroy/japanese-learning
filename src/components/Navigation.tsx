@@ -195,7 +195,7 @@ function BottomSheet({
         onClick={onClose}
       />
       <div
-        className={`fixed bottom-16 left-0 right-0 bg-surface rounded-t-2xl shadow-2xl z-40 md:hidden ${
+        className={`fixed bottom-[calc(4rem+env(safe-area-inset-bottom))] left-0 right-0 bg-surface rounded-t-2xl shadow-2xl z-40 md:hidden ${
           animating === 'exit' ? 'bottom-sheet-exit' : 'bottom-sheet-enter'
         }`}
         onAnimationEnd={handleAnimationEnd}
