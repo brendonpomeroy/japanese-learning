@@ -267,6 +267,16 @@ function Navigation() {
                   </Link>
                 )
               )}
+              <Link
+                to="/about"
+                className={`hover:text-inverse/70 transition-colors ${
+                  isPathActive('/about', location.pathname)
+                    ? 'text-inverse/70 font-semibold'
+                    : ''
+                }`}
+              >
+                About
+              </Link>
               <div className="ml-4">
                 <UserMenu />
               </div>
@@ -360,7 +370,9 @@ function Navigation() {
           <button
             onClick={() => toggleSheet('more')}
             className={`flex flex-col items-center justify-center w-full h-full transition-colors ${
-              activeSheet === 'more' ? 'text-accent-blue' : 'text-secondary'
+              activeSheet === 'more' || isPathActive('/about', location.pathname)
+                ? 'text-accent-blue'
+                : 'text-secondary'
             }`}
             aria-label="More"
           >
@@ -423,6 +435,17 @@ function Navigation() {
 
       <BottomSheet isOpen={activeSheet === 'more'} onClose={closeSheet}>
         <div className="space-y-3">
+          <button
+            onClick={() => handleMobileNav('/about')}
+            className={`flex items-center gap-3 p-3 rounded-xl transition-colors w-full ${
+              isPathActive('/about', location.pathname)
+                ? 'bg-accent-blue/10 text-accent-blue font-semibold'
+                : 'bg-surface-alt text-primary hover:bg-border-light'
+            }`}
+          >
+            <span className="text-2xl">ℹ️</span>
+            <span className="text-sm font-medium">About</span>
+          </button>
           <UserMenuMobile />
         </div>
       </BottomSheet>
