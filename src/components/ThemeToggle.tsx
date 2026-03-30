@@ -9,7 +9,7 @@ const ThemeToggle: React.FC = () => {
       onClick={toggleDarkMode}
       className={`
         no-paper relative inline-flex shrink-0 items-center w-14 h-7 rounded-full transition-all duration-300 ease-in-out
-        ${isDarkMode ? 'bg-indigo-900 shadow-[0_0_10px_rgba(99,102,241,0.4)]' : 'bg-amber-300 shadow-[0_0_10px_rgba(251,191,36,0.4)]'}
+        ${isDarkMode ? 'bg-indigo-900' : 'bg-amber-300'}
       `}
       aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
     >
