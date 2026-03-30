@@ -22,6 +22,7 @@ import { GrammarQuizSetupPage } from './pages/GrammarQuizSetupPage';
 import { GrammarQuizSessionPage } from './pages/GrammarQuizSessionPage';
 import { TracingPage } from './pages/TracingPage';
 import { ProgressDashboardPage } from './pages/ProgressDashboardPage';
+import { AboutPage } from './pages/AboutPage';
 import { useTheme } from './hooks/useTheme';
 
 function AppContent() {
@@ -57,6 +58,7 @@ function AppContent() {
         <Route path="/grammar/:packId/:mode" element={<GrammarSessionPage />} />
         <Route path="/tracing" element={<TracingPage />} />
         <Route path="/progress" element={<ProgressDashboardPage />} />
+        <Route path="/about" element={<AboutPage />} />
       </Routes>
     </div>
   );
